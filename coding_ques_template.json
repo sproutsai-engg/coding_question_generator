@@ -1,0 +1,24 @@
+{
+    "title": "title of the problem",
+    "description": "description of the problem",
+    "example":"example of the problem",
+    "level": "level of the problem",
+    "tags": [
+        "tag1",
+        "tag2",
+        "tag3"
+    ],
+    "test_cases": {
+        "inputs":"",
+        "outputs":""
+    },
+    "sample_code": {
+        "language_name": "sample code in the language"
+    },
+    "structure":{
+        "language_name": "structure of code in the language"
+    },
+    "call_functions": {
+        "language_name": "function call in the language"
+    }
+}

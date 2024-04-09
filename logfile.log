@@ -1,0 +1,154 @@
+ERROR:__main__:An unexpected error occurred: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+Traceback (most recent call last):
+  File "c:\Users\udayr\Sproutsai\job_description_generation\coding ques\openaifunc.py", line 54, in generate_coding_ques
+    response=get_gpt(
+             ^^^^^^^^
+  File "c:\Users\udayr\Sproutsai\job_description_generation\coding ques\openaifunc.py", line 38, in get_gpt
+    response = requests.post(url, headers=headers, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\udayr\Sproutsai\mongo\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\udayr\Sproutsai\mongo\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\udayr\Sproutsai\mongo\Lib\site-packages\requests\sessions.py", line 575, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\udayr\Sproutsai\mongo\Lib\site-packages\requests\sessions.py", line 486, in prepare_request
+    p.prepare(
+  File "C:\Users\udayr\Sproutsai\mongo\Lib\site-packages\requests\models.py", line 368, in prepare
+    self.prepare_url(url, params)
+  File "C:\Users\udayr\Sproutsai\mongo\Lib\site-packages\requests\models.py", line 439, in prepare_url
+    raise MissingSchema(
+requests.exceptions.MissingSchema: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+ERROR:__main__:An unexpected error occurred: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+Traceback (most recent call last):
+  File "c:\Users\udayr\Sproutsai\job_description_generation\coding ques\openaifunc.py", line 54, in generate_coding_ques
+    response=get_gpt(
+             ^^^^^^^^
+  File "c:\Users\udayr\Sproutsai\job_description_generation\coding ques\openaifunc.py", line 38, in get_gpt
+    response = requests.post(url, headers=headers, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\udayr\Sproutsai\mongo\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\udayr\Sproutsai\mongo\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\udayr\Sproutsai\mongo\Lib\site-packages\requests\sessions.py", line 575, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\udayr\Sproutsai\mongo\Lib\site-packages\requests\sessions.py", line 486, in prepare_request
+    p.prepare(
+  File "C:\Users\udayr\Sproutsai\mongo\Lib\site-packages\requests\models.py", line 368, in prepare
+    self.prepare_url(url, params)
+  File "C:\Users\udayr\Sproutsai\mongo\Lib\site-packages\requests\models.py", line 439, in prepare_url
+    raise MissingSchema(
+requests.exceptions.MissingSchema: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+ERROR:__main__:An unexpected error occurred: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+Traceback (most recent call last):
+  File "c:\Users\udayr\Sproutsai\job_description_generation\coding ques\openaifunc.py", line 54, in generate_coding_ques
+    response=get_gpt(
+             ^^^^^^^^
+  File "c:\Users\udayr\Sproutsai\job_description_generation\coding ques\openaifunc.py", line 38, in get_gpt
+    response = requests.post(url, headers=headers, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\udayr\Sproutsai\mongo\Lib\site-packages\requests\api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\udayr\Sproutsai\mongo\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\udayr\Sproutsai\mongo\Lib\site-packages\requests\sessions.py", line 575, in request
+    prep = self.prepare_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\udayr\Sproutsai\mongo\Lib\site-packages\requests\sessions.py", line 486, in prepare_request
+    p.prepare(
+  File "C:\Users\udayr\Sproutsai\mongo\Lib\site-packages\requests\models.py", line 368, in prepare
+    self.prepare_url(url, params)
+  File "C:\Users\udayr\Sproutsai\mongo\Lib\site-packages\requests\models.py", line 439, in prepare_url
+    raise MissingSchema(
+requests.exceptions.MissingSchema: Invalid URL 'None': No scheme supplied. Perhaps you meant https://None?
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 3636
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 3701
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 3885
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 3505
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 4186
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 4186
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 3696
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 3442
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 3095
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 3379
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 3370
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 3804
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 3447
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 3401
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 3804
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 3442
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 3086
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 3286
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 3052
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 2020
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 2394
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 2394
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1983
+ERROR:openaifunc:An unexpected error occurred: Unterminated string starting at: line 11 column 13 (char 1728)
+Traceback (most recent call last):
+  File "c:\Users\udayr\Sproutsai\job_description_generation\coding ques\openaifunc.py", line 74, in generate_coding_ques
+    temp_dict=json.loads(response['content'])
+  File "c:\Users\udayr\miniconda3\envs\tf\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "c:\Users\udayr\miniconda3\envs\tf\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "c:\Users\udayr\miniconda3\envs\tf\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Unterminated string starting at: line 11 column 13 (char 1728)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 3104
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 2708
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 2708
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 2708
+ERROR:openaifunc:An unexpected error occurred: Unterminated string starting at: line 11 column 7 (char 2250)
+Traceback (most recent call last):
+  File "c:\Users\udayr\Sproutsai\job_description_generation\coding ques\openaifunc.py", line 74, in generate_coding_ques
+    temp_dict=json.loads(response['content'])
+  File "c:\Users\udayr\miniconda3\envs\tf\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "c:\Users\udayr\miniconda3\envs\tf\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "c:\Users\udayr\miniconda3\envs\tf\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Unterminated string starting at: line 11 column 7 (char 2250)
