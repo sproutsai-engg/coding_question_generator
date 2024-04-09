@@ -152,3 +152,359 @@ Traceback (most recent call last):
   File "c:\Users\udayr\miniconda3\envs\tf\lib\json\decoder.py", line 353, in raw_decode
     obj, end = self.scan_once(s, idx)
 json.decoder.JSONDecodeError: Unterminated string starting at: line 11 column 7 (char 2250)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 996
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 996
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 996
+ERROR:openaifunc:An unexpected error occurred: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+Traceback (most recent call last):
+  File "d:\Apps\github\coding_question_generator\openaifunc.py", line 69, in generate_coding_ques
+    temp_dict=json.loads(response['content'])
+  File "d:\python\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "d:\python\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "d:\python\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1024
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1024
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1024
+ERROR:openaifunc:An unexpected error occurred: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+Traceback (most recent call last):
+  File "d:\Apps\github\coding_question_generator\openaifunc.py", line 69, in generate_coding_ques
+    temp_dict=json.loads(response['content'])
+  File "d:\python\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "d:\python\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "d:\python\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 2122
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 2108
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 2122
+ERROR:openaifunc:An unexpected error occurred: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+Traceback (most recent call last):
+  File "d:\Apps\github\coding_question_generator\openaifunc.py", line 69, in generate_coding_ques
+    temp_dict=json.loads(response['content'])
+  File "d:\python\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "d:\python\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "d:\python\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1232
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1232
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1507
+ERROR:openaifunc:An unexpected error occurred: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+Traceback (most recent call last):
+  File "d:\Apps\github\coding_question_generator\openaifunc.py", line 69, in generate_coding_ques
+    temp_dict=json.loads(response['content'])
+  File "d:\python\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "d:\python\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "d:\python\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 996
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 996
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 996
+ERROR:openaifunc:An unexpected error occurred: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+Traceback (most recent call last):
+  File "d:\Apps\github\coding_question_generator\openaifunc.py", line 69, in generate_coding_ques
+    temp_dict=json.loads(response['content'])
+  File "d:\python\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "d:\python\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "d:\python\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 504 176
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 996
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 996
+ERROR:openaifunc:An unexpected error occurred: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+Traceback (most recent call last):
+  File "d:\Apps\github\coding_question_generator\openaifunc.py", line 69, in generate_coding_ques
+    temp_dict=json.loads(response['content'])
+  File "d:\python\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "d:\python\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "d:\python\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 996
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 996
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 996
+ERROR:openaifunc:An unexpected error occurred: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+Traceback (most recent call last):
+  File "d:\Apps\github\coding_question_generator\openaifunc.py", line 69, in generate_coding_ques
+    temp_dict=json.loads(response['content'])
+  File "d:\python\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "d:\python\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "d:\python\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 996
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 996
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 996
+ERROR:openaifunc:An unexpected error occurred: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+Traceback (most recent call last):
+  File "d:\Apps\github\coding_question_generator\openaifunc.py", line 69, in generate_coding_ques
+  File "d:\python\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "d:\python\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "d:\python\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1129
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1129
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1129
+ERROR:openaifunc:An unexpected error occurred: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+Traceback (most recent call last):
+  File "d:\Apps\github\coding_question_generator\openaifunc.py", line 69, in generate_coding_ques
+  File "d:\python\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "d:\python\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "d:\python\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1129
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1129
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1129
+ERROR:openaifunc:An unexpected error occurred: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+Traceback (most recent call last):
+  File "d:\Apps\github\coding_question_generator\openaifunc.py", line 69, in generate_coding_ques
+  File "d:\python\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "d:\python\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "d:\python\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 206
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 323
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 323
+ERROR:openaifunc:An unexpected error occurred: 'content'
+Traceback (most recent call last):
+  File "d:\Apps\github\coding_question_generator\openaifunc.py", line 68, in generate_coding_ques
+    temp_dict=json.loads(response['content'])
+KeyError: 'content'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 322
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 322
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 322
+ERROR:openaifunc:An unexpected error occurred: 'content'
+Traceback (most recent call last):
+  File "d:\Apps\github\coding_question_generator\openaifunc.py", line 68, in generate_coding_ques
+    temp_dict=json.loads(response['content'])
+KeyError: 'content'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 206
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 323
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 323
+ERROR:openaifunc:An unexpected error occurred: 'content'
+Traceback (most recent call last):
+  File "d:\Apps\github\coding_question_generator\openaifunc.py", line 68, in generate_coding_ques
+    temp_dict=json.loads(response['content'])
+KeyError: 'content'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 322
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 322
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 322
+ERROR:openaifunc:An unexpected error occurred: 'content'
+Traceback (most recent call last):
+  File "d:\Apps\github\coding_question_generator\openaifunc.py", line 68, in generate_coding_ques
+    temp_dict=json.loads(response['content'])
+KeyError: 'content'
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1129
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1129
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1129
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1129
+ERROR:openaifunc:An unexpected error occurred: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+Traceback (most recent call last):
+  File "d:\Apps\github\coding_question_generator\openaifunc.py", line 68, in generate_coding_ques
+    temp_dict=json.loads(response['content'])
+  File "d:\python\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "d:\python\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "d:\python\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 934
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1001
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1001
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 999
+ERROR:openaifunc:GPT response issue: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+Traceback (most recent call last):
+  File "d:\Apps\github\coding_question_generator\openaifunc.py", line 70, in generate_coding_ques
+    temp_dict=json.loads(response['content'])
+  File "d:\python\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "d:\python\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "d:\python\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 999
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 999
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 999
+ERROR:openaifunc:GPT response issue: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+Traceback (most recent call last):
+  File "d:\Apps\github\coding_question_generator\openaifunc.py", line 70, in generate_coding_ques
+    temp_dict=json.loads(response['content'])
+  File "d:\python\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "d:\python\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "d:\python\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1289
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1074
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1074
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1074
+ERROR:openaifunc:GPT response issue: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+Traceback (most recent call last):
+  File "d:\Apps\github\coding_question_generator\openaifunc.py", line 70, in generate_coding_ques
+    temp_dict=json.loads(response['content'])
+  File "d:\python\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "d:\python\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "d:\python\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1074
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1074
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1074
+ERROR:openaifunc:GPT response issue: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+Traceback (most recent call last):
+  File "d:\Apps\github\coding_question_generator\openaifunc.py", line 70, in generate_coding_ques
+    temp_dict=json.loads(response['content'])
+  File "d:\python\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "d:\python\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "d:\python\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1074
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1074
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1074
+ERROR:openaifunc:GPT response issue: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+Traceback (most recent call last):
+  File "d:\Apps\github\coding_question_generator\openaifunc.py", line 71, in generate_coding_ques
+    temp_dict=json.loads(response['content'])
+  File "d:\python\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "d:\python\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "d:\python\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 123
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1074
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1074
+ERROR:openaifunc:GPT response issue: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+Traceback (most recent call last):
+  File "d:\Apps\github\coding_question_generator\openaifunc.py", line 71, in generate_coding_ques
+    temp_dict=json.loads(response['content'])
+  File "d:\python\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "d:\python\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "d:\python\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1012
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1012
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): gptmodels.sproutsai.com:80
+DEBUG:urllib3.connectionpool:http://gptmodels.sproutsai.com:80 "POST /proxy HTTP/1.1" 200 1012
+ERROR:openaifunc:GPT response issue: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+Traceback (most recent call last):
+  File "d:\Apps\github\coding_question_generator\openaifunc.py", line 71, in generate_coding_ques
+    temp_dict=json.loads(response['content'])
+  File "d:\python\lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "d:\python\lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "d:\python\lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
