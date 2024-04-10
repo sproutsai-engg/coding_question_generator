@@ -1,0 +1,10 @@
+1 Two sum -- some test cases are not correct (3 out of 8)
+3  Longest Substring Without Repeating Characters -- few test cases are wrong
+
+These are the Instructions:
+                    1. write only the call(main) function from the {sample_code}.
+                        "cpp": from sample code of cpp just write the call(main) function of it correctly, do not forget to write #include .
+                        "java": from sample code of java just write the call(main) function of it, do not forget to write import.java .
+                        "python":from sample code of python just write the code to run the functions from sample code of python
+                        "javascript": from sample code of javascript just write the call(main) function of it.
+                        "tags": Assign relevant tags related to the problem based on the type of problem (e.g., array, string, sorting).

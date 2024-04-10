@@ -1,42 +1,39 @@
 #include <iostream>
 #include <string>
-using namespace std;
 
-// Function to calculate the power of a number
-int power(int base, int exponent) {
-    int result = 1;
-    for (int i = 0; i < exponent; ++i) {
-        result *= base;
+std::string longestPalindromicSubstring(std::string s) {
+  int n = s.size();
+  if (n == 0) return "";
+  int start = 0, maxLength = 1;
+
+  for (int i = 0; i < n; ++i) {
+    int l = i, r = i;
+
+    while (r < n - 1 && s[r] == s[r + 1])
+      r++;
+    i = r;
+
+    while (l > 0 && r < n - 1 && s[l - 1] == s[r + 1]) {
+      l--;
+      r++;
     }
-    return result;
+
+    int length = r - l + 1;
+    if (length > maxLength) {
+      start = l;
+      maxLength = length;
+    }
+  }
+
+  return s.substr(start, maxLength);
 }
 
-bool isArmstrong(int n) {
-    int originalNum = n;
-    int numDigits = 0;
-    int sumOfDigits = 0;
-    
-    // Count the number of digits
-    int temp = n;
-    while (temp != 0) {
-        numDigits++;
-        temp /= 10;
-    }
-    
-    // Calculate the sum of digits raised to the power of the number of digits
-    temp = n;
-    while (temp != 0) {
-        int digit = temp % 10;
-        sumOfDigits += power(digit, numDigits);
-        temp /= 10;
-    }
-    
-    return originalNum == sumOfDigits;
-}
 
 int main() {
-    int n = 153;
-    bool result = isArmstrong(n);
-    cout << (result ? "True" : "False") << endl;  
-    return 0;
+  std::string s = "babad";
+  
+
+  std::cout << longestPalindromicSubstring(s);
+
+  return 0;
 }
