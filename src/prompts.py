@@ -47,7 +47,7 @@ def prompt_codingQ_details(ques_description):
         try:
             model ="gpt35-16k"
             response = utils.get_from_gpt(message=message, model=model, temperature = 0.01, max_tokens = 6000)
-            # print(response["content"])
+            print(response["content"])
             response_json = json.loads(response["content"])
             return response_json    
         
