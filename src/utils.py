@@ -3,6 +3,7 @@ import json
 import requests
 from dotenv import load_dotenv
 load_dotenv()
+import time
 
 openai_bearer = os.getenv("OPENAI_BEARER")
 

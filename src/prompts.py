@@ -21,6 +21,7 @@ def prompt_codingQ_details(ques_description):
                     "inputs":["List of test cases in their original data type"],
                     "outputs":["List of expected outputs in their original data type"]
                 } }"""
+                
     message=[{"role":"system","content":f"You are an expert in creating coding questions and you are tasked with generating a coding question based \
                                             on the given {ques_description}. Follow the Instructions given below to generate the coding question."},
              {"role":"user","content":f"""Generate a coding question based on the given description.
