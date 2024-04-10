@@ -1,0 +1,71 @@
+{
+    "1": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <unordered_map>\n#include <iostream>\n\nint main() {\n    std::vector<int> nums = $args;\n    int target = $args;\n    std::vector<int> result = twoSum(nums, target);\n    for (int i : result) {\n        std::cout << i << \" \";\n    }\n    std::cout << std::endl;\n    return 0;\n}",
+            "java": "public int[] twoSum(int[] nums, int target) {\n    Map<Integer, Integer> map = new HashMap<>();\n    for (int i = 0; i < nums.length; i++) {\n        int complement = target - nums[i];\n        if (map.containsKey(complement)) {\n            return new int[]{map.get(complement), i};\n        }\n        map.put(nums[i], i);\n    }\n    throw new IllegalArgumentException(\"No two sum solution\");\n}",
+            "python": "if __name__ == \"__main__\":\n    nums = $args[0]\n    target = $args[1]\n    result = twoSum(nums, target)\n    print(result)",
+            "javascript": "function main() {\n    const nums = $args[0];\n    const target = $args[1];\n    const result = twoSum(nums, target);\n    console.log(result);\n}"
+        }
+    },
+    "3": {
+        "call_functions": {
+            "c++": "#include <string>\n#include <unordered_set>\n#include <iostream>\n\nint main() {\n    std::string s = $args;\n    int result = lengthOfLongestSubstring(s);\n    std::cout << result << std::endl;\n    return 0;\n}",
+            "java": "public int lengthOfLongestSubstring(String s) {\n    int left = 0, right = 0, maxLength = 0;\n    Set<Character> characters = new HashSet<>();\n\n    while (right < s.length()) {\n        if (!characters.contains(s.charAt(right))) {\n            characters.add(s.charAt(right));\n            maxLength = Math.max(maxLength, right - left + 1);\n            right++;\n        } else {\n            characters.remove(s.charAt(left));\n            left++;\n        }\n    }\n\n    return maxLength;\n}",
+            "python": "if __name__ == \"__main__\":\n    s = $args\n    result = length_of_longest_substring(s)\n    print(result)\n}",
+            "javascript": "function main() {\n    const s = $args;\n    const result = lengthOfLongestSubstring(s);\n    console.log(result);\n}"
+        }
+    },
+    "4": {
+        "call_functions": {
+            "c++": "double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {\n    if (nums1.size() > nums2.size()) {\n        return findMedianSortedArrays(nums2, nums1);\n    }\n    \n    int x = nums1.size();\n    int y = nums2.size();\n    int low = 0;\n    int high = x;\n    \n    while (low <= high) {\n        int partitionX = (low + high) / 2;\n        int partitionY = (x + y + 1) / 2 - partitionX;\n        \n        int maxLeftX = (partitionX == 0) ? INT_MIN : nums1[partitionX - 1];\n        int minRightX = (partitionX == x) ? INT_MAX : nums1[partitionX];\n        \n        int maxLeftY = (partitionY == 0) ? INT_MIN : nums2[partitionY - 1];\n        int minRightY = (partitionY == y) ? INT_MAX : nums2[partitionY];\n        \n        if (maxLeftX <= minRightY && maxLeftY <= minRightX) {\n            if ((x + y) % 2 == 0) {\n                return (double(max(maxLeftX, maxLeftY) + min(minRightX, minRightY))) / 2;\n            } else {\n                return double(max(maxLeftX, maxLeftY));\n            }\n        } else if (maxLeftX > minRightY) {\n            high = partitionX - 1;\n        } else {\n            low = partitionX + 1;\n        }\n    }    \n    return 0;\n}",
+            "java": "public double findMedianSortedArrays(int[] nums1, int[] nums2) {\n    if (nums1.length > nums2.length) {\n        return findMedianSortedArrays(nums2, nums1);\n    }\n    \n    int x = nums1.length;\n    int y = nums2.length;\n    int low = 0;\n    int high = x;\n    \n    while (low <= high) {\n        int partitionX = (low + high) / 2;\n        int partitionY = (x + y + 1) / 2 - partitionX;\n        \n        int maxLeftX = (partitionX == 0) ? Integer.MIN_VALUE : nums1[partitionX - 1];\n        int minRightX = (partitionX == x) ? Integer.MAX_VALUE : nums1[partitionX];\n        \n        int maxLeftY = (partitionY == 0) ? Integer.MIN_VALUE : nums2[partitionY - 1];\n        int minRightY = (partitionY == y) ? Integer.MAX_VALUE : nums2[partitionY];\n        \n        if (maxLeftX <= minRightY && maxLeftY <= minRightX) {\n            if ((x + y) % 2 == 0) {\n                return (double)(Math.max(maxLeftX, maxLeftY) + Math.min(minRightX, minRightY)) / 2;\n            } else {\n                return (double)Math.max(maxLeftX, maxLeftY);\n            }\n        } else if (maxLeftX > minRightY) {\n            high = partitionX - 1;\n        } else {\n            low = partitionX + 1;\n        }\n    }    \n    return 0;\n}",
+            "python": "if __name__ == '__main__':\n    nums1 = $args\n    nums2 = $args\n    result = findMedianSortedArrays(nums1, nums2)\n    print(result)\n}",
+            "javascript": "function findMedianSortedArrays(nums1, nums2) {\n    const x = nums1.length;\n    const y = nums2.length;\n    let low = 0;\n    let high = x;\n    \n    while (low <= high) {\n        const partitionX = Math.floor((low + high) / 2);\n        const partitionY = Math.floor((x + y + 1) / 2) - partitionX;\n        \n        const maxLeftX = (partitionX === 0) ? Number.NEGATIVE_INFINITY : nums1[partitionX - 1];\n        const minRightX = (partitionX === x) ? Number.POSITIVE_INFINITY : nums1[partitionX];\n        \n        const maxLeftY = (partitionY === 0) ? Number.NEGATIVE_INFINITY : nums2[partitionY - 1];\n        const minRightY = (partitionY === y) ? Number.POSITIVE_INFINITY : nums2[partitionY];\n        \n        if (maxLeftX <= minRightY && maxLeftY <= minRightX) {\n            if ((x + y) % 2 === 0) {\n                return (Math.max(maxLeftX, maxLeftY) + Math.min(minRightX, minRightY)) / 2;\n            } else {\n                return Math.max(maxLeftX, maxLeftY);\n            }\n        } else if (maxLeftX > minRightY) {\n            high = partitionX - 1;\n        } else {\n            low = partitionX + 1;\n        }\n    }    \n    return 0;\n}"
+        }
+    },
+    "5": {
+        "call_functions": {
+            "c++": "#include <string>\n\nint main() {\n  std::string s = $args;\n  std::string result = longestPalindromicSubstring(s);\n  std::cout << result << std::endl;\n  return 0;\n}",
+            "java": "public String longestPalindromicSubstring(String s) {\n    int n = s.length();\n    if (n == 0) return \"\";\n\n    int start = 0, maxLength = 1;\n\n    for (int i = 0; i < n; ++i) {\n        int l = i, r = i;\n\n        while (r < n - 1 && s.charAt(r) == s.charAt(r + 1))\n            r++;\n        i = r;\n\n        while (l > 0 && r < n - 1 && s.charAt(l - 1) == s.charAt(r + 1)) {\n            l--;\n            r++;\n        }\n\n        int length = r - l + 1;\n        if (length > maxLength) {\n            start = l;\n            maxLength = length;\n        }\n    }\n\n    return s.substring(start, start + maxLength);\n}",
+            "python": "if __name__ == \"__main__\":\n    s = $args\n    result = longest_palindromic_substring(s)\n    print(result)",
+            "javascript": "function main() {\n  const s = $args;\n  const result = longestPalindromicSubstring(s);\n  console.log(result);\n}"
+        }
+    },
+    "6": {
+        "call_functions": {
+            "c++": "#include <string>\n#include <vector>\n\nint main() {\n    std::string s = $args;\n    int numRows = 3;\n    std::string result = convert(s, numRows);\n    std::cout << result << std::endl;\n    return 0;\n}"
+        }
+    },
+    "7": {
+        "call_functions": {
+            "c++": "int main() {\n    int x = $args;\n    int result = reverse(x);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int reverse(int x) {\n    long res = 0;\n    while (x != 0) {\n        res = res * 10 + x % 10;\n        x /= 10;\n    }\n    return (res < Integer.MIN_VALUE || res > Integer.MAX_VALUE) ? 0 : (int)res;\n}",
+            "python": "if __name__ == \"__main__\":\n    x = $args\n    result = reverse(x)\n    print(result)\n}",
+            "javascript": "function main() {\n    const x = $args;\n    const sign = x < 0 ? -1 : 1;\n    x = Math.abs(x);\n    let res = 0;\n    while (x !== 0) {\n        res = res * 10 + x % 10;\n        x = Math.floor(x / 10);\n    }\n    res *= sign;\n    const result = (res < -(2 ** 31) || res > 2 ** 31 - 1) ? 0 : res;\n    console.log(result);\n}"
+        }
+    },
+    "9": {
+        "call_functions": {
+            "c++": "int main() {\n    int x = $args;\n    bool result = isPalindrome(x);\n    cout << boolalpha << result << endl;\n    return 0;\n}",
+            "java": "public static void main(String[] args) {\n    int x = $args;\n    boolean result = isPalindrome(x);\n    System.out.println(result);\n}",
+            "python": "if __name__ == \"__main__\":\n    x = $args\n    result = is_palindrome(x)\n    print(result)\n",
+            "javascript": "function main() {\n    const x = $args;\n    const result = isPalindrome(x);\n    console.log(result);\n}\n"
+        }
+    },
+    "10": {
+        "call_functions": {
+            "c++": "bool isMatch(std::string s, std::string p) {\n    int m = s.length(), n = p.length();\n    std::vector<std::vector<bool>> dp(m + 1, std::vector<bool>(n + 1, false));\n    dp[0][0] = true;\n\n    for (int j = 1; j <= n; j++) {\n        if (p[j - 1] == '*' && dp[0][j - 2]) {\n            dp[0][j] = true;\n        }\n    }\n\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= n; j++) {\n            if (p[j - 1] == s[i - 1] || p[j - 1] == '.') {\n                dp[i][j] = dp[i - 1][j - 1];\n            } else if (p[j - 1] == '*') {\n                dp[i][j] = dp[i][j - 2] || (dp[i - 1][j] && (s[i - 1] == p[j - 2] || p[j - 2] == '.'));\n            }\n        }\n    }\n\n    return dp[m][n];\n}",
+            "java": "public boolean isMatch(String s, String p) {\n    int m = s.length(), n = p.length();\n    boolean[][] dp = new boolean[m + 1][n + 1];\n    dp[0][0] = true;\n\n    for (int j = 1; j <= n; j++) {\n        if (p.charAt(j - 1) == '*' && dp[0][j - 2]) {\n            dp[0][j] = true;\n        }\n    }\n\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= n; j++) {\n            if (p.charAt(j - 1) == s.charAt(i - 1) || p.charAt(j - 1) == '.') {\n                dp[i][j] = dp[i - 1][j - 1];\n            } else if (p.charAt(j - 1) == '*') {\n                dp[i][j] = dp[i][j - 2] || (dp[i - 1][j] && (s.charAt(i - 1) == p.charAt(j - 2) || p.charAt(j - 2) == '.'));\n            }\n        }\n    }\n\n    return dp[m][n];\n}",
+            "python": "if __name__ == '__main__':\n    s = $args[0]\n    p = $args[1]\n    result = is_match(s, p)\n    print(result)",
+            "javascript": "function main() {\n    const s = $args[0];\n    const p = $args[1];\n    const result = isMatch(s, p);\n    console.log(result);\n}"
+        }
+    },
+    "11": {
+        "call_functions": {
+            "c++": "int main() {\n    vector<int> height = $args;\n    int result = maxArea(height);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int maxArea(int[] height) {\n    int max_area = 0, left = 0, right = height.length - 1;\n    while (left < right) {\n        max_area = Math.max(max_area, Math.min(height[left], height[right]) * (right - left));\n        if (height[left] < height[right]) {\n            left++;\n        } else {\n            right--;\n        }\n    }\n    return max_area;\n}",
+            "python": "if __name__ == \"__main__\":\n    height = $args\n    result = max_area(height)\n    print(result)\n}",
+            "javascript": "function main() {\n    const height = $args;\n    const result = maxArea(height);\n    console.log(result);\n}"
+        }
+    }
+}
