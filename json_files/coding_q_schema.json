@@ -1,0 +1,35 @@
+[
+    {
+        "url": "url of the problem",
+        "title": "title of the problem",
+        "description": "description of the problem",
+        "example":"example of the problem",
+        "level": "level of the problem",
+        "tags": [
+            "tag1",
+            "tag2",
+            "tag3"
+        ],
+        "sample_code": {
+            "c": "sample code in c",
+            "cpp": "sample code in cpp",
+            "javascript": "sample code in java",
+            "python": "sample code in python"
+        },
+        "test_cases": {
+            "inputs":[[[1,2,3,4],2]],
+            "outputs":""
+        },
+        "structure": {
+            "c": "structure of the code in c",
+            "cpp": "structure of the code in cpp",
+            "javascript": "structure of the code in javascript",
+            "python": "structure of the code in python"
+        },
+        "call_functions":{
+            "c": "function name in c",
+            "cpp": "function name in cpp",
+            "javascript": "function name in javascript",
+            "python": "function name in python"}
+    }
+]

@@ -3,6 +3,7 @@ import json
 import requests
 from dotenv import load_dotenv
 load_dotenv()
+import time
 
 openai_bearer = os.getenv("OPENAI_BEARER")
 
@@ -27,6 +28,7 @@ def get_from_gpt(message, model ="gpt35-16k", temperature = 0.01, max_tokens = 6
         return response.json()
     else:
         # Request failed
+        print("Error in get_from_gpt function")
         return {"error": response.status_code, "message": response.text}
 
 def get_emb_finetuned(text_data):
