@@ -1,0 +1,869 @@
+{
+    "1": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <unordered_map>\n#include <iostream>\n\nint main() {\n    std::vector<int> nums = $args;\n    int target = $args;\n    std::vector<int> result = twoSum(nums, target);\n    for (int i : result) {\n        std::cout << i << \" \";\n    }\n    std::cout << std::endl;\n    return 0;\n}",
+            "java": "public int[] twoSum(int[] nums, int target) {\n    Map<Integer, Integer> map = new HashMap<>();\n    for (int i = 0; i < nums.length; i++) {\n        int complement = target - nums[i];\n        if (map.containsKey(complement)) {\n            return new int[]{map.get(complement), i};\n        }\n        map.put(nums[i], i);\n    }\n    throw new IllegalArgumentException(\"No two sum solution\");\n}",
+            "python": "if __name__ == \"__main__\":\n    nums = $args[0]\n    target = $args[1]\n    result = twoSum(nums, target)\n    print(result)",
+            "javascript": "function main() {\n    const nums = $args[0];\n    const target = $args[1];\n    const result = twoSum(nums, target);\n    console.log(result);\n}"
+        }
+    },
+    "3": {
+        "call_functions": {
+            "c++": "#include <string>\n#include <unordered_set>\n#include <iostream>\n\nint main() {\n    std::string s = $args;\n    int result = lengthOfLongestSubstring(s);\n    std::cout << result << std::endl;\n    return 0;\n}",
+            "java": "public int lengthOfLongestSubstring(String s) {\n    int left = 0, right = 0, maxLength = 0;\n    Set<Character> characters = new HashSet<>();\n\n    while (right < s.length()) {\n        if (!characters.contains(s.charAt(right))) {\n            characters.add(s.charAt(right));\n            maxLength = Math.max(maxLength, right - left + 1);\n            right++;\n        } else {\n            characters.remove(s.charAt(left));\n            left++;\n        }\n    }\n\n    return maxLength;\n}",
+            "python": "if __name__ == \"__main__\":\n    s = $args\n    result = length_of_longest_substring(s)\n    print(result)\n}",
+            "javascript": "function main() {\n    const s = $args;\n    const result = lengthOfLongestSubstring(s);\n    console.log(result);\n}"
+        }
+    },
+    "4": {
+        "call_functions": {
+            "c++": "double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {\n    if (nums1.size() > nums2.size()) {\n        return findMedianSortedArrays(nums2, nums1);\n    }\n    \n    int x = nums1.size();\n    int y = nums2.size();\n    int low = 0;\n    int high = x;\n    \n    while (low <= high) {\n        int partitionX = (low + high) / 2;\n        int partitionY = (x + y + 1) / 2 - partitionX;\n        \n        int maxLeftX = (partitionX == 0) ? INT_MIN : nums1[partitionX - 1];\n        int minRightX = (partitionX == x) ? INT_MAX : nums1[partitionX];\n        \n        int maxLeftY = (partitionY == 0) ? INT_MIN : nums2[partitionY - 1];\n        int minRightY = (partitionY == y) ? INT_MAX : nums2[partitionY];\n        \n        if (maxLeftX <= minRightY && maxLeftY <= minRightX) {\n            if ((x + y) % 2 == 0) {\n                return (double(max(maxLeftX, maxLeftY) + min(minRightX, minRightY))) / 2;\n            } else {\n                return double(max(maxLeftX, maxLeftY));\n            }\n        } else if (maxLeftX > minRightY) {\n            high = partitionX - 1;\n        } else {\n            low = partitionX + 1;\n        }\n    }    \n    return 0;\n}",
+            "java": "public double findMedianSortedArrays(int[] nums1, int[] nums2) {\n    if (nums1.length > nums2.length) {\n        return findMedianSortedArrays(nums2, nums1);\n    }\n    \n    int x = nums1.length;\n    int y = nums2.length;\n    int low = 0;\n    int high = x;\n    \n    while (low <= high) {\n        int partitionX = (low + high) / 2;\n        int partitionY = (x + y + 1) / 2 - partitionX;\n        \n        int maxLeftX = (partitionX == 0) ? Integer.MIN_VALUE : nums1[partitionX - 1];\n        int minRightX = (partitionX == x) ? Integer.MAX_VALUE : nums1[partitionX];\n        \n        int maxLeftY = (partitionY == 0) ? Integer.MIN_VALUE : nums2[partitionY - 1];\n        int minRightY = (partitionY == y) ? Integer.MAX_VALUE : nums2[partitionY];\n        \n        if (maxLeftX <= minRightY && maxLeftY <= minRightX) {\n            if ((x + y) % 2 == 0) {\n                return (double)(Math.max(maxLeftX, maxLeftY) + Math.min(minRightX, minRightY)) / 2;\n            } else {\n                return (double)Math.max(maxLeftX, maxLeftY);\n            }\n        } else if (maxLeftX > minRightY) {\n            high = partitionX - 1;\n        } else {\n            low = partitionX + 1;\n        }\n    }    \n    return 0;\n}",
+            "python": "if __name__ == '__main__':\n    nums1 = $args\n    nums2 = $args\n    result = findMedianSortedArrays(nums1, nums2)\n    print(result)\n}",
+            "javascript": "function findMedianSortedArrays(nums1, nums2) {\n    const x = nums1.length;\n    const y = nums2.length;\n    let low = 0;\n    let high = x;\n    \n    while (low <= high) {\n        const partitionX = Math.floor((low + high) / 2);\n        const partitionY = Math.floor((x + y + 1) / 2) - partitionX;\n        \n        const maxLeftX = (partitionX === 0) ? Number.NEGATIVE_INFINITY : nums1[partitionX - 1];\n        const minRightX = (partitionX === x) ? Number.POSITIVE_INFINITY : nums1[partitionX];\n        \n        const maxLeftY = (partitionY === 0) ? Number.NEGATIVE_INFINITY : nums2[partitionY - 1];\n        const minRightY = (partitionY === y) ? Number.POSITIVE_INFINITY : nums2[partitionY];\n        \n        if (maxLeftX <= minRightY && maxLeftY <= minRightX) {\n            if ((x + y) % 2 === 0) {\n                return (Math.max(maxLeftX, maxLeftY) + Math.min(minRightX, minRightY)) / 2;\n            } else {\n                return Math.max(maxLeftX, maxLeftY);\n            }\n        } else if (maxLeftX > minRightY) {\n            high = partitionX - 1;\n        } else {\n            low = partitionX + 1;\n        }\n    }    \n    return 0;\n}"
+        }
+    },
+    "5": {
+        "call_functions": {
+            "c++": "#include <string>\n\nint main() {\n  std::string s = $args;\n  std::string result = longestPalindromicSubstring(s);\n  std::cout << result << std::endl;\n  return 0;\n}",
+            "java": "public String longestPalindromicSubstring(String s) {\n    int n = s.length();\n    if (n == 0) return \"\";\n\n    int start = 0, maxLength = 1;\n\n    for (int i = 0; i < n; ++i) {\n        int l = i, r = i;\n\n        while (r < n - 1 && s.charAt(r) == s.charAt(r + 1))\n            r++;\n        i = r;\n\n        while (l > 0 && r < n - 1 && s.charAt(l - 1) == s.charAt(r + 1)) {\n            l--;\n            r++;\n        }\n\n        int length = r - l + 1;\n        if (length > maxLength) {\n            start = l;\n            maxLength = length;\n        }\n    }\n\n    return s.substring(start, start + maxLength);\n}",
+            "python": "if __name__ == \"__main__\":\n    s = $args\n    result = longest_palindromic_substring(s)\n    print(result)",
+            "javascript": "function main() {\n  const s = $args;\n  const result = longestPalindromicSubstring(s);\n  console.log(result);\n}"
+        }
+    },
+    "7": {
+        "call_functions": {
+            "c++": "int main() {\n    int x = $args;\n    int result = reverse(x);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int reverse(int x) {\n    long res = 0;\n    while (x != 0) {\n        res = res * 10 + x % 10;\n        x /= 10;\n    }\n    return (res < Integer.MIN_VALUE || res > Integer.MAX_VALUE) ? 0 : (int)res;\n}",
+            "python": "if __name__ == \"__main__\":\n    x = $args\n    result = reverse(x)\n    print(result)\n}",
+            "javascript": "function main() {\n    const x = $args;\n    const sign = x < 0 ? -1 : 1;\n    x = Math.abs(x);\n    let res = 0;\n    while (x !== 0) {\n        res = res * 10 + x % 10;\n        x = Math.floor(x / 10);\n    }\n    res *= sign;\n    const result = (res < -(2 ** 31) || res > 2 ** 31 - 1) ? 0 : res;\n    console.log(result);\n}"
+        }
+    },
+    "9": {
+        "call_functions": {
+            "c++": "int main() {\n    int x = $args;\n    bool result = isPalindrome(x);\n    cout << boolalpha << result << endl;\n    return 0;\n}",
+            "java": "public static void main(String[] args) {\n    int x = $args;\n    boolean result = isPalindrome(x);\n    System.out.println(result);\n}",
+            "python": "if __name__ == \"__main__\":\n    x = $args\n    result = is_palindrome(x)\n    print(result)\n",
+            "javascript": "function main() {\n    const x = $args;\n    const result = isPalindrome(x);\n    console.log(result);\n}\n"
+        }
+    },
+    "10": {
+        "call_functions": {
+            "c++": "bool isMatch(std::string s, std::string p) {\n    int m = s.length(), n = p.length();\n    std::vector<std::vector<bool>> dp(m + 1, std::vector<bool>(n + 1, false));\n    dp[0][0] = true;\n\n    for (int j = 1; j <= n; j++) {\n        if (p[j - 1] == '*' && dp[0][j - 2]) {\n            dp[0][j] = true;\n        }\n    }\n\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= n; j++) {\n            if (p[j - 1] == s[i - 1] || p[j - 1] == '.') {\n                dp[i][j] = dp[i - 1][j - 1];\n            } else if (p[j - 1] == '*') {\n                dp[i][j] = dp[i][j - 2] || (dp[i - 1][j] && (s[i - 1] == p[j - 2] || p[j - 2] == '.'));\n            }\n        }\n    }\n\n    return dp[m][n];\n}",
+            "java": "public boolean isMatch(String s, String p) {\n    int m = s.length(), n = p.length();\n    boolean[][] dp = new boolean[m + 1][n + 1];\n    dp[0][0] = true;\n\n    for (int j = 1; j <= n; j++) {\n        if (p.charAt(j - 1) == '*' && dp[0][j - 2]) {\n            dp[0][j] = true;\n        }\n    }\n\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= n; j++) {\n            if (p.charAt(j - 1) == s.charAt(i - 1) || p.charAt(j - 1) == '.') {\n                dp[i][j] = dp[i - 1][j - 1];\n            } else if (p.charAt(j - 1) == '*') {\n                dp[i][j] = dp[i][j - 2] || (dp[i - 1][j] && (s.charAt(i - 1) == p.charAt(j - 2) || p.charAt(j - 2) == '.'));\n            }\n        }\n    }\n\n    return dp[m][n];\n}",
+            "python": "if __name__ == '__main__':\n    s = $args[0]\n    p = $args[1]\n    result = is_match(s, p)\n    print(result)",
+            "javascript": "function main() {\n    const s = $args[0];\n    const p = $args[1];\n    const result = isMatch(s, p);\n    console.log(result);\n}"
+        }
+    },
+    "11": {
+        "call_functions": {
+            "c++": "int main() {\n    vector<int> height = $args;\n    int result = maxArea(height);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int maxArea(int[] height) {\n    int max_area = 0, left = 0, right = height.length - 1;\n    while (left < right) {\n        max_area = Math.max(max_area, Math.min(height[left], height[right]) * (right - left));\n        if (height[left] < height[right]) {\n            left++;\n        } else {\n            right--;\n        }\n    }\n    return max_area;\n}",
+            "python": "if __name__ == \"__main__\":\n    height = $args\n    result = max_area(height)\n    print(result)\n}",
+            "javascript": "function main() {\n    const height = $args;\n    const result = maxArea(height);\n    console.log(result);\n}"
+        }
+    },
+    "6": {
+        "call_functions": {
+            "c++": "#include <string>\n#include <vector>\n\nint main() {\n    std::string s = $args;\n    int numRows = 3;\n    std::string result = convert(s, numRows);\n    std::cout << result << std::endl;\n    return 0;\n}"
+        }
+    },
+    "8": {
+        "call_functions": {
+            "c++": "int myAtoi(string s) {\n    long result = 0;\n    int i = 0, sign = 1;\n    while (s[i] == ' ') i++;\n    if (s[i] == '-' || s[i] == '+') sign = (s[i++] == '+') ? 1 : -1;\n    while (isdigit(s[i])) {\n        result = result * 10 + (s[i++] - '0');\n        if (result * sign > INT_MAX) return INT_MAX;\n        if (result * sign < INT_MIN) return INT_MIN;\n    }\n    return result * sign;\n}",
+            "java": "public int myAtoi(String s) {\n    long result = 0;\n    int i = 0, sign = 1;\n    while (i < s.length() && s.charAt(i) == ' ') i++;\n    if (i < s.length() && (s.charAt(i) == '-' || s.charAt(i) == '+')) {\n        sign = (s.charAt(i++) == '+') ? 1 : -1;\n    }\n    while (i < s.length() && Character.isDigit(s.charAt(i))) {\n        result = result * 10 + (s.charAt(i++) - '0');\n        if (result * sign > Integer.MAX_VALUE) return Integer.MAX_VALUE;\n        if (result * sign < Integer.MIN_VALUE) return Integer.MIN_VALUE;\n    }\n    return (int) (result * sign);\n}",
+            "python": "if __name__ == \"__main__\":\n    s = $args[0]\n    result = myAtoi(s)\n    print(result)",
+            "javascript": "function main() {\n    const s = $args;\n    const result = myAtoi(s);\n    console.log(result);\n}"
+        }
+    },
+    "12": {
+        "call_functions": {
+            "c++": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int num = $args;\n    string result = intToRoman(num);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public static String intToRoman(int num) {\n        List<Pair> romans = Arrays.asList(\n            new Pair(1000, \"M\"), new Pair(900, \"CM\"), new Pair(500, \"D\"), \n            new Pair(400, \"CD\"), new Pair(100, \"C\"), new Pair(90, \"XC\"),\n            new Pair(50, \"L\"), new Pair(40, \"XL\"), new Pair(10, \"X\"), \n            new Pair(9, \"IX\"), new Pair(5, \"V\"), new Pair(4, \"IV\"),\n            new Pair(1, \"I\")\n        );\n        StringBuilder roman = new StringBuilder();\n        for (Pair p : romans) {\n            while (num >= p.num) {\n                roman.append(p.symbol);\n                num -= p.num;\n            }\n        }\n        return roman.toString();\n    }",
+            "python": "if __name__ == \"__main__\":\n    num = $args[0]\n    result = int_to_roman(num)\n    print(result)",
+            "javascript": "function main() {\n    const num = $args;\n    const result = intToRoman(num);\n    console.log(result);\n}"
+        }
+    },
+    "13": {
+        "call_functions": {
+            "c++": "int main() {\n    string s = $args;\n    int result = romanToInt(s);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int romanToInt(String s) {\n    Map<Character, Integer> romanValues = new HashMap<>();\n    romanValues.put('I', 1);\n    romanValues.put('V', 5);\n    romanValues.put('X', 10);\n    romanValues.put('L', 50);\n    romanValues.put('C', 100);\n    romanValues.put('D', 500);\n    romanValues.put('M', 1000);\n\n    int total = 0;\n    int prevValue = 0;\n\n    for (char c : s.toCharArray()) {\n        int currValue = romanValues.get(c);\n        total += currValue > prevValue ? currValue - 2 * prevValue : currValue;\n        prevValue = currValue;\n    }\n\n    return total;\n}"
+        }
+    },
+    "14": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <string>\nusing namespace std;\n\nstring longestCommonPrefix(vector<string>& strs) {\n    if (strs.empty()) return \"\";\n\n    for (int i = 0; i < strs[0].size(); ++i) {\n        char c = strs[0][i];\n        for (int j = 1; j < strs.size(); ++j) {\n            if (i == strs[j].size() || strs[j][i] != c) {\n                return strs[0].substr(0, i);\n            }\n        }\n    }\n    return strs[0];\n}\n\nint main() {\n    vector<string> strs = $args;\n    string result = longestCommonPrefix(strs);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public String longestCommonPrefix(String[] strs) {\n    if (strs.length == 0) return \"\";\n\n    for (int i = 0; i < strs[0].length(); ++i) {\n        char c = strs[0].charAt(i);\n        for (int j = 1; j < strs.length; ++j) {\n            if (i == strs[j].length() || strs[j].charAt(i) != c) {\n                return strs[0].substring(0, i);\n            }\n        }\n    }\n    return strs[0];\n}"
+        }
+    },
+    "15": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <algorithm>\n#include <iostream>\n\nstd::vector<std::vector<int>> threeSum(std::vector<int>& nums);\n\nint main() {\n    std::vector<int> nums = $args;\n    std::vector<std::vector<int>> result = threeSum(nums);\n\n    for (const auto& triplet : result) {\n        for (const auto& num : triplet) {\n            std::cout << num << \" \";\n        }\n        std::cout << std::endl;\n    }\n\n    return 0;\n}\n\nstd::vector<std::vector<int>> threeSum(std::vector<int>& nums) {\n    std::vector<std::vector<int>> result;\n    std::sort(nums.begin(), nums.end());\n\n    for (int i = 0; i < (int)nums.size() - 2; ++i) {\n        if (i == 0 || nums[i] != nums[i - 1]) {\n            int j = i + 1, k = nums.size() - 1;\n            while (j < k) {\n                int sum = nums[i] + nums[j] + nums[k];\n                if (sum == 0) {\n                    result.push_back({nums[i], nums[j], nums[k]});\n                    while (j < k && nums[j] == nums[j + 1]) ++j;\n                    while (j < k && nums[k] == nums[k - 1]) --k;\n                    ++j;\n                    --k;\n                } else if (sum < 0) {\n                    ++j;\n                } else {\n                    --k;\n                }\n            }\n        }\n    }\n\n    return result;\n}"
+        }
+    },
+    "16": {
+        "call_functions": {
+            "c++": "#include <algorithm>\n#include <vector>\n#include <iostream>\n\nint main() {\n    std::vector<int> nums = $args;\n    int target = $args;\n    int result = threeSumClosest(nums, target);\n    std::cout << result << std::endl;\n    return 0;\n}"
+        }
+    },
+    "17": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <string>\nusing namespace std;\n\nint main() {\n    string digits = $args;\n    vector<string> result = letterCombinations(digits);\n    for (const string &s : result) {\n        cout << s << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
+            "java": "public List<String> letterCombinations(String digits) {\n    LinkedList<String> output = new LinkedList<>();\n    if(digits.isEmpty()) return output;\n    \n    String[] phone = new String[] {\"abc\", \"def\", \"ghi\", \"jkl\", \"mno\", \"pqrs\", \"tuv\", \"wxyz\"};\n    output.add(\"\");\n    \n    for(char d : digits.toCharArray()){\n        while(output.peek().length() == digits.indexOf(d)){\n            String perm = output.remove();\n            for(char c : phone[d - '2'].toCharArray()){\n                output.add(perm + c);\n            }\n        }\n    }\n    \n    return output;\n}"
+        }
+    },
+    "18": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <algorithm>\nusing namespace std;\n\nvector<vector<int>> fourSum(vector<int>& nums, int target) {\n    vector<vector<int>> result;\n    int n = nums.size();\n    if(n < 4)\n        return result;\n\n    sort(nums.begin(), nums.end());\n    for(int i = 0; i < n - 3; i++) {\n        if(i > 0 && nums[i] == nums[i-1])\n            continue;\n\n        for(int j = i + 1; j < n - 2; j++) {\n            if(j > i + 1 && nums[j] == nums[j-1])\n                continue;\n\n            int left = j + 1;\n            int right = n - 1;\n            while(left < right) {\n                int sum = nums[i] + nums[j] + nums[left] + nums[right];\n                if(sum == target) {\n                    result.push_back({nums[i], nums[j], nums[left], nums[right]});\n                    ++left;\n                    --right;\n                    while(left < right && nums[left] == nums[left-1]) ++left;\n                    while(left < right && nums[right] == nums[right+1]) --right;\n                } else if(sum < target) {\n                    ++left;\n                } else {\n                    --right;\n                }\n            }\n        }\n    }\n    return result;\n}\n",
+            "java": "public List<List<Integer>> fourSum(int[] nums, int target) {\n    List<List<Integer>> result = new ArrayList<>();\n    if(nums == null || nums.length < 4)\n        return result;\n\n    Arrays.sort(nums);\n    for(int i = 0; i < nums.length - 3; i++) {\n        if(i > 0 && nums[i] == nums[i-1])\n            continue;\n\n        for(int j = i + 1; j < nums.length - 2; j++) {\n            if(j > i + 1 && nums[j] == nums[j-1])\n                continue;\n\n            int left = j + 1;\n            int right = nums.length - 1;\n            while(left < right) {\n                int sum = nums[i] + nums[j] + nums[left] + nums[right];\n                if(sum == target) {\n                    result.add(Arrays.asList(nums[i], nums[j], nums[left], nums[right]));\n                    ++left;\n                    --right;\n                    while(left < right && nums[left] == nums[left - 1]) ++left;\n                    while(left < right && nums[right] == nums[right + 1]) --right;\n                } else if(sum < target) {\n                    ++left;\n                } else {\n                    --right;\n                }\n            }\n        }\n    }\n    return result;\n}",
+            "python": "if __name__ == \"__main__\":\n    nums = $args[0]\n    target = $args[1]\n    result = fourSum(nums, target)\n    print(result)",
+            "javascript": "function fourSum(nums, target) {\n    nums.sort((a, b) => a - b);\n    let result = [];\n    for (let i = 0; i < nums.length - 3; i++) {\n        if (i > 0 && nums[i] === nums[i - 1]) continue;\n\n        for (let j = i + 1; j < nums.length - 2; j++) {\n            if (j > i + 1 && nums[j] === nums[j - 1]) continue;\n\n            let left = j + 1;\n            let right = nums.length - 1;\n            while (left < right) {\n                const sum = nums[i] + nums[j] + nums[left] + nums[right];\n                if (sum === target) {\n                    result.push([nums[i], nums[j], nums[left], nums[right]]);\n                    left++;\n                    right--;\n                    while (left < right && nums[left] === nums[left - 1]) left++;\n                    while (left < right && nums[right] === nums[right + 1]) right--;\n                } else if (sum < target) {\n                    left++;\n                } else {\n                    right--;\n                }\n            }\n        }\n    }\n    return result;\n}"
+        }
+    },
+    "20": {
+        "call_functions": {
+            "c++": "bool result = isValid(s);\nstd::cout << std::boolalpha << result << std::endl;"
+        }
+    },
+    "22": {
+        "call_functions": {}
+    },
+    "24": {
+        "call_functions": {
+            "c++": "ListNode* swapPairs(ListNode* head) {\n    if (!head || !head->next) return head;\n\n    ListNode* second = head->next;\n    head->next = swapPairs(second->next);\n    second->next = head;\n    \n    return second;\n}"
+        }
+    },
+    "26": {
+        "call_functions": {
+            "c++": "int main() {\n    vector<int> nums = $args;\n    int result = removeDuplicates(nums);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int removeDuplicates(int[] nums) {\n    if (nums.length == 0) return 0;\n    int i = 0;\n    for (int j = 1; j < nums.length; j++) {\n        if (nums[j] != nums[i]) {\n            i++;\n            nums[i] = nums[j];\n        }\n    }\n    return i + 1;\n}",
+            "python": "if __name__ == \"__main__\":\n    nums = $args[0]\n    result = removeDuplicates(nums)\n    print(result)",
+            "javascript": "function main() {\n    const nums = $args;\n    const result = removeDuplicates(nums);\n    console.log(result);\n}\n"
+        }
+    },
+    "27": {
+        "call_functions": {
+            "c++": "int main() {\n    vector<int> nums = $args;\n    int val = $args;\n    int result = removeElement(nums, val);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int removeElement(int[] nums, int val) {\n    int i = 0;\n    for (int j = 0; j < nums.length; j++) {\n        if (nums[j] != val) {\n            nums[i] = nums[j];\n            i++;\n        }\n    }\n    return i;\n}"
+        }
+    },
+    "28": {
+        "call_functions": {}
+    },
+    "29": {
+        "call_functions": {
+            "c++": "int main() {\n    int dividend = $args;\n    int divisor = $args;\n    int result = divide(dividend, divisor);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int divide(int dividend, int divisor) {\n    if (dividend == Integer.MIN_VALUE && divisor == -1) {\n        return Integer.MAX_VALUE;\n    }\n\n    int sign = (dividend > 0) ^ (divisor > 0) ? -1 : 1;\n\n    long dvd = Math.abs((long) dividend);\n    long dvs = Math.abs((long) divisor);\n    int ans = 0;\n\n    while (dvd >= dvs) {\n        long temp = dvs, multiple = 1;\n        while (dvd >= (temp << 1)) {\n            temp <<= 1;\n            multiple <<= 1;\n        }\n        dvd -= temp;\n        ans += multiple;\n    }\n\n    return ans * sign;\n}",
+            "python": "if __name__ == \"__main__\":\n    dividend = $args[0]\n    divisor = $args[1]\n    result = divide(dividend, divisor)\n    print(result)",
+            "javascript": "function main() {\n    const dividend = $args[0];\n    const divisor = $args[1];\n    const result = divide(dividend, divisor);\n    console.log(result);\n}"
+        }
+    },
+    "30": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <string>\n#include <unordered_map>\n#include <iostream>\n\nint main() {\n    std::string s = $args;\n    std::vector<std::string> words = {\"word1\", \"word2\", \"word3\"}; // Replace with actual words\n    std::vector<int> result = findSubstring(s, words);\n    \n    for (const auto& index : result) {\n        std::cout << index << \" \";\n    }\n    std::cout << std::endl;\n    \n    return 0;\n}",
+            "java": "public List<Integer> findSubstring(String s, String[] words) {\n    if (s == null || s.length() == 0 || words == null || words.length == 0) return new ArrayList<>();\n    \n    Map<String, Integer> word_count = new HashMap<>();\n    for (String word : words) {\n        word_count.put(word, word_count.getOrDefault(word, 0) + 1);\n    }\n    \n    int word_length = words[0].length();\n    int total_words = words.length;\n    int total_length = word_length * total_words;\n    List<Integer> result = new ArrayList<>();\n    \n    for (int i = 0; i <= s.length() - total_length; i++) {\n        Map<String, Integer> temp_word_count = new HashMap<>();\n        for (int j = 0; j < total_words; j++) {\n            String current_word = s.substring(i + j * word_length, i + (j + 1) * word_length);\n            if (!word_count.containsKey(current_word)) break;\n            temp_word_count.put(current_word, temp_word_count.getOrDefault(current_word, 0) + 1);\n            if (temp_word_count.get(current_word) > word_count.get(current_word)) break;\n            if (j + 1 == total_words) result.add(i);\n        }\n    }\n    \n    return result;\n}",
+            "python": "if __name__ == \"__main__\":\n    s = $args[0]\n    words = $args[1]\n    result = findSubstring(s, words)\n    print(result)",
+            "javascript": "function findSubstring(s, words) {\n    if (!s || !words || words.length === 0) return [];\n\n    const word_count = new Map();\n    for (const word of words) {\n        word_count.set(word, (word_count.get(word) || 0) + 1);\n    }\n\n    const word_length = words[0].length;\n    const total_words = words.length;\n    const total_length = word_length * total_words;\n    const result = [];\n\n    for (let i = 0; i <= s.length - total_length; i++) {\n        const temp_word_count = new Map();\n        for (let j = 0; j < total_words; j++) {\n            const current_word = s.substr(i + j * word_length, word_length);\n            if (!word_count.has(current_word)) break;\n            temp_word_count.set(current_word, (temp_word_count.get(current_word) || 0) + 1);\n            if (temp_word_count.get(current_word) > word_count.get(current_word)) break;\n            if (j + 1 === total_words) result.push(i);\n        }\n    }\n\n    return result;\n}"
+        }
+    },
+    "31": {
+        "call_functions": {
+            "c++": "#include <algorithm>\nvoid nextPermutation(vector<int>& nums) {\n    int n = nums.size(), k, l;\n    for (k = n - 2; k >= 0; k--) {\n        if (nums[k] < nums[k + 1]) break;\n    }\n    if (k < 0) {\n        reverse(nums.begin(), nums.end());\n    } else {\n        for (l = n - 1; l > k; l--) {\n            if (nums[l] > nums[k]) break;\n        }\n        swap(nums[k], nums[l]);\n        reverse(nums.begin() + k + 1, nums.end());\n    }\n}\n\nint main() {\n    vector<int> nums = $args;\n    nextPermutation(nums);\n    for (int i = 0; i < nums.size(); i++) {\n        cout << nums[i] << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
+            "java": "public void nextPermutation(int[] nums) {\n    int n = nums.length, k = n - 2, l;\n    while(k >= 0 && nums[k] >= nums[k + 1]) k--;\n\n    if(k < 0) {\n        Arrays.sort(nums);\n    } else {\n        for (l = n - 1; l > k; l--) {\n            if (nums[l] > nums[k]) break;\n        }\n        int temp = nums[k];\n        nums[k] = nums[l];\n        nums[l] = temp;\n        Arrays.sort(nums, k + 1, n);\n    }\n}",
+            "python": "if __name__ == \"__main__\":\n    nums = $args[0]\n    nextPermutation(nums)\n    print(nums)",
+            "javascript": "function nextPermutation(nums) {\n    const result = nextPermutation(nums);\n    console.log(result);\n}"
+        }
+    },
+    "32": {
+        "call_functions": {
+            "c++": "#include <stack>\n\nint main() {\n    string s = $args;\n    int result = longestValidParentheses(s);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int longestValidParentheses(String s) {\n    int n = s.length();\n    int result = 0;\n    Stack<Integer> st = new Stack<>();\n\n    for (int i = 0; i < n; ++i) {\n        if (s.charAt(i) == '(') {\n            st.push(i);\n        } else {\n            if (!st.empty() && s.charAt(st.peek()) == '(') {\n                st.pop();\n            } else {\n                st.push(i);\n            }\n        }\n    }\n\n    if (st.empty()) {\n        result = n;\n    } else {\n        int right = n, left = 0;\n        while (!st.empty()) {\n            left = st.pop();\n            result = Math.max(result, right - left - 1);\n            right = left;\n        }\n        result = Math.max(result, right);\n    }\n\n    return result;\n}",
+            "python": "if __name__ == \"__main__\":\n    s = $args[0]\n    result = longest_valid_parentheses(s)\n    print(result)",
+            "javascript": "function longestValidParentheses(s) {\n    const n = s.length;\n    let result = 0;\n    const st = [];\n\n    for (let i = 0; i < n; ++i) {\n        if (s[i] === '(') {\n            st.push(i);\n        } else {\n            if (st.length > 0 && s[st[st.length - 1]] === '(') {\n                st.pop();\n            } else {\n                st.push(i);\n            }\n        }\n    }\n\n    if (st.length === 0) {\n        result = n;\n    } else {\n        let right = n, left = 0;\n        while (st.length > 0) {\n            left = st.pop();\n            result = Math.max(result, right - left - 1);\n            right = left;\n        }\n        result = Math.max(result, right);\n    }\n\n    return result;\n}"
+        }
+    },
+    "33": {
+        "call_functions": {
+            "c++": "int search(vector<int>& nums, int target) {\n    int left = 0, right = nums.size() - 1;\n    while (left <= right) {\n        int mid = left + (right - left) / 2;\n        if (nums[mid] == target) {\n            return mid;\n        }\n        if (nums[mid] >= nums[left]) {\n            if (target >= nums[left] && target < nums[mid]) {\n                right = mid - 1;\n            } else {\n                left = mid + 1;\n            }\n        } else {\n            if (target > nums[mid] && target <= nums[right]) {\n                left = mid + 1;\n            } else {\n                right = mid - 1;\n            }\n        }\n    }\n    return -1;\n}",
+            "java": "public int search(int[] nums, int target) {\n    int left = 0, right = nums.length - 1;\n    while (left <= right) {\n        int mid = left + (right - left) / 2;\n        if (nums[mid] == target) {\n            return mid;\n        }\n        if (nums[mid] >= nums[left]) {\n            if (target >= nums[left] && target < nums[mid]) {\n                right = mid - 1;\n            } else {\n                left = mid + 1;\n            }\n        } else {\n            if (target > nums[mid] && target <= nums[right]) {\n                left = mid + 1;\n            } else {\n                right = mid - 1;\n            }\n        }\n    }\n    return -1;\n}"
+        }
+    },
+    "34": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <iostream>\n\nstd::vector<int> searchRange(std::vector<int>& nums, int target);\n\nint main() {\n    std::vector<int> nums = $args;\n    int target = $args;\n    std::vector<int> result = searchRange(nums, target);\n    std::cout << result[0] << \" \" << result[1] << std::endl;\n    return 0;\n}\n",
+            "java": "public int[] searchRange(int[] nums, int target) {\n    int start = -1, end = -1;\n    int left = 0, right = nums.length - 1;\n    \n    while (left <= right) {\n        int mid = left + (right - left) / 2;\n        if (nums[mid] < target) {\n            left = mid + 1;\n        } else {\n            right = mid - 1;\n            if (nums[mid] == target) {\n                start = mid;\n            }\n        }\n    }\n    \n    left = 0;\n    right = nums.length - 1;\n    \n    while (left <= right) {\n        int mid = left + (right - left) / 2;\n        if (nums[mid] > target) {\n            right = mid - 1;\n        } else {\n            left = mid + 1;\n            if (nums[mid] == target) {\n                end = mid;\n            }\n        }\n    }\n    \n    return new int[] {start, end};\n}"
+        }
+    },
+    "35": {
+        "call_functions": {
+            "c++": "int searchInsert(vector<int>& nums, int target) {\n    int left = 0, right = nums.size() - 1;\n    while (left <= right) {\n        int mid = left + (right - left) / 2;\n        if (nums[mid] == target) return mid;\n        if (nums[mid] < target) left = mid + 1;\n        else right = mid - 1;\n    }\n    return left;\n}",
+            "java": "public int searchInsert(int[] nums, int target) {\n    int left = 0, right = nums.length - 1;\n    while (left <= right) {\n        int mid = left + (right - left) / 2;\n        if (nums[mid] == target) return mid;\n        if (nums[mid] < target) left = mid + 1;\n        else right = mid - 1;\n    }\n    return left;\n}"
+        }
+    },
+    "36": {
+        "call_functions": {}
+    },
+    "37": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <iostream>\n\nusing namespace std;\n\nbool isValid(vector<vector<char>>& board, int row, int col, char c) {\n    for (int i = 0; i < 9; i++) {\n        if (board[i][col] == c) return false; \n        if (board[row][i] == c) return false; \n        if (board[3 * (row / 3) + i / 3][3 * (col / 3) + i % 3] == c) return false; \n    }\n    return true;\n}\n\nbool solveSudokuHelper(vector<vector<char>>& board) {\n    for (int i = 0; i < 9; i++) {\n        for (int j = 0; j < 9; j++) {\n            if (board[i][j] == '.') {\n                for (char c = '1'; c <= '9'; c++) {\n                    if (isValid(board, i, j, c)) {\n                        board[i][j] = c;\n\n                        if (solveSudokuHelper(board))\n                            return true;\n\n                        board[i][j] = '.';\n                    }\n                }\n                return false;\n            }\n        }\n    }\n    return true;\n}\n\nvoid solveSudoku(vector<vector<char>>& board) {\n    solveSudokuHelper(board);\n}\n\nint main() {\n    vector<vector<char>> board = $args;\n    solveSudoku(board);\n    for (int i = 0; i < 9; i++) {\n        for (int j = 0; j < 9; j++) {\n            cout << board[i][j] << \" \";\n        }\n        cout << endl;\n    }\n    return 0;\n}",
+            "java": "public void solveSudoku(char[][] board)",
+            "python": "if __name__ == \"__main__\":\n    board = $args[0]\n    solveSudoku(board)",
+            "javascript": "function solveSudoku(board) {\n    solveSudokuHelper(board);\n}"
+        }
+    },
+    "38": {
+        "call_functions": {
+            "c++": "#include <string>\n#include <iostream>\n\nstd::string countAndSay(int n) {\n    if (n == 1) return \"1\";\n    std::string previous = countAndSay(n-1);\n    std::string result = \"\";\n    int count = 1;\n    for (int i = 1; i < previous.length(); i++) {\n        if (previous[i] == previous[i-1]) {\n            count++;\n        } else {\n            result += std::to_string(count) + previous[i-1];\n            count = 1;\n        }\n    }\n    result += std::to_string(count) + previous.back();\n    return result;\n}\n\nint main() {\n    int n = $args;\n    std::string result = countAndSay(n);\n    std::cout << result << std::endl;\n    return 0;\n}"
+        }
+    },
+    "39": {
+        "call_functions": {
+            "c++": "#include <vector>\n\nint main() {\n    std::vector<int> candidates = $args;\n    int target = $args;\n    std::vector<std::vector<int>> result = combinationSum(candidates, target);\n    for (const auto& combination : result) {\n        for (const auto& num : combination) {\n            std::cout << num << \" \";\n        }\n        std::cout << std::endl;\n    }\n    return 0;\n}"
+        }
+    },
+    "40": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <algorithm>\n#include <iostream>\n\nvoid combine(std::vector<int>& candidates, int target, std::vector<std::vector<int>>& result, std::vector<int>& combination, int index) {\n    if (target == 0) {\n        result.push_back(combination);\n        return;\n    }\n\n    for (int i = index; i < candidates.size() && target >= candidates[i]; ++i) {\n        if (i == index || candidates[i] != candidates[i - 1]) {\n            combination.push_back(candidates[i]);\n            combine(candidates, target - candidates[i], result, combination, i + 1);\n            combination.pop_back();\n        }\n    }\n}\n\nstd::vector<std::vector<int>> combinationSum2(std::vector<int>& candidates, int target) {\n    std::vector<std::vector<int>> result;\n    std::vector<int> combination;\n    std::sort(candidates.begin(), candidates.end());\n    combine(candidates, target, result, combination, 0);\n    return result;\n}\n\nint main() {\n    std::vector<int> candidates = $args;\n    int target = 10;\n    std::vector<std::vector<int>> result = combinationSum2(candidates, target);\n    for (const auto& combination : result) {\n        for (const auto& num : combination) {\n            std::cout << num << \" \";\n        }\n        std::cout << std::endl;\n    }\n    return 0;\n}"
+        }
+    },
+    "41": {
+        "call_functions": {
+            "c++": "int firstMissingPositive(vector<int>& nums) {\n    int n = nums.size();\n    for(int i = 0; i < n; ++i)\n        while(nums[i] > 0 && nums[i] <= n && nums[nums[i] - 1] != nums[i])\n            swap(nums[i], nums[nums[i] - 1]);\n\n    for(int i = 0; i < n; ++i)\n        if(nums[i] != i + 1)\n            return i + 1;\n    return n + 1;\n}",
+            "java": "public int firstMissingPositive(int[] nums) {\n    int n = nums.length;\n    for(int i = 0; i < n; i++) {\n        while(nums[i] > 0 && nums[i] <= n && nums[nums[i] - 1] != nums[i]) {\n            int temp = nums[i];\n            nums[i] = nums[temp - 1];\n            nums[temp - 1] = temp;\n        }\n    }\n\n    for(int i = 0; i < n; i++) {\n        if(nums[i] != i + 1) {\n            return i + 1;\n        }\n    }\n    return n + 1;\n}",
+            "python": "if __name__ == \"__main__\":\n    nums = $args[0]\n    result = firstMissingPositive(nums)\n    print(result)",
+            "javascript": "function main() {\n    const nums = $args;\n    const result = firstMissingPositive(nums);\n    console.log(result);\n}"
+        }
+    },
+    "42": {
+        "call_functions": {
+            "c++": "#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> height = $args;\n    int result = trap(height);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int trap(int[] height) {\n    int n = height.length, left = 0, right = n - 1, maxLeft = 0, maxRight = 0, water = 0;\n\n    while (left < right) {\n        if (height[left] <= height[right]) {\n            maxLeft = Math.max(maxLeft, height[left]);\n            water += maxLeft - height[left];\n            left++;\n        } else {\n            maxRight = Math.max(maxRight, height[right]);\n            water += maxRight - height[right];\n            right--;\n        }\n    }\n\n    return water;\n}"
+        }
+    },
+    "43": {
+        "call_functions": {
+            "c++": "string multiply(string num1, string num2) {\n    int m = num1.size(), n = num2.size();\n    string res(m + n, '0');\n    for (int i = m - 1; i >= 0; i--) {\n        for (int j = n - 1; j >= 0; j--) {\n            int p1 = i + j, p2 = i + j + 1;\n            int mult = (num1[i] - '0') * (num2[j] - '0') + (res[p2] - '0');\n            res[p1] += mult / 10;\n            res[p2] = (mult % 10) + '0';\n        }\n    }\n    while (res.size() > 1 && res[0] == '0')\n        res.erase(res.begin());\n    return res;\n}"
+        }
+    },
+    "44": {
+        "call_functions": {
+            "c++": "bool isMatch(const std::string& s, const std::string& p) {\n    int m = s.size(), n = p.size();\n    int i = 0, j = 0, asterisk = -1, match;\n    while (i < m) {\n        if (j < n && (s[i] == p[j] || p[j] == '?')) {\n            i++; j++;\n        } else if (j < n && p[j] == '*') {\n            match = i;\n            asterisk = j++;\n        } else if (asterisk >= 0) {\n            i = ++match;\n            j = asterisk + 1;\n        } else {\n            return false;\n        }\n    }\n    while (j < n && p[j] == '*') j++;\n    return j == n;\n}",
+            "java": "public boolean isMatch(String s, String p) {\n    int m = s.length(), n = p.length();\n    int i = 0, j = 0, asterisk = -1, match = 0;\n    while (i < m) {\n        if (j < n && (s.charAt(i) == p.charAt(j) || p.charAt(j) == '?')) {\n            i++; j++;\n        } else if (j < n && p.charAt(j) == '*') {\n            match = i;\n            asterisk = j++;\n        } else if (asterisk != -1) {\n            i = ++match;\n            j = asterisk + 1;\n        } else {\n            return false;\n        }\n    }\n    while (j < n && p.charAt(j) == '*') j++;\n    return j == n;\n}",
+            "python": "if __name__ == \"__main__\":\n    s = $args[0]\n    p = $args[1]\n    result = is_match(s, p)\n    print(result)",
+            "javascript": "function main() {\n    const s = $args[0];\n    const p = $args[1];\n    const result = isMatch(s, p);\n    console.log(result);\n}"
+        }
+    },
+    "45": {
+        "call_functions": {
+            "c++": "int main() {\n    vector<int> nums = $args;\n    int result = jump(nums);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int jump(int[] nums) {\n    int jumps = 0, currentEnd = 0, currentFarthest = 0;\n    \n    for (int i = 0; i < nums.length - 1; i++) {\n        currentFarthest = Math.max(currentFarthest, i + nums[i]);\n        if (i == currentEnd) {\n            jumps++;\n            currentEnd = currentFarthest;\n        }\n    }\n    return jumps;\n}"
+        }
+    },
+    "46": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <iostream>\n\nvoid helper(std::vector<int>& nums, int index, std::vector<std::vector<int>>& results) {\n    if (index == nums.size() - 1) {\n        results.push_back(nums);\n        return;\n    }\n\n    for (int i = index; i < nums.size(); i++) {\n        std::swap(nums[index], nums[i]);\n        helper(nums, index + 1, results);\n        std::swap(nums[index], nums[i]);\n    }\n}\n\nstd::vector<std::vector<int>> permute(std::vector<int>& nums) {\n    std::vector<std::vector<int>> results;\n    helper(nums, 0, results);\n    return results;\n}\n\nint main() {\n    std::vector<int> nums = $args;\n    std::vector<std::vector<int>> result = permute(nums);\n    for (const auto& res : result) {\n        for (const auto& num : res) {\n            std::cout << num << \" \";\n        }\n        std::cout << std::endl;\n    }\n    return 0;\n}",
+            "java": "public List<List<Integer>> permute(int[] nums) {\n    List<List<Integer>> results = new ArrayList<>();\n    helper(nums, 0, results);\n    return results;\n}\n\nprivate void helper(int[] nums, int index, List<List<Integer>> results) {\n    if (index == nums.length - 1) {\n        List<Integer> tempList = new ArrayList<>();\n        for (int n : nums) {\n            tempList.add(n);\n        }\n        results.add(tempList);\n        return;\n    }\n\n    for (int i = index; i < nums.length; i++) {\n        swap(nums, index, i);\n        helper(nums, index + 1, results);\n        swap(nums, index, i);\n    }\n}\n\nprivate void swap(int[] nums, int i, int j) {\n    int temp = nums[i];\n    nums[i] = nums[j];\n    nums[j] = temp;\n}",
+            "python": "if __name__ == \"__main__\":\n    nums = $args[0]\n    result = permute(nums)\n    print(result)",
+            "javascript": "function main() {\n  const nums = $args;\n  const results = permute(nums);\n  console.log(results);\n}"
+        }
+    },
+    "47": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <algorithm>\n\nvoid backtrack(std::vector<std::vector<int>>& result, std::vector<int>& nums, int start) {\n    if (start == nums.size()) {\n        result.push_back(nums);\n        return;\n    }\n    for (int i = start; i < nums.size(); i++) {\n        if (i > start && nums[i] == nums[start]) continue;\n        std::swap(nums[start], nums[i]);\n        backtrack(result, nums, start + 1);\n        std::swap(nums[start], nums[i]);\n    }\n}\n\nstd::vector<std::vector<int>> permuteUnique(std::vector<int>& nums) {\n    std::sort(nums.begin(), nums.end());\n    std::vector<std::vector<int>> result;\n    backtrack(result, nums, 0);\n    return result;\n}",
+            "java": "public List<List<Integer>> permuteUnique(int[] nums) {\n    Arrays.sort(nums);\n    List<List<Integer>> result = new ArrayList<>();\n    boolean[] visited = new boolean[nums.length];\n    backtrack(result, new ArrayList<>(), nums, visited);\n    return result;\n}\n\nprivate void backtrack(List<List<Integer>> result, List<Integer> tempList, int[] nums, boolean[] visited) {\n    if (tempList.size() == nums.length) {\n        result.add(new ArrayList<>(tempList));\n    } else {\n        for (int i = 0; i < nums.length; i++) {\n            if (visited[i] || (i > 0 && nums[i] == nums[i - 1] && !visited[i - 1])) continue;\n            visited[i] = true;\n            tempList.add(nums[i]);\n            backtrack(result, tempList, nums, visited);\n            tempList.remove(tempList.size() - 1);\n            visited[i] = false;\n        }\n    }\n}",
+            "python": "if __name__ == \"__main__\":\n    nums = $args[0]\n    result = permuteUnique(nums)\n    print(result)",
+            "javascript": "function main() {\n    const nums = $args;\n    nums.sort((a, b) => a - b);\n    const result = [];\n    const visited = new Array(nums.length).fill(false);\n\n    function backtrack(tempList) {\n        if (tempList.length === nums.length) {\n            result.push([...tempList]);\n            return;\n        }\n        for (let i = 0; i < nums.length; i++) {\n            if (visited[i] || (i > 0 && nums[i] === nums[i - 1] && !visited[i - 1])) continue;\n            visited[i] = true;\n            tempList.push(nums[i]);\n            backtrack(tempList);\n            tempList.pop();\n            visited[i] = false;\n        }\n    }\n\n    backtrack([]);\n    console.log(result);\n}\n"
+        }
+    },
+    "48": {
+        "call_functions": {
+            "c++": "void rotate(vector<vector<int>>& matrix) {\n    int n = matrix.size();\n    for (int i = 0; i < n / 2; i++) {\n        for (int j = i; j < n - i - 1; j++) {\n            int temp = matrix[i][j];\n            matrix[i][j] = matrix[n - j - 1][i];\n            matrix[n - j - 1][i] = matrix[n - i - 1][n - j - 1];\n            matrix[n - i - 1][n - j - 1] = matrix[j][n - i - 1];\n            matrix[j][n - i - 1] = temp;\n        }\n    }\n}",
+            "java": "public void rotate(int[][] matrix) {\n    int n = matrix.length;\n    for (int i = 0; i < n / 2; i++) {\n        for (int j = i; j < n - i - 1; j++) {\n            int temp = matrix[i][j];\n            matrix[i][j] = matrix[n - j - 1][i];\n            matrix[n - j - 1][i] = matrix[n - i - 1][n - j - 1];\n            matrix[n - i - 1][n - j - 1] = matrix[j][n - i - 1];\n            matrix[j][n - i - 1] = temp;\n        }\n    }\n}"
+        }
+    },
+    "49": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <string>\n#include <map>\n#include <algorithm>\n\nint main() {\n    std::vector<std::string> strs = $args;\n    std::vector<std::vector<std::string>> result = groupAnagrams(strs);\n\n    for (auto &group : result) {\n        for (std::string str : group) {\n            std::cout << str << \" \";\n        }\n        std::cout << std::endl;\n    }\n\n    return 0;\n}",
+            "java": "public List<List<String>> groupAnagrams(String[] strs) {\n    Map<String, List<String>> anagramMap = new HashMap<>();\n\n    for (String str : strs) {\n        char[] keyChars = str.toCharArray();\n        Arrays.sort(keyChars);\n        String key = new String(keyChars);\n\n        anagramMap.putIfAbsent(key, new ArrayList<>());\n        anagramMap.get(key).add(str);\n    }\n\n    return new ArrayList<>(anagramMap.values());\n}",
+            "python": "if __name__ == \"__main__\":\n    strs = $args[0]\n    result = group_anagrams(strs)\n    print(result)",
+            "javascript": "function main() {\n    const strs = $args;\n    const result = groupAnagrams(strs);\n    console.log(result);\n}"
+        }
+    },
+    "50": {
+        "call_functions": {
+            "c++": "double myPow(double x, int n) {\n    double result;\n    if (n == 0) {\n        result = 1;\n    }\n    else {\n        if (n < 0) {\n            x = 1 / x;\n            n = -n;\n        }\n        result = 1;\n        double currentProduct = x;\n        for (long long i = n; i; i /= 2) {\n            if ((i % 2) == 1) {\n                result = result * currentProduct;\n            }\n            currentProduct = currentProduct * currentProduct;\n        }\n    }\n    return result;\n}",
+            "java": "double myPow(double x, int n) {\n    if (n == 0) return 1;\n    if (n < 0) {\n        x = 1 / x;\n        n = -n;\n    }\n    double result = 1;\n    double currentProduct = x;\n    for (long i = n; i > 0; i /= 2) {\n        if ((i % 2) == 1) {\n            result *= currentProduct;\n        }\n        currentProduct *= currentProduct;\n    }\n    return result;\n}",
+            "python": "if __name__ == \"__main__\":\n    x = $args[0]\n    n = $args[1]\n    result = myPow(x, n)\n    print(result)",
+            "javascript": "function main() {\n    const x = $args[0];\n    const n = $args[1];\n    const result = myPow(x, n);\n    console.log(result);\n}"
+        }
+    },
+    "51": {
+        "call_functions": {
+            "c++": "std::vector<std::vector<std::string>> solveNQueens(int n) {\n    std::vector<std::vector<std::string>> result;\n    std::vector<std::string> board(n, std::string(n, '.'));\n    solve(result, board, n, 0);\n    return result;\n}",
+            "java": "public List<List<String>> solveNQueens(int n) {\n    List<List<String>> result = new ArrayList<>();\n    solve(result, new ArrayList<>(), n, 0);\n    return result;\n}\n\nprivate void solve(List<List<String>> result, List<Integer> current, int n, int col) {\n    if (col == n) {\n        result.add(generateBoard(current, n));\n        return;\n    }\n    for (int row = 0; row < n; row++) {\n        if(isSafe(current, row, col)) {\n            current.add(row);\n            solve(result, current, n, col + 1);\n            current.remove(col);\n        }\n    }\n}\n\nprivate boolean isSafe(List<Integer> current, int row, int col) {\n    for (int i = 0; i < col; i++) {\n        int prevRow = current.get(i);\n        if (prevRow == row || (Math.abs(col - i) == Math.abs(row - prevRow))) {\n            return false;\n        }\n    }\n    return true;\n}\n\nprivate List<String> generateBoard(List<Integer> current, int n) {\n    List<String> board = new ArrayList<>();\n    for (int row : current) {\n        StringBuilder sb = new StringBuilder();\n        for (int col = 0; col < n; col++)\n            sb.append((col == row) ? \"Q\" : \".\");\n        board.add(sb.toString());\n    }\n    return board;\n}"
+        }
+    },
+    "52": {
+        "call_functions": {
+            "c++": "#include <vector>\nusing namespace std;\n\nint main() {\n    int n = $args;\n    int result = totalNQueens(n);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int totalNQueens(int n) {\n    ArrayList<Integer> cols = new ArrayList<>();\n    return backtrack(n, cols);\n}\n\npublic int backtrack(int n, ArrayList<Integer> cols) {\n    if (cols.size() == n) {\n        return 1;\n    }\n\n    int count = 0;\n    for (int i = 0; i < n; i++) {\n        if (isSafe(cols, i)) {\n            cols.add(i);\n            count += backtrack(n, cols);\n            cols.remove(cols.size() - 1);\n        }\n    }\n    return count;\n}\n\npublic boolean isSafe(ArrayList<Integer> cols, int row) {\n    int col = cols.size();\n    for (int i = 0; i < cols.size(); i++) {\n        if (cols.get(i) == row || Math.abs(i - col) == Math.abs(cols.get(i) - row)) {\n            return false;\n        }\n    }\n    return true;\n}",
+            "python": "if __name__ == \"__main__\":\n    n = $args[0]\n    result = total_n_queens(n)\n    print(result)",
+            "javascript": "function totalNQueens(n) {\n    let cols = [];\n    return backtrack(n, cols);\n}"
+        }
+    },
+    "53": {
+        "call_functions": {
+            "c++": "int main() {\n    vector<int> nums = $args;\n    int result = maxSubArray(nums);\n    cout << result << endl;\n    return 0;\n}"
+        }
+    },
+    "54": {
+        "call_functions": {
+            "c++": "#include <vector>\nusing namespace std;\n\nint main() {\n    vector<vector<int>> matrix = $args;\n    vector<int> result = spiralOrder(matrix);\n    for (int i = 0; i < result.size(); ++i) {\n        cout << result[i] << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
+            "java": "public List<Integer> spiralOrder(int[][] matrix) {\n    List<Integer> result = new ArrayList<>();\n    if (matrix == null || matrix.length == 0) return result;\n    int m = matrix.length, n = matrix[0].length;\n    int rowStart = 0, colStart = 0, rowEnd = m - 1, colEnd = n - 1;\n\n    while (rowStart <= rowEnd && colStart <= colEnd) {\n        for (int i = colStart; i <= colEnd; i++) {\n            result.add(matrix[rowStart][i]);\n        }\n        rowStart++;\n        for (int i = rowStart; i <= rowEnd; i++) {\n            result.add(matrix[i][colEnd]);\n        }\n        colEnd--;\n        if (rowStart <= rowEnd) {\n            for (int i = colEnd; i >= colStart; i--) {\n                result.add(matrix[rowEnd][i]);\n            }\n        }\n        rowEnd--;\n        if (colStart <= colEnd) {\n            for (int i = rowEnd; i >= rowStart; i--) {\n                result.add(matrix[i][colStart]);\n            }\n        }\n        colStart++;\n    }\n    return result;\n}"
+        }
+    },
+    "55": {
+        "call_functions": {
+            "c++": "bool canJump(vector<int>& nums) {\n    int maxReach = 0;\n    for (int i = 0; i < nums.size(); ++i) {\n        if (i > maxReach) return false;\n        maxReach = max(maxReach, i + nums[i]);\n    }\n    return true;\n}",
+            "java": "public static void main(String[] args) {\n    int[] nums = $args;\n    boolean result = canJump(nums);\n    System.out.println(result);\n}"
+        }
+    },
+    "56": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <algorithm>\n#include <iostream>\n\nint main() {\n    std::vector<std::vector<int>> intervals = $args;\n    std::vector<std::vector<int>> result = merge(intervals);\n\n    for (const auto& interval : result) {\n        std::cout << '[' << interval[0] << ',' << interval[1] << ']';\n    }\n\n    return 0;\n}",
+            "java": "public List<int[]> merge(int[][] intervals) {\n    if (intervals.length == 0) return new ArrayList<>();\n\n    Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));\n    List<int[]> result = new ArrayList<>();\n    result.add(intervals[0]);\n\n    for (int i = 1; i < intervals.length; i++) {\n        if (result.get(result.size() - 1)[1] >= intervals[i][0]) {\n            result.get(result.size() - 1)[1] = Math.max(result.get(result.size() - 1)[1], intervals[i][1]);\n        } else {\n            result.add(intervals[i]);\n        }\n    }\n\n    return result;\n}",
+            "python": "if __name__ == \"__main__\":\n    intervals = $args[0]\n    result = merge(intervals)\n    print(result)",
+            "javascript": "function merge(intervals) {\n    if (intervals.length === 0) return [];\n\n    intervals.sort((a, b) => a[0] - b[0]);\n    const result = [intervals[0]];\n\n    for (let i = 1; i < intervals.length; i++) {\n        if (result[result.length - 1][1] >= intervals[i][0]) {\n            result[result.length - 1][1] = Math.max(result[result.length - 1][1], intervals[i][1]);\n        } else {\n            result.push(intervals[i]);\n        }\n    }\n\n    return result;\n}"
+        }
+    },
+    "57": {
+        "call_functions": {
+            "c++": "#include <vector>\nusing namespace std;\n\nint main() {\n    vector<vector<int>> intervals = $args;\n    vector<int> newInterval = $args;\n    vector<vector<int>> result = insert(intervals, newInterval);\n\n    for (int i = 0; i < result.size(); i++) {\n        for (int j = 0; j < result[i].size(); j++) {\n            cout << result[i][j] << \" \";\n        }\n        cout << endl;\n    }\n\n    return 0;\n}"
+        }
+    },
+    "58": {
+        "call_functions": {
+            "c++": "int main() {\n    string s = $args;\n    int result = lengthOfLastWord(s);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int lengthOfLastWord(String s) {\n    int length = 0;\n    int tail = s.length() - 1;\n    while (tail >= 0 && s.charAt(tail) == ' ') tail--;\n    while (tail >= 0 && s.charAt(tail) != ' ') {\n        length++;\n        tail--;\n    }\n    return length;\n}"
+        }
+    },
+    "59": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <iostream>\n\nint main() {\n    int n = $args;\n    std::vector<std::vector<int>> result = generateMatrix(n);\n\n    for (const auto& row : result) {\n        for (const auto& num : row) {\n            std::cout << num << ' ';\n        }\n        std::cout << std::endl;\n    }\n\n    return 0;\n}"
+        }
+    },
+    "60": {
+        "call_functions": {
+            "c++": "#include <string>\n#include <vector>\n#include <iostream>\n\nint main() {\n    int n = $args;\n    int k = $args;\n    std::string result = getPermutation(n, k);\n    std::cout << result << std::endl;\n    return 0;\n}",
+            "java": "public String getPermutation(int n, int k) {\n    List<Integer> nums = new ArrayList<>();\n    int[] factorials = new int[n];\n    StringBuilder sb = new StringBuilder();\n    int index;\n\n    factorials[0] = 1;\n    for (int i = 1; i <= n; ++i) {\n        nums.add(i);\n        factorials[i - 1] = i * factorials[i - 1];\n    }\n\n    k--;\n\n    for (int i = n; i >= 1; --i) {\n        index = k / factorials[i - 1];\n        k %= factorials[i - 1];\n        sb.append(nums.get(index));\n        nums.remove(index);\n    }\n\n    return sb.toString();\n}"
+        }
+    },
+    "62": {
+        "call_functions": {}
+    },
+    "63": {
+        "call_functions": {}
+    },
+    "64": {
+        "call_functions": {}
+    },
+    "65": {
+        "call_functions": {
+            "c++": "#include <regex>\n#include <string>\n#include <iostream>\n\nint main() {\n    std::string s = $args;\n    bool result = isNumber(s);\n    std::cout << std::boolalpha << result << std::endl;\n    return 0;\n}",
+            "java": "public boolean isNumber(String s) {\n        String pattern = \"^[-+]?(([0-9]+(\\\\.[0-9]*)?)|(\\\\.[0-9]+))(e[-+]?[0-9]+)?$\";\n        return Pattern.matches(pattern, s);\n    }",
+            "python": "if __name__ == \"__main__\":\n    s = $args[0]\n    result = is_number(s)\n    print(result)",
+            "javascript": "function main() {\n    const s = $args;\n    const result = isNumber(s);\n    console.log(result);\n}"
+        }
+    },
+    "66": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <iostream>\n\nint main() {\n    std::vector<int> digits = $args;\n    std::vector<int> result = plusOne(digits);\n\n    for (int i = 0; i < result.size(); i++) {\n        std::cout << result[i] << \" \";\n    }\n    std::cout << std::endl;\n\n    return 0;\n}\n"
+        }
+    },
+    "67": {
+        "call_functions": {
+            "c++": "std::string addBinary(std::string a, std::string b) {\n    std::string result = \"\";\n    int i = a.size() - 1, j = b.size() - 1, carry = 0;\n    while (i >= 0 || j >= 0 || carry) {\n        if (i >= 0) carry += a[i--] - '0';\n        if (j >= 0) carry += b[j--] - '0';\n        result = char(carry % 2 + '0') + result;\n        carry /= 2;\n    }\n    return result;\n}\n\nint main() {\n    std::string a = $args;\n    std::string b = $args;\n    std::string result = addBinary(a, b);\n    std::cout << result << std::endl;\n    return 0;\n}",
+            "java": "public String addBinary(String a, String b) {\n    StringBuilder result = new StringBuilder();\n    int i = a.length() - 1, j = b.length() - 1, carry = 0;\n    while (i >= 0 || j >= 0 || carry != 0) {\n        if (i >= 0) carry += a.charAt(i--) - '0';\n        if (j >= 0) carry += b.charAt(j--) - '0';\n        result.insert(0, carry % 2);\n        carry /= 2;\n    }\n    return result.toString();\n}",
+            "python": "if __name__ == \"__main__\":\n    a = $args[0]\n    b = $args[1]\n    result = addBinary(a, b)\n    print(result)",
+            "javascript": "function main() {\n    const a = $args[0];\n    const b = $args[1];\n    const result = addBinary(a, b);\n    console.log(result);\n}"
+        }
+    },
+    "68": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <string>\nusing namespace std;\n\nvector<string> fullJustify(vector<string>& words, int maxWidth) {\n    vector<string> result;\n    int idx = 0;\n    while (idx < words.size()) {\n        int totalChars = words[idx].size();\n        int last = idx + 1;\n        while (last < words.size()) {\n            if (totalChars + 1 + words[last].length() > maxWidth) break;\n            totalChars += 1 + words[last].length();\n            last++;\n        }\n        int gaps = last - idx - 1;\n        stringstream line;\n        if (last == words.size() || gaps == 0) {\n            for (int i = idx; i < last; i++) {\n                line << words[i];\n                if (i < last - 1) line << \" \";\n            }\n            line << string(maxWidth - line.str().size(), ' ');\n        } else {\n            int evenSpaces = (maxWidth - totalChars) / gaps;\n            int extraSpaces = (maxWidth - totalChars) % gaps;\n            for (int i = idx; i < last; i++) {\n                line << words[i];\n                if (i < last - 1) {\n                    line << string(evenSpaces + (i - idx < extraSpaces ? 1 : 0), ' ');\n                }\n            }\n        }\n        idx = last;\n        result.push_back(line.str());\n    }\n    return result;\n}",
+            "java": "public List<String> fullJustify(String[] words, int maxWidth) {\n    List<String> result = new ArrayList<>();\n    int idx = 0;\n    while (idx < words.length) {\n        int totalChars = words[idx].length();\n        int last = idx + 1;\n        while (last < words.length) {\n            if (totalChars + 1 + words[last].length() > maxWidth) break;\n            totalChars += 1 + words[last].length();\n            last++;\n        }\n        int gaps = last - idx - 1;\n        StringBuilder line = new StringBuilder();\n        if (last == words.length || gaps == 0) {\n            for (int i = idx; i < last; i++) {\n                line.append(words[i]);\n                if (i < last - 1) line.append(\" \");\n            }\n            while (line.length() < maxWidth) line.append(\" \");\n        } else {\n            int evenSpaces = (maxWidth - totalChars) / gaps;\n            int extraSpaces = (maxWidth - totalChars) % gaps;\n            for (int i = idx; i < last; i++) {\n                line.append(words[i]);\n                if (i < last - 1) {\n                    line.append(\" \".repeat(evenSpaces + (i - idx < extraSpaces ? 1 : 0)));\n                }\n            }\n        }\n        idx = last;\n        result.add(line.toString());\n    }\n    return result;\n}",
+            "python": "if __name__ == \"__main__\":\n    words = $args[0]\n    maxWidth = $args[1]\n    result = fullJustify(words, maxWidth)\n    print(result)",
+            "javascript": "function fullJustify(words, maxWidth) {\n    const result = [];\n    let idx = 0;\n    while (idx < words.length) {\n        let totalChars = words[idx].length;\n        let last = idx + 1;\n        while (last < words.length) {\n            if (totalChars + 1 + words[last].length > maxWidth) break;\n            totalChars += 1 + words[last].length;\n            last++;\n        }\n        const gaps = last - idx - 1;\n        let line = \"\";\n        if (last === words.length || gaps === 0) {\n            for (let i = idx; i < last; i++) {\n                line += words[i];\n                if (i < last - 1) line += \" \";\n            }\n            while (line.length < maxWidth) line += \" \";\n        } else {\n            const evenSpaces = Math.floor((maxWidth - totalChars) / gaps);\n            const extraSpaces = (maxWidth - totalChars) % gaps;\n            for (let i = idx; i < last; i++) {\n                line += words[i];\n                if (i < last - 1) {\n                    line += \" \".repeat(evenSpaces + (i - idx < extraSpaces ? 1 : 0));\n                }\n            }\n        }\n        idx = last;\n        result.push(line);\n    }\n    return result;\n}"
+        }
+    },
+    "69": {
+        "call_functions": {
+            "c++": "int main() {\n    int x = $args;\n    int result = mySqrt(x);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int mySqrt(int x) {\n    if (x == 0 || x == 1) return x;\n    int start = 1, end = x, ans = 0;\n    while (start <= end) {\n        int mid = (start + end) / 2;\n        if (mid * mid == x) return mid;\n        if (mid <= x / mid) {\n            start = mid + 1;\n            ans = mid;\n        } else {\n            end = mid - 1;\n        }\n    }\n    return ans;\n}"
+        }
+    },
+    "70": {
+        "call_functions": {}
+    },
+    "71": {
+        "call_functions": {
+            "c++": "#include <string>\n#include <vector>\n#include <sstream>\n\nint main() {\n    std::string path = $args;\n    std::string result = simplifyPath(path);\n    std::cout << result << std::endl;\n    return 0;\n}"
+        }
+    },
+    "72": {
+        "call_functions": {
+            "c++": "int minDistance(string word1, string word2) {\n    int m = word1.size();\n    int n = word2.size();\n    vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));\n    \n    for (int i = 0; i <= m; i++) {\n        for (int j = 0; j <= n; j++) {\n            if (i == 0) {\n                dp[i][j] = j;\n            } else if (j == 0) {\n                dp[i][j] = i;\n            } else if (word1[i - 1] == word2[j - 1]) {\n                dp[i][j] = dp[i - 1][j - 1];\n            } else {\n                dp[i][j] = min(min(dp[i - 1][j], dp[i][j - 1]), dp[i - 1][j - 1]) + 1;\n            }\n        }\n    }\n    \n    return dp[m][n];\n}",
+            "java": "public int minDistance(String word1, String word2) {\n    int m = word1.length();\n    int n = word2.length();\n    int[][] dp = new int[m + 1][n + 1];\n    \n    for (int i = 0; i <= m; i++) {\n        for (int j = 0; j <= n; j++) {\n            if (i == 0) {\n                dp[i][j] = j;\n            } else if (j == 0) {\n                dp[i][j] = i;\n            } else if (word1.charAt(i - 1) == word2.charAt(j - 1)) {\n                dp[i][j] = dp[i - 1][j - 1];\n            } else {\n                dp[i][j] = Math.min(Math.min(dp[i - 1][j], dp[i][j - 1]), dp[i - 1][j - 1]) + 1;\n            }\n        }\n    }\n    \n    return dp[m][n];\n}",
+            "python": "if __name__ == \"__main__\":\n    word1 = $args[0]\n    word2 = $args[1]\n    result = minDistance(word1, word2)\n    print(result)",
+            "javascript": "function minDistance(word1, word2) {\n    const m = word1.length;\n    const n = word2.length;\n    const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));\n    \n    for (let i = 0; i <= m; i++) {\n        for (let j = 0; j <= n; j++) {\n            if (i === 0) {\n                dp[i][j] = j;\n            } else if (j === 0) {\n                dp[i][j] = i;\n            } else if (word1[i - 1] === word2[j - 1]) {\n                dp[i][j] = dp[i - 1][j - 1];\n            } else {\n                dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]) + 1;\n            }\n        }\n    }\n    \n    return dp[m][n];\n}"
+        }
+    },
+    "73": {
+        "call_functions": {
+            "c++": "void setZeroes(vector<vector<int>>& matrix) {\n    int rows = matrix.size();\n    int cols = matrix[0].size();\n    bool firstRow = false, firstCol = false;\n    \n    for (int i = 0; i < rows; i++) {\n        for (int j = 0; j < cols; j++) {\n            if (matrix[i][j] == 0) {\n                if (i == 0) firstRow = true;\n                if (j == 0) firstCol = true;\n                matrix[i][0] = 0;\n                matrix[0][j] = 0;\n            }\n        }\n    }\n\n    for (int i = 1; i < rows; i++) {\n        for (int j = 1; j < cols; j++) {\n            if (matrix[i][0] == 0 || matrix[0][j] == 0)\n                matrix[i][j] = 0;\n        }\n    }\n\n    if (firstRow) {\n        for (int j = 0; j < cols; j++)\n            matrix[0][j] = 0;\n    }\n\n    if (firstCol) {\n        for (int i = 0; i < rows; i++)\n            matrix[i][0] = 0;\n    }\n}",
+            "java": "public void setZeroes(int[][] matrix)"
+        }
+    },
+    "74": {
+        "call_functions": {}
+    },
+    "75": {
+        "call_functions": {
+            "c++": "void sortColors(vector<int>& nums) {\n    int red = 0, white = 0, blue = nums.size() - 1;\n    while (white <= blue) {\n        if (nums[white] == 0) {\n            swap(nums[red++], nums[white++]);\n        } else if (nums[white] == 1) {\n            white++;\n        } else {\n            swap(nums[white], nums[blue--]);\n        }\n    }\n}",
+            "java": "public void sortColors(int[] nums) {\n    int red = 0, white = 0, blue = nums.length - 1;\n    while (white <= blue) {\n        if (nums[white] == 0) {\n            int temp = nums[red];\n            nums[red++] = nums[white];\n            nums[white++] = temp;\n        } else if (nums[white] == 1) {\n            white++;\n        } else {\n            int temp = nums[white];\n            nums[white] = nums[blue];\n            nums[blue--] = temp;\n        }\n    }\n}"
+        }
+    },
+    "76": {
+        "call_functions": {
+            "c++": "#include <string>\n#include <unordered_map>\n\nint main() {\n    std::string s = $args;\n    std::string t = $args;\n    std::string result = min_window(s, t);\n    std::cout << result << std::endl;\n    return 0;\n}\n",
+            "java": "public String minWindow(String s, String t) {\n    HashMap<Character, Integer> need = new HashMap<>();\n    HashMap<Character, Integer> window = new HashMap<>();\n    for (char c : t.toCharArray()) need.put(c, need.getOrDefault(c, 0) + 1);\n    \n    int left = 0, right = 0;\n    int valid = 0;\n    int start = 0, length = Integer.MAX_VALUE;\n\n    while (right < s.length()) {\n        char c = s.charAt(right);\n        right++;\n        if (need.containsKey(c)) {\n            window.put(c, window.getOrDefault(c, 0) + 1);\n            if (window.get(c) <= need.get(c)) valid++;\n        }\n\n        while (valid == t.length()) {\n            if (right - left < length) {\n                start = left;\n                length = right - left;\n            }\n\n            char d = s.charAt(left);\n            left++;\n            if (need.containsKey(d)) {\n                if (window.get(d) <= need.get(d)) valid--;\n                window.put(d, window.get(d) - 1);\n            }\n        }\n    }\n    return length == Integer.MAX_VALUE ? \"\" : s.substring(start, start + length);\n}",
+            "python": "if __name__ == \"__main__\":\n    s = $args[0]\n    t = $args[1]\n    result = min_window(s, t)\n    print(result)",
+            "javascript": "function minWindow(s, t) {\n    const need = new Map();\n    const window = new Map();\n\n    for (const c of t) {\n        need.set(c, (need.get(c) || 0) + 1);\n    }\n    \n    let left = 0, right = 0;\n    let valid = 0;\n    let start = 0, length = Infinity;\n\n    while (right < s.length) {\n        const c = s[right];\n        right++;\n        if (need.has(c)) {\n            window.set(c, (window.get(c) || 0) + 1);\n            if (window.get(c) <= need.get(c)) valid++;\n        }\n\n        while (valid === t.length) {\n            if (right - left < length) {\n                start = left;\n                length = right - left;\n            }\n\n            const d = s[left];\n            left++;\n            if (need.has(d)) {\n                if (window.get(d) <= need.get(d)) valid--;\n                window.set(d, window.get(d) - 1);\n            }\n        }\n    }\n    return length === Infinity ? \"\" : s.substring(start, start + length);\n}"
+        }
+    },
+    "77": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <iostream>\n\nvoid backtrack(int n, int k, int start, std::vector<int>& current, std::vector<std::vector<int>>& result) {\n    if (current.size() == k) {\n        result.push_back(current);\n        return;\n    }\n\n    for (int i = start; i <= n; ++i) {\n        current.push_back(i);\n        backtrack(n, k, i + 1, current, result);\n        current.pop_back();\n    }\n}\n\nstd::vector<std::vector<int>> combine(int n, int k) {\n    std::vector<std::vector<int>> result;\n    std::vector<int> current;\n    backtrack(n, k, 1, current, result);\n    return result;\n}\n\nint main() {\n    int n = $args;\n    int k = $args;\n    std::vector<std::vector<int>> result = combine(n, k);\n    for (const auto& combination : result) {\n        for (const auto& num : combination) {\n            std::cout << num << \" \";\n        }\n        std::cout << std::endl;\n    }\n    return 0;\n}",
+            "java": "public List<List<Integer>> combine(int n, int k) {\n    List<List<Integer>> result = new ArrayList<>();\n    backtrack(n, k, 1, new ArrayList<>(), result);\n    return result;\n}\n\nprivate void backtrack(int n, int k, int start, List<Integer> current, List<List<Integer>> result) {\n    if (current.size() == k) {\n        result.add(new ArrayList<>(current));\n        return;\n    }\n\n    for (int i = start; i <= n; i++) {\n        current.add(i);\n        backtrack(n, k, i + 1, current, result);\n        current.remove(current.size() - 1);\n    }\n}",
+            "python": "if __name__ == \"__main__\":\n    n = $args[0]\n    k = $args[1]\n    result = combine(n, k)\n    print(result)",
+            "javascript": "function main() {\n    const n = $args;\n    const k = $args;\n    const result = combine(n, k);\n    console.log(result);\n}"
+        }
+    },
+    "78": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <iostream>\n\nstd::vector<std::vector<int>> subsets(std::vector<int>& nums);\n\nint main() {\n    std::vector<int> nums = $args;\n    std::vector<std::vector<int>> result = subsets(nums);\n\n    for (const auto& subset : result) {\n        std::cout << '[';\n        for (int i = 0; i < subset.size(); ++i) {\n            std::cout << subset[i];\n            if (i != subset.size() - 1) {\n                std::cout << ',';\n            }\n        }\n        std::cout << ']';\n        std::cout << std::endl;\n    }\n\n    return 0;\n}\n",
+            "java": "public List<List<Integer>> subsets(int[] nums) {\n    List<List<Integer>> result = new ArrayList<>();\n    int n = nums.length;\n    int num_subsets = 1 << n;\n\n    for (int i = 0; i < num_subsets; ++i) {\n        List<Integer> subset = new ArrayList<>();\n        for (int j = 0; j < n; ++j) {\n            if ((i & (1 << j)) != 0) {\n                subset.add(nums[j]);\n            }\n        }\n        result.add(subset);\n    }\n    return result;\n}",
+            "python": "if __name__ == \"__main__\":\n    nums = $args[0]\n    result = subsets(nums)\n    print(result)",
+            "javascript": "function main() {\n    const nums = $args;\n    const result = subsets(nums);\n    console.log(result);\n}"
+        }
+    },
+    "79": {
+        "call_functions": {
+            "c++": "bool exist(vector<vector<char>>& board, string word) {\n    int m = board.size();\n    int n = board[0].size();\n    \n    function<bool(int, int, int)> dfs = [&](int i, int j, int k) {\n        if (i < 0 || i >= m || j < 0 || j >= n || board[i][j] != word[k])\n            return false;\n        if (k == word.length() - 1)\n            return true;\n        \n        char temp = board[i][j];\n        board[i][j] = '/';\n        bool res = dfs(i + 1, j, k + 1) || dfs(i - 1, j, k + 1) || dfs(i, j + 1, k + 1) || dfs(i, j - 1, k + 1);\n        board[i][j] = temp;\n        return res;\n    };\n    \n    for (int i = 0; i < m; i++)\n        for (int j = 0; j < n; j++)\n            if (dfs(i, j, 0))\n                return true;\n    return false;\n}",
+            "java": "public boolean exist(char[][] board, String word) {\n    int m = board.length;\n    int n = board[0].length;\n\n    boolean[][] visited = new boolean[m][n];\n\n    for (int i = 0; i < m; i++) {\n        for (int j = 0; j < n; j++) {\n            if (dfs(board, i, j, 0, word, visited)) {\n                return true;\n            }\n        }\n    }\n    return false;\n}\n\nprivate boolean dfs(char[][] board, int i, int j, int k, String word, boolean[][] visited) {\n    if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] != word.charAt(k) || visited[i][j]) {\n        return false;\n    }\n\n    if (k == word.length() - 1) {\n        return true;\n    }\n\n    visited[i][j] = true;\n    boolean result = dfs(board, i + 1, j, k + 1, word, visited)\n            || dfs(board, i - 1, j, k + 1, word, visited)\n            || dfs(board, i, j + 1, k + 1, word, visited)\n            || dfs(board, i, j - 1, k + 1, word, visited);\n    visited[i][j] = false;\n\n    return result;\n}",
+            "python": "if __name__ == \"__main__\":\n    board = $args[0]\n    word = $args[1]\n    result = exist(board, word)\n    print(result)",
+            "javascript": "function exist(board, word) {\n    const m = board.length;\n    const n = board[0].length;\n\n    function dfs(i, j, k) {\n        if (i < 0 || i === m || j < 0 || j === n || board[i][j] !== word[k])\n            return false;\n        if (k === word.length - 1)\n            return true;\n        \n        const temp = board[i][j];\n        board[i][j] = '/';\n        const res = dfs(i + 1, j, k +1) || dfs(i - 1, j, k + 1) || dfs(i, j + 1, k + 1) || dfs(i, j - 1, k + 1);\n        board[i][j] = temp;\n        return res;\n    }\n\n    for (let i = 0; i < m; i++) {\n        for (let j = 0; j < n; j++) {\n            if (dfs(i, j, 0))\n                return true;\n        }\n    }\n    return false;\n}"
+        }
+    },
+    "80": {
+        "call_functions": {}
+    },
+    "81": {
+        "call_functions": {}
+    },
+    "84": {
+        "call_functions": {
+            "c++": "int largestRectangleArea(vector<int>& heights) {\n    heights.push_back(0);\n    stack<int> s;\n    int max_area = 0;\n    for (int i = 0; i < heights.size(); i++) {\n        while (!s.empty() && heights[s.top()] > heights[i]) {\n            int height = heights[s.top()];\n            s.pop();\n            int width = s.empty() ? i : i - s.top() - 1;\n            max_area = max(max_area, height * width);\n        }\n        s.push(i);\n    }\n    return max_area;\n}",
+            "java": "public int largestRectangleArea(int[] heights) {\n    Stack<Integer> stack = new Stack<>();\n    int max_area = 0;\n    for (int i = 0; i <= heights.length; i++) {\n        int height = (i == heights.length) ? 0 : heights[i];\n        while (!stack.isEmpty() && heights[stack.peek()] > height) {\n            int h = heights[stack.pop()];\n            int w = stack.isEmpty() ? i : i - stack.peek() - 1;\n            max_area = Math.max(max_area, h * w);\n        }\n        stack.push(i);\n    }\n    return max_area;\n}",
+            "python": "if __name__ == \"__main__\":\n    heights = $args[0]\n    result = largestRectangleArea(heights)\n    print(result)",
+            "javascript": "function main() {\n    const heights = $args;\n    const result = largestRectangleArea(heights);\n    console.log(result);\n}"
+        }
+    },
+    "85": {
+        "call_functions": {
+            "c++": "int main() {\n    vector<vector<char>> matrix = $args;\n    int result = maximalRectangle(matrix);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int maximalRectangle(char[][] matrix) {\n    if (matrix.length == 0) return 0;\n\n    int m = matrix.length;\n    int n = matrix[0].length;\n    int[] height = new int[n + 1];\n    int maxArea = 0;\n\n    for (int i = 0; i < m; ++i) {\n        Stack<Integer> s = new Stack<>();\n        for (int j = 0; j <= n; ++j) {\n            if (j < n) {\n                height[j] = matrix[i][j] == '1' ? height[j] + 1 : 0;\n            }\n            while (!s.empty() && height[j] < height[s.peek()]) {\n                int h = height[s.pop()];\n                int w = s.empty() ? j : j - s.peek() - 1;\n                maxArea = Math.max(maxArea, h * w);\n            }\n            s.push(j);\n        }\n    }\n\n    return maxArea;\n}\n",
+            "python": "if __name__ == \"__main__\":\n    matrix = $args[0]\n    result = maximalRectangle(matrix)\n    print(result)",
+            "javascript": "function maximalRectangle(matrix) {\n    if (!matrix.length) return 0;\n\n    let m = matrix.length;\n    let n = matrix[0].length;\n    let height = Array(n + 1).fill(0);\n    let maxArea = 0;\n\n    for (let i = 0; i < m; i++) {\n        let s = [];\n        for (let j = 0; j <= n; j++) {\n            if (j < n) {\n                height[j] = matrix[i][j] === '1' ? height[j] + 1 : 0;\n            }\n            while (s.length && height[j] < height[s[s.length - 1]]) {\n                let h = height[s.pop()];\n                let w = !s.length ? j : j - s[s.length - 1] - 1;\n                maxArea = Math.max(maxArea, h * w);\n            }\n            s.push(j);\n        }\n    }\n\n    return maxArea;\n}"
+        }
+    },
+    "87": {
+        "call_functions": {
+            "c++": "bool result = isScramble($args);\nreturn result;",
+            "java": "public boolean isScramble(String s1, String s2) {\n    if (s1.equals(s2)) return true;\n    if (sorted(s1).equals(sorted(s2)) == false) return false;\n\n    for (int i = 1; i < s1.length(); i++) {\n        if (isScramble(s1.substring(0, i), s2.substring(0, i)) && isScramble(s1.substring(i), s2.substring(i)))\n            return true;\n        if (isScramble(s1.substring(0, i), s2.substring(s2.length() - i)) && isScramble(s1.substring(i), s2.substring(0, s2.length() - i)))\n            return true;\n    }\n    return false;\n}\n\nprivate String sorted(String s) {\n    char[] chars = s.toCharArray();\n    Arrays.sort(chars);\n    return new String(chars);\n}",
+            "python": "if __name__ == \"__main__\":\n    s1 = $args[0]\n    s2 = $args[1]\n    result = isScramble(s1, s2)\n    print(result)",
+            "javascript": "function main() {\n    const s1 = $args[0];\n    const s2 = $args[1];\n    const result = isScramble(s1, s2);\n    console.log(result);\n}"
+        }
+    },
+    "88": {
+        "call_functions": {
+            "c++": "void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {\n    int i = m - 1, j = n - 1, k = m + n - 1;\n    while (i >= 0 && j >= 0) {\n        if (nums1[i] > nums2[j])\n            nums1[k--] = nums1[i--];\n        else\n            nums1[k--] = nums2[j--];\n    }\n    while (j >= 0) {\n        nums1[k--] = nums2[j--];\n    }\n}\n\nint main() {\n    vector<int> nums1 = $args;\n    int m = nums1.size();\n    vector<int> nums2;\n    int n = nums2.size();\n    merge(nums1, m, nums2, n);\n    for (int i = 0; i < m + n; i++) {\n        cout << nums1[i] << \" \";\n    }\n    cout << endl;\n    return 0;\n}"
+        }
+    },
+    "89": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <iostream>\n\nint main() {\n    int n = $args;\n    std::vector<int> result = grayCode(n);\n    for (int i = 0; i < result.size(); i++) {\n        std::cout << result[i] << \" \";\n    }\n    std::cout << std::endl;\n    return 0;\n}"
+        }
+    },
+    "90": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <set>\nusing namespace std;\n\nvoid backtrack(vector<int>& nums, int index, vector<int>& subset, set<vector<int>>& result);\n\nvector<vector<int>> subsetsWithDup(vector<int>& nums) {\n    set<vector<int>> result;\n    vector<int> subset;\n    sort(nums.begin(), nums.end());\n    backtrack(nums, 0, subset, result);\n    return vector<vector<int>>(result.begin(), result.end());\n}\n\nvoid backtrack(vector<int>& nums, int index, vector<int>& subset, set<vector<int>>& result) {\n    result.insert(subset);\n    for (int i = index; i < nums.size(); i++) {\n        subset.push_back(nums[i]);\n        backtrack(nums, i + 1, subset, result);\n        subset.pop_back();\n    }\n}\n\nint main() {\n    vector<int> nums = $args;\n    vector<vector<int>> result = subsetsWithDup(nums);\n    for (auto subset : result) {\n        for (auto num : subset) {\n            cout << num << \" \";\n        }\n        cout << endl;\n    }\n    return 0;\n}",
+            "java": "public List<List<Integer>> subsetsWithDup(int[] nums) {\n    Set<List<Integer>> result = new HashSet<>();\n    Arrays.sort(nums);\n    backtrack(nums, 0, new ArrayList<Integer>(), result);\n    return new ArrayList<>(result);\n}\n\nprivate void backtrack(int[] nums, int index, List<Integer> subset, Set<List<Integer>> result) {\n    result.add(new ArrayList<>(subset));\n    for (int i = index; i < nums.length; i++) {\n        subset.add(nums[i]);\n        backtrack(nums, i + 1, subset, result);\n        subset.remove(subset.size() - 1);\n    }\n}",
+            "python": "if __name__ == \"__main__\":\n    nums = $args[0]\n    result = subsetsWithDup(nums)\n    print(result)",
+            "javascript": "function main() {\n  const nums = $args;\n  const result = subsetsWithDup(nums);\n  console.log(result);\n}"
+        }
+    },
+    "91": {
+        "call_functions": {
+            "c++": "#include <iostream>\nusing namespace std;\n\nint main() {\n    string s = $args;\n    int result = numDecodings(s);\n    cout << result << endl;\n    return 0;\n}"
+        }
+    },
+    "92": {
+        "call_functions": {
+            "c++": "ListNode* reverseBetween(ListNode* head, int left, int right) {\n    if (!head || left == right) return head;\n    ListNode dummy(0);\n    dummy.next = head;\n    ListNode* pre = &dummy;\n    for (int i = 1; i < left; ++i) pre = pre->next;\n    ListNode* cur = pre->next;\n    for (int i = left; i < right; ++i) {\n        ListNode* t = cur->next;\n        cur->next = t->next;\n        t->next = pre->next;\n        pre->next = t;\n    }\n    return dummy.next;\n}",
+            "java": "public ListNode reverseBetween(ListNode head, int left, int right) {\n    if (head == null || left == right) return head;\n    ListNode dummy = new ListNode(0);\n    dummy.next = head;\n    ListNode pre = dummy;\n    for (int i = 1; i < left; ++i) pre = pre.next;\n    ListNode cur = pre.next;\n    for (int i = left; i < right; ++i) {\n        ListNode t = cur.next;\n        cur.next = t.next;\n        t.next = pre.next;\n        pre.next = t;\n    }\n    return dummy.next;\n}",
+            "python": "if __name__ == \"__main__\":\n    head = $args[0]\n    left = $args[1]\n    right = $args[2]\n    result = reverseBetween(head, left, right)\n    print(result)"
+        }
+    },
+    "93": {
+        "call_functions": {
+            "c++": "#include<vector>\n#include<string>\nusing namespace std;\n\nint main() {\n    string s = $args;\n    vector<string> result = restore_ip_address(s);\n    for (string ip : result) {\n        cout << ip << endl;\n    }\n    return 0;\n}\n",
+            "java": "public List<String> restoreIpAddresses(String s) {\n    List<String> result = new ArrayList<>();\n    dfs(s, 0, \"\", result, 0);\n    return result;\n}\n\nprivate void dfs(String s, int start, String ip, List<String> result, int part) {\n    if (part == 4 && start == s.length()) {\n        result.add(ip.substring(0, ip.length() - 1));\n        return;\n    }\n    if (part == 4 || start >= s.length()) return;\n\n    int num = 0;\n    for (int i = start; i < s.length(); i++) {\n        num = num * 10 + (s.charAt(i) - '0');\n        if (num > 255) break;\n        dfs(s, i + 1, ip + s.charAt(i) + \".\", result, part + 1);\n        if (num == 0) break;\n    }\n}",
+            "python": "if __name__ == \"__main__\":\n    s = $args[0]\n    result = restore_ip_addresses(s)\n    print(result)",
+            "javascript": "function main() {\n    const s = $args;\n    const result = restoreIpAddresses(s);\n    console.log(result);\n}"
+        }
+    },
+    "96": {
+        "call_functions": {}
+    },
+    "97": {
+        "call_functions": {
+            "c++": "bool isInterleave(string s1, string s2, string s3) {\n    int m = s1.length(), n = s2.length();\n    if (m + n != s3.length()) return false;\n\n    vector<vector<bool>> dp(m + 1, vector<bool>(n + 1, false));\n    dp[0][0] = true;\n    for (int i = 1; i <= m; i++)\n        dp[i][0] = dp[i - 1][0] && s1[i - 1] == s3[i - 1];\n    for (int j = 1; j <= n; j++)\n        dp[0][j] = dp[0][j - 1] && s2[j - 1] == s3[j - 1];\n\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= n; j++) {\n            dp[i][j] = (dp[i - 1][j] && s1[i - 1] == s3[i + j - 1]) ||\n                       (dp[i][j - 1] && s2[j - 1] == s3[i + j - 1]);\n        }\n    }\n\n    return dp[m][n];\n}",
+            "java": "public boolean isInterleave(String s1, String s2, String s3) {\n    int m = s1.length(), n = s2.length();\n    if (m + n != s3.length()) return false;\n\n    boolean[][] dp = new boolean[m + 1][n + 1];\n    dp[0][0] = true;\n    for (int i = 1; i <= m; i++)\n        dp[i][0] = dp[i - 1][0] && s1.charAt(i - 1) == s3.charAt(i - 1);\n    for (int j = 1; j <= n; j++)\n        dp[0][j] = dp[0][j - 1] && s2.charAt(j - 1) == s3.charAt(j - 1);\n\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= n; j++) {\n            dp[i][j] = (dp[i - 1][j] && s1.charAt(i - 1) == s3.charAt(i + j - 1)) ||\n                       (dp[i][j - 1] && s2.charAt(j - 1) == s3.charAt(i + j - 1));\n        }\n    }\n\n    return dp[m][n];\n}",
+            "python": "if __name__ == \"__main__\":\n    s1 = $args[0]\n    s2 = $args[1]\n    s3 = $args[2]\n    result = isInterleave(s1, s2, s3)\n    print(result)",
+            "javascript": "function main() {\n    const s1 = $args[0];\n    const s2 = $args[1];\n    const s3 = $args[2];\n    const result = isInterleave(s1, s2, s3);\n    console.log(result);\n}"
+        }
+    },
+    "99": {
+        "call_functions": {
+            "c++": "void recoverTree(TreeNode* root) {\n    TreeNode *first = nullptr, *second = nullptr, *prev = nullptr;\n    inorder(root, first, second, prev);\n    std::swap(first->val, second->val);\n}"
+        }
+    },
+    "101": {
+        "call_functions": {
+            "c++": "bool isSymmetric(TreeNode* root) {\n    return checkSymmetry(root, root);\n}\n\nbool checkSymmetry(TreeNode* node1, TreeNode* node2) {\n    if (!node1 && !node2) return true;\n    if (!node1 || !node2) return false;\n    return (node1->val == node2->val) && checkSymmetry(node1->right, node2->left) && checkSymmetry(node1->left, node2->right);\n}",
+            "java": "public boolean isSymmetric(TreeNode root) {\n    return checkSymmetry(root, root);\n}",
+            "python": "if __name__ == \"__main__\":\n    root = $args[0]\n    result = isSymmetric(root)\n    print(result)",
+            "javascript": "function main() {\n    const root = $args;\n    const result = isSymmetric(root);\n    console.log(result);\n}"
+        }
+    },
+    "104": {
+        "call_functions": {
+            "c++": "int main() {\n    TreeNode* root = $args;\n    int result = maxDepth(root);\n    cout << result << endl;\n    return 0;\n}"
+        }
+    },
+    "107": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <queue>\n\nint main() {\n    TreeNode* root = $args;\n    std::vector<std::vector<int>> result = levelOrderBottom(root);\n\n    for (const auto& level : result) {\n        for (const auto& val : level) {\n            std::cout << val << \" \";\n        }\n        std::cout << std::endl;\n    }\n\n    return 0;\n}",
+            "java": "public List<List<Integer>> levelOrderBottom(TreeNode root) {\n    List<List<Integer>> result = new ArrayList<>();\n    if (root == null) return result;\n\n    Queue<TreeNode> queue = new LinkedList<>();\n    queue.add(root);\n\n    while (!queue.isEmpty()) {\n        List<Integer> level = new ArrayList<>();\n        int size = queue.size();\n\n        for (int i = 0; i < size; i++) {\n            TreeNode current = queue.poll();\n            level.add(current.val);\n\n            if (current.left != null) queue.add(current.left);\n            if (current.right != null) queue.add(current.right);\n        }\n        result.add(0, level);\n    }\n\n    return result;\n}",
+            "python": "if __name__ == \"__main__\":\n    root = $args[0]\n    result = levelOrderBottom(root)\n    print(result)",
+            "javascript": "function levelOrderBottom(root) {\n    const result = [];\n    if (!root) return result;\n\n    const queue = [root];\n\n    while (queue.length > 0) {\n        const level = [];\n        const size = queue.length;\n\n        for (let i = 0; i < size; i++) {\n            const current = queue.shift();\n            level.push(current.val);\n\n            if (current.left) queue.push(current.left);\n            if (current.right) queue.push(current.right);\n        }\n        result.unshift(level);\n    }\n\n    return result;\n}"
+        }
+    },
+    "111": {
+        "call_functions": {}
+    },
+    "114": {
+        "call_functions": {}
+    },
+    "115": {
+        "call_functions": {
+            "c++": "int numDistinct(string s, string t) {\n    int m = s.size(), n = t.size();\n    vector<vector<unsigned int>> dp(m + 1, vector<unsigned int>(n + 1, 0));\n\n    for (int i = 0; i <= m; i++) {\n        dp[i][0] = 1;\n    }\n\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= n; j++) {\n            if (s[i - 1] == t[j - 1]) {\n                dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j];\n            } else {\n                dp[i][j] = dp[i - 1][j];\n            }\n        }\n    }\n\n    return dp[m][n];\n}",
+            "java": "public int numDistinct(String s, String t) {\n    int m = s.length(), n = t.length();\n    int[][] dp = new int[m + 1][n + 1];\n\n    for (int i = 0; i <= m; i++) {\n        dp[i][0] = 1;\n    }\n\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= n; j++) {\n            if (s.charAt(i - 1) == t.charAt(j - 1)) {\n                dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j];\n            } else {\n                dp[i][j] = dp[i - 1][j];\n            }\n        }\n    }\n\n    return dp[m][n];\n}",
+            "python": "if __name__ == \"__main__\":\n    s = $args[0]\n    t = $args[1]\n    result = numDistinct(s, t)\n    print(result)",
+            "javascript": "function main() {\n    const s = $args[0];\n    const t = $args[1];\n    const result = numDistinct(s, t);\n    console.log(result);\n}"
+        }
+    },
+    "116": {
+        "call_functions": {
+            "c++": "void connect(Node* root) {\n    if (!root) return;\n    if (root->left) {\n        root->left->next = root->right;\n        if (root->next) {\n            root->right->next = root->next->left;\n        }\n    }\n    connect(root->left);\n    connect(root->right);\n}"
+        }
+    },
+    "118": {
+        "call_functions": {
+            "c++": "vector<vector<int>> generate(int numRows) {\n    vector<vector<int>> pascalsTriangle(numRows);\n    for (int i = 0; i < numRows; i++) {\n        pascalsTriangle[i].resize(i + 1);\n        pascalsTriangle[i][0] = pascalsTriangle[i][i] = 1;\n        for (int j = 1; j < i; j++) {\n            pascalsTriangle[i][j] = pascalsTriangle[i - 1][j - 1] + pascalsTriangle[i - 1][j];\n        }\n    }\n    return pascalsTriangle;\n}",
+            "java": "public List<List<Integer>> generate(int numRows) {\n    List<List<Integer>> pascalsTriangle = new ArrayList<>();\n    for (int i = 0; i < numRows; i++) {\n        List<Integer> row = new ArrayList<>();\n        row.add(1);\n        for (int j = 1; j < i; j++) {\n            row.add(pascalsTriangle.get(i - 1).get(j - 1) + pascalsTriangle.get(i - 1).get(j));\n        }\n        if (i > 0) row.add(1);\n        pascalsTriangle.add(row);\n    }\n    return pascalsTriangle;\n}",
+            "python": "if __name__ == \"__main__\":\n    numRows = $args[0]\n    result = generate(numRows)\n    print(result)",
+            "javascript": "function main() {\n    const numRows = $args;\n    const result = generate(numRows);\n    console.log(result);\n}"
+        }
+    },
+    "119": {
+        "call_functions": {}
+    },
+    "120": {
+        "call_functions": {
+            "c++": "int main() {\n    vector<vector<int>> triangle = $args;\n    int result = minimumTotal(triangle);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int minimumTotal(List<List<Integer>> triangle) {\n    for (int row = triangle.size() - 2; row >= 0; row--) {\n        for (int col = 0; col < triangle.get(row).size(); col++) {\n            int minSum = Math.min(triangle.get(row + 1).get(col), triangle.get(row + 1).get(col + 1));\n            triangle.get(row).set(col, triangle.get(row).get(col) + minSum);\n        }\n    }\n    return triangle.get(0).get(0);\n}",
+            "python": "if __name__ == \"__main__\":\n    triangle = $args[0]\n    result = minimumTotal(triangle)\n    print(result)",
+            "javascript": "function main() {\n    const triangle = $args;\n    const result = minimumTotal(triangle);\n    console.log(result);\n}"
+        }
+    },
+    "121": {
+        "call_functions": {
+            "c++": "int main() {\n    vector<int> prices = $args;\n    int result = maxProfit(prices);\n    cout << result << endl;\n    return 0;\n}"
+        }
+    },
+    "122": {
+        "call_functions": {
+            "c++": "int main() {\n    vector<int> prices = $args;\n    int result = maxProfit(prices);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int maxProfit(int[] prices) {\n    int max_profit = 0;\n    for (int i = 1; i < prices.length; i++) {\n        if (prices[i] > prices[i - 1]) {\n            max_profit += prices[i] - prices[i - 1];\n        }\n    }\n    return max_profit;\n}",
+            "python": "if __name__ == \"__main__\":\n    prices = $args[0]\n    result = max_profit(prices)\n    print(result)",
+            "javascript": "function main() {\n    const prices = $args;\n    const result = maxProfit(prices);\n    console.log(result);\n}"
+        }
+    },
+    "123": {
+        "call_functions": {
+            "c++": "int main() {\n    vector<int> prices = $args;\n    int result = maxProfit(prices);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int maxProfit(int[] prices) {\n    int buy1 = Integer.MAX_VALUE, buy2 = Integer.MAX_VALUE;\n    int profit1 = 0, profit2 = 0;\n    \n    for (int price : prices) {\n        buy1 = Math.min(buy1, price);\n        profit1 = Math.max(profit1, price - buy1);\n        buy2 = Math.min(buy2, price - profit1);\n        profit2 = Math.max(profit2, price - buy2);\n    }\n    \n    return profit2;\n}"
+        }
+    },
+    "125": {
+        "call_functions": {
+            "c++": "#include <cctype>\n#include <algorithm>\n#include <iostream>\n\nint main() {\n    std::string s = $args;\n    bool result = isPalindrome(s);\n    std::cout << std::boolalpha << result << std::endl;\n    return 0;\n}",
+            "java": "public boolean isPalindrome(String s) {\n    StringBuilder cleaned = new StringBuilder();\n    for (char c : s.toCharArray()) {\n        if (Character.isLetterOrDigit(c)) {\n            cleaned.append(Character.toLowerCase(c));\n        }\n    }\n    int left = 0, right = cleaned.length() - 1;\n    while (left < right) {\n        if (cleaned.charAt(left++) != cleaned.charAt(right--)) return false;\n    }\n    return true;\n}",
+            "python": "if __name__ == \"__main__\":\n    s = $args[0]\n    result = isPalindrome(s)\n    print(result)",
+            "javascript": "function main() {\n    const s = $args;\n    const result = isPalindrome(s);\n    console.log(result);\n}"
+        }
+    },
+    "126": {
+        "call_functions": {
+            "c++": "std::vector<std::vector<std::string>> findLadders(std::string beginWord, std::string endWord, std::vector<std::string>& wordList) {\n    std::unordered_set<std::string> dict(wordList.begin(), wordList.end());\n    if (dict.find(endWord) == dict.end()) {\n        return {};\n    }\n    std::unordered_map<std::string, std::vector<std::string>> adjacent;\n    std::unordered_map<std::string, int> distance;\n    \n    auto neighbors = [&](const std::string& word) {\n        std::vector<std::string> result;\n        std::string temp = word;\n        for (char& ch : temp) {\n            char original = ch;\n            for (int i = 'a'; i <= 'z'; ++i) {\n                ch = i;\n                if (dict.count(temp) && temp != word) {\n                    result.push_back(temp);\n                }\n            }\n            ch = original;\n        }\n        return result;\n    };\n    \n    std::queue<std::string> q;\n    q.push(beginWord);\n    distance[beginWord] = 0;\n    \n    while (!q.empty()) {\n        std::string current = q.front();\n        q.pop();\n        if (current == endWord) {\n            break;\n        }\n        for (const std::string& neighbor : neighbors(current)) {\n            if (!distance.count(neighbor)) {\n                distance[neighbor] = distance[current] + 1;\n                q.push(neighbor);\n            }\n            if (distance[neighbor] == distance[current] + 1) {\n                adjacent[current].push_back(neighbor);\n            }\n        }\n    }\n    \n    std::vector<std::vector<std::string>> result;\n    std::vector<std::string> path = {beginWord};\n    std::function<void(const std::string&)> backtrack = [&](const std::string& word) {\n        if (word == endWord) {\n            result.push_back(path);\n            return;\n        }\n        for (const std::string& next : adjacent[word]) {\n            path.push_back(next);\n            backtrack(next);\n            path.pop_back();\n        }\n    };\n    \n    backtrack(beginWord);\n    return result;\n}",
+            "java": "public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {\n    Set<String> dict = new HashSet<>(wordList);\n    if (!dict.contains(endWord)) {\n        return Collections.emptyList();\n    }\n\n    Map<String, List<String>> adjacent = new HashMap<>();\n    Map<String, Integer> distance = new HashMap<>();\n    Queue<String> queue = new LinkedList<>();\n    queue.offer(beginWord);\n    distance.put(beginWord, 0);\n\n    while (!queue.isEmpty()) {\n        String current = queue.poll();\n        if (current.equals(endWord)) {\n            break;\n        }\n        for (String neighbor : neighbors(current)) {\n            if (!dict.contains(neighbor)) {\n                continue;\n            }\n            if (!distance.containsKey(neighbor)) {\n                distance.put(neighbor, distance.get(current) + 1);\n                queue.offer(neighbor);\n            }\n            if (distance.get(neighbor).equals(distance.get(current) + 1)) {\n                adjacent.computeIfAbsent(current, k -> new ArrayList<>()).add(neighbor);\n            }\n        }\n    }\n\n    List<List<String>> result = new ArrayList<>();\n    List<String> path = new ArrayList<>();\n    path.add(beginWord);\n    backtrack(beginWord, endWord, path, adjacent, result);\n    return result;\n}\n\nprivate void backtrack(String current, String endWord, List<String> path, Map<String, List<String>> adjacent, List<List<String>> result) {\n    if (current.equals(endWord)) {\n        result.add(new ArrayList<>(path));\n        return;\n    }\n    for (String next : adjacent.getOrDefault(current, Collections.emptyList())) {\n        path.add(next);\n        backtrack(next, endWord, path, adjacent, result);\n        path.remove(path.size() - 1);\n    }\n}\n\nprivate List<String> neighbors(String word) {\n    List<String> result = new ArrayList<>();\n    char[] chars = word.toCharArray();\n    for (int i = 0; i < chars.length; i++) {\n        char original = chars[i];\n        for (char j = 'a'; j <= 'z'; j++) {\n            if (j == original) {\n                continue;\n            }\n            chars[i] = j;\n            result.add(new String(chars));\n        }\n        chars[i] = original;\n    }\n    return result;\n}",
+            "python": "if __name__ == \"__main__\":\n    beginWord = $args[0]\n    endWord = $args[1]\n    wordList = $args[2]\n    result = findLadders(beginWord, endWord, wordList)\n    print(result)",
+            "javascript": "function findLadders(beginWord, endWord, wordList) {\n    const dict = new Set(wordList);\n    if (!dict.has(endWord)) {\n        return [];\n    }\n\n    const adjacent = new Map();\n    const distance = new Map();\n    const queue = [beginWord];\n    distance.set(beginWord, 0);\n    \n    function neighbors(word) {\n        const result = [];\n        for (let i = 0; i < word.length; i++) {\n            for (let j = 'a'.charCodeAt(0); j <= 'z'.charCodeAt(0); j++) {\n                const next = word.slice(0, i) + String.fromCharCode(j) + word.slice(i + 1);\n                if (next !== word) {\n                    result.push(next);\n                }\n            }\n        }\n        return result;\n    }\n    \n    while (queue.length > 0) {\n        const current = queue.shift();\n        if (current === endWord) {\n            break;\n        }\n        for (const neighbor of neighbors(current)) {\n            if (!dict.has(neighbor)) {\n                continue;\n            }\n            if (!distance.has(neighbor)) {\n                distance.set(neighbor, distance.get(current) + 1);\n                queue.push(neighbor);\n            }\n            if (distance.get(neighbor) === distance.get(current) + 1) {\n                if (!adjacent.has(current)) {\n                    adjacent.set(current, []);\n                }\n                adjacent.get(current).push(neighbor);\n            }\n        }\n    }\n\n    const result = [];\n    const path = [beginWord];\n\n    function backtrack(word) {\n        if (word === endWord) {\n            result.push([...path]);\n            return;\n        }\n        for (const next of (adjacent.get(word) || [])) {\n            path.push(next);\n            backtrack(next);\n            path.pop();\n        }\n    }\n    \n    backtrack(beginWord);\n    return result;\n}"
+        }
+    },
+    "127": {
+        "call_functions": {
+            "c++": "#include <string>\n#include <vector>\n#include <queue>\n#include <unordered_set>\n\nint main() {\n    std::string beginWord = $args;\n    std::string endWord = $args;\n    std::vector<std::string> wordList = $args;\n    int result = ladderLength(beginWord, endWord, wordList);\n    std::cout << result << std::endl;\n    return 0;\n}",
+            "java": "public int ladderLength(String beginWord, String endWord, List<String> wordList) {\n    Set<String> dict = new HashSet<>(wordList);\n    if (!dict.contains(endWord)) return 0;\n\n    Queue<String> q = new LinkedList<>();\n    q.offer(beginWord);\n    int steps = 1;\n\n    while (!q.isEmpty()) {\n        int size = q.size();\n        for (int i = 0; i < size; ++i) {\n            String currentWord = q.poll();\n            if (currentWord.equals(endWord)) return steps;\n\n            char[] charArray = currentWord.toCharArray();\n            for (int j = 0; j < charArray.length; ++j) {\n                char originalChar = charArray[j];\n                for (int k = 0; k < 26; ++k) {\n                    charArray[j] = (char) ('a' + k);\n                    String newWord = new String(charArray);\n                    if (dict.remove(newWord)) {\n                        q.offer(newWord);\n                    }\n                }\n                charArray[j] = originalChar;\n            }\n        }\n        ++steps;\n    }\n    return 0;\n}",
+            "python": "if __name__ == \"__main__\":\n    beginWord = $args[0]\n    endWord = $args[1]\n    wordList = $args[2]\n    result = ladderLength(beginWord, endWord, wordList)\n    print(result)",
+            "javascript": "function ladderLength(beginWord, endWord, wordList) {\n    const wordSet = new Set(wordList);\n    if (!wordSet.has(endWord)) return 0;\n\n    const q = [beginWord];\n    let steps = 1;\n\n    while (q.length > 0) {\n        const size = q.length;\n        const currentLevel = new Set();\n\n        for (let i = 0; i < size; ++i) {\n            const currentWord = q.shift();\n            if (currentWord === endWord) return steps;\n\n            const wordChars = currentWord.split('');\n            for (let j = 0; j < wordChars.length; ++j) {\n                const originalChar = wordChars[j];\n                for (let k = 0; k < 26; ++k) {\n                    wordChars[j] = String.fromCharCode('a'.charCodeAt(0) + k);\n                    const newWord = wordChars.join('');\n                    if (wordSet.has(newWord)) {\n                        q.push(newWord);\n                        currentLevel.add(newWord);\n                    }\n                }\n                wordChars[j] = originalChar;\n            }\n        }\n        steps++;\n        for (const word of currentLevel) {\n            wordSet.delete(word);\n        }\n    }\n    return 0;\n}"
+        }
+    },
+    "128": {
+        "call_functions": {
+            "c++": "int longestConsecutive(vector<int>& nums) {\n    unordered_set<int> elements(nums.begin(), nums.end());\n    int longestSeq = 0;\n    \n    for (int num : nums) {\n        if (elements.find(num - 1) == elements.end()) {\n            int currentNum = num;\n            int currentSeq = 1;\n            \n            while (elements.find(currentNum + 1) != elements.end()) {\n                currentNum += 1;\n                currentSeq += 1;\n            }\n            \n            longestSeq = max(longestSeq, currentSeq);\n        }\n    }\n    return longestSeq;\n}",
+            "java": "public int longestConsecutive(int[] nums) {\n    Set<Integer> elements = new HashSet<>();\n    for (int num : nums) {\n        elements.add(num);\n    }\n    \n    int longestSeq = 0;\n    \n    for (int num : nums) {\n        if (!elements.contains(num - 1)) {\n            int currentNum = num;\n            int currentSeq = 1;\n            \n            while (elements.contains(currentNum + 1)) {\n                currentNum++;\n                currentSeq++;\n            }\n            \n            longestSeq = Math.max(longestSeq, currentSeq);\n        }\n    }\n    return longestSeq;\n}",
+            "python": "if __name__ == \"__main__\":\n    nums = $args[0]\n    result = longest_consecutive(nums)\n    print(result)",
+            "javascript": "function main() {\n    const nums = $args;\n    const result = longestConsecutive(nums);\n    console.log(result);\n}"
+        }
+    },
+    "129": {
+        "call_functions": {
+            "c++": "int main() {\n    TreeNode* root = $args;\n    int result = sumNumbers(root);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int sumNumbers(TreeNode root) {\n    return sumNumbersHelper(root, 0);\n}",
+            "python": "if __name__ == \"__main__\":\n    root = $args[0]\n    result = sumNumbers(root)\n    print(result)",
+            "javascript": "function main() {\n    const root = $args;\n    const result = sumNumbers(root);\n    console.log(result);\n}\n"
+        }
+    },
+    "131": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <string>\n#include <iostream>\n\nbool isPalindrome(const std::string& s, int start, int end) {\n    while (start < end) {\n        if (s[start++] != s[end--]) return false;\n    }\n    return true;\n}\n\nvoid dfs(const std::string& s, int start, std::vector<std::vector<std::string>>& results, std::vector<std::string> current) {\n    if (start == s.length()) {\n        results.push_back(current);\n        return;\n    }\n    \n    for (int end = start; end < s.length(); ++end) {\n        if (isPalindrome(s, start, end)) {\n            current.push_back(s.substr(start, end - start + 1));\n            dfs(s, end + 1, results, current);\n            current.pop_back();\n        }\n    }\n}\n\nstd::vector<std::vector<std::string>> partition(std::string s) {\n    std::vector<std::vector<std::string>> results;\n    std::vector<std::string> current;\n    dfs(s, 0, results, current);\n    return results;\n}\n\nint main() {\n    std::string s = $args;\n    std::vector<std::vector<std::string>> result = partition(s);\n    for (const auto& vec : result) {\n        for (const auto& str : vec) {\n            std::cout << str << \" \";\n        }\n        std::cout << std::endl;\n    }\n    return 0;\n}",
+            "java": "public List<List<String>> partition(String s)",
+            "python": "if __name__ == \"__main__\":\n    s = $args[0]\n    result = partition(s)\n    print(result)",
+            "javascript": "function partition(s) {\n    let results = [];\n    dfs(s, 0, results, []);\n    return results;\n}"
+        }
+    },
+    "132": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <string>\n#include <iostream>\n\nint main() {\n    std::string s = $args;\n    int result = minCut(s);\n    std::cout << result << std::endl;\n    return 0;\n}",
+            "java": "public int minCut(String s) {\n    int n = $args.length();\n    int[] dp = new int[n + 1];\n    boolean[][] isPalindrome = new boolean[n][n];\n    \n    for (int i=0; i <= n; i++) {\n        dp[i] = i - 1;\n    }\n    \n    for (int j=1; j < n; j++) {\n        for (int i=j; i >= 0; i--) {\n            if ($args.charAt(i) == $args.charAt(j) && (j - i < 2 || isPalindrome[i + 1][j - 1])) {\n                isPalindrome[i][j] = true;\n                dp[j + 1] = Math.min(dp[j + 1], dp[i] + 1);\n            }\n        }\n    }\n    \n    return dp[n];\n}",
+            "python": "if __name__ == \"__main__\":\n    s = $args[0]\n    result = minCut(s)\n    print(result)",
+            "javascript": "function minCut(s) {\n    const n = s.length;\n    const dp = Array.from({ length: n + 1 }, (_, i) => i - 1);\n    const isPalindrome = Array.from({ length: n }, () => Array(n).fill(false));\n    \n    for (let j = 1; j < n; j++) {\n        for (let i = j; i >= 0; i--) {\n            if (s[i] === s[j] && (j - i < 2 || isPalindrome[i + 1][j - 1])) {\n                isPalindrome[i][j] = true;\n                dp[j + 1] = Math.min(dp[j + 1], dp[i] + 1);\n            }\n        }\n    }\n    \n    return dp[n];\n}"
+        }
+    },
+    "134": {
+        "call_functions": {
+            "c++": "int can_complete_circuit(vector<int>& gas, vector<int>& cost) {\n    int total_gas = 0, total_cost = 0, start = 0, gas_tank = 0;\n    for (int i = 0; i < gas.size(); ++i) {\n        total_gas += gas[i];\n        total_cost += cost[i];\n        gas_tank += gas[i] - cost[i];\n        if (gas_tank < 0) {\n            start = i + 1;\n            gas_tank = 0;\n        }\n    }\n    return (total_gas < total_cost) ? -1 : start;\n}"
+        }
+    },
+    "135": {
+        "call_functions": {
+            "c++": "#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> ratings = $args;\n    int result = minCandies(ratings);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int minCandies(int[] ratings) {\n    int n = ratings.length;\n    int[] candies = new int[n];\n    for (int i = 0; i < n; i++) candies[i] = 1;\n\n    for (int i = 1; i < n; i++) {\n        if (ratings[i] > ratings[i - 1]) candies[i] = candies[i - 1] + 1;\n    }\n    for (int i = n - 2; i >= 0; i--) {\n        if (ratings[i] > ratings[i + 1]) candies[i] = Math.max(candies[i], candies[i + 1] + 1);\n    }\n\n    int sum = 0;\n    for (int candy : candies) sum += candy;\n\n    return sum;\n}"
+        }
+    },
+    "136": {
+        "call_functions": {
+            "c++": "int main() {\n    vector<int> nums = $args;\n    int result = singleNumber(nums);\n    cout << result << endl;\n    return 0;\n}"
+        }
+    },
+    "137": {
+        "call_functions": {
+            "c++": "int main() {\n    vector<int> nums = $args;\n    int result = singleNumber(nums);\n    cout << result << endl;\n    return 0;\n}"
+        }
+    },
+    "139": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <string>\n#include <unordered_set>\n#include <iostream>\n\nbool wordBreak(std::string s, std::vector<std::string>& wordDict) {\n    std::unordered_set<std::string> dict(wordDict.begin(), wordDict.end());\n    std::vector<bool> dp(s.size() + 1, false);\n    dp[0] = true;\n    for (size_t i = 1; i <= s.size(); ++i) {\n        for (size_t j = 0; j < i; ++j) {\n            if (dp[j] && dict.find(s.substr(j, i - j)) != dict.end()) {\n                dp[i] = true;\n                break;\n            }\n        }\n    }\n    return dp[s.size()];\n}\n\nint main() {\n    std::string s = $args;\n    std::vector<std::string> wordDict = {\"leet\", \"code\"};\n    bool result = wordBreak(s, wordDict);\n    std::cout << std::boolalpha << result << std::endl;\n    return 0;\n}\n",
+            "java": "public boolean wordBreak(String s, List<String> wordDict) {\n    Set<String> dict = new HashSet<>(wordDict);\n    boolean[] dp = new boolean[s.length() + 1];\n    dp[0] = true;\n    for (int i = 1; i <= s.length(); i++) {\n        for (int j = 0; j < i; j++) {\n            if (dp[j] && dict.contains(s.substring(j, i))) {\n                dp[i] = true;\n                break;\n            }\n        }\n    }\n    return dp[s.length()];\n}"
+        }
+    },
+    "140": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <string>\n#include <unordered_set>\n\nstd::vector<std::string> helper(const std::string& s, const std::unordered_set<std::string>& dict, std::unordered_map<std::string, std::vector<std::string>>& memo);\n\nstd::vector<std::string> wordBreak(std::string s, std::vector<std::string>& wordDict);\n\nint main() {\n    std::string s = $args;\n    std::vector<std::string> wordDict = {\"apple\", \"pen\", \"applepen\", \"pine\", \"pineapple\"};\n    std::vector<std::string> result = wordBreak(s, wordDict);\n    for (const auto& res : result) {\n        std::cout << res << std::endl;\n    }\n    return 0;\n}",
+            "java": "public List<String> wordBreak(String s, List<String> wordDict) {\n    HashSet<String> dict = new HashSet<>(wordDict);\n    HashMap<String, List<String>> memo = new HashMap<>();\n    return helper(s, dict, memo);\n}\n\nprivate List<String> helper(String s, HashSet<String> dict, HashMap<String, List<String>> memo) {\n    if (memo.containsKey(s)) {\n        return memo.get(s);\n    }\n    \n    List<String> res = new ArrayList<>();\n    if (dict.contains(s)) {\n        res.add(s);\n    }\n    \n    for (int i = 1; i < s.length(); ++i) {\n        String prefix = s.substring(0, i);\n        if (!dict.contains(prefix)) continue;\n        String suffix = s.substring(i);\n        List<String> temp = helper(suffix, dict, memo);\n        for (String t : temp) {\n            res.add(prefix + \" \" + t);\n        }\n    }\n\n    memo.put(s, res);\n    return res;\n}"
+        }
+    },
+    "141": {
+        "call_functions": {
+            "c++": "bool hasCycle(ListNode *head) {\n    ListNode *slow = head, *fast = head;\n    while (fast != nullptr && fast->next != nullptr) {\n        slow = slow->next;\n        fast = fast->next->next;\n        if (slow == fast) {\n            return true;\n        }\n    }\n    return false;\n}",
+            "java": "public boolean hasCycle(ListNode head) {\n    ListNode slow = head, fast = head;\n    while (fast != null && fast.next != null) {\n        slow = slow.next;\n        fast = fast.next.next;\n        if (slow == fast) {\n            return true;\n        }\n    }\n    return false;\n}",
+            "python": "if __name__ == \"__main__\":\n    head = $args[0]\n    result = hasCycle(head)\n    print(result)",
+            "javascript": "function main() {\n    const head = $args;\n    const result = hasCycle(head);\n    console.log(result);\n}"
+        }
+    },
+    "146": {
+        "call_functions": {
+            "c++": "#include <unordered_map>\n#include <list>\nusing namespace std;\n\nint main() {\n    int capacity = $args;\n    LRUCache lru(capacity);\n    int result = lru.get(1);\n    lru.put(1, 1);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int get(int key) {\n        Node node = cache.get(key);\n        if (node == null) return -1;\n        moveToHead(node);\n        return node.value;\n    }",
+            "python": "if __name__ == \"__main__\":\n    capacity = $args[0]\n    cache = LRUCache(capacity)\n    cache.put(1, 1)\n    cache.put(2, 2)\n    print(cache.get(1))\n    cache.put(3, 3)\n    print(cache.get(2))\n    cache.put(4, 4)\n    print(cache.get(1))\n    print(cache.get(3))\n    print(cache.get(4))",
+            "javascript": "function main() {\n    const capacity = $args;\n    const cache = new LRUCache(capacity);\n    cache.put(1, 1);\n    cache.put(2, 2);\n    const value1 = cache.get(1);\n    console.log(value1);\n    cache.put(3, 3);\n    const value2 = cache.get(2);\n    console.log(value2);\n}"
+        }
+    },
+    "149": {
+        "call_functions": {
+            "c++": "#include <unordered_map>\n#include <iostream>\n#include <vector>\n#include <algorithm>\n#include <numeric>\n\nusing namespace std;\n\nint maxPoints(vector<vector<int>>& points) {\n    int n = points.size();\n    if (n <= 2) return n;\n    int max_count = 0;\n\n    for (int i = 0; i < n; i++) {\n        std::unordered_map<string, int> slope_map;\n        int duplicates = 0, local_max = 0;\n\n        for (int j = i + 1; j < n; j++) {\n            int deltaX = points[j][0] - points[i][0];\n            int deltaY = points[j][1] - points[i][1];\n\n            if (deltaX == 0 && deltaY == 0) {\n                duplicates++;\n                continue;\n            }\n\n            int gcd = std::gcd(deltaX, deltaY);\n            deltaX /= gcd;\n            deltaY /= gcd;\n\n            string key = to_string(deltaX) + \"_\" + to_string(deltaY);\n            slope_map[key]++;\n            local_max = max(local_max, slope_map[key]);\n        }\n        max_count = max(max_count, local_max + duplicates + 1);\n    }\n\n    return max_count;\n}\n\nint main() {\n    vector<vector<int>> points = $args;\n    int result = maxPoints(points);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int maxPoints(int[][] points) {\n    int n = points.length;\n    if (n <= 2) return n;\n    int maxCount = 0;\n\n    for (int i = 0; i < n-1; i++) {\n        HashMap<String, Integer> slopeMap = new HashMap<>();\n        int duplicates = 0, localMax = 0;\n\n        for (int j = i+1; j < n; j++) {\n            int deltaX = points[j][0] - points[i][0];\n            int deltaY = points[j][1] - points[i][1];\n\n            if (deltaX == 0 && deltaY == 0) {\n                duplicates++;\n                continue;\n            }\n\n            int gcd = gcd(deltaX, deltaY);\n            deltaX /= gcd;\n            deltaY /= gcd;\n\n            String key = deltaX + \"_\" + deltaY;\n            slopeMap.put(key, slopeMap.getOrDefault(key, 0) + 1);\n            localMax = Math.max(localMax, slopeMap.get(key));\n        }\n        maxCount = Math.max(maxCount, localMax + duplicates + 1);\n    }\n\n    return maxCount;\n}",
+            "python": "if __name__ == \"__main__\":\n    points = $args[0]\n    result = maxPoints(points)\n    print(result)",
+            "javascript": "function main() {\n    const points = $args;\n    const result = maxPoints(points);\n    console.log(result);\n}"
+        }
+    },
+    "150": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <string>\n#include <stack>\n#include <iostream>\n\nint main() {\n    vector<string> tokens = $args;\n    int result = evalRPN(tokens);\n    cout << result << endl;\n    return 0;\n}"
+        }
+    },
+    "151": {
+        "call_functions": {
+            "c++": "#include <string>\n#include <sstream>\n#include <vector>\n#include <algorithm>\n\nint main() {\n    std::string s = $args;\n    std::string result = reverseWords(s);\n    std::cout << result << std::endl;\n    return 0;\n}",
+            "java": "public String reverseWords(String s) {\n    String[] words = s.trim().split(\"\\\\s+\");\n    Collections.reverse(Arrays.asList(words));\n    return String.join(\" \", words);\n}",
+            "python": "if __name__ == \"__main__\":\n    s = $args[0]\n    result = reverseWords(s)\n    print(result)",
+            "javascript": "function main() {\n    const s = $args;\n    const result = reverseWords(s);\n    console.log(result);\n}"
+        }
+    },
+    "152": {
+        "call_functions": {
+            "c++": "int maxProduct(vector<int>& nums) {\n    int max_so_far = nums[0];\n    int min_so_far = nums[0];\n    int result = nums[0];\n    \n    for (int i = 1; i < nums.size(); i++) {\n        if (nums[i] < 0)\n            swap(max_so_far, min_so_far);\n        \n        max_so_far = max(nums[i], max_so_far * nums[i]);\n        min_so_far = min(nums[i], min_so_far * nums[i]);\n        result = max(result, max_so_far);\n    }\n    return result;\n}",
+            "java": "public int maxProduct(int[] nums) {\n    int max_so_far = nums[0];\n    int min_so_far = nums[0];\n    int result = nums[0];\n    \n    for (int i = 1; i < nums.length; i++) {\n        if (nums[i] < 0) {\n            int temp = max_so_far;\n            max_so_far = min_so_far;\n            min_so_far = temp;\n        }\n        \n        max_so_far = Math.max(nums[i], max_so_far * nums[i]);\n        min_so_far = Math.min(nums[i], min_so_far * nums[i]);\n        result = Math.max(result, max_so_far);\n    }\n    return result;\n}"
+        }
+    },
+    "153": {
+        "call_functions": {
+            "c++": "int main() {\n    vector<int> nums = $args;\n    int result = findMin(nums);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int findMin(int[] nums) {\n    int left = 0, right = nums.length - 1;\n\n    while (left < right) {\n        int mid = left + (right - left) / 2;\n        if (nums[mid] > nums[right]) {\n            left = mid + 1;\n        } else {\n            right = mid;\n        }\n    }\n    return nums[left];\n}",
+            "python": "if __name__ == \"__main__\":\n    nums = $args[0]\n    result = find_min(nums)\n    print(result)",
+            "javascript": "function main() {\n    const nums = $args;\n    const result = findMin(nums);\n    console.log(result);\n}"
+        }
+    },
+    "154": {
+        "call_functions": {
+            "c++": "int findMin(vector<int>& nums) {\n    int low = 0, high = nums.size() - 1;\n    \n    while (low < high) {\n        int mid = low + (high - low) / 2;\n        if (nums[mid] > nums[high]) {\n            low = mid + 1;\n        } else if (nums[mid] < nums[high]) {\n            high = mid;\n        } else {\n            high--;\n        }\n    }\n    return nums[low];\n}",
+            "java": "public int findMin(int[] nums) {\n    int low = 0, high = nums.length - 1;\n    \n    while (low < high) {\n        int mid = low + (high - low) / 2;\n        if (nums[mid] > nums[high]) {\n            low = mid + 1;\n        } else if (nums[mid] < nums[high]) {\n            high = mid;\n        } else {\n            high--;\n        }\n    }\n    return nums[low];\n}"
+        }
+    },
+    "157": {
+        "call_functions": {}
+    },
+    "159": {
+        "call_functions": {
+            "c++": "int lengthOfLongestSubstringTwoDistinct(string s) {\n    int l = 0, r = 0, max_len = 0, cur_len = 0;\n    unordered_map<char, int> char_count;\n\n    while (r < s.length()) {\n        char_count[s[r]]++;\n        if (char_count.size() <= 2) {\n            cur_len++;\n        } else {\n            while (char_count.size() > 2 && l <= r) {\n                char_count[s[l]]--;\n                if (char_count[s[l]] == 0) {\n                    char_count.erase(s[l]);\n                }\n                l++;\n                cur_len--;\n            }\n            cur_len++;\n        }\n        max_len = max(max_len, cur_len);\n        r++;\n    }\n    return max_len;\n}",
+            "java": "public int lengthOfLongestSubstringTwoDistinct(String s) {\n    int l = 0, r = 0, max_len = 0, cur_len = 0;\n    HashMap<Character, Integer> char_count = new HashMap<>();\n\n    while (r < s.length()) {\n        char_count.put(s.charAt(r), char_count.getOrDefault(s.charAt(r), 0) + 1);\n        if (char_count.size() <= 2) {\n            cur_len++;\n        } else {\n            while (char_count.size() > 2 && l <= r) {\n                char_count.put(s.charAt(l), char_count.get(s.charAt(l)) - 1);\n                if (char_count.get(s.charAt(l)) == 0) {\n                    char_count.remove(s.charAt(l));\n                }\n                l++;\n                cur_len--;\n            }\n            cur_len++;\n        }\n        max_len = Math.max(max_len, cur_len);\n        r++;\n    }\n    return max_len;\n}",
+            "python": "if __name__ == \"__main__\":\n    s = $args[0]\n    result = lengthOfLongestSubstringTwoDistinct(s)\n    print(result)",
+            "javascript": "function lengthOfLongestSubstringTwoDistinct(s) {\n    const input = $args;\n    let l = 0, r = 0, max_len = 0, cur_len = 0;\n    const char_count = new Map();\n\n    while (r < input.length) {\n        char_count.set(input[r], (char_count.get(input[r]) || 0) + 1);\n        if (char_count.size <= 2) {\n            cur_len++;\n        } else {\n            while (char_count.size > 2 && l <= r) {\n                char_count.set(input[l], char_count.get(input[l]) - 1);\n                if (char_count.get(input[l]) === 0) {\n                    char_count.delete(input[l]);\n                }\n                l++;\n                cur_len--;\n            }\n            cur_len++;\n        }\n        max_len = Math.max(max_len, cur_len);\n        r++;\n    }\n    return max_len;\n}"
+        }
+    },
+    "161": {
+        "call_functions": {
+            "c++": "bool isOneEditDistance(string s, string t) {\n    int m = s.length(), n = t.length();\n    if (m > n) {\n        return isOneEditDistance(t, s);\n    }\n    if (n - m > 1) {\n        return false;\n    }\n    bool flag = false;\n    for (int i = 0; i < m; ++i) {\n      if (s[i] != t[i]) {\n          if (m < n) {\n              return s.substr(i) == t.substr(i + 1);\n          } else {\n              return s.substr(i + 1) == t.substr(i + 1);\n          }\n      }\n    }\n    return m + 1 == n;\n}\n\nint main() {\n    string s = $args;\n    string t = $args;\n    bool result = isOneEditDistance(s, t);\n    cout << boolalpha << result << endl;\n    return 0;\n}",
+            "java": "public boolean isOneEditDistance(String s, String t) {\n    int m = s.length();\n    int n = t.length();\n    if (m > n) {\n        return isOneEditDistance(t, s);\n    }\n    if (n - m > 1) {\n        return false;\n    }\n    for (int i = 0; i < m; ++i) {\n        if (s.charAt(i) != t.charAt(i)) {\n            if (m < n) {\n                return s.substring(i).equals(t.substring(i + 1));\n            } else {\n                return s.substring(i + 1).equals(t.substring(i + 1));\n            }\n        }\n    }\n    return m + 1 == n;\n}",
+            "python": "if __name__ == \"__main__\":\n    s = $args[0]\n    t = $args[1]\n    result = isOneEditDistance(s, t)\n    print(result)",
+            "javascript": "function main() {\n    const s = $args[0];\n    const t = $args[1];\n    const result = isOneEditDistance(s, t);\n    console.log(result);\n}"
+        }
+    },
+    "162": {
+        "call_functions": {
+            "c++": "int main() {\n    vector<int> nums = $args;\n    int result = findPeakElement(nums);\n    cout << result << endl;\n    return 0;\n}"
+        }
+    },
+    "163": {
+        "call_functions": {
+            "c++": "#include <vector>\n#include <string>\n#include <iostream>\n\nint main() {\n    std::vector<int> nums = $args;\n    int lower = 0;\n    int upper = 10;\n    std::vector<std::string> result = findMissingRanges(nums, lower, upper);\n\n    for (const auto& range : result) {\n        std::cout << range << std::endl;\n    }\n\n    return 0;\n}",
+            "java": "public List<String> findMissingRanges(int[] nums, int lower, int upper) {\n    List<String> result = new ArrayList<>();\n    long prev = (long) lower - 1;\n\n    for (int i = 0; i <= nums.length; ++i) {\n        long cur = (i == nums.length) ? (long) upper + 1 : nums[i];\n        if (cur - prev >= 2) {\n            result.add(Long.toString(prev + 1) + (cur - prev == 2 ? \"\" : \"->\") + Long.toString(cur - 1));\n        }\n        prev = cur;\n    }\n\n    return result;\n}",
+            "python": "if __name__ == \"__main__\":\n    nums = $args[0]\n    lower = $args[1]\n    upper = $args[2]\n    result = find_missing_ranges(nums, lower, upper)\n    print(result)",
+            "javascript": "function findMissingRanges(nums, lower, upper) {\n    const result = findMissingRanges(nums, lower, upper);\n    console.log(result);\n}"
+        }
+    },
+    "164": {
+        "call_functions": {
+            "c++": "int maximumGap(vector<int>& nums) {\n    if (nums.size() < 2) return 0;\n    \n    int min_val = *min_element(nums.begin(), nums.end());\n    int max_val = *max_element(nums.begin(), nums.end());\n    int len = nums.size();\n    int bucket_size = max(1, (max_val - min_val) / (len - 1));\n    int bucket_num = (max_val - min_val) / bucket_size + 1;\n    vector<pair<int, int>> buckets(bucket_num, {INT_MAX, INT_MIN});\n\n    for (int num : nums) {\n        int idx = (num - min_val) / bucket_size;\n        buckets[idx].first = min(buckets[idx].first, num);\n        buckets[idx].second = max(buckets[idx].second, num);\n    }\n\n    int max_gap = 0, prev_max = min_val;\n    for (auto& bucket : buckets) {\n        if (bucket.first == INT_MAX) continue;\n        max_gap = max(max_gap, bucket.first - prev_max);\n        prev_max = bucket.second;\n    }\n    return max_gap;\n}",
+            "java": "public int maximumGap(int[] nums) {\n    if (nums.length < 2) return 0;\n\n    int min_val = Arrays.stream(nums).min().getAsInt();\n    int max_val = Arrays.stream(nums).max().getAsInt();\n    int len = nums.length;\n    int bucket_size = Math.max(1, (max_val - min_val) / (len - 1));\n    int bucket_num = (max_val - min_val) / bucket_size + 1;\n    int[][] buckets = new int[bucket_num][2];\n    for (int i = 0; i < bucket_num; i++) {\n        buckets[i] = new int[]{Integer.MAX_VALUE, Integer.MIN_VALUE};\n    }\n\n    for (int num : nums) {\n        int idx = (num - min_val) / bucket_size;\n        buckets[idx][0] = Math.min(buckets[idx][0], num);\n        buckets[idx][1] = Math.max(buckets[idx][1], num);\n    }\n\n    int max_gap = 0, prev_max = min_val;\n    for (int[] bucket : buckets) {\n        if (bucket[0] == Integer.MAX_VALUE) continue;\n        max_gap = Math.max(max_gap, bucket[0] - prev_max);\n        prev_max = bucket[1];\n    }\n    return max_gap;\n}",
+            "python": "if __name__ == \"__main__\":\n    nums = $args[0]\n    result = maximumGap(nums)\n    print(result)",
+            "javascript": "function maximumGap(nums) {\n    if (nums.length < 2) return 0;\n\n    let min_val = Math.min(...nums);\n    let max_val = Math.max(...nums);\n    let len = nums.length;\n    let bucket_size = Math.max(1, Math.floor((max_val - min_val) / (len - 1)));\n    let bucket_num = Math.floor((max_val - min_val) / bucket_size) + 1;\n    let buckets = Array.from({ length: bucket_num }, () => [Infinity, -Infinity]);\n\n    for (let num of nums) {\n        let idx = Math.floor((num - min_val) / bucket_size);\n        buckets[idx][0] = Math.min(buckets[idx][0], num);\n        buckets[idx][1] = Math.max(buckets[idx][1], num);\n    }\n\n    let max_gap = 0, prev_max = min_val;\n    for (let bucket of buckets) {\n        if (bucket[0] === Infinity) continue;\n        max_gap = Math.max(max_gap, bucket[0] - prev_max);\n        prev_max = bucket[1];\n    }\n    return max_gap;\n}"
+        }
+    },
+    "165": {
+        "call_functions": {
+            "c++": "int compareVersion(string version1, string version2) {\n    int i = 0, j = 0;\n    while (i < version1.size() || j < version2.size()) {\n        int num1 = 0, num2 = 0;\n        while (i < version1.size() && version1[i] != '.') {\n            num1 = num1 * 10 + (version1[i++] - '0');\n        }\n        while (j < version2.size() && version2[j] != '.') {\n            num2 = num2 * 10 + (version2[j++] - '0');\n        }\n        if (num1 < num2) return -1;\n        if (num1 > num2) return 1;\n        i++; j++;\n    }\n    return 0;\n}",
+            "java": "public int compareVersion(String version1, String version2) {\n    int i = 0, j = 0;\n    while (i < version1.length() || j < version2.length()) {\n        int num1 = 0, num2 = 0;\n        while (i < version1.length() && version1.charAt(i) != '.') {\n            num1 = num1 * 10 + (version1.charAt(i++) - '0');\n        }\n        while (j < version2.length() && version2.charAt(j) != '.') {\n            num2 = num2 * 10 + (version2.charAt(j++) - '0');\n        }\n        if (num1 < num2) return -1;\n        if (num1 > num2) return 1;\n        i++; j++;\n    }\n    return 0;\n}",
+            "python": "if __name__ == \"__main__\":\n    version1 = $args[0]\n    version2 = $args[1]\n    result = compare_version(version1, version2)\n    print(result)",
+            "javascript": "function main() {\n    const version1 = $args;\n    const version2 = $args;\n    const result = compareVersion(version1, version2);\n    console.log(result);\n}"
+        }
+    },
+    "166": {
+        "call_functions": {
+            "c++": "#include <unordered_map>\nstd::string fractionToDecimal(int numerator, int denominator) {\n    if (numerator == 0) return \"0\";\n    std::string res;\n    if ((numerator > 0) ^ (denominator > 0)) res += '-';\n    long num = std::abs((long)numerator), den = std::abs((long)denominator);\n    res += std::to_string(num / den);\n    num %= den;\n    if (num == 0) return res;\n    res += '.';\n    std::unordered_map<int, int> map;\n    while (num) {\n        if (map.find(num) != map.end()) {\n            res.insert(map[num], \"(\");\n            res += \")\";\n            break;\n        }\n        map[num] = res.size();\n        num *= 10;\n        res += std::to_string(num / den);\n        num %= den;\n    }\n    return res;\n}\n\nint main() {\n    int numerator = $args;\n    int denominator = $args;\n    std::string result = fractionToDecimal(numerator, denominator);\n    std::cout << result << std::endl;\n    return 0;\n}",
+            "java": "public String fractionToDecimal(int numerator, int denominator) {\n    if (numerator == 0) return \"0\";\n    StringBuilder res = new StringBuilder();\n    if ((numerator > 0) ^ (denominator > 0)) res.append('-');\n    long num = Math.abs((long)numerator), den = Math.abs((long)denominator);\n    res.append(num / den);\n    num %= den;\n    if (num == 0) return res.toString();\n    res.append('.');\n    HashMap<Long, Integer> map = new HashMap<>();\n    while (num != 0) {\n        if (map.containsKey(num)) {\n            res.insert(map.get(num), \"(\");\n            res.append(\")\");\n            break;\n        }\n        map.put(num, res.length());\n        num *= 10;\n        res.append(num / den);\n        num %= den;\n    }\n    return res.toString();\n}"
+        }
+    },
+    "167": {
+        "call_functions": {}
+    },
+    "168": {
+        "call_functions": {
+            "c++": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int columnNumber = $args;\n    std::string result = convertToTitle(columnNumber);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public String convertToTitle(int columnNumber) {\n    StringBuilder result = new StringBuilder();\n    while (columnNumber > 0) {\n        columnNumber--;\n        result.insert(0, (char) ('A' + columnNumber % 26));\n        columnNumber /= 26;\n    }\n    return result.toString();\n}"
+        }
+    },
+    "169": {
+        "call_functions": {
+            "c++": "int main() {\n    vector<int> nums = $args;\n    int result = majorityElement(nums);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int main(int[] args) {\n    int[] nums = args;\n    int count = 0;\n    Integer candidate = null;\n\n    for (int num : nums) {\n        if (count == 0) {\n            candidate = num;\n        }\n        count += (num == candidate) ? 1 : -1;\n    }\n\n    return candidate;\n}"
+        }
+    },
+    "171": {
+        "call_functions": {
+            "c++": "int main() {\n    string columnTitle = $args;\n    int result = titleToNumber(columnTitle);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int titleToNumber(String columnTitle) {\n    int result = 0;\n    for (char c : columnTitle.toCharArray()) {\n        result = result * 26 + (c - 'A' + 1);\n    }\n    return result;\n}",
+            "python": "if __name__ == \"__main__\":\n    column_title = $args[0]\n    result = title_to_number(column_title)\n    print(result)",
+            "javascript": "function main() {\n    const columnTitle = $args;\n    const result = titleToNumber(columnTitle);\n    console.log(result);\n}"
+        }
+    },
+    "172": {
+        "call_functions": {}
+    },
+    "174": {
+        "call_functions": {
+            "c++": "#include<vector>\nusing namespace std;\n\nint main() {\n    vector<vector<int>> dungeon = $args;\n    int result = calculateMinimumHP(dungeon);\n    cout << result << endl;\n    return 0;\n}"
+        }
+    },
+    "179": {
+        "call_functions": {
+            "c++": "#include <algorithm>\n#include <string>\n#include <vector>\n#include <iostream>\n\nbool compare(std::string a, std::string b) {\n    return a+b > b+a;\n}\n\nstd::string largestNumber(std::vector<int>& nums) {\n    std::vector<std::string> asStrs;\n    for (int num : nums) asStrs.push_back(std::to_string(num));\n    std::sort(asStrs.begin(), asStrs.end(), compare);\n    std::string res;\n    for (std::string s: asStrs) res += s;\n    return res[0] == '0' ? \"0\" : res;\n}\n\nint main() {\n    std::vector<int> nums = $args;\n    std::string result = largestNumber(nums);\n    std::cout << result << std::endl;\n    return 0;\n}",
+            "java": "public String largestNumber(int[] nums) {\n        String[] strNums = new String[nums.length];\n        for (int i = 0; i < nums.length; i++) {\n            strNums[i] = String.valueOf(nums[i]);\n        }\n        Arrays.sort(strNums, (a, b) -> (b + a).compareTo(a + b));\n        if (strNums[0].equals(\"0\")) {\n            return \"0\";\n        }\n        StringBuilder sb = new StringBuilder();\n        for (String str : strNums) sb.append(str);\n        return sb.toString();\n    }",
+            "python": "if __name__ == \"__main__\":\n    nums = $args[0]\n    result = largestNumber(nums)\n    print(result)",
+            "javascript": "function main() {\n    const nums = $args;\n    const result = largestNumber(nums);\n    console.log(result);\n}"
+        }
+    }
+}

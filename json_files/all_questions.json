@@ -1,0 +1,2254 @@
+{
+    "1": {
+        "Q_id": "1",
+        "title": "Two Sum",
+        "description": "Given an array of integers `nums` and an integer `target`, return the indices of the two numbers such that they add up to `target`. You may assume that each input would have exactly one solution, and you may not use the same element twice. You can return the answer in any order.",
+        "example": "Given an array nums = [2,7,11,15] and target = 9, the output should be [0,1] because nums[0] + nums[1] = 2 + 7 = 9.",
+        "level": "Easy",
+        "tags": [
+            "Array",
+            "Two Pointers"
+        ],
+        "sample_code": {
+            "c++": "#include <vector>\n#include <unordered_map>\n\nstd::vector<int> twoSum(std::vector<int>& nums, int target) {\n    std::unordered_map<int, int> map;\n    for (int i = 0; i < nums.size(); i++) {\n        int complement = target - nums[i];\n        if (map.find(complement) != map.end()) {\n            return {map[complement], i};\n        }\n        map[nums[i]] = i;\n    }\n    return {};\n}\n",
+            "java": "import java.util.HashMap;\nimport java.util.Map;\n\npublic int[] twoSum(int[] nums, int target) {\n    Map<Integer, Integer> map = new HashMap<>();\n    for (int i = 0; i < nums.length; i++) {\n        int complement = target - nums[i];\n        if (map.containsKey(complement)) {\n            return new int[]{map.get(complement), i};\n        }\n        map.put(nums[i], i);\n    }\n    throw new IllegalArgumentException(\"No two sum solution\");\n}\n",
+            "python": "def twoSum(nums, target):\n    map = {}\n    for i, num in enumerate(nums):\n        complement = target - num\n        if complement in map:\n            return [map[complement], i]\n        map[num] = i\n    return []\n",
+            "javascript": "function twoSum(nums, target) {\n    const map = new Map();\n    for (let i = 0; i < nums.length; i++) {\n        const complement = target - nums[i];\n        if (map.has(complement)) {\n            return [map.get(complement), i];\n        }\n        map.set(nums[i], i);\n    }\n    return [];\n}\n",
+            "explanation": "The algorithm leverages a hash map (unordered_map in C++, HashMap in Java, dictionary in Python, and Map in JavaScript). It iterates through the given 'nums' array and calculates the complementary value (target - current value). If the complementary value is already in the hash map, it means that we found a solution, and we return those indices. If the complement is not in the hash map, we store the current element in the hash map with its index. If the algorithm doesn't find the solution, it returns an empty array or throws an exception (in Java).\n\nThis approach has a time complexity of O(n) and a space complexity of O(n) as well."
+        },
+        "test_cases": {
+            "inputs": [
+                {
+                    "nums": [
+                        2,
+                        7,
+                        11,
+                        15
+                    ],
+                    "target": 9
+                },
+                {
+                    "nums": [
+                        3,
+                        2,
+                        4
+                    ],
+                    "target": 6
+                },
+                {
+                    "nums": [
+                        3,
+                        3
+                    ],
+                    "target": 6
+                },
+                {
+                    "nums": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5
+                    ],
+                    "target": 9
+                },
+                {
+                    "nums": [
+                        10,
+                        20,
+                        30,
+                        40,
+                        50
+                    ],
+                    "target": 70
+                },
+                {
+                    "nums": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ],
+                    "target": 0
+                },
+                {
+                    "nums": [
+                        -1,
+                        -2,
+                        -3,
+                        -4,
+                        -5
+                    ],
+                    "target": -8
+                },
+                {
+                    "nums": [
+                        100,
+                        200,
+                        300,
+                        400,
+                        500
+                    ],
+                    "target": 600
+                },
+                {
+                    "nums": [
+                        1,
+                        3,
+                        5,
+                        7,
+                        9
+                    ],
+                    "target": 12
+                },
+                {
+                    "nums": [
+                        2,
+                        4,
+                        6,
+                        8,
+                        10
+                    ],
+                    "target": 14
+                },
+                {
+                    "nums": [
+                        9,
+                        8,
+                        7,
+                        6,
+                        5
+                    ],
+                    "target": 14
+                },
+                {
+                    "nums": [
+                        5,
+                        10,
+                        15,
+                        20,
+                        25
+                    ],
+                    "target": 30
+                },
+                {
+                    "nums": [
+                        1,
+                        1,
+                        1,
+                        1,
+                        1
+                    ],
+                    "target": 2
+                },
+                {
+                    "nums": [
+                        2,
+                        2,
+                        2,
+                        2,
+                        2
+                    ],
+                    "target": 4
+                },
+                {
+                    "nums": [
+                        3,
+                        6,
+                        9,
+                        12,
+                        15
+                    ],
+                    "target": 18
+                },
+                {
+                    "nums": [
+                        4,
+                        8,
+                        12,
+                        16,
+                        20
+                    ],
+                    "target": 24
+                },
+                {
+                    "nums": [
+                        5,
+                        5,
+                        5,
+                        5,
+                        5
+                    ],
+                    "target": 10
+                },
+                {
+                    "nums": [
+                        6,
+                        12,
+                        18,
+                        24,
+                        30
+                    ],
+                    "target": 36
+                },
+                {
+                    "nums": [
+                        7,
+                        14,
+                        21,
+                        28,
+                        35
+                    ],
+                    "target": 42
+                },
+                {
+                    "nums": [
+                        8,
+                        16,
+                        24,
+                        32,
+                        40
+                    ],
+                    "target": 48
+                }
+            ],
+            "outputs": [
+                [
+                    0,
+                    1
+                ],
+                [
+                    1,
+                    2
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    2,
+                    4
+                ],
+                [
+                    1,
+                    3
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    1,
+                    4
+                ],
+                [
+                    1,
+                    3
+                ],
+                [
+                    1,
+                    3
+                ],
+                [
+                    0,
+                    2
+                ],
+                [
+                    1,
+                    2
+                ],
+                [
+                    0,
+                    3
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    0,
+                    1
+                ],
+                [
+                    2,
+                    4
+                ],
+                [
+                    1,
+                    3
+                ],
+                [
+                    0,
+                    4
+                ],
+                [
+                    1,
+                    3
+                ],
+                [
+                    0,
+                    2
+                ],
+                [
+                    1,
+                    3
+                ]
+            ]
+        },
+        "structure": {
+            "c++": "#include <vector>\n#include <unordered_map>\n\nstd::vector<int> twoSum(std::vector<int>& nums, int target) \n    // Your code here\n}\n",
+            "java": "import java.util.HashMap;\nimport java.util.Map;\n\npublic int[] twoSum(int[] nums, int target) \n    // Your code here\n}\n",
+            "python": "def twoSum(nums, target):\n    # Your code here\n\n",
+            "javascript": "function twoSum(nums, target) \n    // Your code here\n}\n"
+        },
+        "call_functions": {
+            "c++": "#include <vector>\n#include <unordered_map>\n#include <iostream>\n\nint main() {\n    std::vector<int> nums = $args;\n    int target = $args;\n    std::vector<int> result = twoSum(nums, target);\n    for (int i : result) {\n        std::cout << i << \" \";\n    }\n    std::cout << std::endl;\n    return 0;\n}",
+            "java": "public int[] twoSum(int[] nums, int target) {\n    Map<Integer, Integer> map = new HashMap<>();\n    for (int i = 0; i < nums.length; i++) {\n        int complement = target - nums[i];\n        if (map.containsKey(complement)) {\n            return new int[]{map.get(complement), i};\n        }\n        map.put(nums[i], i);\n    }\n    throw new IllegalArgumentException(\"No two sum solution\");\n}",
+            "python": "if __name__ == \"__main__\":\n    nums = $args[0]\n    target = $args[1]\n    result = twoSum(nums, target)\n    print(result)",
+            "javascript": "function main() {\n    const nums = $args[0];\n    const target = $args[1];\n    const result = twoSum(nums, target);\n    console.log(result);\n}"
+        }
+    },
+    "3": {
+        "Q_id": "3",
+        "title": "Longest Substring Without Repeating Characters",
+        "description": "Given a string `s`, find the length of the longest substring without repeating characters.",
+        "example": "Example 1:\n\nInput: s = \"abcabcbb\"\nOutput: 3\nExplanation: The answer is \"abc\", with the length of 3.",
+        "level": "Medium",
+        "tags": [
+            "string",
+            "sliding window",
+            "hash table"
+        ],
+        "sample_code": {
+            "c++": "#include <string>\n#include <unordered_set>\n\nint lengthOfLongestSubstring(std::string s) {\n    int left = 0, right = 0, maxLength = 0;\n    std::unordered_set<char> characters;\n\n    while (right < s.size()) {\n        if (characters.find(s[right]) == characters.end()) {\n            characters.insert(s[right]);\n            maxLength = std::max(maxLength, right - left + 1);\n            right++;\n        } else {\n            characters.erase(s[left]);\n            left++;\n        }\n    }\n\n    return maxLength;\n}\n",
+            "java": "import java.util.HashSet;\nimport java.util.Set;\n\npublic int lengthOfLongestSubstring(String s) {\n    int left = 0, right = 0, maxLength = 0;\n    Set<Character> characters = new HashSet<>();\n\n    while (right < s.length()) {\n        if (!characters.contains(s.charAt(right))) {\n            characters.add(s.charAt(right));\n            maxLength = Math.max(maxLength, right - left + 1);\n            right++;\n        } else {\n            characters.remove(s.charAt(left));\n            left++;\n        }\n    }\n\n    return maxLength;\n}\n",
+            "python": "def length_of_longest_substring(s: str) -> int:\n    left = 0\n    right = 0\n    max_length = 0\n    characters = set()\n\n    while right < len(s):\n        if s[right] not in characters:\n            characters.add(s[right])\n            max_length = max(max_length, right - left + 1)\n            right += 1\n        else:\n            characters.remove(s[left])\n            left += 1\n\n    return max_length\n",
+            "javascript": "function lengthOfLongestSubstring(s) {\n    let left = 0, right = 0, maxLength = 0;\n    const characters = new Set();\n\n    while (right < s.length) {\n        if (!characters.has(s.charAt(right))) {\n            characters.add(s.charAt(right));\n            maxLength = Math.max(maxLength, right - left + 1);\n            right++;\n        } else {\n            characters.delete(s.charAt(left));\n            left++;\n        }\n    }\n\n    return maxLength;\n}\n",
+            "explanation": "The algorithm uses a sliding window with two pointers, left and right, to iterate through the string. It also uses a set to store the unique characters in the current window.\n\n1. Initialize left and right pointers to the start of the string, and maxLength to 0.\n2. Check if the character at the right index is in the set.\n   - If it's not in the set, add the character to the set, update maxLength, and move the right pointer forward.\n   - If it's in the set, remove the character at the left index from the set, and move the left pointer forward.\n3. Repeat step 2 until the right pointer reaches the end of the string.\n4. Return maxLength. \n\nThe algorithm runs in O(n) time, where n is the length of the input string."
+        },
+        "test_cases": {
+            "inputs": [
+                "\"abcabcbb\"",
+                "\"bbbbb\"",
+                "\"pwwkew\"",
+                "\"\"",
+                "\"a\"",
+                "\"abcdefg\"",
+                "\"aab\"",
+                "\"abb\"",
+                "\"abcabcabc\"",
+                "\"abcdeffghijklmnopqrstuvwxyz\""
+            ],
+            "outputs": [
+                "3",
+                "1",
+                "3",
+                "0",
+                "1",
+                "7",
+                "2",
+                "2",
+                "3",
+                "26"
+            ]
+        },
+        "structure": {
+            "c++": "#include <string>\n#include <unordered_set>\n\nint lengthOfLongestSubstring(std::string s) \n    // Your code here\n}\n",
+            "java": "import java.util.HashSet;\nimport java.util.Set;\n\npublic int lengthOfLongestSubstring(String s) \n    // Your code here\n}\n",
+            "python": "def length_of_longest_substring(s: str) -> int:\n    # Your code here\n\n",
+            "javascript": "function lengthOfLongestSubstring(s) \n    // Your code here\n}\n"
+        },
+        "call_functions": {
+            "c++": "#include <string>\n#include <unordered_set>\n#include <iostream>\n\nint main() {\n    std::string s = $args;\n    int result = lengthOfLongestSubstring(s);\n    std::cout << result << std::endl;\n    return 0;\n}",
+            "java": "public int lengthOfLongestSubstring(String s) {\n    int left = 0, right = 0, maxLength = 0;\n    Set<Character> characters = new HashSet<>();\n\n    while (right < s.length()) {\n        if (!characters.contains(s.charAt(right))) {\n            characters.add(s.charAt(right));\n            maxLength = Math.max(maxLength, right - left + 1);\n            right++;\n        } else {\n            characters.remove(s.charAt(left));\n            left++;\n        }\n    }\n\n    return maxLength;\n}",
+            "python": "if __name__ == \"__main__\":\n    s = $args\n    result = length_of_longest_substring(s)\n    print(result)\n}",
+            "javascript": "function main() {\n    const s = $args;\n    const result = lengthOfLongestSubstring(s);\n    console.log(result);\n}"
+        }
+    },
+    "4": {
+        "Q_id": "4",
+        "title": "Median of Two Sorted Arrays",
+        "description": "Given two sorted arrays `nums1` and `nums2` of size `m` and `n` respectively, return the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).",
+        "example": "Given nums1 = [1,3] and nums2 = [2], the merged array is [1,2,3] and the median is 2.0.",
+        "level": "Medium",
+        "tags": [
+            "array",
+            "sorting"
+        ],
+        "sample_code": {
+            "c++": "double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {\n    if (nums1.size() > nums2.size()) {\n        return findMedianSortedArrays(nums2, nums1);\n    }\n    \n    int x = nums1.size();\n    int y = nums2.size();\n    int low = 0;\n    int high = x;\n    \n    while (low <= high) {\n        int partitionX = (low + high) / 2;\n        int partitionY = (x + y + 1) / 2 - partitionX;\n        \n        int maxLeftX = (partitionX == 0) ? INT_MIN : nums1[partitionX - 1];\n        int minRightX = (partitionX == x) ? INT_MAX : nums1[partitionX];\n        \n        int maxLeftY = (partitionY == 0) ? INT_MIN : nums2[partitionY - 1];\n        int minRightY = (partitionY == y) ? INT_MAX : nums2[partitionY];\n        \n        if (maxLeftX <= minRightY && maxLeftY <= minRightX) {\n            if ((x + y) % 2 == 0) {\n                return (double(max(maxLeftX, maxLeftY) + min(minRightX, minRightY))) / 2;\n            } else {\n                return double(max(maxLeftX, maxLeftY));\n            }\n        } else if (maxLeftX > minRightY) {\n            high = partitionX - 1;\n        } else {\n            low = partitionX + 1;\n        }\n    }    \n    return 0;\n}\n",
+            "java": "public double findMedianSortedArrays(int[] nums1, int[] nums2) {\n    if (nums1.length > nums2.length) {\n        return findMedianSortedArrays(nums2, nums1);\n    }\n    \n    int x = nums1.length;\n    int y = nums2.length;\n    int low = 0;\n    int high = x;\n    \n    while (low <= high) {\n        int partitionX = (low + high) / 2;\n        int partitionY = (x + y + 1) / 2 - partitionX;\n        \n        int maxLeftX = (partitionX == 0) ? Integer.MIN_VALUE : nums1[partitionX - 1];\n        int minRightX = (partitionX == x) ? Integer.MAX_VALUE : nums1[partitionX];\n        \n        int maxLeftY = (partitionY == 0) ? Integer.MIN_VALUE : nums2[partitionY - 1];\n        int minRightY = (partitionY == y) ? Integer.MAX_VALUE : nums2[partitionY];\n        \n        if (maxLeftX <= minRightY && maxLeftY <= minRightX) {\n            if ((x + y) % 2 == 0) {\n                return (double)(Math.max(maxLeftX, maxLeftY) + Math.min(minRightX, minRightY)) / 2;\n            } else {\n                return (double)Math.max(maxLeftX, maxLeftY);\n            }\n        } else if (maxLeftX > minRightY) {\n            high = partitionX - 1;\n        } else {\n            low = partitionX + 1;\n        }\n    }    \n    return 0;\n}\n",
+            "python": "def findMedianSortedArrays(nums1, nums2):\n    if len(nums1) > len(nums2):\n        return findMedianSortedArrays(nums2, nums1)\n    \n    x, y = len(nums1), len(nums2)\n    low, high = 0, x\n\n    while low <= high:\n        partition_x = (low + high) // 2\n        partition_y = (x + y + 1) // 2 - partition_x\n\n        max_left_x = float('-inf') if partition_x == 0 else nums1[partition_x - 1]\n        min_right_x = float('inf') if partition_x == x else nums1[partition_x]\n\n        max_left_y = float('-inf') if partition_y == 0 else nums2[partition_y - 1]\n        min_right_y = float('inf') if partition_y == y else nums2[partition_y]\n\n        if max_left_x <= min_right_y and max_left_y <= min_right_x:\n            if (x + y) % 2 == 0:\n                return (max(max_left_x, max_left_y) + min(min_right_x, min_right_y)) / 2\n            else:\n                return max(max_left_x, max_left_y)\n        elif max_left_x > min_right_y:\n            high = partition_x - 1\n        else:\n            low = partition_x + 1\n    \n    return 0\n",
+            "javascript": "function findMedianSortedArrays(nums1, nums2) {\n    if (nums1.length > nums2.length) {\n        return findMedianSortedArrays(nums2, nums1);\n    }\n    \n    const x = nums1.length;\n    const y = nums2.length;\n    let low = 0;\n    let high = x;\n    \n    while (low <= high) {\n        const partitionX = Math.floor((low + high) / 2);\n        const partitionY = Math.floor((x + y + 1) / 2) - partitionX;\n        \n        const maxLeftX = (partitionX === 0) ? Number.NEGATIVE_INFINITY : nums1[partitionX - 1];\n        const minRightX = (partitionX === x) ? Number.POSITIVE_INFINITY : nums1[partitionX];\n        \n        const maxLeftY = (partitionY === 0) ? Number.NEGATIVE_INFINITY : nums2[partitionY - 1];\n        const minRightY = (partitionY === y) ? Number.POSITIVE_INFINITY : nums2[partitionY];\n        \n        if (maxLeftX <= minRightY && maxLeftY <= minRightX) {\n            if ((x + y) % 2 === 0) {\n                return (Math.max(maxLeftX, maxLeftY) + Math.min(minRightX, minRightY)) / 2;\n            } else {\n                return Math.max(maxLeftX, maxLeftY);\n            }\n        } else if (maxLeftX > minRightY) {\n            high = partitionX - 1;\n        } else {\n            low = partitionX + 1;\n        }\n    }    \n    return 0;\n}\n\n",
+            "explanation": "1. Choose the smaller array as nums1 so that the problem is simpler with less log(n) complexity.\n2. Use Binary Search (BS) to partition the smallest array.\n3. Now we calculate the position of partition in the larger array (nums2) having fetched the smaller one.\n4. Find the four important numbers - maxSize - left and right of partition in the two arrays.\n5. If maxSizeLeft <= minSizeRight and maxSizeLeft2 <= minSizeRight2, then the partition of both arrays is correct, if not, adjust the partition of nums1. If maxLeftX > minRightY, move the BS partition to the left; if maxLeftY > minRightX, move the BS partition to the right.\n6. When the correct partition is found, calculate the median based on the length of the merged array, even or odd."
+        },
+        "test_cases": {
+            "inputs": [
+                {
+                    "nums1": [
+                        1,
+                        3
+                    ],
+                    "nums2": [
+                        2
+                    ]
+                },
+                {
+                    "nums1": [
+                        1,
+                        2
+                    ],
+                    "nums2": [
+                        3,
+                        4
+                    ]
+                },
+                {
+                    "nums1": [
+                        1,
+                        2,
+                        5,
+                        9
+                    ],
+                    "nums2": [
+                        3,
+                        4,
+                        6,
+                        7,
+                        8
+                    ]
+                },
+                {
+                    "nums1": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5
+                    ],
+                    "nums2": [
+                        6,
+                        7,
+                        8,
+                        9,
+                        10
+                    ]
+                },
+                {
+                    "nums1": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5
+                    ],
+                    "nums2": [
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11
+                    ]
+                },
+                {
+                    "nums1": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6
+                    ],
+                    "nums2": [
+                        7,
+                        8,
+                        9,
+                        10,
+                        11
+                    ]
+                },
+                {
+                    "nums1": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6
+                    ],
+                    "nums2": [
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12
+                    ]
+                },
+                {
+                    "nums1": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7
+                    ],
+                    "nums2": [
+                        8,
+                        9,
+                        10,
+                        11,
+                        12
+                    ]
+                },
+                {
+                    "nums1": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7
+                    ],
+                    "nums2": [
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13
+                    ]
+                },
+                {
+                    "nums1": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8
+                    ],
+                    "nums2": [
+                        9,
+                        10,
+                        11,
+                        12,
+                        13
+                    ]
+                },
+                {
+                    "nums1": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8
+                    ],
+                    "nums2": [
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14
+                    ]
+                },
+                {
+                    "nums1": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9
+                    ],
+                    "nums2": [
+                        10,
+                        11,
+                        12,
+                        13,
+                        14
+                    ]
+                },
+                {
+                    "nums1": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9
+                    ],
+                    "nums2": [
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15
+                    ]
+                },
+                {
+                    "nums1": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10
+                    ],
+                    "nums2": [
+                        11,
+                        12,
+                        13,
+                        14,
+                        15
+                    ]
+                },
+                {
+                    "nums1": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10
+                    ],
+                    "nums2": [
+                        11,
+                        12,
+                        13,
+                        14,
+                        15,
+                        16
+                    ]
+                },
+                {
+                    "nums1": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11
+                    ],
+                    "nums2": [
+                        12,
+                        13,
+                        14,
+                        15,
+                        16
+                    ]
+                },
+                {
+                    "nums1": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11
+                    ],
+                    "nums2": [
+                        12,
+                        13,
+                        14,
+                        15,
+                        16,
+                        17
+                    ]
+                },
+                {
+                    "nums1": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12
+                    ],
+                    "nums2": [
+                        13,
+                        14,
+                        15,
+                        16,
+                        17
+                    ]
+                },
+                {
+                    "nums1": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12
+                    ],
+                    "nums2": [
+                        13,
+                        14,
+                        15,
+                        16,
+                        17,
+                        18
+                    ]
+                },
+                {
+                    "nums1": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13
+                    ],
+                    "nums2": [
+                        14,
+                        15,
+                        16,
+                        17,
+                        18
+                    ]
+                },
+                {
+                    "nums1": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13
+                    ],
+                    "nums2": [
+                        14,
+                        15,
+                        16,
+                        17,
+                        18,
+                        19
+                    ]
+                }
+            ],
+            "outputs": [
+                2.0,
+                2.5,
+                5.5,
+                5.5,
+                6.0,
+                6.0,
+                6.5,
+                6.5,
+                7.0,
+                7.0,
+                7.5,
+                7.5,
+                8.0,
+                8.0,
+                8.5,
+                8.5,
+                9.0,
+                9.0,
+                9.5,
+                9.5
+            ]
+        },
+        "structure": {
+            "c++": "double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) \n    // Your code here\n}\n",
+            "java": "public double findMedianSortedArrays(int[] nums1, int[] nums2) \n    // Your code here\n}\n",
+            "python": "def findMedianSortedArrays(nums1, nums2):\n    # Your code here\n\n",
+            "javascript": "function findMedianSortedArrays(nums1, nums2) \n    // Your code here\n}\n\n"
+        },
+        "call_functions": {
+            "c++": "double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {\n    if (nums1.size() > nums2.size()) {\n        return findMedianSortedArrays(nums2, nums1);\n    }\n    \n    int x = nums1.size();\n    int y = nums2.size();\n    int low = 0;\n    int high = x;\n    \n    while (low <= high) {\n        int partitionX = (low + high) / 2;\n        int partitionY = (x + y + 1) / 2 - partitionX;\n        \n        int maxLeftX = (partitionX == 0) ? INT_MIN : nums1[partitionX - 1];\n        int minRightX = (partitionX == x) ? INT_MAX : nums1[partitionX];\n        \n        int maxLeftY = (partitionY == 0) ? INT_MIN : nums2[partitionY - 1];\n        int minRightY = (partitionY == y) ? INT_MAX : nums2[partitionY];\n        \n        if (maxLeftX <= minRightY && maxLeftY <= minRightX) {\n            if ((x + y) % 2 == 0) {\n                return (double(max(maxLeftX, maxLeftY) + min(minRightX, minRightY))) / 2;\n            } else {\n                return double(max(maxLeftX, maxLeftY));\n            }\n        } else if (maxLeftX > minRightY) {\n            high = partitionX - 1;\n        } else {\n            low = partitionX + 1;\n        }\n    }    \n    return 0;\n}",
+            "java": "public double findMedianSortedArrays(int[] nums1, int[] nums2) {\n    if (nums1.length > nums2.length) {\n        return findMedianSortedArrays(nums2, nums1);\n    }\n    \n    int x = nums1.length;\n    int y = nums2.length;\n    int low = 0;\n    int high = x;\n    \n    while (low <= high) {\n        int partitionX = (low + high) / 2;\n        int partitionY = (x + y + 1) / 2 - partitionX;\n        \n        int maxLeftX = (partitionX == 0) ? Integer.MIN_VALUE : nums1[partitionX - 1];\n        int minRightX = (partitionX == x) ? Integer.MAX_VALUE : nums1[partitionX];\n        \n        int maxLeftY = (partitionY == 0) ? Integer.MIN_VALUE : nums2[partitionY - 1];\n        int minRightY = (partitionY == y) ? Integer.MAX_VALUE : nums2[partitionY];\n        \n        if (maxLeftX <= minRightY && maxLeftY <= minRightX) {\n            if ((x + y) % 2 == 0) {\n                return (double)(Math.max(maxLeftX, maxLeftY) + Math.min(minRightX, minRightY)) / 2;\n            } else {\n                return (double)Math.max(maxLeftX, maxLeftY);\n            }\n        } else if (maxLeftX > minRightY) {\n            high = partitionX - 1;\n        } else {\n            low = partitionX + 1;\n        }\n    }    \n    return 0;\n}",
+            "python": "if __name__ == '__main__':\n    nums1 = $args\n    nums2 = $args\n    result = findMedianSortedArrays(nums1, nums2)\n    print(result)\n}",
+            "javascript": "function findMedianSortedArrays(nums1, nums2) {\n    const x = nums1.length;\n    const y = nums2.length;\n    let low = 0;\n    let high = x;\n    \n    while (low <= high) {\n        const partitionX = Math.floor((low + high) / 2);\n        const partitionY = Math.floor((x + y + 1) / 2) - partitionX;\n        \n        const maxLeftX = (partitionX === 0) ? Number.NEGATIVE_INFINITY : nums1[partitionX - 1];\n        const minRightX = (partitionX === x) ? Number.POSITIVE_INFINITY : nums1[partitionX];\n        \n        const maxLeftY = (partitionY === 0) ? Number.NEGATIVE_INFINITY : nums2[partitionY - 1];\n        const minRightY = (partitionY === y) ? Number.POSITIVE_INFINITY : nums2[partitionY];\n        \n        if (maxLeftX <= minRightY && maxLeftY <= minRightX) {\n            if ((x + y) % 2 === 0) {\n                return (Math.max(maxLeftX, maxLeftY) + Math.min(minRightX, minRightY)) / 2;\n            } else {\n                return Math.max(maxLeftX, maxLeftY);\n            }\n        } else if (maxLeftX > minRightY) {\n            high = partitionX - 1;\n        } else {\n            low = partitionX + 1;\n        }\n    }    \n    return 0;\n}"
+        }
+    },
+    "5": {
+        "Q_id": "5",
+        "title": "Longest Palindromic Substring",
+        "description": "Given a string `s`, find and return the longest palindromic substring in `s`. A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward. If there are multiple longest palindromic substrings, return any one of them.",
+        "example": "Example 1:\n\nInput: s = \"babad\"\nOutput: \"bab\"\nExplanation: \"aba\" is also a valid answer.\n\nExample 2:\n\nInput: s = \"cbbd\"\nOutput: \"bb\"",
+        "level": "Medium",
+        "tags": [
+            "String",
+            "Dynamic Programming"
+        ],
+        "sample_code": {
+            "c++": "#include <string>\n\nstd::string longestPalindromicSubstring(std::string s) {\n  int n = s.size();\n  if (n == 0) return \"\";\n  int start = 0, maxLength = 1;\n\n  for (int i = 0; i < n; ++i) {\n    int l = i, r = i;\n\n    while (r < n - 1 && s[r] == s[r + 1])\n      r++;\n    i = r;\n\n    while (l > 0 && r < n - 1 && s[l - 1] == s[r + 1]) {\n      l--;\n      r++;\n    }\n\n    int length = r - l + 1;\n    if (length > maxLength) {\n      start = l;\n      maxLength = length;\n    }\n  }\n\n  return s.substr(start, maxLength);\n}\n",
+            "java": "public String longestPalindromicSubstring(String s) {\n    int n = s.length();\n    if (n == 0) return \"\";\n\n    int start = 0, maxLength = 1;\n\n    for (int i = 0; i < n; ++i) {\n        int l = i, r = i;\n\n        while (r < n - 1 && s.charAt(r) == s.charAt(r + 1))\n            r++;\n        i = r;\n\n        while (l > 0 && r < n - 1 && s.charAt(l - 1) == s.charAt(r + 1)) {\n            l--;\n            r++;\n        }\n\n        int length = r - l + 1;\n        if (length > maxLength) {\n            start = l;\n            maxLength = length;\n        }\n    }\n\n    return s.substring(start, start + maxLength);\n}\n",
+            "python": "def longest_palindromic_substring(s: str) -> str:\n    n = len(s)\n    if n == 0: return \"\"\n\n    start, max_length = 0, 1\n\n    for i in range(n):\n        l, r = i, i\n\n        while r < n - 1 and s[r] == s[r + 1]:\n            r += 1\n        i = r\n\n        while l > 0 and r < n - 1 and s[l - 1] == s[r + 1]:\n            l -= 1\n            r += 1\n\n        length = r - l + 1\n        if length > max_length:\n            start, max_length = l, length\n\n    return s[start:start + max_length]\n",
+            "javascript": "function longestPalindromicSubstring(s) {\n  let n = s.length;\n  if (n === 0) return \"\";\n\n  let start = 0, maxLength = 1;\n\n  for (let i = 0; i < n; ++i) {\n    let l = i, r = i;\n\n    while (r < n - 1 && s[r] === s[r + 1])\n      r++;\n    i = r;\n\n    while (l > 0 && r < n - 1 && s[l - 1] === s[r + 1]) {\n      l--;\n      r++;\n    }\n\n    let length = r - l + 1;\n    if (length > maxLength) {\n      start = l;\n      maxLength = length;\n    }\n  }\n\n  return s.substring(start, start + maxLength);\n}\n",
+            "explanation": "1. Initialize `start` and `maxLength` for result substring.\n2. Iterate through the given string `s` using the index `i`.\n3. For each index `i`, create two pointers `l` and `r` starting at `i`.\n4. Check if there's a consecutive sequence of identical characters, increment the right pointer `r` until the end of the sequence is reached.\n5. Update the index `i` to the current value of `r`.\n6. Expand the pointers `l` and `r` outwards to find the longest palindromic substring, checking that characters on both sides are equal.\n7. If the current length of the substring is greater than `maxLength`, update `start` and `maxLength`.\n8. Return the longest palindromic substring using the `start` and `maxLength`."
+        },
+        "test_cases": {
+            "inputs": [
+                "\"babad\"",
+                "\"cbbd\"",
+                "\"a\"",
+                "\"ac\"",
+                "\"bb\"",
+                "\"racecar\"",
+                "\"abcdeedcba\"",
+                "\"abcdefedcba\"",
+                "\"abcdeedcbafg\"",
+                "\"abcdefedcbagf\"",
+                "\"abacdfgdcaba\"",
+                "\"abacdfgdcabba\"",
+                "\"abacdfgdcabbaa\"",
+                "\"abacdfgdcabbaaa\"",
+                "\"abacdfgdcabbaaaa\"",
+                "\"abacdfgdcabbaaaaa\"",
+                "\"abacdfgdcabbaaaaaa\"",
+                "\"abacdfgdcabbaaaaaaa\"",
+                "\"abacdfgdcabbaaaaaaaa\"",
+                "\"abacdfgdcabbaaaaaaaaa\"",
+                "\"abacdfgdcabbaaaaaaaaaa\""
+            ],
+            "outputs": [
+                "\"bab\"",
+                "\"bb\"",
+                "\"a\"",
+                "\"a\"",
+                "\"bb\"",
+                "\"racecar\"",
+                "\"abcdeedcba\"",
+                "\"abcdefedcba\"",
+                "\"abcdeedcba\"",
+                "\"abcdefedcba\"",
+                "\"aba\"",
+                "\"abba\"",
+                "\"abba\"",
+                "\"abba\"",
+                "\"abba\"",
+                "\"abba\"",
+                "\"abba\"",
+                "\"abba\"",
+                "\"abba\"",
+                "\"abba\"",
+                "\"abba\""
+            ]
+        },
+        "structure": {
+            "c++": "#include <string>\n\nstd::string longestPalindromicSubstring(std::string s) \n    // Your code here\n}\n",
+            "java": "public String longestPalindromicSubstring(String s) \n    // Your code here\n}\n",
+            "python": "def longest_palindromic_substring(s: str) -> str:\n    # Your code here\n\n",
+            "javascript": "function longestPalindromicSubstring(s) \n    // Your code here\n}\n"
+        },
+        "call_functions": {
+            "c++": "#include <string>\n\nint main() {\n  std::string s = $args;\n  std::string result = longestPalindromicSubstring(s);\n  std::cout << result << std::endl;\n  return 0;\n}",
+            "java": "public String longestPalindromicSubstring(String s) {\n    int n = s.length();\n    if (n == 0) return \"\";\n\n    int start = 0, maxLength = 1;\n\n    for (int i = 0; i < n; ++i) {\n        int l = i, r = i;\n\n        while (r < n - 1 && s.charAt(r) == s.charAt(r + 1))\n            r++;\n        i = r;\n\n        while (l > 0 && r < n - 1 && s.charAt(l - 1) == s.charAt(r + 1)) {\n            l--;\n            r++;\n        }\n\n        int length = r - l + 1;\n        if (length > maxLength) {\n            start = l;\n            maxLength = length;\n        }\n    }\n\n    return s.substring(start, start + maxLength);\n}",
+            "python": "if __name__ == \"__main__\":\n    s = $args\n    result = longest_palindromic_substring(s)\n    print(result)",
+            "javascript": "function main() {\n  const s = $args;\n  const result = longestPalindromicSubstring(s);\n  console.log(result);\n}"
+        }
+    },
+    "7": {
+        "Q_id": "7",
+        "title": "Reverse Integer",
+        "description": "Given a signed 32-bit integer `x`, return `x` with its digits reversed. If reversing `x` causes the value to go outside the signed 32-bit integer range `[-231, 231 - 1]`, then return `0`.\n\nAssume the environment does not allow you to store 64-bit integers (signed or unsigned).",
+        "example": "Example 1:\n\nInput: x = 123\nOutput: 321\n\nExample 2:\n\nInput: x = -123\nOutput: -321\n\nExample 3:\n\nInput: x = 120\nOutput: 21",
+        "level": "Easy",
+        "tags": [
+            "Math"
+        ],
+        "sample_code": {
+            "c++": "int reverse(int x) {\n    long long res = 0;\n    while (x != 0) {\n        res = res * 10 + x % 10;\n        x /= 10;\n    }\n    return (res < INT_MIN || res > INT_MAX) ? 0 : res;\n}\n",
+            "java": "public int reverse(int x) {\n    long res = 0;\n    while (x != 0) {\n        res = res * 10 + x % 10;\n        x /= 10;\n    }\n    return (res < Integer.MIN_VALUE || res > Integer.MAX_VALUE) ? 0 : (int)res;\n}\n",
+            "python": "def reverse(x: int) -> int:\n    sign = -1 if x < 0 else 1\n    x = abs(x)\n    res = 0\n    while x:\n        res = res * 10 + x % 10\n        x //= 10\n    res *= sign\n    return res if -2**31 <= res <= 2**31 - 1 else 0\n",
+            "javascript": "function reverse(x) {\n    let sign = x < 0 ? -1 : 1;\n    x = Math.abs(x);\n    let res = 0;\n    while (x !== 0) {\n        res = res * 10 + x % 10;\n        x = Math.floor(x / 10);\n    }\n    res *= sign;\n    return (res < -(2 ** 31) || res > 2 ** 31 - 1) ? 0 : res;\n}\n",
+            "explanation": "The algorithm initializes `res` as 0. Then, we determine the sign of the input integer and take its absolute value. We use a while loop to iterate through each digit of `x` from right to left. In each iteration, we multiply the current `res` by 10 and add the last digit of `x` to it. The last digit of `x` is obtained by `x % 10`. After adding the last digit, we remove it from `x` by doing either `x /= 10` or `x //= 10`.\n\nAfter processing all the digits, we adjust `res` with the sign we computed earlier. Finally, we check if the reversed integer is within the 32-bit integer range. If it is, we return the result; otherwise, we return 0."
+        },
+        "test_cases": {
+            "inputs": [
+                123,
+                -123,
+                120,
+                0,
+                1,
+                -1,
+                10,
+                -10,
+                100,
+                -100,
+                123456789,
+                -123456789,
+                2147483647,
+                -2147483648,
+                2147483646,
+                -2147483647,
+                1534236469,
+                -2147483412,
+                0,
+                987654321
+            ],
+            "outputs": [
+                321,
+                -321,
+                21,
+                0,
+                1,
+                -1,
+                1,
+                -1,
+                1,
+                -1,
+                987654321,
+                -987654321,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                123456789
+            ]
+        },
+        "structure": {
+            "c++": "int reverse(int x) \n    // Your code here\n}\n",
+            "java": "public int reverse(int x) \n    // Your code here\n}\n",
+            "python": "def reverse(x: int) -> int:\n    # Your code here\n\n",
+            "javascript": "function reverse(x) \n    // Your code here\n}\n"
+        },
+        "call_functions": {
+            "c++": "int main() {\n    int x = $args;\n    int result = reverse(x);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int reverse(int x) {\n    long res = 0;\n    while (x != 0) {\n        res = res * 10 + x % 10;\n        x /= 10;\n    }\n    return (res < Integer.MIN_VALUE || res > Integer.MAX_VALUE) ? 0 : (int)res;\n}",
+            "python": "if __name__ == \"__main__\":\n    x = $args\n    result = reverse(x)\n    print(result)\n}",
+            "javascript": "function main() {\n    const x = $args;\n    const sign = x < 0 ? -1 : 1;\n    x = Math.abs(x);\n    let res = 0;\n    while (x !== 0) {\n        res = res * 10 + x % 10;\n        x = Math.floor(x / 10);\n    }\n    res *= sign;\n    const result = (res < -(2 ** 31) || res > 2 ** 31 - 1) ? 0 : res;\n    console.log(result);\n}"
+        }
+    },
+    "9": {
+        "Q_id": "9",
+        "title": "Palindrome Integer",
+        "description": "Given an integer `x`, determine if it is a palindrome. Return `true` if `x` is a palindrome, and `false` otherwise.",
+        "example": "Example 1:\n\nInput: x = 121\nOutput: true\nExplanation: 121 reads as 121 from left to right and from right to left.",
+        "level": "Easy",
+        "tags": [
+            "math"
+        ],
+        "sample_code": {
+            "c++": "bool isPalindrome(int x) {\n    if (x < 0) return false;\n    int original = x, reversed = 0;\n    while (x > 0) {\n        reversed = reversed * 10 + x % 10;\n        x /= 10;\n    }\n    return original == reversed;\n}\n\n",
+            "java": "public boolean isPalindrome(int x) {\n    if (x < 0) return false;\n    int original = x, reversed = 0;\n    while (x > 0) {\n        reversed = reversed * 10 + x % 10;\n        x /= 10;\n    }\n    return original == reversed;\n}\n\n",
+            "python": "def is_palindrome(x: int) -> bool:\n    if x < 0:\n        return False\n    original, reversed = x, 0\n    while x > 0:\n        reversed = reversed * 10 + x % 10\n        x //= 10\n    return original == reversed\n\n",
+            "javascript": "function isPalindrome(x) {\n    if (x < 0) return false;\n    let original = x, reversed = 0;\n    while (x > 0) {\n        reversed = reversed * 10 + x % 10;\n        x = Math.floor(x / 10);\n    }\n    return original === reversed;\n}\n\n",
+            "explanation": "Here is the algorithm:\n\n1. If the integer is negative, immediately return false, as negative numbers cannot be palindromes.\n2. Create a variable named `original` to store the original integer value and `reversed` initialized with 0 to store the reversed integer value.\n3. Iterate through the integer while it's greater than zero and, in each iteration, perform the following operations:\n   a. Multiply the `reversed` value by 10 and add the modulus of the integer (x) by 10.\n   b. Divide the integer (x) by 10, discarding the remainder.\n4. Compare `original` and `reversed` integers; if they are equal, return true; otherwise, return false.\n\nThis approach requires O(log10(n)) time complexity as we are dividing the input by 10 in each iteration."
+        },
+        "test_cases": {
+            "inputs": [
+                121,
+                -121,
+                10,
+                12321,
+                1234321,
+                123454321,
+                12345654321,
+                123456654321,
+                1234567654321,
+                12345677654321,
+                123456787654321,
+                1234567887654321,
+                12345678987654321,
+                123456789987654321,
+                1234567890987654321,
+                12345678900987654321,
+                123456789000987654321,
+                1234567890000987654321,
+                12345678900000987654321,
+                123456789000000987654321
+            ],
+            "outputs": [
+                true,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+            ]
+        },
+        "structure": {
+            "c++": "bool isPalindrome(int x) \n    // Your code here\n}\n\n",
+            "java": "public boolean isPalindrome(int x) \n    // Your code here\n}\n\n",
+            "python": "def is_palindrome(x: int) -> bool:\n    # Your code here\n\n",
+            "javascript": "function isPalindrome(x) \n    // Your code here\n}\n\n"
+        },
+        "call_functions": {
+            "c++": "int main() {\n    int x = $args;\n    bool result = isPalindrome(x);\n    cout << boolalpha << result << endl;\n    return 0;\n}",
+            "java": "public static void main(String[] args) {\n    int x = $args;\n    boolean result = isPalindrome(x);\n    System.out.println(result);\n}",
+            "python": "if __name__ == \"__main__\":\n    x = $args\n    result = is_palindrome(x)\n    print(result)\n",
+            "javascript": "function main() {\n    const x = $args;\n    const result = isPalindrome(x);\n    console.log(result);\n}\n"
+        }
+    },
+    "10": {
+        "Q_id": "10",
+        "title": "Regular Expression Matching",
+        "description": "Given an input string `s` and a pattern `p`, implement regular expression matching with support for `'.'` and `'*'` where:\n\n*   `'.'` Matches any single character.\n*   `'*'` Matches zero or more of the preceding element.\n\nThe matching should cover the entire input string (not partial).",
+        "example": "Example:\n\nInput:\n\ns = \"aa \", p = \"a \"\nOutput:\nfalse\nExplanation:\n\"a \" does not match the entire string \"aa \".",
+        "level": "Medium",
+        "tags": [
+            "string",
+            "regular expression",
+            "dynamic programming"
+        ],
+        "sample_code": {
+            "c++": "bool isMatch(std::string s, std::string p) {\n    int m = s.length(), n = p.length();\n    std::vector<std::vector<bool>> dp(m + 1, std::vector<bool>(n + 1, false));\n    dp[0][0] = true;\n\n    for (int j = 1; j <= n; j++) {\n        if (p[j - 1] == '*' && dp[0][j - 2]) {\n            dp[0][j] = true;\n        }\n    }\n\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= n; j++) {\n            if (p[j - 1] == s[i - 1] || p[j - 1] == '.') {\n                dp[i][j] = dp[i - 1][j - 1];\n            } else if (p[j - 1] == '*') {\n                dp[i][j] = dp[i][j - 2] || (dp[i - 1][j] && (s[i - 1] == p[j - 2] || p[j - 2] == '.'));\n            }\n        }\n    }\n\n    return dp[m][n];\n}\n",
+            "java": "public boolean isMatch(String s, String p) {\n    int m = s.length(), n = p.length();\n    boolean[][] dp = new boolean[m + 1][n + 1];\n    dp[0][0] = true;\n\n    for (int j = 1; j <= n; j++) {\n        if (p.charAt(j - 1) == '*' && dp[0][j - 2]) {\n            dp[0][j] = true;\n        }\n    }\n\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= n; j++) {\n            if (p.charAt(j - 1) == s.charAt(i - 1) || p.charAt(j - 1) == '.') {\n                dp[i][j] = dp[i - 1][j - 1];\n            } else if (p.charAt(j - 1) == '*') {\n                dp[i][j] = dp[i][j - 2] || (dp[i - 1][j] && (s.charAt(i - 1) == p.charAt(j - 2) || p.charAt(j - 2) == '.'));\n            }\n        }\n    }\n\n    return dp[m][n];\n}\n",
+            "python": "def is_match(s: str, p: str) -> bool:\n    m, n = len(s), len(p)\n    dp = [[False] * (n + 1) for _ in range(m + 1)]\n    dp[0][0] = True\n\n    for j in range(1, n + 1):\n        if p[j - 1] == '*' and dp[0][j - 2]:\n            dp[0][j] = True\n\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if p[j - 1] == s[i - 1] or p[j - 1] == '.':\n                dp[i][j] = dp[i - 1][j - 1]\n            elif p[j - 1] == '*':\n                dp[i][j] = dp[i][j - 2] or (dp[i - 1][j] and (s[i - 1] == p[j - 2] or p[j - 2] == '.'))\n\n    return dp[m][n]\n",
+            "javascript": "function isMatch(s, p) {\n    const m = s.length, n = p.length;\n    const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(false));\n    dp[0][0] = true;\n\n    for (let j = 1; j <= n; j++) {\n        if (p[j - 1] === '*' && dp[0][j - 2]) {\n            dp[0][j] = true;\n        }\n    }\n\n    for (let i = 1; i <= m; i++) {\n      for (let j = 1; j <= n; j++) {\n          if (p[j - 1] === s[i - 1] || p[j - 1] === '.') {\n              dp[i][j] = dp[i - 1][j - 1];\n          } else if (p[j - 1] === '*') {\n              dp[i][j] = dp[i][j - 2] || (dp[i - 1][j] && (s[i - 1] === p[j - 2] || p[j - 2] === '.'));\n          }\n      }\n    }\n\n    return dp[m][n];\n}\n",
+            "explanation": "We use Dynamic Programming to solve this problem. We store intermediate results in a 2D boolean array `dp`, where `dp[i][j]` indicates whether the first `i` characters of `s` match the first `j` characters of `p`. We then loop through the characters of both strings and update the `dp` table.\n\nIf the current characters in `s` and `p` are equal or `p` has a '.', we update the `dp[i][j]` to the value `dp[i - 1][j - 1]`, because the match continues.\n\nIf the current character in `p` is '*', we have two options:\n\n1. Consider the matching of the previous character in `p` as 0 occurrences. We update the `dp[i][j]` value to `dp[i][j - 2]`.\n2. Consider the matching of the previous character in `p` as at least 1 occurrence. We update `dp[i][j]` to the value of `dp[i - 1][j] && (s[i - 1] == p[j - 2] || p[j - 2] == '.')`.\n\nFinally, `dp[m][n]` stores the result, where `m` and `n` are the lengths of strings `s` and `p` respectively."
+        },
+        "test_cases": {
+            "inputs": [
+                "\"aa \", \"a \"",
+                "\"aa \", \"a* \"",
+                "\"ab \", \".* \"",
+                "\"abc \", \"a.c \"",
+                "\"aab \", \"c*a*b \"",
+                "\"mississippi \", \"mis*is*p*. \"",
+                "\"aaa \", \"a*a \"",
+                "\"aaa \", \"ab*a*c*a \"",
+                "\"a \", \".*..a* \"",
+                "\"a \", \"a*a \"",
+                "\"a \", \"a* \"",
+                "\"a \", \"a. \"",
+                "\"a \", \"a.* \"",
+                "\"a \", \"a.. \"",
+                "\"a \", \"a... \"",
+                "\"a \", \"a.... \"",
+                "\"a \", \"a..... \"",
+                "\"a \", \"a...... \"",
+                "\"a \", \"a....... \"",
+                "\"a \", \"a........ \""
+            ],
+            "outputs": [
+                "false",
+                "true",
+                "true",
+                "true",
+                "true",
+                "false",
+                "true",
+                "true",
+                "false",
+                "true",
+                "true",
+                "false",
+                "true",
+                "false",
+                "false",
+                "false",
+                "false",
+                "false",
+                "false",
+                "false"
+            ]
+        },
+        "structure": {
+            "c++": "bool isMatch(std::string s, std::string p) \n    // Your code here\n}\n",
+            "java": "public boolean isMatch(String s, String p) \n    // Your code here\n}\n",
+            "python": "def is_match(s: str, p: str) -> bool:\n    # Your code here\n\n",
+            "javascript": "function isMatch(s, p) \n    // Your code here\n}\n"
+        },
+        "call_functions": {
+            "c++": "bool isMatch(std::string s, std::string p) {\n    int m = s.length(), n = p.length();\n    std::vector<std::vector<bool>> dp(m + 1, std::vector<bool>(n + 1, false));\n    dp[0][0] = true;\n\n    for (int j = 1; j <= n; j++) {\n        if (p[j - 1] == '*' && dp[0][j - 2]) {\n            dp[0][j] = true;\n        }\n    }\n\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= n; j++) {\n            if (p[j - 1] == s[i - 1] || p[j - 1] == '.') {\n                dp[i][j] = dp[i - 1][j - 1];\n            } else if (p[j - 1] == '*') {\n                dp[i][j] = dp[i][j - 2] || (dp[i - 1][j] && (s[i - 1] == p[j - 2] || p[j - 2] == '.'));\n            }\n        }\n    }\n\n    return dp[m][n];\n}",
+            "java": "public boolean isMatch(String s, String p) {\n    int m = s.length(), n = p.length();\n    boolean[][] dp = new boolean[m + 1][n + 1];\n    dp[0][0] = true;\n\n    for (int j = 1; j <= n; j++) {\n        if (p.charAt(j - 1) == '*' && dp[0][j - 2]) {\n            dp[0][j] = true;\n        }\n    }\n\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= n; j++) {\n            if (p.charAt(j - 1) == s.charAt(i - 1) || p.charAt(j - 1) == '.') {\n                dp[i][j] = dp[i - 1][j - 1];\n            } else if (p.charAt(j - 1) == '*') {\n                dp[i][j] = dp[i][j - 2] || (dp[i - 1][j] && (s.charAt(i - 1) == p.charAt(j - 2) || p.charAt(j - 2) == '.'));\n            }\n        }\n    }\n\n    return dp[m][n];\n}",
+            "python": "if __name__ == '__main__':\n    s = $args[0]\n    p = $args[1]\n    result = is_match(s, p)\n    print(result)",
+            "javascript": "function main() {\n    const s = $args[0];\n    const p = $args[1];\n    const result = isMatch(s, p);\n    console.log(result);\n}"
+        }
+    },
+    "11": {
+        "Q_id": "11",
+        "title": "Container With Most Water",
+        "description": "Given an integer array `height` of length `n`, where each element represents the height of a vertical line, find two lines that together with the x-axis form a container, such that the container contains the most water. Return the maximum amount of water the container can store.",
+        "example": "Example:\n\nInput: height = [1,8,6,2,5,4,8,3,7]\nOutput: 49\nExplanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.",
+        "level": "Medium",
+        "tags": [
+            "Array",
+            "Two Pointers",
+            "Greedy"
+        ],
+        "sample_code": {
+            "c++": "int maxArea(vector<int>& height) {\n    int max_area = 0, left = 0, right = height.size() - 1;\n    while (left < right) {\n        max_area = max(max_area, min(height[left], height[right]) * (right - left));\n        if (height[left] < height[right]) {\n            left++;\n        } else {\n            right--;\n        }\n    }\n    return max_area;\n}\n",
+            "java": "public int maxArea(int[] height) {\n    int max_area = 0, left = 0, right = height.length - 1;\n    while (left < right) {\n        max_area = Math.max(max_area, Math.min(height[left], height[right]) * (right - left));\n        if (height[left] < height[right]) {\n            left++;\n        } else {\n            right--;\n        }\n    }\n    return max_area;\n}\n",
+            "python": "def max_area(height):\n    max_area, left, right = 0, 0, len(height) - 1\n    while left < right:\n        max_area = max(max_area, min(height[left], height[right]) * (right - left))\n        if height[left] < height[right]:\n            left += 1\n        else:\n            right -= 1\n    return max_area\n",
+            "javascript": "function maxArea(height) {\n    let max_area = 0, left = 0, right = height.length - 1;\n    while (left < right) {\n        max_area = Math.max(max_area, Math.min(height[left], height[right]) * (right - left));\n        if (height[left] < height[right]) {\n            left++;\n        } else {\n            right--;\n        }\n    }\n    return max_area;\n}\n",
+            "explanation": "The algorithm uses a two-pointer approach, with one pointer starting from the left end and the other from the right end. It calculates the area between these two lines and updates the maximum area if the current area is larger than the previously calculated maximum area. If the height at the left pointer is less than the height at the right pointer, it moves the left pointer to the right. Otherwise, it moves the right pointer to the left. The algorithm continues until the pointers meet.\n\nThis algorithm ensures that the maximum area is found without having to check all possible pairs of lines because it always chooses the pair of lines with the maximum possible distance and minimum height difference at each step."
+        },
+        "test_cases": {
+            "inputs": [
+                [
+                    1,
+                    8,
+                    6,
+                    2,
+                    5,
+                    4,
+                    8,
+                    3,
+                    7
+                ],
+                [
+                    1,
+                    1
+                ],
+                [
+                    4,
+                    3,
+                    2,
+                    1,
+                    4
+                ],
+                [
+                    1,
+                    2,
+                    1
+                ],
+                [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                [
+                    5,
+                    4,
+                    3,
+                    2,
+                    1
+                ],
+                [
+                    1,
+                    1,
+                    1,
+                    1,
+                    1
+                ],
+                [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10
+                ],
+                [
+                    10,
+                    9,
+                    8,
+                    7,
+                    6,
+                    5,
+                    4,
+                    3,
+                    2,
+                    1
+                ],
+                [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20
+                ],
+                [
+                    20,
+                    19,
+                    18,
+                    17,
+                    16,
+                    15,
+                    14,
+                    13,
+                    12,
+                    11,
+                    10,
+                    9,
+                    8,
+                    7,
+                    6,
+                    5,
+                    4,
+                    3,
+                    2,
+                    1
+                ]
+            ],
+            "outputs": [
+                49,
+                1,
+                16,
+                2,
+                6,
+                4,
+                4,
+                25,
+                25,
+                100,
+                100
+            ]
+        },
+        "structure": {
+            "c++": "int maxArea(vector<int>& height) \n    // Your code here\n}\n",
+            "java": "public int maxArea(int[] height) \n    // Your code here\n}\n",
+            "python": "def max_area(height):\n    # Your code here\n\n",
+            "javascript": "function maxArea(height) \n    // Your code here\n}\n"
+        },
+        "call_functions": {
+            "c++": "int main() {\n    vector<int> height = $args;\n    int result = maxArea(height);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int maxArea(int[] height) {\n    int max_area = 0, left = 0, right = height.length - 1;\n    while (left < right) {\n        max_area = Math.max(max_area, Math.min(height[left], height[right]) * (right - left));\n        if (height[left] < height[right]) {\n            left++;\n        } else {\n            right--;\n        }\n    }\n    return max_area;\n}",
+            "python": "if __name__ == \"__main__\":\n    height = $args\n    result = max_area(height)\n    print(result)\n}",
+            "javascript": "function main() {\n    const height = $args;\n    const result = maxArea(height);\n    console.log(result);\n}"
+        }
+    },
+    "6": {
+        "Q_id": "6",
+        "title": "Zigzag Conversion",
+        "description": "The string `PAYPALISHIRING` is written in a zigzag pattern on a given number of rows. Write a function `convert` that takes a string and the number of rows and returns the string in the zigzag pattern.",
+        "example": "Example 1:\n\nInput: s = `PAYPALISHIRING`, numRows = 3\nOutput: `PAHNAPLSIIGYIR`\n\nExample 2:\n\nInput: s = `PAYPALISHIRING`, numRows = 4\nOutput: `PINALSIGYAHRPI`\nExplanation:\nP     I    N\nA   L S  I G\nY A   H R\nP     I\n\nExample 3:\n\nInput: s = `A`, numRows = 1\nOutput: `A`",
+        "level": "Medium",
+        "tags": [
+            "string",
+            "pattern"
+        ],
+        "sample_code": {
+            "c++": "#include <string>\n#include <vector>\n\nstd::string convert(std::string s, int numRows) {\n    if (numRows == 1 || numRows >= s.size()) return s;\n\n    std::vector<std::string> rows(std::min(numRows, int(s.size())));\n    int curRow = 0;\n    bool goingDown = false;\n\n    for (char c : s) {\n        rows[curRow] += c;\n        if (curRow == 0 || curRow == numRows - 1) goingDown = !goingDown;\n        curRow += goingDown ? 1 : -1;\n    }\n\n    std::string result;\n    for (std::string row : rows) result += row;\n    return result;\n}\n",
+            "java": "public class ZigzagConversion {\n    public String convert(String s, int numRows) {\n        if (numRows == 1 || numRows >= s.length()) return s;\n\n        StringBuilder[] rows = new StringBuilder[numRows];\n        for (int i = 0; i < numRows; i++) rows[i] = new StringBuilder();\n        \n        int curRow = 0;\n        boolean goingDown = false;\n\n        for (char c : s.toCharArray()) {\n            rows[curRow].append(c);\n            if (curRow == 0 || curRow == numRows - 1) goingDown = !goingDown;\n            curRow += goingDown ? 1 : -1;\n        }\n\n        StringBuilder result = new StringBuilder();\n        for (StringBuilder row : rows) result.append(row);\n        return result.toString();\n    }\n}\n",
+            "python": "def convert(s: str, numRows: int) -> str:\n    if numRows == 1 or numRows >= len(s):\n        return s\n\n    rows = [\"\"] * numRows\n    curRow = 0\n    goingDown = False\n\n    for c in s:\n        rows[curRow] += c\n        if curRow == 0 or curRow == numRows - 1:\n            goingDown = not goingDown\n        curRow += 1 if goingDown else -1\n\n    return \"\".join(rows)\n",
+            "javascript": "function convert(s, numRows) {\n    if (numRows === 1 || numRows >= s.length) return s;\n\n    let rows = new Array(numRows).fill(\"\");\n    let curRow = 0;\n    let goingDown = false;\n\n    for (let c of s) {\n        rows[curRow] += c;\n        if (curRow === 0 || curRow === numRows - 1) goingDown = !goingDown;\n        curRow += goingDown ? 1 : -1;\n    }\n\n    return rows.join(\"\");\n}\n",
+            "explanation": "1. If the number of rows is 1 or is greater than or equal to the length of the string, the string is just returned as is.\n2. Create an array called \"rows\" to contain the characters that would reside in each row of the zigzag pattern.\n3. Iterate through the string one character at a time.\n4. For each character in the string, place it into the appropriate row of the \"rows\" array.\n5. Determine whether the next character should be placed in the row above or below the current row by checking if the current row is 0 (at the top) or equal to the number of rows minus 1 (at the bottom). If at the top or the bottom, the direction will change.\n6. Update the current row index according to the direction (going up or down).\n7. After iterating through the entire string, join the rows array into a single string and return it."
+        },
+        "test_cases": {
+            "inputs": [
+                "`PAYPALISHIRING`",
+                "`PAYPALISHIRING`",
+                "`A`",
+                "`HELLO`",
+                "`WORLD`",
+                "`ZIGZAG`",
+                "`CONVERSION`",
+                "`CODING`",
+                "`QUESTION`",
+                "`EXAMPLE`",
+                "`TEST`",
+                "`CASES`",
+                "`ZIGZAGCONVERSION`",
+                "`STRING`",
+                "`PATTERN`",
+                "`ALGORITHM`",
+                "`PROGRAMMING`",
+                "`CHALLENGE`",
+                "`SOLUTION`",
+                "`LEETCODE`"
+            ],
+            "outputs": [
+                "`PAHNAPLSIIGYIR`",
+                "`PINALSIGYAHRPI`",
+                "`A`",
+                "`HLOEL`",
+                "`WDLRO`",
+                "`ZGZAI`",
+                "`CNOIOTVN`",
+                "`CIGDNO`",
+                "`QETNUSO`",
+                "`EPEXMLA`",
+                "`TSET`",
+                "`SECA`",
+                "`ZGZAIOTNNOVC`",
+                "`SRTNI`",
+                "`PTNREA`",
+                "`AOLGMRITHM`",
+                "`PORMGAMRIN`",
+                "`CEGELLNAH`",
+                "`NIOITULOS`",
+                "`ETACODEEL`"
+            ]
+        },
+        "structure": {
+            "c++": "#include <string>\n#include <vector>\n\nstd::string convert(std::string s, int numRows) \n    // Your code here\n}\n",
+            "java": "public class ZigzagConversion \n    // Your code here\n}\n",
+            "python": "def convert(s: str, numRows: int) -> str:\n    # Your code here\n\n",
+            "javascript": "function convert(s, numRows) \n    // Your code here\n}\n"
+        },
+        "call_functions": {
+            "c++": "#include <string>\n#include <vector>\n\nint main() {\n    std::string s = $args;\n    int numRows = 3;\n    std::string result = convert(s, numRows);\n    std::cout << result << std::endl;\n    return 0;\n}"
+        }
+    },
+    "8": {
+        "Q_id": "8",
+        "title": "String to Integer (atoi)",
+        "description": "Implement the `myAtoi(string s)` function, which converts a string to a 32-bit signed integer (similar to C/C++'s `atoi` function).\n\nThe algorithm for `myAtoi(string s)` is as follows:\n\n1. Read in and ignore any leading whitespace.\n2. Check if the next character (if not already at the end of the string) is \"-\" or \"+\". Read this character in if it is either. This determines if the final result is negative or positive respectively. Assume the result is positive if neither is present.\n3. Read in next the characters until the next non-digit character or the end of the input is reached. The rest of the string is ignored.\n4. Convert these digits into an integer (i.e. \"123 \" -> 123, \"0032 \" -> 32). If no digits were read, then the integer is 0. Change the sign as necessary (from step 2).\n5. If the integer is out of the 32-bit signed integer range [-231, 231 - 1], then clamp the integer so that it remains in the range. Specifically, integers less than -231 should be clamped to -231, and integers greater than 231 - 1 should be clamped to 231 - 1.\n6. Return the integer as the final result.\n\n**Note:**\n\n- Only the space character \" \" is considered a whitespace character.\n- **Do not ignore** any characters other than the leading whitespace or the rest of the string after the digits.",
+        "example": "Example 1:\n\nInput: s = \"42 \"\nOutput: 42\nExplanation: The underlined characters are what is read in, the caret is the current reader position.\nStep 1: \"42 \" (no characters read because there is no leading whitespace)\n         ^\nStep 2: \"42 \" (no characters read because there is neither a \"-\" nor \"+\")\n         ^\nStep 3: \"42 \" (\"42\" is read in)\n           ^\nThe parsed integer is 42.\nSince 42 is in the range [-231, 231 - 1], the final result is 42.\n\nExample 2:\n\nInput: s = \"   -42 \"\nOutput: -42\nExplanation: Step 1: \"   -42 \" (leading whitespace is read and ignored)\n            ^\nStep 2: \"   -42 \" (\"-\" is read, so the result should be negative)\n             ^\nStep 3: \"   -42 \" (\"42\" is read in)\n               ^\nThe parsed integer is -42.\nSince -42 is in the range [-231, 231 - 1], the final result is -42.\n\nExample 3:\n\nInput: s = \"4193 with words \"\nOutput: 4193\nExplanation: Step 1: \"4193 with words \" (no characters read because there is no leading whitespace)\n         ^\nStep 2: \"4193 with words \" (no characters read because there is neither a \"-\" nor \"+\")\n         ^\nStep 3: \"4193 with words \" (\"4193\" is read in; reading stops because the next character is a non-digit)\n             ^\nThe parsed integer is 4193.\nSince 4193 is in the range [-231, 231 - 1], the final result is 4193.",
+        "level": "Medium",
+        "tags": [
+            "string",
+            "parsing",
+            "integer"
+        ],
+        "sample_code": {
+            "c++": "int myAtoi(string s) {\n    long result = 0;\n    int i = 0, sign = 1;\n    while (s[i] == ' ') i++;\n    if (s[i] == '-' || s[i] == '+') sign = (s[i++] == '+') ? 1 : -1;\n    while (isdigit(s[i])) {\n        result = result * 10 + (s[i++] - '0');\n        if (result * sign > INT_MAX) return INT_MAX;\n        if (result * sign < INT_MIN) return INT_MIN;\n    }\n    return result * sign;\n}\n",
+            "java": "public int myAtoi(String s) {\n    long result = 0;\n    int i = 0, sign = 1;\n    while (i < s.length() && s.charAt(i) == ' ') i++;\n    if (i < s.length() && (s.charAt(i) == '-' || s.charAt(i) == '+')) {\n        sign = (s.charAt(i++) == '+') ? 1 : -1;\n    }\n    while (i < s.length() && Character.isDigit(s.charAt(i))) {\n        result = result * 10 + (s.charAt(i++) - '0');\n        if (result * sign > Integer.MAX_VALUE) return Integer.MAX_VALUE;\n        if (result * sign < Integer.MIN_VALUE) return Integer.MIN_VALUE;\n    }\n    return (int) (result * sign);\n}\n",
+            "python": "def myAtoi(s):\n    result, i, sign = 0, 0, 1\n    while i < len(s) and s[i] == ' ': i += 1\n    if i < len(s) and (s[i] == '-' or s[i] == '+'):\n        sign = -1 if s[i] == '-' else 1\n        i += 1\n    while i < len(s) and s[i].isdigit():\n        result = result * 10 + int(s[i])\n        i += 1\n        if result * sign > 2**31 - 1: return 2**31 - 1\n        if result * sign < -2**31: return -2**31\n    return result * sign\n",
+            "javascript": "function myAtoi(s) {\n    let result = 0, i = 0, sign = 1;\n    while (s[i] === ' ') i++;\n    if (s[i] === '-' || s[i] === '+') sign = (s[i++] === '+') ? 1 : -1;\n    while (!isNaN(s[i]) && s[i] !== ' ') {\n        result = result * 10 + parseInt(s[i++], 10);\n        if (result * sign > 2147483647) return 2147483647;\n        if (result * sign < -2147483648) return -2147483648;\n    }\n    return result * sign;\n}\n",
+            "explanation": "1. Initialize `result` as 0, index `i` as 0, and `sign` as 1 (positive).\n2. Loop through the string until a non-space character is found or the end of the string is reached.\n3. If the current character is '+' or '-', update the `sign` according to the character and increment the index `i`.\n4. If a digit is found, multiply the previous `result` by 10 and add the digit to it. Increment the index `i`.\n5. Check if the result multiplied by the sign is out of the 32-bit signed integer range. If so, return the appropriate boundary value.\n6. When no more digits are found, return the final result multiplied by the sign."
+        },
+        "test_cases": {
+            "inputs": [
+                "\"42 \"",
+                "\"   -42 \"",
+                "\"4193 with words \"",
+                "\"words and 987\"",
+                "\"-91283472332\"",
+                "\"3.14159\"",
+                "\"-3.14159\"",
+                "\"-1234567890123456789012345678901234567890\"",
+                "\"1234567890123456789012345678901234567890\"",
+                "\"\"",
+                "\"0\"",
+                "\"-\"",
+                "\"+\"",
+                "\"-0\"",
+                "\"+0\"",
+                "\"-123\"",
+                "\"+123\"",
+                "\"-000123\"",
+                "\"+000123\"",
+                "\"-000\"",
+                "\"+000\""
+            ],
+            "outputs": [
+                "42",
+                "-42",
+                "4193",
+                "0",
+                "-2147483648",
+                "3",
+                "-3",
+                "-2147483648",
+                "2147483647",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-123",
+                "123",
+                "-123",
+                "123",
+                "0",
+                "0"
+            ]
+        },
+        "structure": {
+            "c++": "int myAtoi(string s) \n    // Your code here\n}\n",
+            "java": "public int myAtoi(String s) \n    // Your code here\n}\n",
+            "python": "def myAtoi(s):\n    # Your code here\n\n",
+            "javascript": "function myAtoi(s) \n    // Your code here\n}\n"
+        },
+        "call_functions": {
+            "c++": "int myAtoi(string s) {\n    long result = 0;\n    int i = 0, sign = 1;\n    while (s[i] == ' ') i++;\n    if (s[i] == '-' || s[i] == '+') sign = (s[i++] == '+') ? 1 : -1;\n    while (isdigit(s[i])) {\n        result = result * 10 + (s[i++] - '0');\n        if (result * sign > INT_MAX) return INT_MAX;\n        if (result * sign < INT_MIN) return INT_MIN;\n    }\n    return result * sign;\n}",
+            "java": "public int myAtoi(String s) {\n    long result = 0;\n    int i = 0, sign = 1;\n    while (i < s.length() && s.charAt(i) == ' ') i++;\n    if (i < s.length() && (s.charAt(i) == '-' || s.charAt(i) == '+')) {\n        sign = (s.charAt(i++) == '+') ? 1 : -1;\n    }\n    while (i < s.length() && Character.isDigit(s.charAt(i))) {\n        result = result * 10 + (s.charAt(i++) - '0');\n        if (result * sign > Integer.MAX_VALUE) return Integer.MAX_VALUE;\n        if (result * sign < Integer.MIN_VALUE) return Integer.MIN_VALUE;\n    }\n    return (int) (result * sign);\n}",
+            "python": "if __name__ == \"__main__\":\n    s = $args[0]\n    result = myAtoi(s)\n    print(result)",
+            "javascript": "function main() {\n    const s = $args;\n    const result = myAtoi(s);\n    console.log(result);\n}"
+        }
+    },
+    "12": {
+        "Q_id": "12",
+        "title": "Convert Integer to Roman Numeral",
+        "description": "Given an integer, convert it to a Roman numeral. Roman numerals are represented by seven different symbols: `I`, `V`, `X`, `L`, `C`, `D`, and `M`. The symbols and their corresponding values are as follows:\n\n`I` - 1\n`V` - 5\n`X` - 10\n`L` - 50\n`C` - 100\n`D` - 500\n`M` - 1000\n\nRoman numerals are usually written largest to smallest from left to right. However, there are six instances where subtraction is used. For example, `IV` represents 4, `IX` represents 9, `XL` represents 40, `XC` represents 90, `CD` represents 400, and `CM` represents 900.\n\nWrite a function `convertToRoman` that takes an integer `num` as input and returns its Roman numeral representation as a string.",
+        "example": "Example:\n\nInput:\nnum = 3\n\nOutput:\n\"III\"\n\nExplanation:\n3 is represented as 3 ones.\n\nInput:\nnum = 58\n\nOutput:\n\"LVIII\"\n\nExplanation:\nL = 50, V = 5, III = 3.\n\nInput:\nnum = 1994\n\nOutput:\n\"MCMXCIV\"\n\nExplanation:\nM = 1000, CM = 900, XC = 90, and IV = 4.",
+        "level": "Medium",
+        "tags": [
+            "Math",
+            "String"
+        ],
+        "sample_code": {
+            "c++": "#include <vector>\n#include <string>\n\nstd::string intToRoman(int num) {\n    std::vector<std::pair<int, std::string>> romans = {\n        {1000, \"M\"},\n        {900, \"CM\"},\n        {500, \"D\"},\n        {400, \"CD\"},\n        {100, \"C\"},\n        {90, \"XC\"},\n        {50, \"L\"},\n        {40, \"XL\"},\n        {10, \"X\"},\n        {9, \"IX\"},\n        {5, \"V\"},\n        {4, \"IV\"},\n        {1, \"I\"}\n    };\n    std::string roman = \"\";\n    for (const auto& p : romans) {\n        while (num >= p.first) {\n            roman += p.second;\n            num -= p.first;\n        }\n    }\n    return roman;\n}\n",
+            "java": "import java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic class RomanNumerals {\n    public static String intToRoman(int num) {\n        List<Pair> romans = Arrays.asList(\n            new Pair(1000, \"M\"), new Pair(900, \"CM\"), new Pair(500, \"D\"), \n            new Pair(400, \"CD\"), new Pair(100, \"C\"), new Pair(90, \"XC\"),\n            new Pair(50, \"L\"), new Pair(40, \"XL\"), new Pair(10, \"X\"), \n            new Pair(9, \"IX\"), new Pair(5, \"V\"), new Pair(4, \"IV\"),\n            new Pair(1, \"I\")\n        );\n        StringBuilder roman = new StringBuilder();\n        for (Pair p : romans) {\n            while (num >= p.num) {\n                roman.append(p.symbol);\n                num -= p.num;\n            }\n        }\n        return roman.toString();\n    }\n    \n    private static class Pair {\n        final int num;\n        final String symbol;\n        \n        Pair(int num, String symbol) {\n            this.num = num;\n            this.symbol = symbol;\n        }\n    }\n}\n",
+            "python": "def int_to_roman(num):\n    romans = [\n        (1000, \"M\"), (900, \"CM\"), (500, \"D\"),\n        (400, \"CD\"), (100, \"C\"), (90, \"XC\"),\n        (50, \"L\"), (40, \"XL\"), (10, \"X\"), \n        (9, \"IX\"), (5, \"V\"), (4, \"IV\"), (1, \"I\")\n    ]\n    roman = \"\"\n    for value, symbol in romans:\n        while num >= value:\n            roman += symbol\n            num -= value\n    return roman\n",
+            "javascript": "function intToRoman(num) {\n    const romans = [\n        [1000, \"M\"], [900, \"CM\"], [500, \"D\"],\n        [400, \"CD\"], [100, \"C\"], [90, \"XC\"],\n        [50, \"L\"], [40, \"XL\"], [10, \"X\"], \n        [9, \"IX\"], [5, \"V\"], [4, \"IV\"], [1, \"I\"]\n    ];\n    let roman = \"\";\n    for (const [value, symbol] of romans) {\n        while (num >= value) {\n            roman += symbol;\n            num -= value;\n        }\n    }\n    return roman;\n}\n",
+            "explanation": "The algorithm starts with a list of pairs, where each pair contains a decimal value and its corresponding roman numeral. Then, it iteratively go through the list of pairs and checks if the num is greater than or equal to the decimal value. If it is, it appends the roman numeral to the result, and subtracts the decimal value from the num. This is done until the num becomes 0."
+        },
+        "test_cases": {
+            "inputs": [
+                3,
+                58,
+                1994,
+                4,
+                9,
+                40,
+                90,
+                400,
+                900,
+                3999,
+                1,
+                10,
+                100,
+                1000,
+                399,
+                444,
+                555,
+                666,
+                777,
+                888
+            ],
+            "outputs": [
+                "III",
+                "LVIII",
+                "MCMXCIV",
+                "IV",
+                "IX",
+                "XL",
+                "XC",
+                "CD",
+                "CM",
+                "MMMCMXCIX",
+                "I",
+                "X",
+                "C",
+                "M",
+                "CCCXCIX",
+                "CDXLIV",
+                "DLV",
+                "DCLXVI",
+                "DCCLXXVII",
+                "DCCCLXXXVIII"
+            ]
+        },
+        "structure": {
+            "c++": "#include <vector>\n#include <string>\n\nstd::string intToRoman(int num) \n    // Your code here\n}\n",
+            "java": "import java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic class RomanNumerals \n    // Your code here\n}\n",
+            "python": "def int_to_roman(num):\n    # Your code here\n\n",
+            "javascript": "function intToRoman(num) \n    // Your code here\n}\n"
+        },
+        "call_functions": {
+            "c++": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int num = $args;\n    string result = intToRoman(num);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public static String intToRoman(int num) {\n        List<Pair> romans = Arrays.asList(\n            new Pair(1000, \"M\"), new Pair(900, \"CM\"), new Pair(500, \"D\"), \n            new Pair(400, \"CD\"), new Pair(100, \"C\"), new Pair(90, \"XC\"),\n            new Pair(50, \"L\"), new Pair(40, \"XL\"), new Pair(10, \"X\"), \n            new Pair(9, \"IX\"), new Pair(5, \"V\"), new Pair(4, \"IV\"),\n            new Pair(1, \"I\")\n        );\n        StringBuilder roman = new StringBuilder();\n        for (Pair p : romans) {\n            while (num >= p.num) {\n                roman.append(p.symbol);\n                num -= p.num;\n            }\n        }\n        return roman.toString();\n    }",
+            "python": "if __name__ == \"__main__\":\n    num = $args[0]\n    result = int_to_roman(num)\n    print(result)",
+            "javascript": "function main() {\n    const num = $args;\n    const result = intToRoman(num);\n    console.log(result);\n}"
+        }
+    },
+    "13": {
+        "Q_id": "13",
+        "title": "Roman Numeral to Integer Conversion",
+        "description": "Given a Roman numeral, convert it to an integer. Roman numerals are represented by seven different symbols: `I`, `V`, `X`, `L`, `C`, `D`, and `M`. The symbols and their corresponding values are as follows: \n\n`I` - 1\n`V` - 5\n`X` - 10\n`L` - 50\n`C` - 100\n`D` - 500\n`M` - 1000\n\nRoman numerals are usually written largest to smallest from left to right. However, there are six instances where subtraction is used. For example, `IV` represents 4 (5 - 1) and `IX` represents 9 (10 - 1). The goal is to convert the given Roman numeral into its corresponding integer value.",
+        "example": "Example:\n\nInput: \"III\"\nOutput: 3\nExplanation: The Roman numeral \"III\" represents the number 3.\n\nInput: \"LVIII\"\nOutput: 58\nExplanation: The Roman numeral \"LVIII\" represents the number 58. It can be broken down as follows: L (50) + V (5) + III (3).\n\nInput: \"MCMXCIV\"\nOutput: 1994\nExplanation: The Roman numeral \"MCMXCIV\" represents the number 1994. It can be broken down as follows: M (1000) + CM (900) + XC (90) + IV (4).",
+        "level": "Easy",
+        "tags": [
+            "String",
+            "Math"
+        ],
+        "sample_code": {
+            "c++": "int romanToInt(string s) {\n    unordered_map<char, int> roman_values = { {'I', 1}, {'V', 5}, {'X', 10}, {'L', 50}, {'C', 100}, {'D', 500}, {'M', 1000} };\n    int total = 0;\n    int prev_value = 0;\n\n    for (char c : s) {\n        int current_value = roman_values[c];\n        if (current_value > prev_value)\n            total += current_value - (2 * prev_value);\n        else\n            total += current_value;\n        prev_value = current_value;\n    }\n\n    return total;\n}\n\n",
+            "java": "public int romanToInt(String s) {\n    Map<Character, Integer> romanValues = new HashMap<>();\n    romanValues.put('I', 1);\n    romanValues.put('V', 5);\n    romanValues.put('X', 10);\n    romanValues.put('L', 50);\n    romanValues.put('C', 100);\n    romanValues.put('D', 500);\n    romanValues.put('M', 1000);\n\n    int total = 0;\n    int prevValue = 0;\n\n    for (char c : s.toCharArray()) {\n        int currValue = romanValues.get(c);\n        total += currValue > prevValue ? currValue - 2 * prevValue : currValue;\n        prevValue = currValue;\n    }\n\n    return total;\n}\n\n",
+            "python": "def roman_to_int(s):\n    roman_values = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}\n    total = 0\n    prev_value = 0\n    \n    for c in s:\n        current_value = roman_values[c]\n        if current_value > prev_value:\n            total += current_value - 2 * prev_value\n        else:\n            total += current_value\n        prev_value = current_value\n\n    return total\n\n",
+            "javascript": "function romanToInt(s) {\n    const romanValues = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000};\n    let total = 0;\n    let prevValue = 0;\n\n    for (let i = 0; i < s.length; i++) {\n        let currValue = romanValues[s[i]];\n        if (currValue > prevValue)\n            total += currValue - (2 * prevValue);\n        else\n            total += currValue;\n        prevValue = currValue;\n    }\n\n    return total;\n}\n\n",
+            "explanation": "The algorithm iterates through the input string, which represents the Roman numeral. At each iteration, the character is converted to its corresponding integer value using a hash map. Then, the value is added to the total. However, if the current value is greater than the previous value, it means that we need to subtract the previous value from the current value (while considering that the previous value has already been added once). To do this, we add to the total the current value minus 2 times the previous value. Finally, the previous value is updated, and the loop continues. After the loop finishes, the total gives us the integer value equivalent to the Roman numeral."
+        },
+        "test_cases": {
+            "inputs": [
+                "\"III\"",
+                "\"LVIII\"",
+                "\"MCMXCIV\"",
+                "\"IV\"",
+                "\"IX\"",
+                "\"XL\"",
+                "\"XC\"",
+                "\"CD\"",
+                "\"CM\"",
+                "\"XIV\"",
+                "\"XXIX\"",
+                "\"XLV\"",
+                "\"XCIX\"",
+                "\"CDXLIV\"",
+                "\"CMXCIX\"",
+                "\"MMMCMXCIX\"",
+                "\"I\"",
+                "\"V\"",
+                "\"X\"",
+                "\"L\"",
+                "\"C\"",
+                "\"D\"",
+                "\"M\""
+            ],
+            "outputs": [
+                "3",
+                "58",
+                "1994",
+                "4",
+                "9",
+                "40",
+                "90",
+                "400",
+                "900",
+                "14",
+                "29",
+                "45",
+                "99",
+                "444",
+                "999",
+                "3999",
+                "1",
+                "5",
+                "10",
+                "50",
+                "100",
+                "500",
+                "1000"
+            ]
+        },
+        "structure": {
+            "c++": "int romanToInt(string s) \n    // Your code here\n}\n\n",
+            "java": "public int romanToInt(String s) \n    // Your code here\n}\n\n",
+            "python": "def roman_to_int(s):\n    # Your code here\n\n",
+            "javascript": "function romanToInt(s) \n    // Your code here\n}\n\n"
+        },
+        "call_functions": {
+            "c++": "int main() {\n    string s = $args;\n    int result = romanToInt(s);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public int romanToInt(String s) {\n    Map<Character, Integer> romanValues = new HashMap<>();\n    romanValues.put('I', 1);\n    romanValues.put('V', 5);\n    romanValues.put('X', 10);\n    romanValues.put('L', 50);\n    romanValues.put('C', 100);\n    romanValues.put('D', 500);\n    romanValues.put('M', 1000);\n\n    int total = 0;\n    int prevValue = 0;\n\n    for (char c : s.toCharArray()) {\n        int currValue = romanValues.get(c);\n        total += currValue > prevValue ? currValue - 2 * prevValue : currValue;\n        prevValue = currValue;\n    }\n\n    return total;\n}"
+        }
+    },
+    "14": {
+        "Q_id": "14",
+        "title": "Longest Common Prefix",
+        "description": "Write a function that takes an array of strings and returns the longest common prefix string among them. If there is no common prefix, return an empty string.",
+        "example": "For example, given the input strs = [\"flower\", \"flow\", \"flight\"], the output should be \"fl\". \n\nExplanation: The longest common prefix among the strings is \"fl\".\n\nGiven the input strs = [\"dog\", \"racecar\", \"car\"], the output should be an empty string. \n\nExplanation: There is no common prefix among the strings.",
+        "level": "Easy",
+        "tags": [
+            "Array",
+            "String"
+        ],
+        "sample_code": {
+            "c++": "#include <vector>\n#include <string>\nusing namespace std;\n\nstring longestCommonPrefix(vector<string>& strs) {\n    if (strs.empty()) return \"\";\n\n    for (int i = 0; i < strs[0].size(); ++i) {\n        char c = strs[0][i];\n        for (int j = 1; j < strs.size(); ++j) {\n            if (i == strs[j].size() || strs[j][i] != c) {\n                return strs[0].substr(0, i);\n            }\n        }\n    }\n    return strs[0];\n}\n",
+            "java": "public String longestCommonPrefix(String[] strs) {\n    if (strs.length == 0) return \"\";\n\n    for (int i = 0; i < strs[0].length(); ++i) {\n        char c = strs[0].charAt(i);\n        for (int j = 1; j < strs.length; ++j) {\n            if (i == strs[j].length() || strs[j].charAt(i) != c) {\n                return strs[0].substring(0, i);\n            }\n        }\n    }\n    return strs[0];\n}\n",
+            "python": "def longest_common_prefix(strs):\n    if not strs:\n        return \"\"\n\n    for i, c in enumerate(strs[0]):\n        for j in range(1, len(strs)):\n            if i == len(strs[j]) or strs[j][i] != c:\n                return strs[0][:i]\n    return strs[0]\n",
+            "javascript": "function longestCommonPrefix(strs) {\n    if (strs.length === 0) return \"\";\n\n    for (let i = 0; i < strs[0].length; ++i) {\n        const c = strs[0][i];\n        for (let j = 1; j < strs.length; ++j) {\n            if (i === strs[j].length || strs[j][i] !== c) {\n                return strs[0].substr(0, i);\n            }\n        }\n    }\n    return strs[0];\n}\n",
+            "explanation": "The algorithm iterates through the characters in the first string and compares the equivalent characters in the subsequent strings. If there is a mismatch detected, return the common prefix up to the mismatch point. If the algorithm finishes iterating over the first string, return the entire first string as the common prefix.\n\n1. Check if the input array is empty, if it is, return an empty string as there is no common prefix.\n2. Iterate through the characters of the first string.\n3. For each character, iterate through the rest of the strings in the array.\n4. Compare the current character with the corresponding character in the other strings.\n5. If there is a mismatch or if we reach the end of a string, return the common prefix substring up to the current index.\n6. If the loop reaches the end of the first string, then the whole first string is the common prefix. Return the entire first string."
+        },
+        "test_cases": {
+            "inputs": [
+                [
+                    "flower",
+                    "flow",
+                    "flight"
+                ],
+                [
+                    "dog",
+                    "racecar",
+                    "car"
+                ],
+                [
+                    "apple",
+                    "app",
+                    "application"
+                ],
+                [
+                    "coding",
+                    "code",
+                    "coder"
+                ],
+                [
+                    "hello",
+                    "hell",
+                    "help"
+                ],
+                [
+                    "prefix",
+                    "pre",
+                    "preparation"
+                ],
+                [
+                    "",
+                    "abc",
+                    "def"
+                ],
+                [
+                    "",
+                    "",
+                    ""
+                ],
+                [
+                    "abc",
+                    "abc",
+                    "abc"
+                ],
+                [
+                    "abc",
+                    "abcd",
+                    "abcde"
+                ],
+                [
+                    "abc",
+                    "def",
+                    "ghi"
+                ],
+                [
+                    "abc",
+                    "ab",
+                    "a"
+                ],
+                [
+                    "abc",
+                    "ab",
+                    "abc"
+                ],
+                [
+                    "abc",
+                    "ab",
+                    "abcd"
+                ],
+                [
+                    "abc",
+                    "ab",
+                    "abcde"
+                ],
+                [
+                    "abc",
+                    "ab",
+                    "abcdefgh"
+                ],
+                [
+                    "abc",
+                    "ab",
+                    "abcdefghi"
+                ],
+                [
+                    "abc",
+                    "ab",
+                    "abcdefghij"
+                ],
+                [
+                    "abc",
+                    "ab",
+                    "abcdefghijk"
+                ],
+                [
+                    "abc",
+                    "ab",
+                    "abcdefghijkl"
+                ]
+            ],
+            "outputs": [
+                "fl",
+                "",
+                "app",
+                "cod",
+                "hel",
+                "pre",
+                "",
+                "",
+                "abc",
+                "abc",
+                "",
+                "a",
+                "ab",
+                "abc",
+                "abc",
+                "abc",
+                "abc",
+                "abc",
+                "abc",
+                "abc"
+            ]
+        },
+        "structure": {
+            "c++": "#include <vector>\n#include <string>\nusing namespace std;\n\nstring longestCommonPrefix(vector<string>& strs) \n    // Your code here\n}\n",
+            "java": "public String longestCommonPrefix(String[] strs) \n    // Your code here\n}\n",
+            "python": "def longest_common_prefix(strs):\n    # Your code here\n\n",
+            "javascript": "function longestCommonPrefix(strs) \n    // Your code here\n}\n"
+        },
+        "call_functions": {
+            "c++": "#include <vector>\n#include <string>\nusing namespace std;\n\nstring longestCommonPrefix(vector<string>& strs) {\n    if (strs.empty()) return \"\";\n\n    for (int i = 0; i < strs[0].size(); ++i) {\n        char c = strs[0][i];\n        for (int j = 1; j < strs.size(); ++j) {\n            if (i == strs[j].size() || strs[j][i] != c) {\n                return strs[0].substr(0, i);\n            }\n        }\n    }\n    return strs[0];\n}\n\nint main() {\n    vector<string> strs = $args;\n    string result = longestCommonPrefix(strs);\n    cout << result << endl;\n    return 0;\n}",
+            "java": "public String longestCommonPrefix(String[] strs) {\n    if (strs.length == 0) return \"\";\n\n    for (int i = 0; i < strs[0].length(); ++i) {\n        char c = strs[0].charAt(i);\n        for (int j = 1; j < strs.length; ++j) {\n            if (i == strs[j].length() || strs[j].charAt(i) != c) {\n                return strs[0].substring(0, i);\n            }\n        }\n    }\n    return strs[0];\n}"
+        }
+    },
+    "15": {
+        "Q_id": "15",
+        "title": "Triplets with Zero Sum",
+        "description": "Given an integer array nums, return all the triplets `[nums[i], nums[j], nums[k]]` such that `i != j`, `i != k`, and `j != k`, and `nums[i] + nums[j] + nums[k] == 0`. Notice that the solution set must not contain duplicate triplets.",
+        "example": "Example 1:\n\nInput: nums = [-1,0,1,2,-1,-4]\nOutput: [[-1,-1,2],[-1,0,1]]\nExplanation: nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0. nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0. nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0. The distinct triplets are [-1,0,1] and [-1,-1,2]. Notice that the order of the output and the order of the triplets does not matter.\n\nExample 2:\n\nInput: nums = [0,1,1]\nOutput: []\nExplanation: The only possible triplet does not sum up to 0.\n\nExample 3:\n\nInput: nums = [0,0,0]\nOutput: [[0,0,0]]\nExplanation: The only possible triplet sums up to 0.",
+        "level": "Medium",
+        "tags": [
+            "Array",
+            "Two Pointers"
+        ],
+        "sample_code": {
+            "c++": "#include <vector>\n#include <algorithm>\n\nstd::vector<std::vector<int>> threeSum(std::vector<int>& nums) {\n    std::vector<std::vector<int>> result;\n    std::sort(nums.begin(), nums.end());\n\n    for (int i = 0; i < (int)nums.size() - 2; ++i) {\n        if (i == 0 || nums[i] != nums[i - 1]) {\n            int j = i + 1, k = nums.size() - 1;\n            while (j < k) {\n                int sum = nums[i] + nums[j] + nums[k];\n                if (sum == 0) {\n                    result.push_back({nums[i], nums[j], nums[k]});\n                    while (j < k && nums[j] == nums[j + 1]) ++j;\n                    while (j < k && nums[k] == nums[k - 1]) --k;\n                    ++j;\n                    --k;\n                } else if (sum < 0) {\n                    ++j;\n                } else {\n                    --k;\n                }\n            }\n        }\n    }\n\n    return result;\n}\n",
+            "java": "import java.util.Arrays;\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<List<Integer>> threeSum(int[] nums) {\n    Arrays.sort(nums);\n    List<List<Integer>> result = new ArrayList<>();\n\n    for (int i = 0; i < nums.length - 2; i++) {\n        if (i == 0 || nums[i] != nums[i - 1]) {\n            int j = i + 1, k = nums.length - 1;\n            while (j < k) {\n                int sum = nums[i] + nums[j] + nums[k];\n                if (sum == 0) {\n                    result.add(Arrays.asList(nums[i], nums[j], nums[k]));\n                    while (j < k && nums[j] == nums[j + 1]) j++;\n                    while (j < k && nums[k] == nums[k - 1]) k--;\n                    j++;\n                    k--;\n                } else if (sum < 0) {\n                    j++;\n                } else {\n                    k--;\n                }                    \n            }\n        }\n    }\n\n    return result;\n}\n",
+            "python": "def threeSum(nums):\n    nums.sort()\n    result = []\n\n    for i in range(len(nums) - 2):\n        if i == 0 or nums[i] != nums[i - 1]:\n            j, k = i + 1, len(nums) - 1\n            while j < k:\n                s = nums[i] + nums[j] + nums[k]\n                if s == 0:\n                    result.append([nums[i], nums[j], nums[k]])\n                    while j < k and nums[j] == nums[j + 1]:\n                        j += 1\n                    while j < k and nums[k] == nums[k - 1]:\n                        k -= 1\n                    j += 1\n                    k -= 1\n                elif s < 0:\n                    j += 1\n                else:\n                    k -= 1\n\n    return result\n",
+            "javascript": "function threeSum(nums) {\n    nums.sort((a, b) => a - b);\n    const result = [];\n\n    for (let i = 0; i < nums.length - 2; i++) {\n        if (i == 0 || nums[i] != nums[i - 1]) {\n            let j = i + 1, k = nums.length - 1;\n            while (j < k) {\n                const sum = nums[i] + nums[j] + nums[k];\n                if (sum === 0) {\n                    result.push([nums[i], nums[j], nums[k]]);\n                    while (j < k && nums[j] === nums[j + 1]) j++;\n                    while (j < k && nums[k] === nums[k - 1]) k--;\n                    j++;\n                    k--;\n                } else if (sum < 0) {\n                    j++;\n                } else {\n                    k--;\n                }\n            }\n        }\n    }\n\n    return result;\n}\n",
+            "explanation": "1. Sort the input array `nums`.\n2. Loop through `nums` from index `0` to `length - 2`. Let the current index be `i`.\n    - If `i` is `0` or `nums[i]` is not equal to the previous element (`nums[i - 1]`), perform the following steps:\n        - Initialize two pointers `j` and `k`, where `j` is the next index after `i`, and `k` is the last index of `nums`.\n        - While `j` is less than `k`, perform the following steps:\n            - Calculate the sum `s` of the elements at indices `i`, `j`, and `k`.\n            - If the sum `s` is equal to `0`, then we've found a valid triplet. Add it to the `result` array and move the pointers, `j` and `k`, skipping duplicates if any.\n            - If the sum `s` is less than `0`, increment `j` to move towards positive values.\n            - If the sum `s` is greater than `0`, decrement `k` to move towards negative values.\n3. Return the `result` array.\n\nThe algorithm removes duplicates by checking if the current numbers being processed are equal to previously processed numbers. The sorting step helps in simplifying the algorithm and reducing the search space."
+        },
+        "test_cases": {
+            "inputs": [
+                "[-1,0,1,2,-1,-4]",
+                "[0,1,1]",
+                "[0,0,0]",
+                "[-2,0,1,1,2]",
+                "[1,2,-2,-1]",
+                "[3,0,-2,-1,1,2]",
+                "[-1,-1,-1,0,0,0,1,1,1]",
+                "[-1,0,1,2,-1,-4,5,6,7,8,9,10]",
+                "[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]",
+                "[1,2,3,4,5,6,7,8,9,10]",
+                "[0,0,0,0,0,0,0,0,0,0]",
+                "[1,1,1,1,1,1,1,1,1,1]"
+            ],
+            "outputs": [
+                "[[-1,-1,2],[-1,0,1]]",
+                "[]",
+                "[[0,0,0]]",
+                "[[-2,0,2],[-2,1,1]]",
+                "[[-2,-1,3],[-2,0,2],[-1,0,1]]",
+                "[[-2,-1,3],[-2,0,2],[-1,0,1]]",
+                "[[-1,-1,2],[-1,0,1],[0,0,0]]",
+                "[[-1,-1,2],[-1,0,1],[0,0,0]]",
+                "[]",
+                "[]",
+                "[[0,0,0]]",
+                "[]"
+            ]
+        },
+        "structure": {
+            "c++": "#include <vector>\n#include <algorithm>\n\nstd::vector<std::vector<int>> threeSum(std::vector<int>& nums) \n    // Your code here\n}\n",
+            "java": "import java.util.Arrays;\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic List<List<Integer>> threeSum(int[] nums) \n    // Your code here\n}\n",
+            "python": "def threeSum(nums):\n    # Your code here\n\n",
+            "javascript": "function threeSum(nums) \n    // Your code here\n}\n"
+        },
+        "call_functions": {
+            "c++": "#include <vector>\n#include <algorithm>\n#include <iostream>\n\nstd::vector<std::vector<int>> threeSum(std::vector<int>& nums);\n\nint main() {\n    std::vector<int> nums = $args;\n    std::vector<std::vector<int>> result = threeSum(nums);\n\n    for (const auto& triplet : result) {\n        for (const auto& num : triplet) {\n            std::cout << num << \" \";\n        }\n        std::cout << std::endl;\n    }\n\n    return 0;\n}\n\nstd::vector<std::vector<int>> threeSum(std::vector<int>& nums) {\n    std::vector<std::vector<int>> result;\n    std::sort(nums.begin(), nums.end());\n\n    for (int i = 0; i < (int)nums.size() - 2; ++i) {\n        if (i == 0 || nums[i] != nums[i - 1]) {\n            int j = i + 1, k = nums.size() - 1;\n            while (j < k) {\n                int sum = nums[i] + nums[j] + nums[k];\n                if (sum == 0) {\n                    result.push_back({nums[i], nums[j], nums[k]});\n                    while (j < k && nums[j] == nums[j + 1]) ++j;\n                    while (j < k && nums[k] == nums[k - 1]) --k;\n                    ++j;\n                    --k;\n                } else if (sum < 0) {\n                    ++j;\n                } else {\n                    --k;\n                }\n            }\n        }\n    }\n\n    return result;\n}"
+        }
+    },
+    "16": {
+        "Q_id": "16",
+        "title": "Closest Three Sum",
+        "description": "Given an integer array `nums` of length `n` and an integer `target`, find three integers in `nums` such that the sum is closest to `target`. Return the sum of the three integers. You may assume that each input would have exactly one solution.",
+        "example": "Example:\n\nInput: nums = [-1,2,1,-4], target = 1\nOutput: 2\nExplanation: The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).",
+        "level": "Medium",
+        "tags": [
+            "Array",
+            "Two Pointers"
+        ],
+        "sample_code": {
+            "c++": "#include <algorithm>\n#include <vector>\n\nint threeSumClosest(std::vector<int>& nums, int target) {\n    std::sort(nums.begin(), nums.end());\n    int closest = nums[0] + nums[1] + nums[2];\n    for (int i = 0; i < nums.size() - 2; ++i) {\n        int left = i + 1;\n        int right = nums.size() - 1;\n        while (left < right) {\n            int sum = nums[i] + nums[left] + nums[right];\n            if (sum == target) {\n                return sum;\n            }\n            if (abs(target - sum) < abs(target - closest)) {\n                closest = sum;\n            }\n            if (sum < target) {\n                left++;\n            } else {\n                right--;\n            }\n        }\n    }\n    return closest;\n}\n",
+            "java": "import java.util.Arrays;\n\npublic int threeSumClosest(int[] nums, int target) {\n    Arrays.sort(nums);\n    int closest = nums[0] + nums[1] + nums[2];\n    for (int i = 0; i < nums.length - 2; ++i) {\n        int left = i + 1;\n        int right = nums.length - 1;\n        while (left < right) {\n            int sum = nums[i] + nums[left] + nums[right];\n            if (sum == target) {\n                return sum;\n            }\n            if (Math.abs(target - sum) < Math.abs(target - closest)) {\n                closest = sum;\n            }\n            if (sum < target) {\n                left++;\n            } else {\n                right--;\n            }\n        }\n    }\n    return closest;\n}\n",
+            "python": "def threeSumClosest(nums, target):\n    nums.sort()\n    closest = sum(nums[:3])\n    for i in range(len(nums) - 2):\n        left, right = i + 1, len(nums) - 1\n        while left < right:\n            cur_sum = nums[i] + nums[left] + nums[right]\n            if cur_sum == target:\n                return cur_sum\n            if abs(target - cur_sum) < abs(target - closest):\n                closest = cur_sum\n            if cur_sum < target:\n                left += 1\n            else:\n                right -= 1\n    return closest\n",
+            "javascript": "function threeSumClosest(nums, target) {\n    nums.sort((a, b) => a - b);\n    let closest = nums[0] + nums[1] + nums[2];\n    for (let i = 0; i < nums.length - 2; ++i) {\n        let left = i + 1;\n        let right = nums.length - 1;\n        while (left < right) {\n            let sum = nums[i] + nums[left] + nums[right];\n            if (sum === target) {\n                return sum;\n            }\n            if (Math.abs(target - sum) < Math.abs(target - closest)) {\n                closest = sum;\n            }\n            if (sum < target) {\n                left++;\n            } else {\n                right--;\n            }\n        }\n    }\n    return closest;\n}\n",
+            "explanation": "1. Sort the input array `nums`.\n2. Initialize the `closest` variable to be the sum of the first three elements.\n3. Iterate through the sorted array with a pointer `i` running from the first element to the third-to-last element.\n4. Initialize two-pointers `left` (set to `i + 1`) and `right` (set to the last element).\n5. While `left` is less than `right`:\n    a. Calculate the current sum `cur_sum` using the elements at positions `i`, `left`, and `right`.\n    b. If `cur_sum` is equal to `target`, return it as the closest sum.\n    c. Update the `closest` sum if the difference between `target` and `cur_sum` is less than the difference between `target` and `closest`.\n    d. Move the `left` pointer forward if `cur_sum` is less than `target`, otherwise move the `right` pointer backward.\n6. Return the `closest` sum found."
+        },
+        "test_cases": {
+            "inputs": [
+                "[-1,2,1,-4], 1",
+                "[0,0,0], 1",
+                "[1,2,3,4,5], 10",
+                "[-10,-5,0,5,10], 0",
+                "[1,1,1,1,1], 3",
+                "[-1,-2,-3,-4,-5], -10",
+                "[10,20,30,40,50], 100",
+                "[0,0,0,0,0], 5",
+                "[-1,-1,-1,-1,-1], -3",
+                "[1,2,3,4,5], -10",
+                "[1,2,3,4,5], 15",
+                "[1,2,3,4,5], 6",
+                "[1,2,3,4,5], 7",
+                "[1,2,3,4,5], 8",
+                "[1,2,3,4,5], 9",
+                "[1,2,3,4,5], 10",
+                "[1,2,3,4,5], 11",
+                "[1,2,3,4,5], 12",
+                "[1,2,3,4,5], 13"
+            ],
+            "outputs": [
+                "2",
+                "0",
+                "9",
+                "0",
+                "3",
+                "-9",
+                "60",
+                "0",
+                "-3",
+                "3",
+                "15",
+                "6",
+                "6",
+                "6",
+                "6",
+                "6",
+                "6",
+                "6",
+                "6",
+                "6"
+            ]
+        },
+        "structure": {
+            "c++": "#include <algorithm>\n#include <vector>\n\nint threeSumClosest(std::vector<int>& nums, int target) \n    // Your code here\n}\n",
+            "java": "import java.util.Arrays;\n\npublic int threeSumClosest(int[] nums, int target) \n    // Your code here\n}\n",
+            "python": "def threeSumClosest(nums, target):\n    # Your code here\n\n",
+            "javascript": "function threeSumClosest(nums, target) \n    // Your code here\n}\n"
+        },
+        "call_functions": {
+            "c++": "#include <algorithm>\n#include <vector>\n#include <iostream>\n\nint main() {\n    std::vector<int> nums = $args;\n    int target = $args;\n    int result = threeSumClosest(nums, target);\n    std::cout << result << std::endl;\n    return 0;\n}"
+        }
+    },
+    "17": {
+        "Q_id": "17",
+        "title": "Letter Combinations of a Phone Number",
+        "description": "Given a string containing digits from `2-9` inclusive, return all possible letter combinations that the number could represent. Return the answer in **any order**.\n\nA mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.",
+        "example": "Example:\n\n**Input:** digits = \"23\"\n**Output:** [\"ad\", \"ae\", \"af\", \"bd\", \"be\", \"bf\", \"cd\", \"ce\", \"cf\"]\n\n**Input:** digits = \"\"\n**Output:** []\n\n**Input:** digits = \"2\"\n**Output:** [\"a\", \"b\", \"c\"]",
+        "level": "Medium",
+        "tags": [
+            "String",
+            "Recursion",
+            "Backtracking"
+        ],
+        "sample_code": {
+            "c++": "#include <vector>\n#include <string>\nusing namespace std;\n\nvector<string> letterCombinations(string digits) {\n    if(digits.empty()) return {};\n    vector<string> phone = {\"abc\", \"def\", \"ghi\", \"jkl\", \"mno\", \"pqrs\", \"tuv\", \"wxyz\"};\n    vector<string> result = {\"\"};\n\n    for (char d : digits) {\n        vector<string> temp;\n        for (const string &s : result) {\n            for (char c : phone[d - '2']) {\n                temp.push_back(s + c);\n            }\n        }\n        result.swap(temp);\n    }\n    return result;\n}\n",
+            "java": "public List<String> letterCombinations(String digits) {\n    LinkedList<String> output = new LinkedList<>();\n    if(digits.isEmpty()) return output;\n    \n    String[] phone = new String[] {\"abc\", \"def\", \"ghi\", \"jkl\", \"mno\", \"pqrs\", \"tuv\", \"wxyz\"};\n    output.add(\"\");\n    \n    for(char d : digits.toCharArray()){\n        while(output.peek().length() == digits.indexOf(d)){\n            String perm = output.remove();\n            for(char c : phone[d - '2'].toCharArray()){\n                output.add(perm + c);\n            }\n        }\n    }\n    \n    return output;\n}\n",
+            "python": "def letter_combinations(digits: str):\n    if not digits: return []\n    phone = [\"abc\", \"def\", \"ghi\", \"jkl\", \"mno\", \"pqrs\", \"tuv\", \"wxyz\"]\n    result = [\"\"]\n\n    for digit in digits:\n        temp = []\n        for s in result:\n            for c in phone[int(digit) - 2]:\n                temp.append(s + c)\n        result = temp\n\n    return result\n",
+            "javascript": "function letterCombinations(digits) {\n    if (digits.length === 0) return [];\n    \n    let phone = [\"abc\", \"def\", \"ghi\", \"jkl\", \"mno\", \"pqrs\", \"tuv\", \"wxyz\"];\n    let result = [\"\"];\n\n    for (let i = 0; i < digits.length; i++) {\n        let digit = digits[i];\n        let temp = [];\n\n        for (let s of result) {\n            for (let c of phone[digit - 2]) {\n                temp.push(s + c);\n            }\n        }\n\n        result = temp;\n    }\n\n    return result;\n}\n",
+            "explanation": "The algorithm visits each digit from the given `digits` string one by one. For each digit, it appends all possible characters corresponding to that digit, in a breadth-first search manner. The current stage's results are saved in the `result` list (or `output` list in Java). A temporary list `temp` is used to store the combinations formed at each stage before replacing the `result` list. The phone buttons mapping is stored in the `phone` list/array."
+        },
+        "test_cases": {
+            "inputs": [
+                "\"23\"",
+                "\"\"",
+                "\"2\"",
+                "\"234\"",
+                "\"567\"",
+                "\"89\"",
+                "\"999\"",
+                "\"7777\"",
+                "\"2222\"",
+                "\"3333\"",
+                "\"4444\"",
+                "\"5555\"",
+                "\"6666\"",
+                "\"8888\"",
+                "\"9999\"",
+                "\"222\"",
+                "\"333\"",
+                "\"444\"",
+                "\"555\"",
+                "\"666\"",
+                "\"777\"",
+                "\"888\"",
+                "\"999\"",
+                "\"2222\"",
+                "\"3333\"",
+                "\"4444\"",
+                "\"5555\"",
+                "\"6666\"",
+                "\"7777\"",
+                "\"8888\"",
+                "\"9999\""
+            ],
+            "outputs": [
+                "[\"ad\", \"ae\", \"af\", \"bd\", \"be\", \"bf\", \"cd\", \"ce\", \"cf\"]",
+                "[]",
+                "[\"a\", \"b\", \"c\"]",
+                "[\"adg\", \"adh\", \"adi\", \"aeg\", \"aeh\", \"aei\", \"afg\", \"afh\", \"afi\", \"bdg\", \"bdh\", \"bdi\", \"beg\", \"beh\", \"bei\", \"bfg\", \"bfh\", \"bfi\", \"cdg\", \"cdh\", \"cdi\", \"ceg\", \"ceh\", \"cei\", \"cfg\", \"cfh\", \"cfi\"]",
+                "[\"jm\", \"jn\", \"jo\", \"km\", \"kn\", \"ko\", \"lm\", \"ln\", \"lo\"]",
+                "[\"tw\", \"tx\", \"ty\", \"uw\", \"ux\", \"uy\", \"vw\", \"vx\", \"vy\"]",
+                "[\"w\", \"x\", \"y\", \"z\"]",
+                "[\"aa\", \"ab\", \"ac\", \"ba\", \"bb\", \"bc\", \"ca\", \"cb\", \"cc\"]",
+                "[\"aa\", \"ad\", \"ae\", \"af\", \"ba\", \"bd\", \"be\", \"bf\", \"ca\", \"cd\", \"ce\", \"cf\"]",
+                "[\"dd\", \"de\", \"df\", \"ed\", \"ee\", \"ef\", \"fd\", \"fe\", \"ff\"]",
+                "[\"gg\", \"gh\", \"gi\", \"hg\", \"hh\", \"hi\", \"ig\", \"ih\", \"ii\"]",
+                "[\"jj\", \"jk\", \"jl\", \"kj\", \"kk\", \"kl\", \"lj\", \"lk\", \"ll\"]",
+                "[\"pp\", \"pq\", \"pr\", \"ps\", \"qp\", \"qq\", \"qr\", \"qs\", \"rp\", \"rq\", \"rr\", \"rs\", \"sp\", \"sq\", \"sr\", \"ss\"]",
+                "[\"tt\", \"tu\", \"tv\", \"ut\", \"uu\", \"uv\", \"vt\", \"vu\", \"vv\"]",
+                "[\"ww\", \"wx\", \"wy\", \"wz\", \"xw\", \"xx\", \"xy\", \"xz\", \"yw\", \"yx\", \"yy\", \"yz\", \"zw\", \"zx\", \"zy\", \"zz\"]",
+                "[\"aa\", \"ad\", \"ae\", \"af\", \"ba\", \"bd\", \"be\", \"bf\", \"ca\", \"cd\", \"ce\", \"cf\"]",
+                "[\"dd\", \"de\", \"df\", \"ed\", \"ee\", \"ef\", \"fd\", \"fe\", \"ff\"]",
+                "[\"gg\", \"gh\", \"gi\", \"hg\", \"hh\", \"hi\", \"ig\", \"ih\", \"ii\"]",
+                "[\"jj\", \"jk\", \"jl\", \"kj\", \"kk\", \"kl\", \"lj\", \"lk\", \"ll\"]",
+                "[\"pp\", \"pq\", \"pr\", \"ps\", \"qp\", \"qq\", \"qr\", \"qs\", \"rp\", \"rq\", \"rr\", \"rs\", \"sp\", \"sq\", \"sr\", \"ss\"]",
+                "[\"tt\", \"tu\", \"tv\", \"ut\", \"uu\", \"uv\", \"vt\", \"vu\", \"vv\"]",
+                "[\"ww\", \"wx\", \"wy\", \"wz\", \"xw\", \"xx\", \"xy\", \"xz\", \"yw\", \"yx\", \"yy\", \"yz\", \"zw\", \"zx\", \"zy\", \"zz\"]"
+            ]
+        },
+        "structure": {
+            "c++": "#include <vector>\n#include <string>\nusing namespace std;\n\nvector<string> letterCombinations(string digits) \n    // Your code here\n}\n",
+            "java": "public List<String> letterCombinations(String digits) \n    // Your code here\n}\n",
+            "python": "def letter_combinations(digits: str):\n    # Your code here\n\n",
+            "javascript": "function letterCombinations(digits) \n    // Your code here\n}\n"
+        },
+        "call_functions": {
+            "c++": "#include <vector>\n#include <string>\nusing namespace std;\n\nint main() {\n    string digits = $args;\n    vector<string> result = letterCombinations(digits);\n    for (const string &s : result) {\n        cout << s << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
+            "java": "public List<String> letterCombinations(String digits) {\n    LinkedList<String> output = new LinkedList<>();\n    if(digits.isEmpty()) return output;\n    \n    String[] phone = new String[] {\"abc\", \"def\", \"ghi\", \"jkl\", \"mno\", \"pqrs\", \"tuv\", \"wxyz\"};\n    output.add(\"\");\n    \n    for(char d : digits.toCharArray()){\n        while(output.peek().length() == digits.indexOf(d)){\n            String perm = output.remove();\n            for(char c : phone[d - '2'].toCharArray()){\n                output.add(perm + c);\n            }\n        }\n    }\n    \n    return output;\n}"
+        }
+    },
+    "22": {
+        "Q_id": "22",
+        "title": "Generate All Combinations of Well-Formed Parentheses",
+        "description": "Given `n` pairs of parentheses, write a function to generate all combinations of well-formed parentheses. A well-formed parentheses string is defined as a string consisting of opening and closing parentheses '(' and ')', where each opening parenthesis must have a corresponding closing parenthesis and the parentheses pairs must be properly nested. Implement a function `generateParentheses(n: int) -> List[str]` that will take an integer `n` as input and return a list of all possible well-formed parentheses combinations.",
+        "example": "Example:\n\nInput: n = 3\nOutput: [\"((()))\",\"(()())\",\"(())()\",\"()(())\",\"()()()\"]\n\nInput: n = 1\nOutput: [\"()\"]",
+        "level": "Medium",
+        "tags": [
+            "Recursion",
+            "Backtracking",
+            "String"
+        ],
+        "sample_code": {
+            "c++": "#include <vector>\n#include <string>\n\nvoid generateParenthesisHelper(int open, int close, std::string current, std::vector<std::string>& result) {\n    if (open == 0 && close == 0) {\n        result.push_back(current);\n        return;\n    }\n    if (open > 0) {\n        generateParenthesisHelper(open - 1, close + 1, current + '(', result);\n    }\n    if (close > 0) {\n        generateParenthesisHelper(open, close - 1, current + ')', result);\n    }\n}\n\nstd::vector<std::string> generateParenthesis(int n) {\n    std::vector<std::string> result;\n    generateParenthesisHelper(n, 0, \"\", result);\n    return result;\n}\n\n",
+            "java": "import java.util.ArrayList;\nimport java.util.List;\n\npublic List<String> generateParenthesis(int n) {\n    List<String> result = new ArrayList<>();\n    generateParenthesisHelper(n, 0, \"\", result);\n    return result;\n}\n\nprivate void generateParenthesisHelper(int open, int close, String current, List<String> result) {\n    if (open == 0 && close == 0) {\n        result.add(current);\n        return;\n    }\n    if (open > 0) {\n        generateParenthesisHelper(open - 1, close + 1, current + '(', result);\n    }\n    if (close > 0) {\n        generateParenthesisHelper(open, close - 1, current + ')', result);\n    }\n}\n\n",
+            "python": "def generate_parenthesis(n):\n    def generate_parenthesis_helper(open, close, current):\n        if open == 0 and close == 0:\n            result.append(current)\n            return\n        if open > 0:\n            generate_parenthesis_helper(open - 1, close + 1, current + '(')\n        if close > 0:\n            generate_parenthesis_helper(open, close - 1, current + ')')\n\n    result = []\n    generate_parenthesis_helper(n, 0, '')\n    return result\n\n",
+            "javascript": "function generateParenthesis(n) {\n    function generateParenthesisHelper(open, close, current, result) {\n        if (open === 0 && close === 0) {\n            result.push(current);\n            return;\n        }\n        if (open > 0) {\n            generateParenthesisHelper(open - 1, close + 1, current + '(', result);\n        }\n        if (close > 0) {\n            generateParenthesisHelper(open, close - 1, current + ')', result);\n        }\n    }\n\n    let result = [];\n    generateParenthesisHelper(n, 0, '', result);\n    return result;\n}\n\n",
+            "explanation": "The algorithm uses a helper function called `generateParenthesisHelper` which receives four parameters: the number of open parentheses left to place, the number of close parentheses left to place, the current string that holds the generated parentheses so far, and the result list to store valid combinations.\n\nThe algorithm uses a depth-first search to construct valid combinations of parentheses. It starts with `n` open parentheses and increments the number of close parentheses as it places an open parenthesis. When the helper function has no open or close parentheses left to place, it means a valid combination is found, so it adds the combination to the result list.\n\nThe helper function recursively calls itself. If there are open parentheses left to place, it calls itself with one less open parenthesis and one more close parenthesis. If there are close parentheses left to place, it calls itself without changing the number of open parentheses and with one less close parenthesis. Finally, the current string in each case is updated with the placed open or close parenthesis."
+        },
+        "test_cases": {
+            "inputs": [
+                3,
+                1,
+                2,
+                4,
+                0
+            ],
+            "outputs": [
+                [
+                    "((()))",
+                    "(()())",
+                    "(())()",
+                    "()(())",
+                    "()()()"
+                ],
+                [
+                    "()"
+                ],
+                [
+                    "(())",
+                    "()()"
+                ],
+                [
+                    "(((())))",
+                    "((()()))",
+                    "((())())",
+                    "((()))()",
+                    "(()(()))",
+                    "(()()())",
+                    "(()())()",
+                    "(())(())",
+                    "(())()()",
+                    "()((()))",
+                    "()(()())",
+                    "()(())()",
+                    "()()(())",
+                    "()()()()"
+                ],
+                []
+            ]
+        },
+        "structure": {
+            "c++": "#include <vector>\n#include <string>\n\nvoid generateParenthesisHelper(int open, int close, std::string current, std::vector<std::string>& result) \n    // Your code here\n}\n\n",
+            "java": "import java.util.ArrayList;\nimport java.util.List;\n\npublic List<String> generateParenthesis(int n) \n    // Your code here\n}\n\n",
+            "python": "def generate_parenthesis(n):\n    # Your code here\n\n",
+            "javascript": "function generateParenthesis(n) \n    // Your code here\n}\n\n"
+        },
+        "call_functions": {}
+    },
+    "24": {
+        "Q_id": "24",
+        "title": "Swap Adjacent Nodes in Linked List",
+        "description": "Given a linked list, swap every two adjacent nodes and return its head. You must solve the problem without modifying the values in the list`s nodes (i.e., only nodes themselves may be changed).",
+        "example": "Example:\n\nInput: head = [1,2,3,4]\nOutput: [2,1,4,3]\n\nInput: head = []\nOutput: []\n\nInput: head = [1]\nOutput: [1]",
+        "level": "Medium",
+        "tags": [
+            "linked list",
+            "recursion"
+        ],
+        "sample_code": {
+            "c++": "ListNode* swapPairs(ListNode* head) {\n    if (!head || !head->next) return head;\n\n    ListNode* second = head->next;\n    head->next = swapPairs(second->next);\n    second->next = head;\n    \n    return second;\n}\n",
+            "java": "public ListNode swapPairs(ListNode head) {\n    if (head == null || head.next == null) return head;\n    \n    ListNode second = head.next;\n    head.next = swapPairs(second.next);\n    second.next = head;\n    \n    return second;\n}\n",
+            "python": "def swapPairs(head: Optional[ListNode]) -> Optional[ListNode]:\n    if not head or not head.next:\n        return head\n\n    second = head.next\n    head.next = swapPairs(second.next)\n    second.next = head\n\n    return second\n",
+            "javascript": "function swapPairs(head) {\n    if (!head || !head.next) return head;\n\n    let second = head.next;\n    head.next = swapPairs(second.next);\n    second.next = head;\n\n    return second;\n}\n",
+            "explanation": "The algorithm uses recursion to solve the problem. It starts by checking if the list has remaining pairs to swap. If not, the head of the current section of the list is returned.\n\nIf there are pairs left to swap, it takes the second node (which will become the new head of the current pair) and sets its next node to the result of the recursive call with the node after it as the new head.\n\nThen, it sets the current head's next node to the second node and returns the second node as the new head of the pair. As the recursion unfolds, the pairs get swapped, and the final swapped linked list head is returned."
+        },
+        "test_cases": {
+            "inputs": [
+                [
+                    1,
+                    2,
+                    3,
+                    4
+                ],
+                [],
+                [
+                    1
+                ],
+                [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10
+                ],
+                [
+                    2,
+                    4,
+                    6,
+                    8,
+                    10
+                ],
+                [
+                    1,
+                    3,
+                    5,
+                    7,
+                    9
+                ],
+                [
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1
+                ],
+                [
+                    2,
+                    2,
+                    2,
+                    2,
+                    2,
+                    2,
+                    2,
+                    2,
+                    2,
+                    2
+                ],
+                [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    6,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15
+                ],
+                [
+                    5,
+                    10,
+                    15,
+                    20,
+                    25,
+                    30,
+                    35,
+                    40,
+                    45,
+                    50
+                ]
+            ],
+            "outputs": [
+                [
+                    2,
+                    1,
+                    4,
+                    3
+                ],
+                [],
+                [
+                    1
+                ],
+                [
+                    2,
+                    1,
+                    4,
+                    3,
+                    6,
+                    5,
+                    8,
+                    7,
+                    10,
+                    9
+                ],
+                [
+                    4,
+                    2,
+                    8,
+                    6,
+                    10
+                ],
+                [
+                    3,
+                    1,
+                    7,
+                    5,
+                    9
+                ],
+                [
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1
+                ],
+                [
+                    2,
+                    2,
+                    2,
+                    2,
+                    2,
+                    2,
+                    2,
+                    2,
+                    2,
+                    2
+                ],
+                [
+                    2,
+                    1,
+                    4,
+                    3,
+                    6,
+                    5,
+                    8,
+                    7,
+                    10,
+                    9,
+                    12,
+                    11,
+                    14,
+                    13,
+                    15
+                ],
+                [
+                    10,
+                    5,
+                    20,
+                    15,
+                    30,
+                    25,
+                    40,
+                    35,
+                    50,
+                    45
+                ]
+            ]
+        },
+        "structure": {
+            "c++": "ListNode* swapPairs(ListNode* head) \n    // Your code here\n}\n",
+            "java": "public ListNode swapPairs(ListNode head) \n    // Your code here\n}\n",
+            "python": "def swapPairs(head: Optional[ListNode]) -> Optional[ListNode]:\n    # Your code here\n\n",
+            "javascript": "function swapPairs(head) \n    // Your code here\n}\n"
+        },
+        "call_functions": {
+            "c++": "ListNode* swapPairs(ListNode* head) {\n    if (!head || !head->next) return head;\n\n    ListNode* second = head->next;\n    head->next = swapPairs(second->next);\n    second->next = head;\n    \n    return second;\n}"
+        }
+    }
+}
