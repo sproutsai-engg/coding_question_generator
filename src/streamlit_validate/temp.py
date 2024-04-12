@@ -1,22 +1,15 @@
-def length_of_longest_substring(s: str) -> int:
-    left = 0
-    right = 0
-    max_length = 0
-    characters = set()
-
-    while right < len(s):
-        if s[right] not in characters:
-            characters.add(s[right])
-            max_length = max(max_length, right - left + 1)
-            right += 1
-        else:
-            characters.remove(s[left])
+def max_area(height):
+    max_area, left, right = 0, 0, len(height) - 1
+    while left < right:
+        max_area = max(max_area, min(height[left], height[right]) * (right - left))
+        if height[left] < height[right]:
             left += 1
-
-    return max_length
+        else:
+            right -= 1
+    return max_area
 
 
 if __name__ == "__main__":
-    s = "abcabcbb"
-    result = length_of_longest_substring(s)
+    height =[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+    result = max_area(height)
     print(result)

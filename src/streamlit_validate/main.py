@@ -3,7 +3,8 @@ import json
 import utils
 import display_fun
 
-file_path = r"coding_questions_merged.json"
+# file_path = r"coding_questions_merged.json"
+file_path=r"sample_coding_questions.json"
 
 st.set_page_config(
     page_title="Code Test Platform Console",
