@@ -46,8 +46,9 @@ def prompt_codingQ_details(ques_description):
     for i in range(num_of_retries):
         try:
             model ="gpt35-16k"
-            response = utils.get_from_gpt(message=message, model=model, temperature = 0.01, max_tokens = 6000)
-            print(response["content"])
+            api_type = "job"
+            response = utils.get_from_gpt(message=message, model=model, temperature = 0.01, max_tokens = 6000, api_type = api_type)
+            # print(response["content"])
             response_json = json.loads(response["content"])
             return response_json    
         
@@ -143,6 +144,7 @@ def prompt_call_func(language, sample_code):
                     2. Argument Assignment: Assign the value of the input special variable as $args.
                     3. Function Invocation: Invoke the function with the argument  and assign the result to a constant named result.
                     4. Output: Print the value of the result.
+                    5. Important note: Donot give sample code in the call function. Call function should be a standalone code that can be run to test the sample code.
                     
                 Here is the JSON format to be filled: \n\n ###{format}### \n\n
                 
@@ -155,10 +157,11 @@ def prompt_call_func(language, sample_code):
             
     num_of_retries = 3
     model ="gpt35-16k"
+    api_type = "linkedin_match"
     for i in range(num_of_retries):
         try:
             
-            response = utils.get_from_gpt(message=message, model=model, temperature = 0.01, max_tokens = 6000)
+            response = utils.get_from_gpt(message=message, model=model, temperature = 0.01, max_tokens = 6000, api_type = api_type)
             # print(response["content"])
             response_json = json.loads(response["content"])
             return response_json 
@@ -170,6 +173,7 @@ def prompt_call_func(language, sample_code):
                 response_json = json.loads(response)
                 return response_json 
             except Exception as f:
+                model ="gpt4-8k"
                 print(f)
         
         except Exception as e: ## If there is any other error
