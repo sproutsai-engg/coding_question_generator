@@ -18,19 +18,20 @@ def display_question(question_id, question_data, data, file_path):
         
         ## display inputs 
         st.subheader("Inputs")
-        st.text_area("Edit Inputs", question_data['test_cases']['inputs'], height=175+25)
-            
+        # st.text_area("Edit Inputs", question_data['test_cases']['inputs'], height=175+25)
+        st.code(question_data['test_cases']['inputs'], line_numbers=True, language="python")            
         ## display outputs
         st.subheader("Outputs")
-        st.text_area("Edit Outputs", question_data['test_cases']['outputs'], height=80)
+        # st.text_area("Edit Outputs", question_data['test_cases']['outputs'], height=80)
+        st.code(question_data['test_cases']['outputs'], line_numbers=True, language="python")
         
     with right_column:
-        for language in ["python", "c++", "java", "javascript"]:
+        for language in ["python","javascript", "c++", "java"]:
             st.subheader(f":orange[**{language.capitalize()}**]")
             code_lang = language
             if language == "c++":
                 code_lang = "cpp"
-            height_multiplier = 25
+            height_multiplier = 30
             if language in question_data['sample_code']:
                 sample_code_key = f"Sample_code_{language}_{question_id}"
                 height = question_data['sample_code'][language].count("\n") * height_multiplier

@@ -446,7 +446,10 @@
     },
     "71": {
         "call_functions": {
-            "c++": "#include <string>\n#include <vector>\n#include <sstream>\n\nint main() {\n    std::string path = $args;\n    std::string result = simplifyPath(path);\n    std::cout << result << std::endl;\n    return 0;\n}"
+            "c++": "#include <string>\n#include <vector>\n#include <sstream>\n\nint main() {\n    std::string path = $args;\n    std::string result = simplifyPath(path);\n    std::cout << result << std::endl;\n    return 0;\n}",
+            "python": "if __name__ == \"__main__\":\n    path = $args[0]\n    result = simplifyPath(path)\n    print(result)",
+            "javascript": "function main() {\n    const path = $args;\n    const result = simplifyPath(path);\n    console.log(result);\n}",
+            "java": "public String simplifyPath(String path) {\n    String[] parts = path.split(\"/\");\n    LinkedList<String> stack = new LinkedList<>();\n\n    for (String part : parts) {\n        if (part.isEmpty() || part.equals(\".\")) continue;\n        if (part.equals(\"..\")) {\n            if (!stack.isEmpty()) stack.removeLast();\n        } else {\n            stack.addLast(part);\n        }\n    }\n\n    StringBuilder canonicalPath = new StringBuilder();\n    for (String piece : stack) {\n        canonicalPath.append('/').append(piece);\n    }\n    return stack.isEmpty() ? \"/\" : canonicalPath.toString();\n}"
         }
     },
     "72": {
@@ -460,13 +463,17 @@
     "73": {
         "call_functions": {
             "c++": "void setZeroes(vector<vector<int>>& matrix) {\n    int rows = matrix.size();\n    int cols = matrix[0].size();\n    bool firstRow = false, firstCol = false;\n    \n    for (int i = 0; i < rows; i++) {\n        for (int j = 0; j < cols; j++) {\n            if (matrix[i][j] == 0) {\n                if (i == 0) firstRow = true;\n                if (j == 0) firstCol = true;\n                matrix[i][0] = 0;\n                matrix[0][j] = 0;\n            }\n        }\n    }\n\n    for (int i = 1; i < rows; i++) {\n        for (int j = 1; j < cols; j++) {\n            if (matrix[i][0] == 0 || matrix[0][j] == 0)\n                matrix[i][j] = 0;\n        }\n    }\n\n    if (firstRow) {\n        for (int j = 0; j < cols; j++)\n            matrix[0][j] = 0;\n    }\n\n    if (firstCol) {\n        for (int i = 0; i < rows; i++)\n            matrix[i][0] = 0;\n    }\n}",
-            "java": "public void setZeroes(int[][] matrix)"
+            "java": "public void setZeroes(int[][] matrix)",
+            "python": "if __name__ == \"__main__\":\n    matrix = $args[0]\n    setZeroes(matrix)\n    for row in matrix:\n        print(row)",
+            "javascript": "function setZeroes(matrix) {\n    let rows = matrix.length;\n    let cols = matrix[0].length;\n    let firstRow = false;\n    let firstCol = false;\n\n    for (let i = 0; i < rows; i++) {\n        for (let j = 0; j < cols; j++) {\n            if (matrix[i][j] === 0) {\n                if (i === 0) firstRow = true;\n                if (j === 0) firstCol = true;\n                matrix[i][0] = 0;\n                matrix[0][j] = 0;\n            }\n        }\n    }\n\n    for (let i = 1; i < rows; i++) {\n        for (let j = 1; j < cols; j++) {\n            if (matrix[i][0] === 0 || matrix[0][j] === 0) {\n                matrix[i][j] = 0;\n            }\n        }\n    }\n\n    if (firstRow) {\n        for (let j = 0; j < cols; j++) \n            matrix[0][j] = 0;\n    }\n\n    if (firstCol) {\n        for (let i = 0; i < rows; i++)\n            matrix[i][0] = 0;\n    }\n}"
         }
     },
     "75": {
         "call_functions": {
             "c++": "void sortColors(vector<int>& nums) {\n    int red = 0, white = 0, blue = nums.size() - 1;\n    while (white <= blue) {\n        if (nums[white] == 0) {\n            swap(nums[red++], nums[white++]);\n        } else if (nums[white] == 1) {\n            white++;\n        } else {\n            swap(nums[white], nums[blue--]);\n        }\n    }\n}",
-            "java": "public void sortColors(int[] nums) {\n    int red = 0, white = 0, blue = nums.length - 1;\n    while (white <= blue) {\n        if (nums[white] == 0) {\n            int temp = nums[red];\n            nums[red++] = nums[white];\n            nums[white++] = temp;\n        } else if (nums[white] == 1) {\n            white++;\n        } else {\n            int temp = nums[white];\n            nums[white] = nums[blue];\n            nums[blue--] = temp;\n        }\n    }\n}"
+            "java": "public void sortColors(int[] nums) {\n    int red = 0, white = 0, blue = nums.length - 1;\n    while (white <= blue) {\n        if (nums[white] == 0) {\n            int temp = nums[red];\n            nums[red++] = nums[white];\n            nums[white++] = temp;\n        } else if (nums[white] == 1) {\n            white++;\n        } else {\n            int temp = nums[white];\n            nums[white] = nums[blue];\n            nums[blue--] = temp;\n        }\n    }\n}",
+            "python": "if __name__ == \"__main__\":\n    nums = $args[0]\n    sortColors(nums)\n    print(nums)",
+            "javascript": "function sortColors(nums) {\n    let red = 0, white = 0, blue = nums.length - 1;\n    while (white <= blue) {\n        if (nums[white] === 0) {\n            [nums[red], nums[white]] = [nums[white], nums[red]];\n            red++;\n            white++;\n        } else if (nums[white] === 1) {\n            white++;\n        } else {\n            [nums[white], nums[blue]] = [nums[blue], nums[white]];\n            blue--;\n        }\n    }\n}\n\nconst nums = $args;\n\nsortColors(nums);\nconsole.log(nums);"
         }
     },
     "76": {
@@ -527,12 +534,16 @@
     },
     "88": {
         "call_functions": {
-            "c++": "void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {\n    int i = m - 1, j = n - 1, k = m + n - 1;\n    while (i >= 0 && j >= 0) {\n        if (nums1[i] > nums2[j])\n            nums1[k--] = nums1[i--];\n        else\n            nums1[k--] = nums2[j--];\n    }\n    while (j >= 0) {\n        nums1[k--] = nums2[j--];\n    }\n}\n\nint main() {\n    vector<int> nums1 = $args;\n    int m = nums1.size();\n    vector<int> nums2;\n    int n = nums2.size();\n    merge(nums1, m, nums2, n);\n    for (int i = 0; i < m + n; i++) {\n        cout << nums1[i] << \" \";\n    }\n    cout << endl;\n    return 0;\n}"
+            "c++": "void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {\n    int i = m - 1, j = n - 1, k = m + n - 1;\n    while (i >= 0 && j >= 0) {\n        if (nums1[i] > nums2[j])\n            nums1[k--] = nums1[i--];\n        else\n            nums1[k--] = nums2[j--];\n    }\n    while (j >= 0) {\n        nums1[k--] = nums2[j--];\n    }\n}\n\nint main() {\n    vector<int> nums1 = $args;\n    int m = nums1.size();\n    vector<int> nums2;\n    int n = nums2.size();\n    merge(nums1, m, nums2, n);\n    for (int i = 0; i < m + n; i++) {\n        cout << nums1[i] << \" \";\n    }\n    cout << endl;\n    return 0;\n}",
+            "python": "if __name__ == \"__main__\":\n    nums1 = $args[0]\n    m = $args[1]\n    nums2 = $args[2]\n    n = $args[3]\n    merge(nums1, m, nums2, n)\n    print(nums1)",
+            "javascript": "function main() {\n    const nums1 = $args[0];\n    const m = $args[1];\n    const nums2 = $args[2];\n    const n = $args[3];\n    merge(nums1, m, nums2, n);\n    console.log(nums1);\n}"
         }
     },
     "89": {
         "call_functions": {
-            "c++": "#include <vector>\n#include <iostream>\n\nint main() {\n    int n = $args;\n    std::vector<int> result = grayCode(n);\n    for (int i = 0; i < result.size(); i++) {\n        std::cout << result[i] << \" \";\n    }\n    std::cout << std::endl;\n    return 0;\n}"
+            "c++": "#include <vector>\n#include <iostream>\n\nint main() {\n    int n = $args;\n    std::vector<int> result = grayCode(n);\n    for (int i = 0; i < result.size(); i++) {\n        std::cout << result[i] << \" \";\n    }\n    std::cout << std::endl;\n    return 0;\n}",
+            "python": "if __name__ == \"__main__\":\n    n = $args[0]\n    result = grayCode(n)\n    print(result)",
+            "javascript": "function main() {\n    const n = $args;\n    const result = grayCode(n);\n    console.log(result);\n}"
         }
     },
     "90": {
@@ -545,14 +556,18 @@
     },
     "91": {
         "call_functions": {
-            "c++": "#include <iostream>\nusing namespace std;\n\nint main() {\n    string s = $args;\n    int result = numDecodings(s);\n    cout << result << endl;\n    return 0;\n}"
+            "c++": "#include <iostream>\nusing namespace std;\n\nint main() {\n    string s = $args;\n    int result = numDecodings(s);\n    cout << result << endl;\n    return 0;\n}",
+            "python": "def call_numDecodings(s):\n    n = len(s)\n    dp = [0] * (n + 1)\n    dp[0] = 1\n    dp[1] = 1 if s[0] != '0' else 0\n\n    for i in range(2, n + 1):\n        one_digit = int(s[i - 1:i])\n        two_digits = int(s[i - 2:i])\n\n        if one_digit >= 1:\n            dp[i] += dp[i - 1]\n        if two_digits >= 10 and two_digits <= 26:\n            dp[i] += dp[i - 2]\n    return dp[n]\n\nif __name__ == \"__main__\":\n    s = $args[0]\n    result = call_numDecodings(s)\n    print(result)",
+            "javascript": "function main() {\n    const s = $args;\n    const n = s.length;\n    const dp = new Array(n + 1).fill(0);\n    dp[0] = 1;\n    dp[1] = s[0] !== '0' ? 1 : 0;\n\n    for (let i = 2; i <= n; i++) {\n        const oneDigit = parseInt(s.slice(i - 1, i), 10);\n        const twoDigits = parseInt(s.slice(i - 2, i), 10);\n\n        if (oneDigit >= 1)\n            dp[i] += dp[i - 1];\n        if (twoDigits >= 10 && twoDigits <= 26)\n            dp[i] += dp[i - 2];\n    }\n    const result = dp[n];\n    console.log(result);\n}",
+            "java": "public int numDecodings(String s) {\n    int n = s.length();\n    int[] dp = new int[n + 1];\n    dp[0] = 1;\n    dp[1] = s.charAt(0) != '0' ? 1 : 0;\n\n    for (int i = 2; i <= n; i++) {\n        int oneDigit = Integer.parseInt(s.substring(i - 1, i));\n        int twoDigits = Integer.parseInt(s.substring(i - 2, i));\n\n        if (oneDigit >= 1)\n            dp[i] += dp[i - 1];\n        if (twoDigits >= 10 && twoDigits <= 26)\n            dp[i] += dp[i - 2];\n    }\n    return dp[n];\n}"
         }
     },
     "92": {
         "call_functions": {
             "c++": "ListNode* reverseBetween(ListNode* head, int left, int right) {\n    if (!head || left == right) return head;\n    ListNode dummy(0);\n    dummy.next = head;\n    ListNode* pre = &dummy;\n    for (int i = 1; i < left; ++i) pre = pre->next;\n    ListNode* cur = pre->next;\n    for (int i = left; i < right; ++i) {\n        ListNode* t = cur->next;\n        cur->next = t->next;\n        t->next = pre->next;\n        pre->next = t;\n    }\n    return dummy.next;\n}",
             "java": "public ListNode reverseBetween(ListNode head, int left, int right) {\n    if (head == null || left == right) return head;\n    ListNode dummy = new ListNode(0);\n    dummy.next = head;\n    ListNode pre = dummy;\n    for (int i = 1; i < left; ++i) pre = pre.next;\n    ListNode cur = pre.next;\n    for (int i = left; i < right; ++i) {\n        ListNode t = cur.next;\n        cur.next = t.next;\n        t.next = pre.next;\n        pre.next = t;\n    }\n    return dummy.next;\n}",
-            "python": "if __name__ == \"__main__\":\n    head = $args[0]\n    left = $args[1]\n    right = $args[2]\n    result = reverseBetween(head, left, right)\n    print(result)"
+            "python": "if __name__ == \"__main__\":\n    head = $args[0]\n    left = $args[1]\n    right = $args[2]\n    result = reverseBetween(head, left, right)\n    print(result)",
+            "javascript": "function reverseBetween(head, left, right) {\n    if (!head || left === right) return head;\n    const dummy = new ListNode(0);\n    dummy.next = head;\n    let pre = dummy;\n    for (let i = 1; i < left; ++i) pre = pre.next;\n    let cur = pre.next;\n    for (let i = left; i < right; ++i) {\n        const t = cur.next;\n        cur.next = t.next;\n        t.next = pre.next;\n        pre.next = t;\n    }\n    return dummy.next;\n}"
         }
     },
     "93": {
@@ -573,7 +588,10 @@
     },
     "99": {
         "call_functions": {
-            "c++": "void recoverTree(TreeNode* root) {\n    TreeNode *first = nullptr, *second = nullptr, *prev = nullptr;\n    inorder(root, first, second, prev);\n    std::swap(first->val, second->val);\n}"
+            "c++": "void recoverTree(TreeNode* root) {\n    TreeNode *first = nullptr, *second = nullptr, *prev = nullptr;\n    inorder(root, first, second, prev);\n    std::swap(first->val, second->val);\n}",
+            "python": "if __name__ == \"__main__\":\n    root = $args[0]\n    nodes = [None, None, None]\n    inorder(root, nodes)\n    nodes[0].val, nodes[2].val = nodes[2].val, nodes[0].val\n    print(nodes[0].val, nodes[2].val)",
+            "javascript": "function main() {\n    const root = $args;\n    const nodes = [null, null, null];\n    inorder(root, nodes);\n    const temp = nodes[0].val;\n    nodes[0].val = nodes[2].val;\n    nodes[2].val = temp;\n}",
+            "java": "void recoverTree(TreeNode root) {\n    TreeNode[] nodes = new TreeNode[3];\n    inorder(root, nodes);\n    int temp = nodes[0].val;\n    nodes[0].val = nodes[2].val;\n    nodes[2].val = temp;\n}"
         }
     },
     "101": {
@@ -586,7 +604,10 @@
     },
     "104": {
         "call_functions": {
-            "c++": "int main() {\n    TreeNode* root = $args;\n    int result = maxDepth(root);\n    cout << result << endl;\n    return 0;\n}"
+            "c++": "int main() {\n    TreeNode* root = $args;\n    int result = maxDepth(root);\n    cout << result << endl;\n    return 0;\n}",
+            "python": "if __name__ == \"__main__\":\n    root = $args[0]\n    result = maxDepth(root)\n    print(result)",
+            "javascript": "function main() {\n    const root = $args;\n    const result = maxDepth(root);\n    console.log(result);\n}",
+            "java": "public static void main(String[] args) {\n    TreeNode root = $args;\n    int result = maxDepth(root);\n    System.out.println(result);\n}"
         }
     },
     "107": {
@@ -607,7 +628,10 @@
     },
     "116": {
         "call_functions": {
-            "c++": "void connect(Node* root) {\n    if (!root) return;\n    if (root->left) {\n        root->left->next = root->right;\n        if (root->next) {\n            root->right->next = root->next->left;\n        }\n    }\n    connect(root->left);\n    connect(root->right);\n}"
+            "c++": "void connect(Node* root) {\n    if (!root) return;\n    if (root->left) {\n        root->left->next = root->right;\n        if (root->next) {\n            root->right->next = root->next->left;\n        }\n    }\n    connect(root->left);\n    connect(root->right);\n}",
+            "python": "if __name__ == \"__main__\":\n    root = $args[0]\n    result = connect(root)\n    print(result)",
+            "javascript": "function connect(root) {\n    if (root === null || root.left === null) return root;\n    root.left.next = root.right;\n    if (root.next !== null) {\n        root.right.next = root.next.left;\n    }\n    connect(root.left);\n    connect(root.right);\n    return root;\n}",
+            "java": "public void connect(TreeLinkNode root) {\n    if (root == null || root.left == null) return;\n    root.left.next = root.right;\n    if (root.next != null) {\n        root.right.next = root.next.left;\n    }\n    connect(root.left);\n    connect(root.right);\n}"
         }
     },
     "118": {
@@ -628,7 +652,9 @@
     },
     "121": {
         "call_functions": {
-            "c++": "int main() {\n    vector<int> prices = $args;\n    int result = maxProfit(prices);\n    cout << result << endl;\n    return 0;\n}"
+            "c++": "int main() {\n    vector<int> prices = $args;\n    int result = maxProfit(prices);\n    cout << result << endl;\n    return 0;\n}",
+            "python": "if __name__ == \"__main__\":\n    prices = $args[0]\n    result = maxProfit(prices)\n    print(result)",
+            "javascript": "function main() {\n    const prices = $args;\n    const result = maxProfit(prices);\n    console.log(result);\n}"
         }
     },
     "122": {
@@ -642,7 +668,9 @@
     "123": {
         "call_functions": {
             "c++": "int main() {\n    vector<int> prices = $args;\n    int result = maxProfit(prices);\n    cout << result << endl;\n    return 0;\n}",
-            "java": "public int maxProfit(int[] prices) {\n    int buy1 = Integer.MAX_VALUE, buy2 = Integer.MAX_VALUE;\n    int profit1 = 0, profit2 = 0;\n    \n    for (int price : prices) {\n        buy1 = Math.min(buy1, price);\n        profit1 = Math.max(profit1, price - buy1);\n        buy2 = Math.min(buy2, price - profit1);\n        profit2 = Math.max(profit2, price - buy2);\n    }\n    \n    return profit2;\n}"
+            "java": "public int maxProfit(int[] prices) {\n    int buy1 = Integer.MAX_VALUE, buy2 = Integer.MAX_VALUE;\n    int profit1 = 0, profit2 = 0;\n    \n    for (int price : prices) {\n        buy1 = Math.min(buy1, price);\n        profit1 = Math.max(profit1, price - buy1);\n        buy2 = Math.min(buy2, price - profit1);\n        profit2 = Math.max(profit2, price - buy2);\n    }\n    \n    return profit2;\n}",
+            "python": "if __name__ == \"__main__\":\n    prices = $args[0]\n    result = maxProfit(prices)\n    print(result)",
+            "javascript": "function main() {\n    const prices = $args;\n    const result = maxProfit(prices);\n    console.log(result);\n}"
         }
     },
     "125": {
@@ -703,35 +731,48 @@
     },
     "134": {
         "call_functions": {
-            "c++": "int can_complete_circuit(vector<int>& gas, vector<int>& cost) {\n    int total_gas = 0, total_cost = 0, start = 0, gas_tank = 0;\n    for (int i = 0; i < gas.size(); ++i) {\n        total_gas += gas[i];\n        total_cost += cost[i];\n        gas_tank += gas[i] - cost[i];\n        if (gas_tank < 0) {\n            start = i + 1;\n            gas_tank = 0;\n        }\n    }\n    return (total_gas < total_cost) ? -1 : start;\n}"
+            "c++": "int can_complete_circuit(vector<int>& gas, vector<int>& cost) {\n    int total_gas = 0, total_cost = 0, start = 0, gas_tank = 0;\n    for (int i = 0; i < gas.size(); ++i) {\n        total_gas += gas[i];\n        total_cost += cost[i];\n        gas_tank += gas[i] - cost[i];\n        if (gas_tank < 0) {\n            start = i + 1;\n            gas_tank = 0;\n        }\n    }\n    return (total_gas < total_cost) ? -1 : start;\n}",
+            "python": "if __name__ == \"__main__\":\n    gas = $args[0]\n    cost = $args[1]\n    result = can_complete_circuit(gas, cost)\n    print(result)",
+            "javascript": "function main() {\n    const gas = $args[0];\n    const cost = $args[1];\n    const result = canCompleteCircuit(gas, cost);\n    console.log(result);\n}"
         }
     },
     "135": {
         "call_functions": {
             "c++": "#include <vector>\nusing namespace std;\n\nint main() {\n    vector<int> ratings = $args;\n    int result = minCandies(ratings);\n    cout << result << endl;\n    return 0;\n}",
-            "java": "public int minCandies(int[] ratings) {\n    int n = ratings.length;\n    int[] candies = new int[n];\n    for (int i = 0; i < n; i++) candies[i] = 1;\n\n    for (int i = 1; i < n; i++) {\n        if (ratings[i] > ratings[i - 1]) candies[i] = candies[i - 1] + 1;\n    }\n    for (int i = n - 2; i >= 0; i--) {\n        if (ratings[i] > ratings[i + 1]) candies[i] = Math.max(candies[i], candies[i + 1] + 1);\n    }\n\n    int sum = 0;\n    for (int candy : candies) sum += candy;\n\n    return sum;\n}"
+            "java": "public int minCandies(int[] ratings) {\n    int n = ratings.length;\n    int[] candies = new int[n];\n    for (int i = 0; i < n; i++) candies[i] = 1;\n\n    for (int i = 1; i < n; i++) {\n        if (ratings[i] > ratings[i - 1]) candies[i] = candies[i - 1] + 1;\n    }\n    for (int i = n - 2; i >= 0; i--) {\n        if (ratings[i] > ratings[i + 1]) candies[i] = Math.max(candies[i], candies[i + 1] + 1);\n    }\n\n    int sum = 0;\n    for (int candy : candies) sum += candy;\n\n    return sum;\n}",
+            "python": "if __name__ == \"__main__\":\n    ratings = $args[0]\n    result = min_candies(ratings)\n    print(result)",
+            "javascript": "function main() {\n    const ratings = $args;\n    const n = ratings.length;\n    const candies = Array(n).fill(1);\n\n    for (let i = 1; i < n; i++) {\n        if (ratings[i] > ratings[i - 1]) candies[i] = candies[i - 1] + 1;\n    }\n    for (let i = n - 2; i >= 0; i--) {\n        if (ratings[i] > ratings[i + 1]) candies[i] = Math.max(candies[i], candies[i + 1] + 1);\n    }\n\n    const result = candies.reduce((a, b) => a + b, 0);\n    console.log(result);\n}"
         }
     },
     "136": {
         "call_functions": {
-            "c++": "int main() {\n    vector<int> nums = $args;\n    int result = singleNumber(nums);\n    cout << result << endl;\n    return 0;\n}"
+            "c++": "int main() {\n    vector<int> nums = $args;\n    int result = singleNumber(nums);\n    cout << result << endl;\n    return 0;\n}",
+            "python": "if __name__ == \"__main__\":\n    nums = $args[0]\n    result = singleNumber(nums)\n    print(result)",
+            "javascript": "function main() {\n    const nums = $args;\n    const result = singleNumber(nums);\n    console.log(result);\n}"
         }
     },
     "137": {
         "call_functions": {
-            "c++": "int main() {\n    vector<int> nums = $args;\n    int result = singleNumber(nums);\n    cout << result << endl;\n    return 0;\n}"
+            "c++": "int main() {\n    vector<int> nums = $args;\n    int result = singleNumber(nums);\n    cout << result << endl;\n    return 0;\n}",
+            "python": "if __name__ == \"__main__\":\n    nums = $args[0]\n    result = singleNumber(nums)\n    print(result)",
+            "javascript": "function main() {\n    const nums = $args;\n    const result = singleNumber(nums);\n    console.log(result);\n}",
+            "java": "public static void main(String[] args) {\n    int[] nums = $args;\n    int result = singleNumber(nums);\n    System.out.println(result);\n}"
         }
     },
     "139": {
         "call_functions": {
             "c++": "#include <vector>\n#include <string>\n#include <unordered_set>\n#include <iostream>\n\nbool wordBreak(std::string s, std::vector<std::string>& wordDict) {\n    std::unordered_set<std::string> dict(wordDict.begin(), wordDict.end());\n    std::vector<bool> dp(s.size() + 1, false);\n    dp[0] = true;\n    for (size_t i = 1; i <= s.size(); ++i) {\n        for (size_t j = 0; j < i; ++j) {\n            if (dp[j] && dict.find(s.substr(j, i - j)) != dict.end()) {\n                dp[i] = true;\n                break;\n            }\n        }\n    }\n    return dp[s.size()];\n}\n\nint main() {\n    std::string s = $args;\n    std::vector<std::string> wordDict = {\"leet\", \"code\"};\n    bool result = wordBreak(s, wordDict);\n    std::cout << std::boolalpha << result << std::endl;\n    return 0;\n}\n",
-            "java": "public boolean wordBreak(String s, List<String> wordDict) {\n    Set<String> dict = new HashSet<>(wordDict);\n    boolean[] dp = new boolean[s.length() + 1];\n    dp[0] = true;\n    for (int i = 1; i <= s.length(); i++) {\n        for (int j = 0; j < i; j++) {\n            if (dp[j] && dict.contains(s.substring(j, i))) {\n                dp[i] = true;\n                break;\n            }\n        }\n    }\n    return dp[s.length()];\n}"
+            "java": "public boolean wordBreak(String s, List<String> wordDict) {\n    Set<String> dict = new HashSet<>(wordDict);\n    boolean[] dp = new boolean[s.length() + 1];\n    dp[0] = true;\n    for (int i = 1; i <= s.length(); i++) {\n        for (int j = 0; j < i; j++) {\n            if (dp[j] && dict.contains(s.substring(j, i))) {\n                dp[i] = true;\n                break;\n            }\n        }\n    }\n    return dp[s.length()];\n}",
+            "python": "if __name__ == \"__main__\":\n    s = $args[0]\n    word_dict = $args[1]\n    result = word_break(s, word_dict)\n    print(result)",
+            "javascript": "function main() {\n    const s = $args[0];\n    const wordDict = $args[1];\n    const result = wordBreak(s, wordDict);\n    console.log(result);\n}"
         }
     },
     "140": {
         "call_functions": {
             "c++": "#include <vector>\n#include <string>\n#include <unordered_set>\n\nstd::vector<std::string> helper(const std::string& s, const std::unordered_set<std::string>& dict, std::unordered_map<std::string, std::vector<std::string>>& memo);\n\nstd::vector<std::string> wordBreak(std::string s, std::vector<std::string>& wordDict);\n\nint main() {\n    std::string s = $args;\n    std::vector<std::string> wordDict = {\"apple\", \"pen\", \"applepen\", \"pine\", \"pineapple\"};\n    std::vector<std::string> result = wordBreak(s, wordDict);\n    for (const auto& res : result) {\n        std::cout << res << std::endl;\n    }\n    return 0;\n}",
-            "java": "public List<String> wordBreak(String s, List<String> wordDict) {\n    HashSet<String> dict = new HashSet<>(wordDict);\n    HashMap<String, List<String>> memo = new HashMap<>();\n    return helper(s, dict, memo);\n}\n\nprivate List<String> helper(String s, HashSet<String> dict, HashMap<String, List<String>> memo) {\n    if (memo.containsKey(s)) {\n        return memo.get(s);\n    }\n    \n    List<String> res = new ArrayList<>();\n    if (dict.contains(s)) {\n        res.add(s);\n    }\n    \n    for (int i = 1; i < s.length(); ++i) {\n        String prefix = s.substring(0, i);\n        if (!dict.contains(prefix)) continue;\n        String suffix = s.substring(i);\n        List<String> temp = helper(suffix, dict, memo);\n        for (String t : temp) {\n            res.add(prefix + \" \" + t);\n        }\n    }\n\n    memo.put(s, res);\n    return res;\n}"
+            "java": "public List<String> wordBreak(String s, List<String> wordDict) {\n    HashSet<String> dict = new HashSet<>(wordDict);\n    HashMap<String, List<String>> memo = new HashMap<>();\n    return helper(s, dict, memo);\n}\n\nprivate List<String> helper(String s, HashSet<String> dict, HashMap<String, List<String>> memo) {\n    if (memo.containsKey(s)) {\n        return memo.get(s);\n    }\n    \n    List<String> res = new ArrayList<>();\n    if (dict.contains(s)) {\n        res.add(s);\n    }\n    \n    for (int i = 1; i < s.length(); ++i) {\n        String prefix = s.substring(0, i);\n        if (!dict.contains(prefix)) continue;\n        String suffix = s.substring(i);\n        List<String> temp = helper(suffix, dict, memo);\n        for (String t : temp) {\n            res.add(prefix + \" \" + t);\n        }\n    }\n\n    memo.put(s, res);\n    return res;\n}",
+            "python": "if __name__ == \"__main__\":\n    s = $args[0]\n    word_dict = $args[1]\n    result = word_break(s, word_dict)\n    print(result)",
+            "javascript": "function wordBreak(s, wordDict) {\n    const dict = new Set(wordDict);\n    const memo = {};\n\n    function helper(s, dict, memo) {\n        if (s in memo) {\n            return memo[s];\n        }\n        \n        const res = [];\n        if (dict.has(s)) {\n            res.push(s);\n        }\n        \n        for (let i = 1; i < s.length; ++i) {\n            const prefix = s.slice(0, i);\n            if (!dict.has(prefix)) continue;\n            const suffix = s.slice(i);\n            const temp = helper(suffix, dict, memo);\n            for (const t of temp) {\n                res.push(prefix + \" \" + t);\n            }\n        }\n\n        memo[s] = res;\n        return res;\n    }\n\n    return helper(s, dict, memo);\n}"
         }
     },
     "141": {
@@ -760,7 +801,9 @@
     },
     "150": {
         "call_functions": {
-            "c++": "#include <vector>\n#include <string>\n#include <stack>\n#include <iostream>\n\nint main() {\n    vector<string> tokens = $args;\n    int result = evalRPN(tokens);\n    cout << result << endl;\n    return 0;\n}"
+            "c++": "#include <vector>\n#include <string>\n#include <stack>\n#include <iostream>\n\nint main() {\n    vector<string> tokens = $args;\n    int result = evalRPN(tokens);\n    cout << result << endl;\n    return 0;\n}",
+            "python": "if __name__ == \"__main__\":\n    tokens = $args[0]\n    result = evalRPN(tokens)\n    print(result)",
+            "javascript": "function evalRPN(tokens) {\n    const stack = [];\n    for (const token of tokens) {\n        if (token === \"+\" || token === \"-\" || token === \"*\" || token === \"/\") {\n            const b = stack.pop();\n            const a = stack.pop();\n            if (token === \"+\") stack.push(a + b);\n            else if (token === \"-\") stack.push(a - b);\n            else if (token === \"*\") stack.push(a * b);\n            else stack.push(Math.trunc(a / b));\n        } else {\n            stack.push(parseInt(token));\n        }\n    }\n    return stack.pop();\n}\n\nconst tokens = $args;\nconst result = evalRPN(tokens);\nconsole.log(result);"
         }
     },
     "151": {
@@ -1308,7 +1351,8 @@
     "70": {
         "call_functions": {
             "c++": "int main() {\n    int n = $args;\n    int result = climbStairs(n);\n    cout << result << endl;\n    return 0;\n}",
-            "python": "if __name__ == \"__main__\":\n    n = $args[0]\n    result = climbStairs(n)\n    print(result)"
+            "python": "if __name__ == \"__main__\":\n    n = $args[0]\n    result = climbStairs(n)\n    print(result)",
+            "javascript": "function main() {\n    const n = $args;\n    const result = climbStairs(n);\n    console.log(result);\n}"
         }
     },
     "74": {
@@ -1344,7 +1388,10 @@
         }
     },
     "111": {
-        "call_functions": {}
+        "call_functions": {
+            "c++": "#include <iostream>\nusing namespace std;\n\nint minDepth(TreeNode* root) {\n    if (!root) return 0;\n    int left = minDepth(root->left);\n    int right = minDepth(root->right);\n    return (left == 0 || right == 0) ? left + right + 1 : min(left, right) + 1;\n}\n\nint main() {\n    TreeNode* root = $args;\n    int result = minDepth(root);\n    cout << result << endl;\n    return 0;\n}",
+            "python": "if __name__ == \"__main__\":\n    root = $args[0]\n    result = minDepth(root)\n    print(result)"
+        }
     },
     "114": {
         "call_functions": {
@@ -5908,6 +5955,62 @@
             "java": "public int shortestBridge(int[][] grid) {\n    int n = grid.length;\n    Queue<int[]> q = new LinkedList<>();\n    boolean[][] visited = new boolean[n][n];\n    boolean found = false;\n\n    for (int i = 0; i < n && !found; i++) {\n        for (int j = 0; j < n; j++) {\n            if (grid[i][j] == 1) {\n                dfs(grid, q, visited, i, j);\n                found = true;\n                break;\n            }\n        }\n    }\n\n    int steps = 0;\n    int[][] dirs = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};\n\n    while (!q.isEmpty()) {\n        int size = q.size();\n        for (int i = 0; i < size; i++) {\n            int[] coord = q.poll();\n            for (int[] d : dirs) {\n                int newx = coord[0] + d[0];\n                int newy = coord[1] + d[1];\n\n                if (newx >= 0 && newx < n && newy >= 0 && newy < n && !visited[newx][newy]) {\n                    if (grid[newx][newy] == 1) return steps;\n                    visited[newx][newy] = true;\n                    q.add(new int[]{newx, newy});\n                }\n            }\n        }\n        steps++;\n    }\n\n    return -1;\n}\n\nprivate void dfs(int[][] grid, Queue<int[]> q, boolean[][] visited, int x, int y) {\n    int n = grid.length;\n\n    if (x < 0 || x >= n || y < 0 || y >= n || visited[x][y] || grid[x][y] == 0) return;\n\n    visited[x][y] = true;\n    q.add(new int[]{x, y});\n    dfs(grid, q, visited, x - 1, y);\n    dfs(grid, q, visited, x + 1, y);\n    dfs(grid, q, visited, x, y - 1);\n    dfs(grid, q, visited, x, y + 1);\n}",
             "python": "if __name__ == \"__main__\":\n    grid = $args[0]\n    result = shortestBridge(grid)\n    print(result)",
             "javascript": "function shortestBridge(grid) {\n    const n = grid.length;\n    const q = [];\n\n    loop:\n    for (let i = 0; i < n; i++) {\n        for (let j = 0; j < n; j++) {\n            if (grid[i][j] === 1) {\n                dfs(grid, q, i, j);\n                break loop;\n            }\n        }\n    }\n\n    let steps = 0;\n    const directions = [[1, 0], [-1, 0], [0, 1], [0, -1]];\n\n    while (q.length) {\n        const size = q.length;\n        for (let i = 0; i < size; i++) {\n            const [x, y] = q.shift();\n            for (const [dx, dy] of directions) {\n                const nx = x + dx, ny = y + dy;\n                if (nx >= 0 && nx < n && ny >= 0 && ny < n && grid[nx][ny] !== 2) {\n                    if (grid[nx][ny] === 1) return steps;\n                    grid[nx][ny] = 2;\n                    q.push([nx, ny]);\n                }\n            }\n        }\n        steps++;\n    }\n\n    return -1;\n}\n\nfunction dfs(grid, q, i, j) {\n    const n = grid.length;\n    if (i < 0 || i >= n || j < 0 || j >= n || grid[i][j] !== 1) return;\n    grid[i][j] = 2;\n    q.push([i, j]);\n\n    dfs(grid, q, i - 1, j);\n    dfs(grid, q, i + 1, j);\n    dfs(grid, q, i, j - 1);\n    dfs(grid, q, i, j + 1);\n}\n"
+        }
+    },
+    "972": {
+        "call_functions": {}
+    },
+    "973": {
+        "call_functions": {}
+    },
+    "974": {
+        "call_functions": {}
+    },
+    "975": {
+        "call_functions": {}
+    },
+    "976": {
+        "call_functions": {}
+    },
+    "977": {
+        "call_functions": {}
+    },
+    "978": {
+        "call_functions": {}
+    },
+    "979": {
+        "call_functions": {}
+    },
+    "980": {
+        "call_functions": {}
+    },
+    "981": {
+        "call_functions": {
+            "c++": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint minDeletionSize(vector<string>& strs) {\n    int num_deleted = 0;\n    for (int col = 0; col < strs[0].size(); ++col) {\n        for (int row = 1; row < strs.size(); ++row) {\n            if (strs[row][col] < strs[row - 1][col]) {\n                ++num_deleted;\n                break;\n            }\n        }\n    }\n    return num_deleted;\n}\n\nint main() {\n    vector<string> strs = $args;\n    int result = minDeletionSize(strs);\n    cout << result << endl;\n    return 0;\n}"
+        }
+    },
+    "982": {
+        "call_functions": {
+            "c++": "#include <iostream>\n#include <algorithm>\n#include <vector>\n\nint min_moves_unique(std::vector<int>& nums) {\n    std::sort(nums.begin(), nums.end());\n    int moves = 0;\n    for (size_t i = 1; i < nums.size(); ++i) {\n        if (nums[i] <= nums[i - 1]) {\n            moves += nums[i - 1] - nums[i] + 1;\n            nums[i] = nums[i - 1] + 1;\n        }\n    }\n    return moves;\n}\n\nint main() {\n    std::vector<int> nums = $args;\n    int result = min_moves_unique(nums);\n    std::cout << result << std::endl;\n    return 0;\n}",
+            "java": "public int minMovesUnique(int[] nums) {\n    Arrays.sort(nums);\n    int moves = 0;\n    for (int i = 1; i < nums.length; i++) {\n        if (nums[i] <= nums[i - 1]) {\n            moves += nums[i - 1] - nums[i] + 1;\n            nums[i] = nums[i - 1] + 1;\n        }\n    }\n    return moves;\n}",
+            "python": "if __name__ == \"__main__\":\n    nums = $args[0]\n    result = min_moves_unique(nums)\n    print(result)",
+            "javascript": "function main() {\n    const nums = $args;\n    const result = minMovesUnique(nums);\n    console.log(result);\n}"
+        }
+    },
+    "983": {
+        "call_functions": {
+            "c++": "#include <iostream>\n#include <vector>\n#include <stack>\n\nbool validateStackSequences(std::vector<int>& pushed, std::vector<int>& popped) {\n    std::stack<int> stack;\n    int popIndex = 0;\n    \n    for (int pushValue : pushed) {\n        stack.push(pushValue);\n        while (!stack.empty() && stack.top() == popped[popIndex]) {\n            stack.pop();\n            popIndex++;\n        }\n    }\n    \n    return stack.empty();\n}\n\nint main() {\n    std::vector<int> pushed = $args;\n    std::vector<int> popped = $args;\n    bool result = validateStackSequences(pushed, popped);\n    std::cout << std::boolalpha << result << std::endl;\n    return 0;\n}\n",
+            "java": "public static void main(String[] args) {\n    int[] pushed = $args;\n    int[] popped = $args;\n    boolean result = validateStackSequences(pushed, popped);\n    System.out.println(result);\n}",
+            "python": "if __name__ == \"__main__\":\n    pushed = $args[0]\n    popped = $args[1]\n    result = validateStackSequences(pushed, popped)\n    print(result)",
+            "javascript": "function main() {\n    const pushed = $args[0];\n    const popped = $args[1];\n    const result = validateStackSequences(pushed, popped);\n    console.log(result);\n}"
+        }
+    },
+    "984": {
+        "call_functions": {
+            "c++": "#include <unordered_map>\n#include <vector>\n#include <iostream>\n\nint main() {\n    std::vector<std::vector<int>> stones = $args;\n    int result = removeStones(stones);\n    std::cout << result << std::endl;\n    return 0;\n}",
+            "java": "public static void main(String[] args) {\n        int n = $args;\n        boolean result = isPowerOfFour(n);\n        System.out.println(result);\n    }\n",
+            "python": "if __name__ == \"__main__\":\n    stones = $args[0]\n    result = removeStones(stones)\n    print(result)",
+            "javascript": "function main() {\n    const stones = $args;\n    const result = removeStones(stones);\n    console.log(result);\n}"
         }
     }
 }
