@@ -4,7 +4,7 @@ import utils
 import display_fun
 
 # file_path = r"coding_questions_merged.json"
-file_path=r"sample_coding_questions.json"
+file_path=r"C:\SaiVinay\SproutsAI\GitHub_\coding_question_generator\src\streamlit_validate\coding_questions_merged_modified.json"
 
 st.set_page_config(
     page_title="Code Test Platform Console",
@@ -31,13 +31,19 @@ def main():
     question_data = data[question_id]
     
      # Previous and Next buttons
-    col1, col2= st.columns(2)
+    col1, col2, col3, col4= st.columns(4)
     if col1.button(f"Previous Question: {question_id}"):
         st.session_state.question_index = max(0, st.session_state.question_index - 1)
     st.write(f"Question ID: {question_id}")
-    if col2.button(f"Next Question: {question_id}"):
+    if col3.button(f"Next Question: {question_id}"):
         st.session_state.question_index = min(len(question_ids) - 1, st.session_state.question_index + 1)
 
+    if col2.button("Refresh"):
+        st.experimental_rerun()
+    
+    if col4.button("Upload"):
+        utils.upload_to_tempCodingQuestionsV3(question_id, question_data)
+        
     display_fun.display_question(question_id, question_data, data, file_path)
 
     # Save button

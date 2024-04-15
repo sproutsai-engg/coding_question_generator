@@ -1,30 +1,30 @@
-#include <iostream>
 #include <vector>
-#include <algorithm> 
-using namespace std;
+#include <unordered_map>
 
-int maxArea(vector<int>& height) {
-    int max_area = 0, left = 0, right = height.size() - 1;
-    while (left < right) {
-        max_area = max(max_area, min(height[left], height[right]) * (right - left));
-        if (height[left] < height[right]) {
-            left++;
-        } else {
-            right--;
+std::vector<int> twoSum(std::vector<int>& nums, int target) {
+    std::unordered_map<int, int> map;
+    for (int i = 0; i < nums.size(); i++) {
+        int complement = target - nums[i];
+        if (map.find(complement) != map.end()) {
+            return {map[complement], i};
         }
+        map[nums[i]] = i;
     }
-    return max_area;
+    return {};
 }
 
 
 #include <iostream>
 #include <vector>
-#include <algorithm> 
-using namespace std;
+#include <unordered_map>
 
 int main() {
-    vector<int> height = {1, 8, 6, 2, 5, 4, 8, 3, 7};
-    int result = maxArea(height);
-    cout << result << endl;
+    std::vector<int> nums = {2,3,7,11};
+    int target = 9;
+    std::vector<int> result = twoSum(nums, target);
+    for (int i = 0; i < result.size(); i++) {
+        std::cout << result[i] << " ";
+    }
+    std::cout << std::endl;
     return 0;
 }

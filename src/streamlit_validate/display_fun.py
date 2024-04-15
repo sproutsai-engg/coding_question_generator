@@ -14,16 +14,27 @@ def display_question(question_id, question_data, data, file_path):
         st.write(f"**Tags:** {question_data['tags']}")
     
         ## display test cases
-        st.subheader("Test Cases")
+        st.subheader("Test Cases: $args")
         
         ## display inputs 
-        st.subheader("Inputs")
+        # st.subheader("Inputs")
         # st.text_area("Edit Inputs", question_data['test_cases']['inputs'], height=175+25)
-        st.code(question_data['test_cases']['inputs'], line_numbers=True, language="python")            
+        for i in range(len(question_data['test_cases']['inputs'])):
+            try:
+                input_data = question_data['test_cases']['inputs'][i]
+                output_data = question_data['test_cases']['outputs'][i]
+                st.write(f"**Input {i+1}:**")
+                st.code(input_data, line_numbers=True, language="python")
+                st.write(f"**Output {i+1}:**")
+                st.code(output_data, line_numbers=True, language="python")
+                st.write("---")
+            except:
+                continue
+        # st.code(question_data['test_cases']['inputs'], line_numbers=True, language="python")            
         ## display outputs
-        st.subheader("Outputs")
-        # st.text_area("Edit Outputs", question_data['test_cases']['outputs'], height=80)
-        st.code(question_data['test_cases']['outputs'], line_numbers=True, language="python")
+        # st.subheader("Outputs")
+        # # st.text_area("Edit Outputs", question_data['test_cases']['outputs'], height=80)
+        # st.code(question_data['test_cases']['outputs'], line_numbers=True, language="python")
         
     with right_column:
         for language in ["python","javascript", "c++", "java"]:
@@ -63,7 +74,7 @@ def display_question(question_id, question_data, data, file_path):
                     st.experimental_rerun()
             if language in question_data['call_functions']:
                 call_function_key = f"Call_function_{language}_{question_id}"
-                height = question_data['call_functions'][language].count("\n") * height_multiplier
+                height = question_data['call_functions'][language].count("\n") * height_multiplier + 50
                 st.write(call_function_key)
                 st.code(question_data['call_functions'][language], line_numbers=True, language=code_lang)
                 question_data['call_functions'][language] = st.text_area(f"Edit {language.capitalize()} Call Function", 
@@ -84,6 +95,9 @@ def display_question(question_id, question_data, data, file_path):
                 elif language == "c++":
                     utils.run_button_cpp(code)
                 elif language == "java":
+                    include_line = "import java.util.HashMap;\nimport java.util.Map;\nimport java.util.ArrayList;\nimport java.util.List;\nimport java.util.Arrays;\nimport java.util.Collections;\nimport java.util.stream.Collectors;\nimport java.util.stream.IntStream;\n\n\npublic class Main {\n"
+                    end_line = "\n}"
+                    code = include_line + code + end_line
                     utils.run_button_java(code)
             else:
                 st.write(f":red[Please add {language.capitalize()} sample code and call function to run the code.]")

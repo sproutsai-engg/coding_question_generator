@@ -1,6 +1,7 @@
 import json
 import subprocess
 import streamlit as st
+# import db
 
 
 
@@ -93,6 +94,7 @@ def compile_and_run_java(code):
     run_process = subprocess.Popen(["java", "Main"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = run_process.communicate()
     
+    return stdout, stderr
 def run_button_java(code):
     # Add a button to compile and run the code
     if st.button(":green[Compile and Run Java]"):
@@ -106,3 +108,19 @@ def run_button_java(code):
         else:
             st.subheader("Compilation Error:")
             st.code(stderr)
+            
+# ## upload to db
+# def upload_to_tempCodingQuestionsV3(question_id, data):
+#     collection = db.tempCodingQuestionsV3()
+#     title = data['title']
+#     exists = collection.find_one({"title": title})
+    
+#     # return exists["Qid"]
+#     if exists:
+#         Qid = exists["Qid"]
+#         st.error(f'Question with the same title already exists with Qid {Qid}. Current Qid is {question_id}', icon="🚫")
+#         return
+#     else:
+#         data["Qid"] = question_id
+#         collection.insert_one(data)
+#         st.success('Question uploaded successfully!', icon="✅")

@@ -1,15 +1,25 @@
-def max_area(height):
-    max_area, left, right = 0, 0, len(height) - 1
-    while left < right:
-        max_area = max(max_area, min(height[left], height[right]) * (right - left))
-        if height[left] < height[right]:
-            left += 1
+def search(nums, target):
+    left, right = 0, len(nums) - 1
+    while left <= right:
+        mid = left + (right - left) // 2
+        if nums[mid] == target:
+            return mid
+        if nums[mid] >= nums[left]:
+            if target >= nums[left] and target < nums[mid]:
+                right = mid - 1
+            else:
+                left = mid + 1
         else:
-            right -= 1
-    return max_area
+            if target > nums[mid] and target <= nums[right]:
+                left = mid + 1
+            else:
+                right = mid - 1
+    return -1
 
 
 if __name__ == "__main__":
-    height =[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-    result = max_area(height)
+    inputs  = [[4, 5, 6, 7, 0, 1, 2], 0]
+    nums = inputs[0]
+    target = inputs[1]
+    result = search(nums, target)
     print(result)
