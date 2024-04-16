@@ -1,25 +1,21 @@
-def search(nums, target):
-    left, right = 0, len(nums) - 1
-    while left <= right:
-        mid = left + (right - left) // 2
-        if nums[mid] == target:
-            return mid
-        if nums[mid] >= nums[left]:
-            if target >= nums[left] and target < nums[mid]:
-                right = mid - 1
-            else:
-                left = mid + 1
+def singleNumber(nums):
+    xor_all = 0
+    for num in nums:
+        xor_all ^= num
+
+    bit = xor_all & -xor_all
+    n1 = 0
+    n2 = 0
+    for num in nums:
+        if num & bit:
+            n1 ^= num
         else:
-            if target > nums[mid] and target <= nums[right]:
-                left = mid + 1
-            else:
-                right = mid - 1
-    return -1
+            n2 ^= num
+
+    return n1, n2
 
 
 if __name__ == "__main__":
-    inputs  = [[4, 5, 6, 7, 0, 1, 2], 0]
-    nums = inputs[0]
-    target = inputs[1]
-    result = search(nums, target)
+    nums =[4, 2, 4, 6, 2, 1]
+    result = singleNumber(nums)
     print(result)
