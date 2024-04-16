@@ -4,7 +4,7 @@ import utils
 import display_fun
 
 # file_path = r"coding_questions_merged.json"
-file_path=r"C:\SaiVinay\SproutsAI\GitHub_\coding_question_generator\src\streamlit_validate\coding_questions_merged_modified.json"
+file_path=r"C:\Users\udayr\Sproutsai\coding_question_generator\src\streamlit_validate\coding_questions_merged_modified.json"
 
 st.set_page_config(
     page_title="Code Test Platform Console",

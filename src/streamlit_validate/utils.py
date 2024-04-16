@@ -1,7 +1,7 @@
 import json
 import subprocess
 import streamlit as st
-# import db
+import db
 
 
 
@@ -109,18 +109,18 @@ def run_button_java(code):
             st.subheader("Compilation Error:")
             st.code(stderr)
             
-# ## upload to db
-# def upload_to_tempCodingQuestionsV3(question_id, data):
-#     collection = db.tempCodingQuestionsV3()
-#     title = data['title']
-#     exists = collection.find_one({"title": title})
+## upload to db
+def upload_to_tempCodingQuestionsV3(question_id, data):
+    collection = db.tempCodingQuestionsV3()
+    title = data['title']
+    exists = collection.find_one({"title": title})
     
-#     # return exists["Qid"]
-#     if exists:
-#         Qid = exists["Qid"]
-#         st.error(f'Question with the same title already exists with Qid {Qid}. Current Qid is {question_id}', icon="🚫")
-#         return
-#     else:
-#         data["Qid"] = question_id
-#         collection.insert_one(data)
-#         st.success('Question uploaded successfully!', icon="✅")
+    # return exists["Qid"]
+    if exists:
+        Qid = exists["Qid"]
+        st.error(f'Question with the same title already exists with Qid {Qid}. Current Qid is {question_id}', icon="🚫")
+        return
+    else:
+        data["Qid"] = question_id
+        collection.insert_one(data)
+        st.success('Question uploaded successfully!', icon="✅")
