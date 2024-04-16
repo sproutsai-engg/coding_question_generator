@@ -1,5 +1,6 @@
 import utils
 import json
+import time
 
 def prompt_codingQ_details(ques_description):
     """This function generates the coding question details based on the given description.
@@ -9,63 +10,54 @@ def prompt_codingQ_details(ques_description):
         dict: JSON format of the coding question details."""
 
     format = """{"title": "title of the problem",
-              "description": "description of the problem",
+              "description": "Expand on the problem description of the problem",
               "example":"example of the problem",
-              "level": "level of the problem",
+              "level": "level of the problem EASY/MEDIUM/HARD",
               "tags": [
-                    "tag1",
-                    "tag2",
-                    "tag3"
+                    "Assign relevant tags related to the problem based on the type of problem"
                 ],
               "test_cases": {
-                    "inputs":["List of test cases in their original data type"],
-                    "outputs":["List of expected outputs in their original data type"]
+                    "inputs":["List of test cases in their original data type, atleast 10"],
+                    "outputs":["List of expected outputs in their original data type, atleast 10"]
                 } }"""
                 
     message=[{"role":"system","content":f"You are an expert in creating coding questions and you are tasked with generating a coding question based \
                                             on the given {ques_description}. Follow the Instructions given below to generate the coding question."},
              {"role":"user","content":f"""Generate a coding question based on the given description.
                 Here is the description: \n\n ###{ques_description}### \n\n
-                Here is the JSON format to be filled: \n\n ###{format}### \n\n
+                
+                Here is the JSON format to be filled: \n {format}\n\n Use \" insted of ' for the response keys. In the generated data avoid using ' in generated data, use \" (double quotes),  This is very important.
+                
                 Instructions:
                 1. Extract the general information from the {ques_description}.
-                    "title": Create a concise and descriptive title that accurately reflects the problem.
-                    "description": Expand on the problem description, providing clear instructions and any necessary context. Pharaphrase the description.
-                    "example":Include one well-formatted code example (input, expected output and explanation) to illustrate the problem.
-                    "level": Choose the appropriate difficulty level (Easy, Medium, Hard) for the question.
-                    "tags": Assign relevant tags related to the problem based on the type of problem (e.g., array, string, sorting).
-                2. "test_cases":"Provide at least 20 test cases to validate the solution. Include both sample and edge cases to ensure the question is well-tested.
-                    Store inputs inside the "inputs" key and expected outputs inside the "outputs" key. 
-                3. Important: Keep the test cases in their respective data type. Example - "inputs": [1,2,3], "outputs": 6 for list of integers or "inputs": "hello", "outputs": "olleh" for strings. Don't mix data types.
-                4. Make sure the JSON format is correct and all the fields are filled accurately.
-                    Make sure there are no syntax issues or unexpected characters in the JSON format. Take care of the escape characters and the quotes.
-                Important: This is for production use. Maintain consistent output, adhere to the template and avoid generating unnecessary or abusive content."""},
-             {"role": "user", "content": f"Use \" insted of ' for the response keys. In the generated data avoid using ' in generated data, use \" (double quotes),  This is very important."},
+                2. Important: Keep the test cases in their respective data type. Example - "inputs": [1,2,3], "outputs": 6 for list of integers or "inputs": "hello", "outputs": "olleh" for strings. Don't mix data types.
+               """},
+             {"role": "user", "content": f"Important: Use \" insted of ' for the response keys. In the generated data avoid using ' in generated data, use \" (double quotes),  This is very important."},
              {"role": "user", "content": f"Insted of Bachelor's, don't, can't, won't etc. Insted use ` like Bachelor`s, don`t, can`t."}]
     num_of_retries = 3
     for i in range(num_of_retries):
         try:
-            model ="gpt35-16k"
+            model ="gpt4-8k"
             api_type = "job"
-            response = utils.get_from_gpt(message=message, model=model, temperature = 0.01, max_tokens = 6000, api_type = api_type)
-            # print(response["content"])
-            response_json = json.loads(response["content"])
+            response = utils.get_from_gpt(message=message, model=model, temperature = 0.01, max_tokens = 2000, api_type = api_type)
+            print(response)
+            response_json = json.loads(response["content"].replace("\n", ""))
             return response_json    
         
         except json.JSONDecodeError as e: ## If the response is not in JSON format
-            print(e)
             try:
                 response = response["content"][response["content"].find("{"): response["content"].rfind("}")+1]
                 response_json = json.loads(response)
                 return response_json 
             except Exception as f:
-                print(f)
+                print(f"Json Error in prompt_codingQ_details: {f}")
         
         except Exception as e: ## If there is any other error
-            print(e)
+            print(f"Error in prompt_codingQ_details: {e}")
             print(response["content"])
             if i == num_of_retries - 1:
                 raise {"error": e}
+            time.sleep(10)
             continue
 
 def get_in_json(response, format):
@@ -107,8 +99,10 @@ def prompt_call_func(language, sample_code):
     Args:
         sample_code (str): Sample code of the problem."""
         
-    format = {"sample_code": "sample code in c",
-                  "call_functions": "function name in c"}    
+    # format = """{"sample_code": "give the sample code here",
+    #               "call_functions": "Give the call function here"}""" 
+    
+    format = """{"call_functions": "Give the call function here"}""" 
     
     if language == "c++" or language == "cpp":
         ## few shot example according to the format
@@ -146,40 +140,40 @@ def prompt_call_func(language, sample_code):
                     4. Output: Print the value of the result.
                     5. Important note: Donot give sample code in the call function. Call function should be a standalone code that can be run to test the sample code.
                     
-                Here is the JSON format to be filled: \n\n ###{format}### \n\n
+                Here is the JSON format to be filled: \n\n {format} \n\n Use \" insted of ' for the response keys. In the generated data avoid using ' in generated data, use \" (double quotes),  This is very important.
                 
                 Important: 
                 This is for production use. Maintain consistent output, adhere to the template and avoid generating unnecessary or abusive content.
-                
-                
-                ****Important Note****: Use \" insted of ' for the response keys. In the generated data avoid using ' in generated data, use \" (double quotes),  This is very important.
-                Insted of Bachelor's, don't, can't, won't etc. Insted use ` like Bachelor`s, don`t, can`t."""}]
+                """},
+            {"role": "user", "content": f"Important: Use \" insted of ' for the response keys. In the generated data avoid using ' in generated data, use \" (double quotes),  This is very important."},
+             {"role": "user", "content": f"Insted of Bachelor's, don't, can't, won't etc. Insted use ` like Bachelor`s, don`t, can`t."}]
             
     num_of_retries = 3
-    model ="gpt35-16k"
+    model ="gpt4-8k"
     api_type = "linkedin_match"
     for i in range(num_of_retries):
         try:
             
-            response = utils.get_from_gpt(message=message, model=model, temperature = 0.01, max_tokens = 6000, api_type = api_type)
-            # print(response["content"])
+            response = utils.get_from_gpt(message=message, model=model, temperature = 0.01, max_tokens = 2000, api_type = api_type)
+            print(response)
             response_json = json.loads(response["content"])
             return response_json 
         
         except json.JSONDecodeError as e: ## If the response is not in JSON format
-            print(e)
+            
             try:
-                response = response["content"][response["content"].find("{"): response["content"].rfind("}")+1]
+                response = response["content"][response["content"].find("{"): response["content"].rfind("}")+1].replace("'", "\"")
                 response_json = json.loads(response)
                 return response_json 
             except Exception as f:
                 model ="gpt4-8k"
-                print(f)
+                print(f"Json Error in prompt_call_func: {f}")
         
         except Exception as e: ## If there is any other error
             model ="gpt4-8k"
-            print(e)
+            print(f"Error in prompt_call_func: {e}")
             print(response["content"])
             if i == num_of_retries - 1:
                 raise {"error": e}
+            time.sleep(10)
             continue

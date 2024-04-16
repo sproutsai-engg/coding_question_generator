@@ -12,3 +12,4 @@ client = MongoClient(uri, server_api=ServerApi('1'))
 
 def tempCodingQuestionsV3():
     return client.questionGeneration.tempCodingQuestionsV3
+

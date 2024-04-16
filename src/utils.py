@@ -15,7 +15,7 @@ def get_from_gpt(message, model ="gpt35-16k", temperature = 0.01, max_tokens = 6
         'Content-Type': 'application/json',
     }
     data = {
-        "api_type": api_type,  # option -> resume, job, match, test
+        "api_type": api_type,  # option -> \'resume\', \'job\', \'resume_match\', \'linkedin_match\', \'interview\'
         "model": model,   #option -> gpt35-4k, gpt35-16k. gpt4-8k, gpt4-32k
         "message": message,
         "kwargs": {"temperature":temperature, "max_tokens":max_tokens}

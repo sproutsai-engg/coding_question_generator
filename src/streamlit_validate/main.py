@@ -31,18 +31,24 @@ def main():
     question_data = data[question_id]
     
      # Previous and Next buttons
-    col1, col2, col3, col4= st.columns(4)
+    col1, col2, col3, col4, col5= st.columns(5)
     if col1.button(f"Previous Question: {question_id}"):
         st.session_state.question_index = max(0, st.session_state.question_index - 1)
+        st.experimental_rerun()
+        
     st.write(f"Question ID: {question_id}")
     if col3.button(f"Next Question: {question_id}"):
         st.session_state.question_index = min(len(question_ids) - 1, st.session_state.question_index + 1)
+        st.experimental_rerun()
 
     if col2.button("Refresh"):
         st.experimental_rerun()
     
     if col4.button("Upload"):
         utils.upload_to_tempCodingQuestionsV3(question_id, question_data)
+        
+    if col5.button("Update"):
+        utils.update_to_tempCodingQuestionsV3(question_id, question_data)
         
     display_fun.display_question(question_id, question_data, data, file_path)
 
