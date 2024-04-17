@@ -1,21 +1,20 @@
-def singleNumber(nums):
-    xor_all = 0
-    for num in nums:
-        xor_all ^= num
+from bisect import bisect_left
 
-    bit = xor_all & -xor_all
-    n1 = 0
-    n2 = 0
-    for num in nums:
-        if num & bit:
-            n1 ^= num
+def max_envelopes(envelopes):
+    envelopes.sort(key=lambda x: (x[0], -x[1]))
+    dp = []
+    
+    for _, h in envelopes:
+        idx = bisect_left(dp, h)
+        if idx == len(dp):
+            dp.append(h)
         else:
-            n2 ^= num
+            dp[idx] = h
 
-    return n1, n2
+    return len(dp)
 
 
 if __name__ == "__main__":
-    nums =[4, 2, 4, 6, 2, 1]
-    result = singleNumber(nums)
+    envelopes =[[5, 4], [6, 4], [6, 7], [2, 3]]
+    result = max_envelopes(envelopes)
     print(result)
