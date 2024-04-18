@@ -92,8 +92,8 @@ def compile_and_run_java(code):
         return None, compile_stderr.decode()
 
     # Execute the compiled Java program
-    run_process = subprocess.Popen(["java", "Main"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    stdout, stderr = run_process.communicate()
+    run_process = subprocess.run(["java", "Main"],capture_output=True,text=True)
+    stdout, stderr =  run_process.stdout, run_process.stderr
     
     return stdout, stderr
 def run_button_java(code):
@@ -134,3 +134,32 @@ def update_to_tempCodingQuestionsV3(question_id, data):
         st.success('Question updated successfully!', icon="✅")
     else:
         st.error('Question not found! Please upload the question first.', icon="🚫")
+
+
+
+### run javascript code
+
+def run_javascript(code):
+    # Save the code to a temporary file
+    with open("script.js", "w") as file:
+        file.write(code)
+
+    # Execute the JavaScript code
+    run_process = subprocess.run(["node", "script.js"],capture_output=True,text=True)
+    stdout, stderr = run_process.stdout, run_process.stderr
+
+    return stdout, stderr
+
+def run_button_javascript(code):
+    # Add a button to run the JavaScript code
+    if st.button(":yellow[Run JavaScript]"):
+        stdout, stderr = run_javascript(code)
+
+        # Display the output and errors
+        if stdout:
+            st.subheader("Output:")
+            st.code(stdout)
+            st.success('Success!', icon="✅")
+        else:
+            st.subheader("Error:")
+            st.code(stderr)

@@ -1,30 +1,32 @@
-#include <vector>
-#include <unordered_map>
+#include <string>
+#include <unordered_set>
 
-std::vector<int> twoSum(std::vector<int>& nums, int target) {
-    std::unordered_map<int, int> map;
-    for (int i = 0; i < nums.size(); i++) {
-        int complement = target - nums[i];
-        if (map.find(complement) != map.end()) {
-            return {map[complement], i};
+int lengthOfLongestSubstring(std::string s) {
+    int left = 0, right = 0, maxLength = 0;
+    std::unordered_set<char> characters;
+
+    while (right < s.size()) {
+        if (characters.find(s[right]) == characters.end()) {
+            characters.insert(s[right]);
+            maxLength = std::max(maxLength, right - left + 1);
+            right++;
+        } else {
+            characters.erase(s[left]);
+            left++;
         }
-        map[nums[i]] = i;
     }
-    return {};
+
+    return maxLength;
 }
 
 
 #include <iostream>
-#include <vector>
-#include <unordered_map>
+#include <string>
+#include <unordered_set>
 
 int main() {
-    std::vector<int> nums = {2,3,7,11};
-    int target = 9;
-    std::vector<int> result = twoSum(nums, target);
-    for (int i = 0; i < result.size(); i++) {
-        std::cout << result[i] << " ";
-    }
-    std::cout << std::endl;
+    std::string s = "abcdeffghijklmnopqrstuvwxyz";
+    int result = lengthOfLongestSubstring(s);
+    std::cout << result << std::endl;
     return 0;
 }

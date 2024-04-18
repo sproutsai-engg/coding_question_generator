@@ -38,7 +38,7 @@ def prompt_codingQ_details(ques_description):
     for i in range(num_of_retries):
         try:
             model ="gpt4-8k"
-            api_type = "job"
+            api_type = "linkedin_match"
             response = utils.get_from_gpt(message=message, model=model, temperature = 0.01, max_tokens = 2000, api_type = api_type)
             print(response)
             response_json = json.loads(response["content"].replace("\n", ""))

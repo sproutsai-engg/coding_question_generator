@@ -1,4 +1,9 @@
+import java.util.LinkedList;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 import java.util.HashMap;
+import java.util.Set;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,23 +14,28 @@ import java.util.stream.IntStream;
 
 
 public class Main {
-public static int[] twoSum(int[] nums, int target) {
-    Map<Integer, Integer> map = new HashMap<>();
-    for (int i = 0; i < nums.length; i++) {
-        int complement = target - nums[i];
-        if (map.containsKey(complement)) {
-            return new int[]{map.get(complement), i};
+public static int lengthOfLongestSubstring(String s) {
+    int left = 0, right = 0, maxLength = 0;
+    Set<Character> characters = new HashSet<>();
+
+    while (right < s.length()) {
+        if (!characters.contains(s.charAt(right))) {
+            characters.add(s.charAt(right));
+            maxLength = Math.max(maxLength, right - left + 1);
+            right++;
+        } else {
+            characters.remove(s.charAt(left));
+            left++;
         }
-        map.put(nums[i], i);
     }
-    throw new IllegalArgumentException("No two sum solution");
+
+    return maxLength;
 }
 
 
 public static void main(String[] args) {
-    int[] nums = {2,7,9,8,6};
-    int target = 9;
-    int[] result = twoSum(nums, target);
-    System.out.println((result));
-}
+        String input ="abcdeffghijklmnopqrstuvwxyz";
+        int result = lengthOfLongestSubstring(input);
+        System.out.println(result);
+    }
 }

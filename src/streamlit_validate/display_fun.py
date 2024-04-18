@@ -6,6 +6,14 @@ def display_question(question_id, question_data, data, file_path):
     # Left column for question details
     left_column, right_column = st.columns([6, 10], gap="medium")
     with left_column:
+        # question_data["Qid"] = st.text_area("Edit Question ID", question_data["Qid"],key="id", height=25)
+        if "languages verified" not in question_data:
+            question_data["languages verified"] = ""
+        question_data["languages verified"] = st.text_area("Edit Languages Verified", question_data["languages verified"],key="languages", height=25)
+        if st.button(f"Update Question ID"):
+            utils.save_json_file(file_path, data)
+            # st.session_state.question_index = 0
+            st.experimental_rerun()
         st.header(f"Question ID: {question_id}")
         st.write(f"**Question Title:** {question_data['title']}")
         st.write(f"**Question:** {question_data['description']}")
@@ -95,10 +103,13 @@ def display_question(question_id, question_data, data, file_path):
                 elif language == "c++":
                     utils.run_button_cpp(code)
                 elif language == "java":
-                    include_line = "import java.util.HashMap;\nimport java.util.Map;\nimport java.util.ArrayList;\nimport java.util.List;\nimport java.util.Arrays;\nimport java.util.Collections;\nimport java.util.stream.Collectors;\nimport java.util.stream.IntStream;\n\n\npublic class Main {\n"
+                    include_line = "import java.util.LinkedList;\nimport java.util.regex.Pattern;\nimport java.util.regex.Matcher;\nimport java.util.HashMap;\nimport java.util.Set;\nimport java.util.HashSet;\nimport java.util.Map;\nimport java.util.ArrayList;\nimport java.util.List;\nimport java.util.Arrays;\nimport java.util.Collections;\nimport java.util.stream.Collectors;\nimport java.util.stream.IntStream;\n\n\npublic class Main {\n"
                     end_line = "\n}"
                     code = include_line + code + end_line
                     utils.run_button_java(code)
+                elif language == "javascript":
+                    # code+= "\n\n\nconsole.log(main());"
+                    utils.run_button_javascript(code)
             else:
                 st.write(f":red[Please add {language.capitalize()} sample code and call function to run the code.]")
                 
