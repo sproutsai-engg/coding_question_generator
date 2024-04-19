@@ -388,3 +388,392 @@
         }
     }
 }
+{"5": {
+    "title": "Longest Palindromic Substring",
+    "description": "Given a string `s`, find and return the longest palindromic substring in `s`. A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward. If there are multiple longest palindromic substrings, return any one of them.",
+    "example": "Example 1:\n\nInput: s = \"babad\"\nOutput: \"bab\"\nExplanation: \"aba\" is also a valid answer.\n\nExample 2:\n\nInput: s = \"cbbd\"\nOutput: \"bb\"",
+    "level": "Medium",
+    "tags": [
+        "String",
+        "Dynamic Programming"
+    ],
+    "test_cases": {
+        "inputs": [
+            "\"babad\"",
+            "\"cbbd\"",
+            "\"a\"",
+            "\"ac\"",
+            "\"bb\"",
+            "\"racecar\"",
+            "\"abcdeedcba\"",
+            "\"abcdefedcba\"",
+            "\"abcdeedcbafg\"",
+            "\"abcdefedcbagf\"",
+            "\"abacdfgdcaba\"",
+            "\"abacdfgdcabba\"",
+            "\"abacdfgdcabbaa\"",
+            "\"abacdfgdcabbaaa\"",
+            "\"abacdfgdcabbaaaa\"",
+            "\"abacdfgdcabbaaaaa\"",
+            "\"abacdfgdcabbaaaaaa\"",
+            "\"abacdfgdcabbaaaaaaa\"",
+            "\"abacdfgdcabbaaaaaaaa\"",
+            "\"abacdfgdcabbaaaaaaaaa\"",
+            "\"abacdfgdcabbaaaaaaaaaa\""
+        ],
+        "outputs": [
+            "\"bab\"",
+            "\"bb\"",
+            "\"a\"",
+            "\"a\"",
+            "\"bb\"",
+            "\"racecar\"",
+            "\"abcdeedcba\"",
+            "\"abcdefedcba\"",
+            "\"abcdeedcba\"",
+            "\"abcdefedcba\"",
+            "\"aba\"",
+            "\"abba\"",
+            "\"abba\"",
+            "\"abba\"",
+            "\"abba\"",
+            "\"abba\"",
+            "\"abba\"",
+            "\"abba\"",
+            "\"abba\"",
+            "\"abba\"",
+            "\"abba\""
+        ]
+    },
+    "sample_code": {
+        "c++": "#include <string>\n\nstd::string longestPalindromicSubstring(std::string s) {\n  int n = s.size();\n  if (n == 0) return \"\";\n  int start = 0, maxLength = 1;\n\n  for (int i = 0; i < n; ++i) {\n    int l = i, r = i;\n\n    while (r < n - 1 && s[r] == s[r + 1])\n      r++;\n    i = r;\n\n    while (l > 0 && r < n - 1 && s[l - 1] == s[r + 1]) {\n      l--;\n      r++;\n    }\n\n    int length = r - l + 1;\n    if (length > maxLength) {\n      start = l;\n      maxLength = length;\n    }\n  }\n\n  return s.substr(start, maxLength);\n}\n",
+        "java": "public String longestPalindromicSubstring(String s) {\n    int n = s.length();\n    if (n == 0) return \"\";\n\n    int start = 0, maxLength = 1;\n\n    for (int i = 0; i < n; ++i) {\n        int l = i, r = i;\n\n        while (r < n - 1 && s.charAt(r) == s.charAt(r + 1))\n            r++;\n        i = r;\n\n        while (l > 0 && r < n - 1 && s.charAt(l - 1) == s.charAt(r + 1)) {\n            l--;\n            r++;\n        }\n\n        int length = r - l + 1;\n        if (length > maxLength) {\n            start = l;\n            maxLength = length;\n        }\n    }\n\n    return s.substring(start, start + maxLength);\n}\n",
+        "python": "def longest_palindromic_substring(s: str) -> str:\n    n = len(s)\n    if n == 0: return \"\"\n\n    start, max_length = 0, 1\n\n    for i in range(n):\n        l, r = i, i\n\n        while r < n - 1 and s[r] == s[r + 1]:\n            r += 1\n        i = r\n\n        while l > 0 and r < n - 1 and s[l - 1] == s[r + 1]:\n            l -= 1\n            r += 1\n\n        length = r - l + 1\n        if length > max_length:\n            start, max_length = l, length\n\n    return s[start:start + max_length]\n",
+        "javascript": "function longestPalindromicSubstring(s) {\n  let n = s.length;\n  if (n === 0) return \"\";\n\n  let start = 0, maxLength = 1;\n\n  for (let i = 0; i < n; ++i) {\n    let l = i, r = i;\n\n    while (r < n - 1 && s[r] === s[r + 1])\n      r++;\n    i = r;\n\n    while (l > 0 && r < n - 1 && s[l - 1] === s[r + 1]) {\n      l--;\n      r++;\n    }\n\n    let length = r - l + 1;\n    if (length > maxLength) {\n      start = l;\n      maxLength = length;\n    }\n  }\n\n  return s.substring(start, start + maxLength);\n}\n",
+        "explanation": "1. Initialize `start` and `maxLength` for result substring.\n2. Iterate through the given string `s` using the index `i`.\n3. For each index `i`, create two pointers `l` and `r` starting at `i`.\n4. Check if there's a consecutive sequence of identical characters, increment the right pointer `r` until the end of the sequence is reached.\n5. Update the index `i` to the current value of `r`.\n6. Expand the pointers `l` and `r` outwards to find the longest palindromic substring, checking that characters on both sides are equal.\n7. If the current length of the substring is greater than `maxLength`, update `start` and `maxLength`.\n8. Return the longest palindromic substring using the `start` and `maxLength`."
+    },
+    "structure": {
+        "c++": "#include <string>\n\nstd::string longestPalindromicSubstring(std::string s) \n    // Your code here\n}\n",
+        "java": "public String longestPalindromicSubstring(String s) \n    // Your code here\n}\n",
+        "python": "def longest_palindromic_substring(s: str) -> str:\n    # Your code here\n\n",
+        "javascript": "function longestPalindromicSubstring(s) \n    // Your code here\n}\n"
+    },
+    "call_functions": {
+        "c++": "#include <iostream>\n#include <string>\n\nstd::string longestPalindromicSubstring(std::string s);\n\nint main() {\n    std::string input = $args;\n    std::string result = longestPalindromicSubstring(input);\n    std::cout << result << std::endl;\n    return 0;\n}",
+        "java": "public String longestPalindromicSubstring(String s) {\n    int n = s.length();\n    if (n == 0) return \"\";\n\n    int start = 0, maxLength = 1;\n\n    for (int i = 0; i < n; ++i) {\n        int l = i, r = i;\n\n        while (r < n - 1 && s.charAt(r) == s.charAt(r + 1))\n            r++;\n        i = r;\n\n        while (l > 0 && r < n - 1 && s.charAt(l - 1) == s.charAt(r + 1)) {\n            l--;\n            r++;\n        }\n\n        int length = r - l + 1;\n        if (length > maxLength) {\n            start = l;\n            maxLength = length;\n        }\n    }\n\n    return s.substring(start, start + maxLength);\n}",
+        "python": "if __name__ == \"__main__\":\n    s = $args\n    result = longest_palindromic_substring(s)\n    print(result)",
+        "javascript": "function main() {\n  const s = $args;\n  const result = longestPalindromicSubstring(s);\n  console.log(result);\n}"
+    }
+},
+"7": {
+    "title": "Reverse Integer",
+    "description": "Given a signed 32-bit integer `x`, return `x` with its digits reversed. If reversing `x` causes the value to go outside the signed 32-bit integer range `[-231, 231 - 1]`, then return `0`.\n\nAssume the environment does not allow you to store 64-bit integers (signed or unsigned).",
+    "example": "Example 1:\n\nInput: x = 123\nOutput: 321\n\nExample 2:\n\nInput: x = -123\nOutput: -321\n\nExample 3:\n\nInput: x = 120\nOutput: 21",
+    "level": "Easy",
+    "tags": [
+        "Math"
+    ],
+    "test_cases": {
+        "inputs": [
+            123,
+            -123,
+            120,
+            0,
+            1,
+            -1,
+            10,
+            -10,
+            100,
+            -100,
+            123456789,
+            -123456789,
+            2147483647,
+            -2147483648,
+            2147483646,
+            -2147483647,
+            1534236469,
+            -2147483412,
+            0,
+            987654321
+        ],
+        "outputs": [
+            321,
+            -321,
+            21,
+            0,
+            1,
+            -1,
+            1,
+            -1,
+            1,
+            -1,
+            987654321,
+            -987654321,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            123456789
+        ]
+    },
+    "sample_code": {
+        "c++": "int reverse(int x) {\n    long long res = 0;\n    while (x != 0) {\n        res = res * 10 + x % 10;\n        x /= 10;\n    }\n    return (res < INT_MIN || res > INT_MAX) ? 0 : res;\n}\n",
+        "java": "public int reverse(int x) {\n    long res = 0;\n    while (x != 0) {\n        res = res * 10 + x % 10;\n        x /= 10;\n    }\n    return (res < Integer.MIN_VALUE || res > Integer.MAX_VALUE) ? 0 : (int)res;\n}\n",
+        "python": "def reverse(x: int) -> int:\n    sign = -1 if x < 0 else 1\n    x = abs(x)\n    res = 0\n    while x:\n        res = res * 10 + x % 10\n        x //= 10\n    res *= sign\n    return res if -2**31 <= res <= 2**31 - 1 else 0\n",
+        "javascript": "function reverse(x) {\n    let sign = x < 0 ? -1 : 1;\n    x = Math.abs(x);\n    let res = 0;\n    while (x !== 0) {\n        res = res * 10 + x % 10;\n        x = Math.floor(x / 10);\n    }\n    res *= sign;\n    return (res < -(2 ** 31) || res > 2 ** 31 - 1) ? 0 : res;\n}\n",
+        "explanation": "The algorithm initializes `res` as 0. Then, we determine the sign of the input integer and take its absolute value. We use a while loop to iterate through each digit of `x` from right to left. In each iteration, we multiply the current `res` by 10 and add the last digit of `x` to it. The last digit of `x` is obtained by `x % 10`. After adding the last digit, we remove it from `x` by doing either `x /= 10` or `x //= 10`.\n\nAfter processing all the digits, we adjust `res` with the sign we computed earlier. Finally, we check if the reversed integer is within the 32-bit integer range. If it is, we return the result; otherwise, we return 0."
+    },
+    "structure": {
+        "c++": "int reverse(int x) \n    // Your code here\n}\n",
+        "java": "public int reverse(int x) \n    // Your code here\n}\n",
+        "python": "def reverse(x: int) -> int:\n    # Your code here\n\n",
+        "javascript": "function reverse(x) \n    // Your code here\n}\n"
+    },
+    "call_functions": {
+        "c++": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int x = $args;\n    long long res = 0;\n    while (x != 0) {\n        res = res * 10 + x % 10;\n        x /= 10;\n    }\n    int result = (res < INT_MIN || res > INT_MAX) ? 0 : res;\n    cout << result << endl;\n    return 0;\n}",
+        "java": "public static void main(String[] args) {\n    int x = $args;\n    int result = reverse(x);\n    System.out.println(result);\n}",
+        "python": "if __name__ == \"__main__\":\n    x = $args[0]\n    result = reverse(x)\n    print(result)",
+        "javascript": "function main() {\n    const x = $args;\n    let sign = x < 0 ? -1 : 1;\n    x = Math.abs(x);\n    let res = 0;\n    while (x !== 0) {\n        res = res * 10 + x % 10;\n        x = Math.floor(x / 10);\n    }\n    res *= sign;\n    const result = (res < -(2 ** 31) || res > 2 ** 31 - 1) ? 0 : res;\n    console.log(result);\n}"
+    }
+},
+"9": {
+    "title": "Palindrome Integer",
+    "description": "Given an integer `x`, determine if it is a palindrome. Return `true` if `x` is a palindrome, and `false` otherwise.",
+    "example": "Example 1:\n\nInput: x = 121\nOutput: true\nExplanation: 121 reads as 121 from left to right and from right to left.",
+    "level": "Easy",
+    "tags": [
+        "math"
+    ],
+    "test_cases": {
+        "inputs": [
+            121,
+            -121,
+            10,
+            12321,
+            1234321,
+            123454321,
+            12345654321,
+            123456654321,
+            1234567654321,
+            12345677654321,
+            123456787654321,
+            1234567887654321,
+            12345678987654321,
+            123456789987654321,
+            1234567890987654321,
+            12345678900987654321,
+            123456789000987654321,
+            1234567890000987654321,
+            12345678900000987654321,
+            123456789000000987654321
+        ],
+        "outputs": [
+            true,
+            false,
+            false,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ]
+    },
+    "sample_code": {
+        "c++": "bool isPalindrome(int x) {\n    if (x < 0) return false;\n    int original = x, reversed = 0;\n    while (x > 0) {\n        reversed = reversed * 10 + x % 10;\n        x /= 10;\n    }\n    return original == reversed;\n}\n\n",
+        "java": "public boolean isPalindrome(int x) {\n    if (x < 0) return false;\n    int original = x, reversed = 0;\n    while (x > 0) {\n        reversed = reversed * 10 + x % 10;\n        x /= 10;\n    }\n    return original == reversed;\n}\n\n",
+        "python": "def is_palindrome(x: int) -> bool:\n    if x < 0:\n        return False\n    original, reversed = x, 0\n    while x > 0:\n        reversed = reversed * 10 + x % 10\n        x //= 10\n    return original == reversed\n\n",
+        "javascript": "function isPalindrome(x) {\n    if (x < 0) return false;\n    let original = x, reversed = 0;\n    while (x > 0) {\n        reversed = reversed * 10 + x % 10;\n        x = Math.floor(x / 10);\n    }\n    return original === reversed;\n}\n\n",
+        "explanation": "Here is the algorithm:\n\n1. If the integer is negative, immediately return false, as negative numbers cannot be palindromes.\n2. Create a variable named `original` to store the original integer value and `reversed` initialized with 0 to store the reversed integer value.\n3. Iterate through the integer while it's greater than zero and, in each iteration, perform the following operations:\n   a. Multiply the `reversed` value by 10 and add the modulus of the integer (x) by 10.\n   b. Divide the integer (x) by 10, discarding the remainder.\n4. Compare `original` and `reversed` integers; if they are equal, return true; otherwise, return false.\n\nThis approach requires O(log10(n)) time complexity as we are dividing the input by 10 in each iteration."
+    },
+    "structure": {
+        "c++": "bool isPalindrome(int x) \n    // Your code here\n}\n\n",
+        "java": "public boolean isPalindrome(int x) \n    // Your code here\n}\n\n",
+        "python": "def is_palindrome(x: int) -> bool:\n    # Your code here\n\n",
+        "javascript": "function isPalindrome(x) \n    // Your code here\n}\n\n"
+    },
+    "call_functions": {
+        "c++": "#include <iostream>\nusing namespace std;\n\nbool isPalindrome(int x) {\n    if (x < 0) return false;\n    int original = x, reversed = 0;\n    while (x > 0) {\n        reversed = reversed * 10 + x % 10;\n        x /= 10;\n    }\n    return original == reversed;\n}\n\nint main() {\n    int n = $args;\n    bool result = isPalindrome(n);\n    cout << boolalpha << result << endl;\n    return 0;\n}",
+        "java": "public static void main(String[] args) {\n    int x = $args;\n    boolean result = isPalindrome(x);\n    System.out.println(result);\n}",
+        "python": "if __name__ == \"__main__\":\n    x = $args\n    result = is_palindrome(x)\n    print(result)\n",
+        "javascript": "function main() {\n    const x = $args;\n    const result = isPalindrome(x);\n    console.log(result);\n}\n"
+    }
+},
+"11": {
+    "title": "Container With Most Water",
+    "description": "Given an integer array `height` of length `n`, where each element represents the height of a vertical line, find two lines that together with the x-axis form a container, such that the container contains the most water. Return the maximum amount of water the container can store.",
+    "example": "Example:\n\nInput: height = [1,8,6,2,5,4,8,3,7]\nOutput: 49\nExplanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.",
+    "level": "Medium",
+    "tags": [
+        "Array",
+        "Two Pointers",
+        "Greedy"
+    ],
+    "test_cases": {
+        "inputs": [
+            [
+                1,
+                8,
+                6,
+                2,
+                5,
+                4,
+                8,
+                3,
+                7
+            ],
+            [
+                1,
+                1
+            ],
+            [
+                4,
+                3,
+                2,
+                1,
+                4
+            ],
+            [
+                1,
+                2,
+                1
+            ],
+            [
+                1,
+                2,
+                3,
+                4,
+                5
+            ],
+            [
+                5,
+                4,
+                3,
+                2,
+                1
+            ],
+            [
+                1,
+                1,
+                1,
+                1,
+                1
+            ],
+            [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+            ],
+            [
+                10,
+                9,
+                8,
+                7,
+                6,
+                5,
+                4,
+                3,
+                2,
+                1
+            ],
+            [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20
+            ],
+            [
+                20,
+                19,
+                18,
+                17,
+                16,
+                15,
+                14,
+                13,
+                12,
+                11,
+                10,
+                9,
+                8,
+                7,
+                6,
+                5,
+                4,
+                3,
+                2,
+                1
+            ]
+        ],
+        "outputs": [
+            49,
+            1,
+            16,
+            2,
+            6,
+            4,
+            4,
+            25,
+            25,
+            100,
+            100
+        ]
+    },
+    "sample_code": {
+        "c++": "int maxArea(vector<int>& height) {\n    int max_area = 0, left = 0, right = height.size() - 1;\n    while (left < right) {\n        max_area = max(max_area, min(height[left], height[right]) * (right - left));\n        if (height[left] < height[right]) {\n            left++;\n        } else {\n            right--;\n        }\n    }\n    return max_area;\n}\n",
+        "java": "public int maxArea(int[] height) {\n    int max_area = 0, left = 0, right = height.length - 1;\n    while (left < right) {\n        max_area = Math.max(max_area, Math.min(height[left], height[right]) * (right - left));\n        if (height[left] < height[right]) {\n            left++;\n        } else {\n            right--;\n        }\n    }\n    return max_area;\n}\n",
+        "python": "def max_area(height):\n    max_area, left, right = 0, 0, len(height) - 1\n    while left < right:\n        max_area = max(max_area, min(height[left], height[right]) * (right - left))\n        if height[left] < height[right]:\n            left += 1\n        else:\n            right -= 1\n    return max_area\n",
+        "javascript": "function maxArea(height) {\n    let max_area = 0, left = 0, right = height.length - 1;\n    while (left < right) {\n        max_area = Math.max(max_area, Math.min(height[left], height[right]) * (right - left));\n        if (height[left] < height[right]) {\n            left++;\n        } else {\n            right--;\n        }\n    }\n    return max_area;\n}\n",
+        "explanation": "The algorithm uses a two-pointer approach, with one pointer starting from the left end and the other from the right end. It calculates the area between these two lines and updates the maximum area if the current area is larger than the previously calculated maximum area. If the height at the left pointer is less than the height at the right pointer, it moves the left pointer to the right. Otherwise, it moves the right pointer to the left. The algorithm continues until the pointers meet.\n\nThis algorithm ensures that the maximum area is found without having to check all possible pairs of lines because it always chooses the pair of lines with the maximum possible distance and minimum height difference at each step."
+    },
+    "structure": {
+        "c++": "int maxArea(vector<int>& height) \n    // Your code here\n}\n",
+        "java": "public int maxArea(int[] height) \n    // Your code here\n}\n",
+        "python": "def max_area(height):\n    # Your code here\n\n",
+        "javascript": "function maxArea(height) \n    // Your code here\n}\n"
+    },
+    "call_functions": {
+        "c++": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint maxArea(vector<int>& height) {\n    int max_area = 0, left = 0, right = height.size() - 1;\n    while (left < right) {\n        max_area = max(max_area, min(height[left], height[right]) * (right - left));\n        if (height[left] < height[right]) {\n            left++;\n        } else {\n            right--;\n        }\n    }\n    return max_area;\n}\n\nint main() {\n    vector<int> height = $args;\n    int result = maxArea(height);\n    cout << result << endl;\n    return 0;\n}",
+        "java": "public static void main(String[] args) {\n    int[] height = $args;\n    int result = maxArea(height);\n    System.out.println(result);\n}",
+        "python": "if __name__ == \"__main__\":\n    height = $args[0]\n    result = max_area(height)\n    print(result)",
+        "javascript": "function main() {\n    const height = $args;\n    const result = maxArea(height);\n    console.log(result);\n}"
+    }
+}
+}

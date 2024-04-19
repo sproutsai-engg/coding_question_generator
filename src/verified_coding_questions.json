@@ -10,7 +10,6 @@
         ],
         "test_cases": {
             "inputs": [
-               
                 [
                     [
                         2,
@@ -308,7 +307,13 @@
             "javascript": "function main() {\n    let inputs = $args\n    const nums = inputs[0];\n    const target = inputs[1];\n    const result = twoSum(nums, target);\n    console.log(result);\n}",
             "java": "public static void main(String[] args) {\n    int[] nums = $args;\n    int target = $args;\n    int[] result = twoSum(nums, target);\n    System.out.println(Arrays.toString(result));\n}"
         },
-        "Qid": "1"
+        "Qid": "1",
+        "languages verified": [
+            "python",
+            "javascript",
+            "c++",
+            "java"
+        ]
     },
     "3": {
         "title": "Longest Substring Without Repeating Characters",
@@ -366,7 +371,7 @@
             "java": "public static void main(String[] args) {\n        String input = $args;\n        int result = lengthOfLongestSubstring(input);\n        System.out.println(result);\n    }"
         },
         "Qid": "3",
-        "languages verified": "all"
+        "languages verified": []
     },
     "4": {
         "title": "Median of Two Sorted Arrays",
@@ -904,7 +909,10 @@
             "javascript": "function main() {\n  const s = $args;\n  const result = longestPalindromicSubstring(s);\n  console.log(result);\n}"
         },
         "Qid": "5",
-        "languages verified": "all"
+        "languages verified": [
+            "javascript",
+            "c++"
+        ]
     },
     "9": {
         "title": "Palindrome Integer",
@@ -960,7 +968,7 @@
             "javascript": "function main() {\n    const x = $args;\n    const result = isPalindrome(x);\n    console.log(result);\n}\n"
         },
         "Qid": "9",
-        "languages verified": "all"
+        "languages verified": []
     },
     "10": {
         "title": "Regular Expression Matching",
@@ -1476,7 +1484,7 @@
             "javascript": "function main() {\n    const s = $args;\n    const result = myAtoi(s);\n    console.log(result);\n}"
         },
         "Qid": "8",
-        "languages verified": "all"
+        "languages verified": []
     },
     "12": {
         "title": "Convert Integer to Roman Numeral",
@@ -1553,7 +1561,7 @@
             "javascript": "function main() {\n    const num = $args;\n    const result = intToRoman(num);\n    console.log(result);\n}"
         },
         "Qid": "12",
-        "languages verified": "all"
+        "languages verified": []
     },
     "13": {
         "title": "Roman Numeral to Integer Conversion",
@@ -1636,7 +1644,7 @@
             "javascript": "function main() {\n    const s = $args;\n    const result = romanToInt(s);\n    console.log(result);\n}"
         },
         "Qid": "13",
-        "languages verified": "all"
+        "languages verified": []
     },
     "14": {
         "title": "Longest Common Prefix",
@@ -3680,7 +3688,7 @@
             "java": "public static void main(String[] args){\n    int input = $args;\n    String result = countAndSay(input);\n    System.out.println(result);\n}"
         },
         "Qid": "38",
-        "languages verified": "all"
+        "languages verified": []
     },
     "41": {
         "title": "Smallest Missing Positive Integer",
@@ -10870,7 +10878,7 @@
             "javascript": "function main() {\n  const s = $args;\n  const result = lengthOfLastWord(s);\n  console.log(result);\n}"
         },
         "Qid": "58",
-        "languages verified": "all"
+        "languages verified": []
     },
     "60": {
         "title": "Permutation Sequence",
@@ -11017,7 +11025,7 @@
             "javascript": "function main() {\n    const s = $args;\n    const result = isNumber(s);\n    console.log(result);\n}"
         },
         "Qid": "65",
-        "languages verified": "all"
+        "languages verified": []
     },
     "69": {
         "title": "Square Root Rounded Down",
@@ -11094,7 +11102,7 @@
             "javascript": "function main() {\n    const s = $args;\n    const result = mySqrt(s);\n    console.log(result);\n}"
         },
         "Qid": "69",
-        "languages verified": "all"
+        "languages verified": []
     },
     "71": {
         "title": "Simplified Canonical Path",
@@ -11171,7 +11179,7 @@
             "java": "public static void main(String[] args){\n    String input = $args;\n    String result = simplifyPath(input);\n    System.out.println(result);\n}"
         },
         "Qid": "71",
-        "languages verified": ""
+        "languages verified": []
     },
     "72": {
         "title": "Minimum Edit Distance",
@@ -34568,7 +34576,8 @@
             "python": "if __name__ == \"__main__\":\n    nums = $args\n    result = singleNumber(nums)\n    print(result)",
             "javascript": "function main() {\n    const nums = $args;\n    const result = singleNumber(nums);\n    console.log(result);\n}"
         },
-        "Qid": "260"
+        "Qid": "260",
+        "languages verified": []
     },
     "261": {
         "title": "Valid Tree",
