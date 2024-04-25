@@ -38,7 +38,7 @@ def main():
 
     st.sidebar.title("Actions")
     # side_bar_button = st.sidebar.button("")
-    idx = st.sidebar.text_input("Question Index", st.session_state.question_index)
+    idx = st.sidebar.text_input("Question Index", st.session_state.question_index+1)
     if st.sidebar.button(":blue[Go to Question] :airplane:"):
         st.session_state.question_index = int(idx)
         st.experimental_rerun()
