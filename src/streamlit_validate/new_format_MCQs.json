@@ -1,0 +1,1042 @@
+[
+    {
+        "criteria": "Computer Science",
+        "skill": "Operating System",
+        "key_words": [
+            "Operating System"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 905,
+        "question": "In which type of kernel does all operating system code reside in the same address space?",
+        "choice_1": "Microkernel",
+        "choice_2": "Monolithic Kernel",
+        "choice_3": "Hybrid Kernel",
+        "choice_4": "None of the above",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Operating System",
+        "key_words": [
+            "Operating System"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 159,
+        "question": "What type of operating system is designed to process data as it comes in, typically without buffering delays?",
+        "choice_1": "Batch Operating System",
+        "choice_2": "Multiuser Operating System",
+        "choice_3": "Real Time Operating System",
+        "choice_4": "None of the above",
+        "correct_choice": "choice_3"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Operating System",
+        "key_words": [
+            "Operating System"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 212,
+        "question": "What is the programmatic way in which a computer program requests a service from the kernel of the operating system?",
+        "choice_1": "Interrupt",
+        "choice_2": "System Call",
+        "choice_3": "Procedure Call",
+        "choice_4": "None of the above",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Operating System",
+        "key_words": [
+            "Operating System"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 250,
+        "question": "What do we call a situation where several processes access and manipulate the same data concurrently and the outcome of the execution depends on the particular order in which the access takes place?",
+        "choice_1": "Deadlock",
+        "choice_2": "Starvation",
+        "choice_3": "Race Condition",
+        "choice_4": "None of the above",
+        "correct_choice": "choice_3"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Operating System",
+        "key_words": [
+            "Operating System"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 988,
+        "question": "What do we call the process of storing and restoring the state (context) of a CPU so that execution can be resumed from the same point at a later time?",
+        "choice_1": "Process Switch",
+        "choice_2": "Context Switch",
+        "choice_3": "Thread Switch",
+        "choice_4": "None of the above",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Operating System",
+        "key_words": [
+            "Operating System"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 233,
+        "question": "What is a variable or abstract data type used to control access to a common resource by multiple processes in a concurrent system?",
+        "choice_1": "Mutex",
+        "choice_2": "Semaphore",
+        "choice_3": "Monitor",
+        "choice_4": "None of the above",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Operating System",
+        "key_words": [
+            "Operating System"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 938,
+        "question": "Which scheduling algorithm allocates the CPU first to the process that requests it first?",
+        "choice_1": "First Come First Serve",
+        "choice_2": "Shortest Job Next",
+        "choice_3": "Priority Scheduling",
+        "choice_4": "Round Robin",
+        "correct_choice": "choice_1"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Operating System",
+        "key_words": [
+            "Operating System"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 878,
+        "question": "What is a component that transparently stores data so that future requests for that data can be served faster?",
+        "choice_1": "Buffer",
+        "choice_2": "Cache",
+        "choice_3": "Register",
+        "choice_4": "None of the above",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Operating System",
+        "key_words": [
+            "Operating System"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 940,
+        "question": "What do we call a technique that allows the execution of processes that may not be completely in memory?",
+        "choice_1": "Paging",
+        "choice_2": "Virtual Memory",
+        "choice_3": "Segmentation",
+        "choice_4": "None of the above",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Operating System",
+        "key_words": [
+            "Operating System"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 872,
+        "question": "What do we call a signal that informs the OS that an event has occurred?",
+        "choice_1": "Exception",
+        "choice_2": "Interrupt",
+        "choice_3": "Signal",
+        "choice_4": "None of the above",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Operating System",
+        "key_words": [
+            "Operating System"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 732,
+        "question": "What is the core component of an operating system?",
+        "choice_1": "Shell",
+        "choice_2": "Kernel",
+        "choice_3": "Command Line Interface",
+        "choice_4": "None of the above",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Operating System",
+        "key_words": [
+            "Operating System"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 654,
+        "question": "What do we call the technique of keeping multiple programs in main memory at the same time, each competing for the CPU?",
+        "choice_1": "Multitasking",
+        "choice_2": "Multiprocessing",
+        "choice_3": "Multiprogramming",
+        "choice_4": "None of the above",
+        "correct_choice": "choice_3"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Operating System",
+        "key_words": [
+            "Operating System"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 11,
+        "question": "What is the term for the memory management scheme that permits the physical address space of a process to be noncontiguous?",
+        "choice_1": "Segmentation",
+        "choice_2": "Paging",
+        "choice_3": "Fragmentation",
+        "choice_4": "None of the above",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Operating System",
+        "key_words": [
+            "Operating System"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 116,
+        "question": "What do we call a situation where two or more processes are unable to proceed because each is waiting for the other to release resources?",
+        "choice_1": "Starvation",
+        "choice_2": "Deadlock",
+        "choice_3": "Race condition",
+        "choice_4": "None of the above",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Operating System",
+        "key_words": [
+            "Operating System"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 149,
+        "question": "Can you tell me the main difference between a process and a thread?",
+        "choice_1": "A process is a part of a thread",
+        "choice_2": "A thread is a part of a process",
+        "choice_3": "A process and a thread are the same",
+        "choice_4": "None of the above",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Programming",
+        "key_words": [
+            "Programming"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 125,
+        "question": "Which data type is used to store a single character in C?",
+        "choice_1": "int",
+        "choice_2": "char",
+        "choice_3": "float",
+        "choice_4": "string",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Programming",
+        "key_words": [
+            "Programming"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 933,
+        "question": "Which of the following is a looping construct in Python?",
+        "choice_1": "if",
+        "choice_2": "for",
+        "choice_3": "else",
+        "choice_4": "catch",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Programming",
+        "key_words": [
+            "Programming"
+        ],
+        "level_tag": "MEDIUM",
+        "type_of_question": "Technical",
+        "question_number": 308,
+        "question": "What does the 'public static void main(String[] args)' method signify in a Java program?",
+        "choice_1": "The method cannot return any value",
+        "choice_2": "The method can be called without creating an instance of the class",
+        "choice_3": "The program execution starts from this method",
+        "choice_4": "All of the above",
+        "correct_choice": "choice_4"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Programming",
+        "key_words": [
+            "Programming"
+        ],
+        "level_tag": "MEDIUM",
+        "type_of_question": "Technical",
+        "question_number": 637,
+        "question": "In object-oriented programming, which principle is used to hide the internal representation of an object to protect the integrity of the object?",
+        "choice_1": "Encapsulation",
+        "choice_2": "Inheritance",
+        "choice_3": "Polymorphism",
+        "choice_4": "Abstraction",
+        "correct_choice": "choice_1"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Programming",
+        "key_words": [
+            "Programming"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 645,
+        "question": "What value does the expression '8 % 3' return in most programming languages?",
+        "choice_1": "2",
+        "choice_2": "3",
+        "choice_3": "2.67",
+        "choice_4": "None of the above",
+        "correct_choice": "choice_1"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Programming",
+        "key_words": [
+            "Programming"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 84,
+        "question": "What is the output of the following Python line? print('Hello, world!'.upper())",
+        "choice_1": "hello, world!",
+        "choice_2": "Hello, world!",
+        "choice_3": "HELLO, WORLD!",
+        "choice_4": "None of the above",
+        "correct_choice": "choice_3"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Programming",
+        "key_words": [
+            "Programming"
+        ],
+        "level_tag": "MEDIUM",
+        "type_of_question": "Technical",
+        "question_number": 897,
+        "question": "Which SQL statement is used to extract data from a database?",
+        "choice_1": "EXTRACT",
+        "choice_2": "GET",
+        "choice_3": "SELECT",
+        "choice_4": "PULL",
+        "correct_choice": "choice_3"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Programming",
+        "key_words": [
+            "Programming"
+        ],
+        "level_tag": "MEDIUM",
+        "type_of_question": "Technical",
+        "question_number": 335,
+        "question": "Which data structure uses a first in, first out (FIFO) method?",
+        "choice_1": "Stack",
+        "choice_2": "Queue",
+        "choice_3": "Array",
+        "choice_4": "Linked List",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Programming",
+        "key_words": [
+            "Programming"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 898,
+        "question": "Which of the following is not a valid variable name?",
+        "choice_1": "my_variable",
+        "choice_2": "2nd_variable",
+        "choice_3": "variable_name",
+        "choice_4": "var_3",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Programming",
+        "key_words": [
+            "Programming"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 539,
+        "question": "What is the function of a compiler in programming?",
+        "choice_1": "Connects to the internet",
+        "choice_2": "Translates source code into machine code",
+        "choice_3": "Enhances the speed of a computer",
+        "choice_4": "Stores data",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Programming",
+        "key_words": [
+            "Programming"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 886,
+        "question": "Which concept describes the bundling of data and methods within a single unit in programming?",
+        "choice_1": "Encapsulation",
+        "choice_2": "Iteration",
+        "choice_3": "Compilation",
+        "choice_4": "Multiprocessing",
+        "correct_choice": "choice_1"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Programming",
+        "key_words": [
+            "Programming"
+        ],
+        "level_tag": "MEDIUM",
+        "type_of_question": "Technical",
+        "question_number": 339,
+        "question": "Which data structure is best suited for managing hierarchical data?",
+        "choice_1": "Graph",
+        "choice_2": "Queue",
+        "choice_3": "Stack",
+        "choice_4": "Tree",
+        "correct_choice": "choice_4"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Programming",
+        "key_words": [
+            "Programming"
+        ],
+        "level_tag": "MEDIUM",
+        "type_of_question": "Technical",
+        "question_number": 277,
+        "question": "What does 'Big O Notation' describe in the context of algorithm performance?",
+        "choice_1": "Memory usage",
+        "choice_2": "Processing time",
+        "choice_3": "Error handling",
+        "choice_4": "Worst-case runtime complexity",
+        "correct_choice": "choice_4"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Programming",
+        "key_words": [
+            "Programming"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 205,
+        "question": "What type of logic is typically used for creating algorithms?",
+        "choice_1": "Inductive reasoning",
+        "choice_2": "Deductive reasoning",
+        "choice_3": "Abductive reasoning",
+        "choice_4": "Conductive reasoning",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Programming",
+        "key_words": [
+            "Programming"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 332,
+        "question": "Which programming concept involves executing multiple processes at the same time?",
+        "choice_1": "Sequencing",
+        "choice_2": "Scheduling",
+        "choice_3": "Multithreading",
+        "choice_4": "Looping",
+        "correct_choice": "choice_3"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Programming",
+        "key_words": [
+            "Programming"
+        ],
+        "level_tag": "MEDIUM",
+        "type_of_question": "Technical",
+        "question_number": 136,
+        "question": "In software development, what is 'refactoring' primarily used for?",
+        "choice_1": "To improve the internal structure of the code without changing its external behavior",
+        "choice_2": "To enhance the graphical user interface",
+        "choice_3": "To add new features to the software",
+        "choice_4": "To fix bugs",
+        "correct_choice": "choice_1"
+    },
+    {
+        "criteria": "Databases",
+        "skill": "Databases",
+        "key_words": [
+            "Databases"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 263,
+        "question": "What is the role of the LIKE operator in SQL?",
+        "choice_1": "It filters records that fulfill a specified condition",
+        "choice_2": "It searches for a specified pattern in a column",
+        "choice_3": "It updates data in a database",
+        "choice_4": "It creates a new database",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Databases",
+        "skill": "Databases",
+        "key_words": [
+            "Databases"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 448,
+        "question": "What does the HAVING clause do in SQL?",
+        "choice_1": "It filters records that fulfill a specified condition",
+        "choice_2": "It deletes data from a database",
+        "choice_3": "It filters groups that fulfill a specified condition",
+        "choice_4": "It creates a new database",
+        "correct_choice": "choice_3"
+    },
+    {
+        "criteria": "Databases",
+        "skill": "Databases",
+        "key_words": [
+            "Databases"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 805,
+        "question": "What is the purpose of the GROUP BY statement in SQL?",
+        "choice_1": "It groups rows that have the same values in specified columns into aggregated data",
+        "choice_2": "It deletes data from a database",
+        "choice_3": "It updates data in a database",
+        "choice_4": "It creates a new database",
+        "correct_choice": "choice_1"
+    },
+    {
+        "criteria": "Databases",
+        "skill": "Databases",
+        "key_words": [
+            "Databases"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 326,
+        "question": "What does the ORDER BY statement do in SQL?",
+        "choice_1": "It sorts the records in a result set",
+        "choice_2": "It deletes data from a database",
+        "choice_3": "It updates data in a database",
+        "choice_4": "It creates a new database",
+        "correct_choice": "choice_1"
+    },
+    {
+        "criteria": "Databases",
+        "skill": "Databases",
+        "key_words": [
+            "Databases"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 779,
+        "question": "What is the role of the WHERE clause in SQL?",
+        "choice_1": "It filters records that fulfill a specified condition",
+        "choice_2": "It deletes data from a database",
+        "choice_3": "It updates data in a database",
+        "choice_4": "It creates a new database",
+        "correct_choice": "choice_1"
+    },
+    {
+        "criteria": "Databases",
+        "skill": "Databases",
+        "key_words": [
+            "Databases"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 653,
+        "question": "What does the DROP TABLE statement do in SQL?",
+        "choice_1": "It changes the structure of a table",
+        "choice_2": "It deletes a table from a database",
+        "choice_3": "It updates data in a database",
+        "choice_4": "It creates a new database",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Databases",
+        "skill": "Databases",
+        "key_words": [
+            "Databases"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 720,
+        "question": "What is the purpose of the ALTER TABLE statement in SQL?",
+        "choice_1": "It changes the structure of a table",
+        "choice_2": "It deletes data from a database",
+        "choice_3": "It updates data in a database",
+        "choice_4": "It creates a new database",
+        "correct_choice": "choice_1"
+    },
+    {
+        "criteria": "Databases",
+        "skill": "Databases",
+        "key_words": [
+            "Databases"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 714,
+        "question": "What does a JOIN statement do in SQL?",
+        "choice_1": "It combines rows from two or more tables",
+        "choice_2": "It updates data in a database",
+        "choice_3": "It deletes data from a database",
+        "choice_4": "It creates a new database",
+        "correct_choice": "choice_1"
+    },
+    {
+        "criteria": "Databases",
+        "skill": "Databases",
+        "key_words": [
+            "Databases"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 560,
+        "question": "What is the role of a Foreign Key in a SQL database?",
+        "choice_1": "To ensure data in a specific column is unique",
+        "choice_2": "To ensure data in a specific row is unique",
+        "choice_3": "To connect two tables together",
+        "choice_4": "To sort data in a specific order",
+        "correct_choice": "choice_3"
+    },
+    {
+        "criteria": "Databases",
+        "skill": "Databases",
+        "key_words": [
+            "Databases"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 986,
+        "question": "What is the purpose of a Primary Key in a SQL database?",
+        "choice_1": "To ensure data in a specific column is unique",
+        "choice_2": "To ensure data in a specific row is unique",
+        "choice_3": "To connect two tables together",
+        "choice_4": "To sort data in a specific order",
+        "correct_choice": "choice_1"
+    },
+    {
+        "criteria": "Databases",
+        "skill": "Databases",
+        "key_words": [
+            "Databases"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 136,
+        "question": "What is the role of the INSERT INTO statement in SQL?",
+        "choice_1": "It inserts new data into a database",
+        "choice_2": "It deletes data from a database",
+        "choice_3": "It updates data in a database",
+        "choice_4": "It creates a new database",
+        "correct_choice": "choice_1"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Database",
+        "key_words": [
+            "Database"
+        ],
+        "level_tag": "MEDIUM",
+        "type_of_question": "Technical",
+        "question_number": 846,
+        "question": "What does the term 'Normalization' mean in the context of database design?",
+        "choice_1": "Merging two tables into one",
+        "choice_2": "Splitting a table into multiple tables to minimize redundancy",
+        "choice_3": "Converting the database to a new platform",
+        "choice_4": "Encrypting data for security",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Database",
+        "key_words": [
+            "Database"
+        ],
+        "level_tag": "MEDIUM",
+        "type_of_question": "Technical",
+        "question_number": 317,
+        "question": "What type of database uses a non-tabular model to store and manage data?",
+        "choice_1": "Relational Database",
+        "choice_2": "Graph Database",
+        "choice_3": "NoSQL Database",
+        "choice_4": "Spreadsheet",
+        "correct_choice": "choice_3"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Database",
+        "key_words": [
+            "Database"
+        ],
+        "level_tag": "MEDIUM",
+        "type_of_question": "Technical",
+        "question_number": 322,
+        "question": "Which SQL statement is used to remove a table from a database?",
+        "choice_1": "REMOVE",
+        "choice_2": "DELETE",
+        "choice_3": "DROP",
+        "choice_4": "ERASE",
+        "correct_choice": "choice_3"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Database",
+        "key_words": [
+            "Database"
+        ],
+        "level_tag": "MEDIUM",
+        "type_of_question": "Technical",
+        "question_number": 562,
+        "question": "What does an 'Index' do in a database?",
+        "choice_1": "Decreases the performance of select queries",
+        "choice_2": "Increases the time to update records",
+        "choice_3": "Helps speed up data retrieval",
+        "choice_4": "Encrypts data for security",
+        "correct_choice": "choice_3"
+    },
+    {
+        "criteria": "Computer Science",
+        "skill": "Database",
+        "key_words": [
+            "Database"
+        ],
+        "level_tag": "MEDIUM",
+        "type_of_question": "Technical",
+        "question_number": 220,
+        "question": "Which operation in SQL combines rows from two or more tables based on a related column between them?",
+        "choice_1": "JOIN",
+        "choice_2": "UNION",
+        "choice_3": "COMBINE",
+        "choice_4": "MERGE",
+        "correct_choice": "choice_1"
+    },
+    {
+        "criteria": "Data Structures",
+        "skill": "Stack",
+        "key_words": [
+            "Stack"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 815,
+        "question": "If I push the numbers 1, 2, and 3 onto a stack in that order and then pop them all off, what order will they come out in?",
+        "choice_1": "1, 2, 3",
+        "choice_2": "3, 2, 1",
+        "choice_3": "2, 1, 3",
+        "choice_4": "3, 1, 2",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Data Structures",
+        "skill": "Stack",
+        "key_words": [
+            "Stack"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 185,
+        "question": "Which of the following is a common use of stacks?",
+        "choice_1": "To implement recursion",
+        "choice_2": "To implement search algorithms",
+        "choice_3": "To implement sorting algorithms",
+        "choice_4": "To implement graph algorithms",
+        "correct_choice": "choice_1"
+    },
+    {
+        "criteria": "Data Structures",
+        "skill": "Stack",
+        "key_words": [
+            "Stack"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 93,
+        "question": "What do we call the situation when we try to pop an element from an empty stack?",
+        "choice_1": "Stack Underflow",
+        "choice_2": "Stack Overflow",
+        "choice_3": "Stack Outflow",
+        "choice_4": "Stack Inflow",
+        "correct_choice": "choice_1"
+    },
+    {
+        "criteria": "Data Structures",
+        "skill": "Data Structures",
+        "key_words": [
+            "Data Structures"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 394,
+        "question": "Which data structure would you use to represent a hierarchical relationship between objects?",
+        "choice_1": "Array",
+        "choice_2": "Linked List",
+        "choice_3": "Stack",
+        "choice_4": "Binary Tree",
+        "correct_choice": "choice_4"
+    },
+    {
+        "criteria": "Data Structures",
+        "skill": "Data Structures",
+        "key_words": [
+            "Data Structures"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 772,
+        "question": "Which data structure does not require elements to be stored in contiguous memory locations?",
+        "choice_1": "Array",
+        "choice_2": "Linked List",
+        "choice_3": "Stack",
+        "choice_4": "Queue",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Data Structures",
+        "skill": "Data Structures",
+        "key_words": [
+            "Data Structures"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 893,
+        "question": "Which data structure stores elements in contiguous memory locations?",
+        "choice_1": "Array",
+        "choice_2": "Linked List",
+        "choice_3": "Stack",
+        "choice_4": "Queue",
+        "correct_choice": "choice_1"
+    },
+    {
+        "criteria": "Data Structures",
+        "skill": "Data Structures",
+        "key_words": [
+            "Data Structures"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 453,
+        "question": "Which data structure uses the operations enqueue and dequeue?",
+        "choice_1": "Array",
+        "choice_2": "Linked List",
+        "choice_3": "Stack",
+        "choice_4": "Queue",
+        "correct_choice": "choice_4"
+    },
+    {
+        "criteria": "Data Structures",
+        "skill": "Data Structures",
+        "key_words": [
+            "Data Structures"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 286,
+        "question": "Which data structure uses the operations push and pop?",
+        "choice_1": "Array",
+        "choice_2": "Linked List",
+        "choice_3": "Stack",
+        "choice_4": "Queue",
+        "correct_choice": "choice_3"
+    },
+    {
+        "criteria": "Data Structures",
+        "skill": "Data Structures",
+        "key_words": [
+            "Data Structures"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 639,
+        "question": "Which data structure has a dynamic size?",
+        "choice_1": "Array",
+        "choice_2": "Linked List",
+        "choice_3": "Stack",
+        "choice_4": "Queue",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Data Structures",
+        "skill": "Data Structures",
+        "key_words": [
+            "Data Structures"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 603,
+        "question": "Which data structure has a fixed size?",
+        "choice_1": "Array",
+        "choice_2": "Linked List",
+        "choice_3": "Stack",
+        "choice_4": "Queue",
+        "correct_choice": "choice_1"
+    },
+    {
+        "criteria": "Data Structures",
+        "skill": "Data Structures",
+        "key_words": [
+            "Data Structures"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 855,
+        "question": "Which data structure would you use to implement a priority queue?",
+        "choice_1": "Array",
+        "choice_2": "Linked List",
+        "choice_3": "Stack",
+        "choice_4": "Heap",
+        "correct_choice": "choice_4"
+    },
+    {
+        "criteria": "Data Structures",
+        "skill": "Data Structures",
+        "key_words": [
+            "Data Structures"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 212,
+        "question": "Which data structure would you use to represent a network?",
+        "choice_1": "Array",
+        "choice_2": "Graph",
+        "choice_3": "Stack",
+        "choice_4": "Queue",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Data Structures",
+        "skill": "Data Structures",
+        "key_words": [
+            "Data Structures"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 924,
+        "question": "Which data structure would you use for storing key-value pairs for quick lookup?",
+        "choice_1": "Array",
+        "choice_2": "Linked List",
+        "choice_3": "Hash Table",
+        "choice_4": "Binary Search Tree",
+        "correct_choice": "choice_3"
+    },
+    {
+        "criteria": "Data Structures",
+        "skill": "Data Structures",
+        "key_words": [
+            "Data Structures"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 493,
+        "question": "Which data structure would you use for efficient search operations?",
+        "choice_1": "Array",
+        "choice_2": "Linked List",
+        "choice_3": "Stack",
+        "choice_4": "Binary Search Tree",
+        "correct_choice": "choice_4"
+    },
+    {
+        "criteria": "Data Structures",
+        "skill": "Data Structures",
+        "key_words": [
+            "Data Structures"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 935,
+        "question": "Which data structure is efficient for insertion and deletion of elements?",
+        "choice_1": "Array",
+        "choice_2": "Linked List",
+        "choice_3": "Stack",
+        "choice_4": "Queue",
+        "correct_choice": "choice_2"
+    },
+    {
+        "criteria": "Data Structures",
+        "skill": "Data Structures",
+        "key_words": [
+            "Data Structures"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 291,
+        "question": "If you need to access the first element first, which data structure would you choose?",
+        "choice_1": "Stack",
+        "choice_2": "Array",
+        "choice_3": "Queue",
+        "choice_4": "Linked List",
+        "correct_choice": "choice_3"
+    },
+    {
+        "criteria": "Data Structures",
+        "skill": "Data Structures",
+        "key_words": [
+            "Data Structures"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 371,
+        "question": "Which data structure would you use if you need to access the last element first?",
+        "choice_1": "Array",
+        "choice_2": "Queue",
+        "choice_3": "Stack",
+        "choice_4": "Linked List",
+        "correct_choice": "choice_3"
+    },
+    {
+        "criteria": "Data Structures",
+        "skill": "Data Structures",
+        "key_words": [
+            "Data Structures"
+        ],
+        "level_tag": "EASY",
+        "type_of_question": "Technical",
+        "question_number": 557,
+        "question": "Can you tell me which data structure is best for accessing elements by index?",
+        "choice_1": "Linked List",
+        "choice_2": "Array",
+        "choice_3": "Stack",
+        "choice_4": "Queue",
+        "correct_choice": "choice_2"
+    }
+]

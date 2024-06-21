@@ -1,13 +1,15 @@
+import sys
+sys.path.append('../../src')
 import streamlit as st
 import json
-import utils
-import display_fun
+import streamlit_validate.utils as utils
+import streamlit_validate.display_MCQs as display_MCQs
 
 # file_path = r"coding_questions_merged.json"
-file_path=r"C:\SaiVinay\SproutsAI\GitHub_\coding_question_generator\json_files\questionGeneration.tempCodingQuestionsV3.json"
+file_path=r"C:\SaiVinay\SproutsAI\GitHub_\coding_question_generator\json_files\lightbeam\mcq_questions_v3 (1).json"
 
 st.set_page_config(
-    page_title="Code Test Platform Console",
+    page_title="MCQs Test Platform Console",
     page_icon="🧊",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -18,9 +20,7 @@ st.set_page_config(
 
 
 def main():
-    # file_path = st.file_uploader("Upload JSON File", type=["json"])
-    
-    st.title("Code Validation Console")
+    st.title("MCQs Test Platform Console")
     data = utils.load_json_file(file_path)
     question_ids = list(range(0, len(data)))
     
@@ -28,13 +28,10 @@ def main():
         st.session_state.question_index = 0
 
     question_id = question_ids[st.session_state.question_index]
-    question_data = data[question_id]
 
     length_of_questions = len(question_ids)
     current_index = st.session_state.question_index
-     #add the current current index vs total questions
     st.write(f"Question {current_index+1}/{length_of_questions}")
-     # Previous and Next buttons
 
     st.sidebar.title("Actions")
     # side_bar_button = st.sidebar.button("")
@@ -51,25 +48,11 @@ def main():
     if st.sidebar.button("Refresh"):
         st.experimental_rerun()
     
-    if st.sidebar.button("Upload"):
-        utils.upload_to_tempCodingQuestionsV3(question_id, question_data)
-        
-    if st.sidebar.button("Update"):
-        utils.update_to_tempCodingQuestionsV3(question_id, question_data)
-
     if st.sidebar.button(f" Next Question :fast_forward:"):
         st.session_state.question_index = min(len(question_ids) - 1, st.session_state.question_index + 1)
         st.experimental_rerun()
-    
-    if "languages verified" in question_data:
-        st.sidebar.title("Languages Verified")
-        for lang in question_data["languages verified"]:
-            st.sidebar.code(lang)
         
-    # st.write(f"Question ID: {question_id}")
-    display_fun.display_question(question_id, question_data, data, file_path)
-
-   
+    display_MCQs.display_question(question_id, data, file_path)
 
 if __name__ == "__main__":
     main()

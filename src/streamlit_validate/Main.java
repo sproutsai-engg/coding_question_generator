@@ -14,28 +14,30 @@ import java.util.stream.IntStream;
 
 
 public class Main {
-public static int lengthOfLongestSubstring(String s) {
-    int left = 0, right = 0, maxLength = 0;
-    Set<Character> characters = new HashSet<>();
+public static List<List<Integer>> combine(int n, int k) {
+    List<List<Integer>> result = new ArrayList<>();
+    backtrack(n, k, 1, new ArrayList<>(), result);
+    return result;
+}
 
-    while (right < s.length()) {
-        if (!characters.contains(s.charAt(right))) {
-            characters.add(s.charAt(right));
-            maxLength = Math.max(maxLength, right - left + 1);
-            right++;
-        } else {
-            characters.remove(s.charAt(left));
-            left++;
-        }
+private static void backtrack(int n, int k, int start, List<Integer> current, List<List<Integer>> result) {
+    if (current.size() == k) {
+        result.add(new ArrayList<>(current));
+        return;
     }
 
-    return maxLength;
+    for (int i = start; i <= n; i++) {
+        current.add(i);
+        backtrack(n, k, i + 1, current, result);
+        current.remove(current.size() - 1);
+    }
 }
 
 
 public static void main(String[] args) {
-        String input ="abcdeffghijklmnopqrstuvwxyz";
-        int result = lengthOfLongestSubstring(input);
+        int n = $args1; // Example value for n
+        int k = $args2; // Example value for k
+        List<List<Integer>> result = combine(n, k);
         System.out.println(result);
     }
 }

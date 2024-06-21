@@ -1,30 +1,32 @@
-#include <vector>
-#include <unordered_map>
+#include <iostream>
+#include <cmath>
 
-std::vector<int> twoSum(std::vector<int>& nums, int target) {
-    std::unordered_map<int, int> map;
-    for (int i = 0; i < nums.size(); i++) {
-        int complement = target - nums[i];
-        if (map.find(complement) != map.end()) {
-            return {map[complement], i};
+int largestPalindrome(int n) {
+    if (n == 1) return 9;
+    int upper_limit = pow(10, n) - 1;
+    int lower_limit = upper_limit / 10;
+    for (int i = upper_limit; i > lower_limit; --i) {
+        long long temp = i;
+        long long reverse = 0;
+        while (temp != 0) {
+            reverse = reverse * 10 + temp % 10;
+            temp /= 10;
         }
-        map[nums[i]] = i;
+        long long palindrome = i * pow(10, n) + reverse;
+        for (long long j = upper_limit; j > lower_limit; --j) {
+            long long product = palindrome / j;
+            if (palindrome % j == 0 && product <= upper_limit) {
+                return palindrome % 1337;
+            }
+        }
     }
-    return {};
+    return -1;
 }
 
 
-#include <iostream>
-#include <vector>
-#include <unordered_map>
-
 int main() {
-    std::vector<int> nums ={2,7,11,10};
-    int target = 9;
-    std::vector<int> result = twoSum(nums, target);
-    for (int i = 0; i < result.size(); i++) {
-        std::cout << result[i] << " ";
-    }
-    std::cout << std::endl;
+    int n = 7;
+    int result = largestPalindrome(n);
+    std::cout << result << std::endl;
     return 0;
 }

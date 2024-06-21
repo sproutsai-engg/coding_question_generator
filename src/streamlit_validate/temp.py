@@ -1,16 +1,12 @@
-def twoSum(nums, target):
-    map = {}
-    for i, num in enumerate(nums):
-        complement = target - num
-        if complement in map:
-            return [map[complement], i]
-        map[num] = i
-    return []
+def findMaxConsecutiveOnes(nums):
+    max_consecutive, current_consecutive = 0, 0
+    for num in nums:
+        current_consecutive = current_consecutive + 1 if num == 1 else 0
+        max_consecutive = max(max_consecutive, current_consecutive)
+    return max_consecutive
 
 
 if __name__ == "__main__":
-    inputs = [[1, 2, 3, 4, 5], 9]
-    nums = inputs[0]
-    target = inputs[1]
-    result = twoSum(nums, target)
+    nums = [1, 1, 1, 1, 1, 1]
+    result = findMaxConsecutiveOnes(nums)
     print(result)

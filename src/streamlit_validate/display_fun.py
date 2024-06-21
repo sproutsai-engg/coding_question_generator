@@ -12,7 +12,7 @@ def display_question(question_id, question_data, data, file_path):
     
         st.header(f"Question ID: {question_id}")
         st.write(f"**Question Title:** {question_data['title']}")
-        st.write(f"**Question:** {question_data['description']}")
+        st.write(f"**Question:** {question_data['description'] if 'description' in question_data else question_data['question']}")
         st.write(f"**Example:** {question_data['example']}")
         st.write(f"**Level:** {question_data['level']}")
         st.write(f"**Tags:** {question_data['tags']}")
