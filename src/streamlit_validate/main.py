@@ -3,9 +3,10 @@ import json
 import utils
 import display_fun
 
-# file_path = r"coding_questions_merged.json"
+# define the path of the json file
 file_path=r"C:\SaiVinay\SproutsAI\GitHub_\coding_question_generator\json_files\questionGeneration.tempCodingQuestionsV3.json"
 
+# set the page configuration
 st.set_page_config(
     page_title="Code Test Platform Console",
     page_icon="🧊",
@@ -24,17 +25,19 @@ def main():
     data = utils.load_json_file(file_path)
     question_ids = list(range(0, len(data)))
     
+    # to maintain the session state - question numbers to navigate
     if 'question_index' not in st.session_state:
         st.session_state.question_index = 0
 
+    # to display the question, for the current index
     question_id = question_ids[st.session_state.question_index]
     question_data = data[question_id]
 
     length_of_questions = len(question_ids)
     current_index = st.session_state.question_index
-     #add the current current index vs total questions
+    #add the current current index vs total questions
     st.write(f"Question {current_index+1}/{length_of_questions}")
-     # Previous and Next buttons
+    # Previous and Next buttons
 
     st.sidebar.title("Actions")
     # side_bar_button = st.sidebar.button("")
@@ -51,11 +54,11 @@ def main():
     if st.sidebar.button("Refresh"):
         st.experimental_rerun()
     
-    if st.sidebar.button("Upload"):
-        utils.upload_to_tempCodingQuestionsV3(question_id, question_data)
+    # if st.sidebar.button("Upload"):
+    #     utils.upload_to_tempCodingQuestionsV3(question_id, question_data)
         
-    if st.sidebar.button("Update"):
-        utils.update_to_tempCodingQuestionsV3(question_id, question_data)
+    # if st.sidebar.button("Update"):
+    #     utils.update_to_tempCodingQuestionsV3(question_id, question_data)
 
     if st.sidebar.button(f" Next Question :fast_forward:"):
         st.session_state.question_index = min(len(question_ids) - 1, st.session_state.question_index + 1)
