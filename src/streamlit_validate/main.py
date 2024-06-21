@@ -4,7 +4,7 @@ import utils
 import display_fun
 
 # define the path of the json file
-file_path=r"C:\SaiVinay\SproutsAI\GitHub_\coding_question_generator\json_files\questionGeneration.tempCodingQuestionsV3.json"
+file_path=r"C:\SaiVinay\SproutsAI\GitHub_\coding_question_generator\json_files\tempCodingQuestionsV3_verified_50.json"
 
 # set the page configuration
 st.set_page_config(
@@ -41,7 +41,7 @@ def main():
 
     st.sidebar.title("Actions")
     # side_bar_button = st.sidebar.button("")
-    idx = st.sidebar.text_input("Question Index", st.session_state.question_index+1)
+    idx = st.sidebar.text_input("Question Index", st.session_state.question_index)
     if st.sidebar.button(":blue[Go to Question] :airplane:"):
         st.session_state.question_index = int(idx)
         st.experimental_rerun()

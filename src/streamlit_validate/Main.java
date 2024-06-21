@@ -14,30 +14,24 @@ import java.util.stream.IntStream;
 
 
 public class Main {
-public static List<List<Integer>> combine(int n, int k) {
-    List<List<Integer>> result = new ArrayList<>();
-    backtrack(n, k, 1, new ArrayList<>(), result);
-    return result;
-}
 
-private static void backtrack(int n, int k, int start, List<Integer> current, List<List<Integer>> result) {
-    if (current.size() == k) {
-        result.add(new ArrayList<>(current));
-        return;
+public static int maxArea(int[] height) {
+    int max_area = 0, left = 0, right = height.length - 1;
+    while (left < right) {
+        max_area = Math.max(max_area, Math.min(height[left], height[right]) * (right - left));
+        if (height[left] < height[right]) {
+            left++;
+        } else {
+            right--;
+        }
     }
-
-    for (int i = start; i <= n; i++) {
-        current.add(i);
-        backtrack(n, k, i + 1, current, result);
-        current.remove(current.size() - 1);
-    }
+    return max_area;
 }
 
 
 public static void main(String[] args) {
-        int n = $args1; // Example value for n
-        int k = $args2; // Example value for k
-        List<List<Integer>> result = combine(n, k);
-        System.out.println(result);
-    }
+    int[] height = new int[]{1, 2, 1};
+    int result = maxArea(height);
+    System.out.println(result);
+}
 }

@@ -1,30 +1,33 @@
-function largestPalindrome(n) {
-    if (n === 1) return 9; // Handle 1-digit numbers
-    let upper_limit = Math.pow(10, n) - 1;
-    let lower_limit = Math.floor(upper_limit / 10);
-    for (let i = upper_limit; i > lower_limit; i--) {
-        let temp = i;
-        let reverse = 0;
-        while (temp !== 0) {
-            reverse = reverse * 10 + temp % 10;
-            temp = Math.floor(temp / 10);
-        }
-        let palindrome = i * Math.pow(10, n) + reverse;
-        for (let j = upper_limit; j > lower_limit; j--) {
-            let product = Math.floor(palindrome / j);
-            if (palindrome % j === 0 && product <= upper_limit) {
-                return palindrome % 1337;
-            }
+function isMatch(s, p) {
+    const m = s.length, n = p.length;
+    const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(false));
+    dp[0][0] = true;
+
+    for (let j = 1; j <= n; j++) {
+        if (p[j - 1] === '*' && dp[0][j - 2]) {
+            dp[0][j] = true;
         }
     }
-    return -1;
+
+    for (let i = 1; i <= m; i++) {
+      for (let j = 1; j <= n; j++) {
+          if (p[j - 1] === s[i - 1] || p[j - 1] === '.') {
+              dp[i][j] = dp[i - 1][j - 1];
+          } else if (p[j - 1] === '*') {
+              dp[i][j] = dp[i][j - 2] || (dp[i - 1][j] && (s[i - 1] === p[j - 2] || p[j - 2] === '.'));
+          }
+      }
+    }
+
+    return dp[m][n];
 }
 
 
-
 function main() {
-    const n = 7;
-    const result = largestPalindrome(n);
+    const inputs =['mississippi ', 'mis*is*p*. '];
+    const s = inputs[0];
+    const p = inputs[1];
+    const result = isMatch(s, p);
     console.log(result);
 }
 main();

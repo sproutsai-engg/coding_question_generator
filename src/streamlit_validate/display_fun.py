@@ -1,5 +1,7 @@
+import sys
+sys.path.append('../../src')
 import streamlit as st
-import utils
+import streamlit_validate.utils as utils
 
 
 def display_question(question_id, question_data, data, file_path):
@@ -47,6 +49,7 @@ def display_question(question_id, question_data, data, file_path):
                     tab_function(question_id, question_data, data, file_path, language)
             elif language == "c++":
                 with cpp_tab:
+                    # st.write("C++")
                     tab_function(question_id, question_data, data, file_path, language)
             elif language == "java":
                 with java_tab:
@@ -125,9 +128,9 @@ def tab_function(question_id, question_data, data, file_path, language):
                                                                 key=call_function_key, 
                                                                 height=height)
     
-        if st.button(f"Updata JSON File"):
-            utils.save_json_file(file_path, data)
-            st.experimental_rerun()
+    if st.button(f"Updata {language.capitalize()} Code"):
+        utils.save_json_file(file_path, data) 
+        st.experimental_rerun()
             
     # to run the code in respective language
     # check the sample code and call function is available
