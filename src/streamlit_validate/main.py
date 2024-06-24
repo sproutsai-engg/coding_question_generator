@@ -4,7 +4,7 @@ import utils
 import display_fun
 
 # define the path of the json file
-file_path=r"C:\SaiVinay\SproutsAI\GitHub_\coding_question_generator\json_files\tempCodingQuestionsV3_verified_50.json"
+file_path=r"C:\SaiVinay\SproutsAI\GitHub_\coding_question_generator\json_files\lightbeam\25Q_LightBeam.json"
 
 # set the page configuration
 st.set_page_config(

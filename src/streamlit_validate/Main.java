@@ -1,37 +1,25 @@
-import java.util.LinkedList;
+import java.util.*;
 import java.util.regex.Pattern;
-import java.util.regex.Matcher;
-import java.util.HashMap;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 
 public class Main {
-
-public static int maxArea(int[] height) {
-    int max_area = 0, left = 0, right = height.length - 1;
-    while (left < right) {
-        max_area = Math.max(max_area, Math.min(height[left], height[right]) * (right - left));
-        if (height[left] < height[right]) {
-            left++;
-        } else {
-            right--;
+public static boolean canPermutePalindrome(String s) {
+    HashMap<Character, Integer> count = new HashMap<>();
+    for(char c : s.toCharArray()) {
+        count.put(c, count.getOrDefault(c, 0) + 1);
+    }
+    int odd_count = 0;
+    for(int value : count.values()) {
+        if (value % 2 != 0) {
+            odd_count++;
         }
     }
-    return max_area;
+    return odd_count <= 1;
 }
 
 
 public static void main(String[] args) {
-    int[] height = new int[]{1, 2, 1};
-    int result = maxArea(height);
-    System.out.println(result);
-}
+        String s = "carerac";
+        boolean result = canPermutePalindrome(s); // Use nthUglyNumber instead of addDigits
+        System.out.println("$sprouts@pankaj"+result+"$sprouts@pankaj");
+    }
 }

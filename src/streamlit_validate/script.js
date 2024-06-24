@@ -1,33 +1,20 @@
-function isMatch(s, p) {
-    const m = s.length, n = p.length;
-    const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(false));
-    dp[0][0] = true;
-
-    for (let j = 1; j <= n; j++) {
-        if (p[j - 1] === '*' && dp[0][j - 2]) {
-            dp[0][j] = true;
+function maxArea(height) {
+    let max_area = 0, left = 0, right = height.length - 1;
+    while (left < right) {
+        max_area = Math.max(max_area, Math.min(height[left], height[right]) * (right - left));
+        if (height[left] < height[right]) {
+            left++;
+        } else {
+            right--;
         }
     }
-
-    for (let i = 1; i <= m; i++) {
-      for (let j = 1; j <= n; j++) {
-          if (p[j - 1] === s[i - 1] || p[j - 1] === '.') {
-              dp[i][j] = dp[i - 1][j - 1];
-          } else if (p[j - 1] === '*') {
-              dp[i][j] = dp[i][j - 2] || (dp[i - 1][j] && (s[i - 1] === p[j - 2] || p[j - 2] === '.'));
-          }
-      }
-    }
-
-    return dp[m][n];
+    return max_area;
 }
 
 
 function main() {
-    const inputs =['mississippi ', 'mis*is*p*. '];
-    const s = inputs[0];
-    const p = inputs[1];
-    const result = isMatch(s, p);
-    console.log(result);
+    const height = [1, 2, 1];
+    const result = maxArea(height);
+    console.log("$sprouts@pankaj",result,"$sprouts@pankaj");
 }
 main();

@@ -10,13 +10,25 @@ def display_question(question_id, question_data, data, file_path):
     
     # left column is to display all the question details
     with left_column:
+        height_multiplier = 30
+        
         if "languages verified" not in question_data:
             question_data["languages verified"] = []
     
         st.header(f"Question ID: {question_id + 1}")
         st.write(f"**Question Title:** {question_data['title']}")
-        st.write(f"**Question:** {question_data['description'] if 'description' in question_data else question_data['question']}")
-        st.write(f"**Example:** {question_data['example']}")
+        
+        description = question_data['description'] if 'description' in question_data else question_data['question']
+        height = 180
+        question_data['description'] = st.text_area("**Question:**",
+                                                description,
+                                                height=height)
+        
+        height = question_data['example'].count("\n") * height_multiplier
+        question_data['example'] = st.text_area("**Example:**", 
+                                                question_data['example'], 
+                                                height=height)
+        
         st.write(f"**Level:** {question_data['level']}")
         st.write(f"**Tags:** {question_data['tags']}")
     
@@ -145,7 +157,7 @@ def tab_function(question_id, question_data, data, file_path, language):
             utils.run_button_cpp(code)
         elif language == "java":
             # for java, add the necessary imports
-            include_line = "import java.util.LinkedList;\nimport java.util.regex.Pattern;\nimport java.util.regex.Matcher;\nimport java.util.HashMap;\nimport java.util.Set;\nimport java.util.HashSet;\nimport java.util.Map;\nimport java.util.ArrayList;\nimport java.util.List;\nimport java.util.Arrays;\nimport java.util.Collections;\nimport java.util.stream.Collectors;\nimport java.util.stream.IntStream;\n\n\npublic class Main {\n"
+            include_line = "import java.util.*;\nimport java.util.regex.Pattern;\n\npublic class Main {\n"
             end_line = "\n}"
             code = include_line + code + end_line
             utils.run_button_java(code)
