@@ -1,20 +1,21 @@
-function maxArea(height) {
-    let max_area = 0, left = 0, right = height.length - 1;
+function findPeakElement(nums) {
+    let left = 0, right = nums.length - 1;
     while (left < right) {
-        max_area = Math.max(max_area, Math.min(height[left], height[right]) * (right - left));
-        if (height[left] < height[right]) {
-            left++;
+        let mid = left + Math.floor((right - left) / 2);
+        if (nums[mid] < nums[mid + 1]) {
+            left = mid + 1;
         } else {
-            right--;
+            right = mid;
         }
     }
-    return max_area;
+    return left;
 }
 
 
 function main() {
-    const height = [1, 2, 1];
-    const result = maxArea(height);
-    console.log("$sprouts@pankaj",result,"$sprouts@pankaj");
+const nums = [1, 2, 1, 3, 5, 6, 4];
+const result = findPeakElement(nums);
+console.log("$sprouts@pankaj",result,"$sprouts@pankaj"
+);
 }
 main();

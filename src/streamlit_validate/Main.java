@@ -2,24 +2,23 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 public class Main {
-public static boolean canPermutePalindrome(String s) {
-    HashMap<Character, Integer> count = new HashMap<>();
-    for(char c : s.toCharArray()) {
-        count.put(c, count.getOrDefault(c, 0) + 1);
-    }
-    int odd_count = 0;
-    for(int value : count.values()) {
-        if (value % 2 != 0) {
-            odd_count++;
+public static int findPeakElement(int[] nums) {
+    int left = 0, right = nums.length - 1;
+    while (left < right) {
+        int mid = left + (right - left) / 2;
+        if (nums[mid] < nums[mid + 1]) {
+            left = mid + 1;
+        } else {
+            right = mid;
         }
     }
-    return odd_count <= 1;
+    return left;
 }
 
 
 public static void main(String[] args) {
-        String s = "carerac";
-        boolean result = canPermutePalindrome(s); // Use nthUglyNumber instead of addDigits
-        System.out.println("$sprouts@pankaj"+result+"$sprouts@pankaj");
-    }
+int[] nums = $args;
+int result = findPeakElement(nums);
+System.out.println("$sprouts@pankaj"+result+"$sprouts@pankaj");
+}
 }

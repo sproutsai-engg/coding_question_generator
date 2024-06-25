@@ -1,33 +1,24 @@
 #include <iostream>
-#include <unordered_map>
-#include <string>
-
-// Function to check if any permutation of the string can form a palindrome
-bool canPermutePalindrome(const std::string& s) {
-    std::unordered_map<char, int> count;
-    
-    // Count the frequency of each character in the string
-    for (char c : s) {
-        count[c]++;
-    }
-
-    int odd_count = 0;
-    
-    // Count the number of characters with odd frequencies
-    for (const auto& pair : count) {
-        if (pair.second % 2 != 0) {
-            odd_count++;
+#include <vector>
+#include <stack>
+using namespace std;
+int findPeakElement(vector<int>& nums) {
+    int left = 0, right = nums.size() - 1;
+    while (left < right) {
+        int mid = left + (right - left) / 2;
+        if (nums[mid] < nums[mid + 1]) {
+            left = mid + 1;
+        } else {
+            right = mid;
         }
     }
-
-    // A string can form a palindrome if it has at most one character with an odd frequency
-    return odd_count <= 1;
+    return left;
 }
 
 
 int main() {
-    std::string s = "aabbaa";
-    bool result = canPermutePalindrome(s);
-    std::cout <<"$sprouts@pankaj"<< std::boolalpha<<result<<"$sprouts@pankaj";
+    vector<int> nums = {1, 2, 3, 4, 5};
+    int result = findPeakElement(nums);
+    std::cout <<"$sprouts@pankaj"<<result<<"$sprouts@pankaj";
     return 0;
 }

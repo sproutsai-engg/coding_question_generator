@@ -1,18 +1,16 @@
-def canPermutePalindrome(s: str) -> bool:
-    count = {}
-    for c in s:
-        if c in count:
-            count[c] += 1
+def findPeakElement(nums):
+    left, right = 0, len(nums) - 1
+    while left < right:
+        mid = left + (right - left) // 2
+        if nums[mid] < nums[mid + 1]:
+            left = mid + 1
         else:
-            count[c] = 1
-    odd_count = 0
-    for value in count.values():
-        if value % 2:
-            odd_count += 1
-    return odd_count <= 1
+            right = mid
+    return left
 
 
-if __name__ == "__main__":
-    s ="abc"
-    result = canPermutePalindrome(s)
-    print("$sprouts@pankaj", result, "$sprouts@pankaj")
+if __name__ == "__main__":    
+    nums = [1, 2, 1, 3, 5, 6, 4]
+    result = findPeakElement(nums)
+    print("$sprouts@pankaj",result,"$sprouts@pankaj"
+)
