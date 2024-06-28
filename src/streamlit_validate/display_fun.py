@@ -1,7 +1,10 @@
 import sys
 sys.path.append('../../src')
+import requests
 import streamlit as st
 import streamlit_validate.utils as utils
+import streamlit_validate.display_testCases as display_testCases
+import json
 
 
 def display_question(question_id, question_data, data, file_path):
@@ -34,18 +37,8 @@ def display_question(question_id, question_data, data, file_path):
     
         ## display test cases
         st.subheader("Test Cases: $args")
+        display_testCases.testCases(question_data)
         
-        for i in range(len(question_data['test_cases']['inputs'])):
-            try:
-                input_data = question_data['test_cases']['inputs'][i]
-                output_data = question_data['test_cases']['outputs'][i]
-                st.write(f"**Input {i+1}:**")
-                st.code(input_data, line_numbers=True, language="python")
-                st.write(f"**Output {i+1}:**")
-                st.code(output_data, line_numbers=True, language="python")
-                st.write("---")
-            except:
-                continue
         
     # right column is for the code editor
     with right_column:
@@ -105,11 +98,6 @@ def tab_function(question_id, question_data, data, file_path, language):
                                                             key=sample_code_key, 
                                                             height=height)
         
-        
-        # if st.button(f"Updata {language.capitalize()} Sample Code"):
-        #     utils.save_json_file(file_path, data)
-        #     # st.session_state.question_index = 0
-        #     st.experimental_rerun()
     #display the structure
     if language in question_data['structure']:
         structure_key = f"Structure_{language}_{question_id}"
@@ -123,10 +111,7 @@ def tab_function(question_id, question_data, data, file_path, language):
                                                             key=structure_key, 
                                                             height=height)
 
-        # if st.button(f"Updata {language.capitalize()} Structure"):
-        #     utils.save_json_file(file_path, data)
-        #     # st.session_state.question_index = 0
-        #     st.experimental_rerun()
+        
     #display the call function
     if language in question_data['call_functions']:
         call_function_key = f"Call_function_{language}_{question_id}"
@@ -153,16 +138,50 @@ def tab_function(question_id, question_data, data, file_path, language):
         # run the code
         if language == "python":
             utils.run_button_python(code)
+            run_all_test_cases(question_data, language= "python")
         elif language == "c++":
             utils.run_button_cpp(code)
+            run_all_test_cases(question_data, language= "cpp")
         elif language == "java":
             # for java, add the necessary imports
             include_line = "import java.util.*;\nimport java.util.regex.Pattern;\n\npublic class Main {\n"
             end_line = "\n}"
             code = include_line + code + end_line
             utils.run_button_java(code)
+            run_all_test_cases(question_data, language= "java")
         elif language == "javascript":
             utils.run_button_javascript(code)
+            run_all_test_cases(question_data, language= "javascript")
     else:
         st.write(f":red[Please add {language.capitalize()} sample code and call function to run the code.]")
 
+def run_all_test_cases(question_data, language):
+    url = "https://dev.api.sproutsai.com/compiler/run_payload/"
+    payload = {"language": language,
+               "payload" : question_data}
+    if st.button(f"Run All Test Cases in {language}"):
+        response = requests.post(url, json=payload).json()
+        
+        failed_test_cases = []
+        passed_test_cases = []
+        failed_test_cases_number = []
+        for i in range(len(response["data"])):
+            _dict = response["data"][i]
+            if _dict["testPassed"] == False:
+                failed_test_cases.append(_dict)
+                failed_test_cases_number.append(i+1)
+            else:
+                passed_test_cases.append(_dict)
+        
+        if len(failed_test_cases) == 0:
+            st.success("All test cases passed!", icon="✅")
+        else:
+            st.error(f"{len(failed_test_cases)} test cases failed!", icon="🚫")
+            st.error(f"Check these test cases: {failed_test_cases_number}")
+        st.subheader("Failed Test Cases:")
+        st.write(failed_test_cases)
+        
+        st.subheader("Passed Test Cases:")
+        st.write(passed_test_cases)
+        
+    

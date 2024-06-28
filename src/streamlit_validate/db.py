@@ -10,5 +10,6 @@ uri = os.getenv('NLPCLUSTER')
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'))
 
-def tempCodingQuestionsV3():
-    return client.questionGeneration.tempCodingQuestionsV3
+questionGeneration = client.questionGeneration.tempCodingQuestionsV3
+
+toyCodingQuestions = client.questionGeneration.toyCodingQuestions

@@ -1,7 +1,9 @@
+import sys
+sys.path.append('../../src')
 import json
 import subprocess
 import streamlit as st
-import db
+import streamlit_validate.db as db
 from bson import ObjectId
 
 
@@ -96,6 +98,7 @@ def compile_and_run_java(code):
     stdout, stderr =  run_process.stdout, run_process.stderr
     
     return stdout, stderr
+
 def run_button_java(code):
     # Add a button to compile and run the code
     if st.button(":green[Compile and Run Java]"):
@@ -111,16 +114,17 @@ def run_button_java(code):
             st.code(stderr)
             
 ## upload to db
-def upload_to_tempCodingQuestionsV3(question_id, data):
-    collection = db.tempCodingQuestionsV3()
-    title = data['title']
-    exists = collection.find_one({"title": title})
+def upload_coding_question_to_db(_id, data):
+    collection = db.toyCodingQuestions
+    exists = collection.find_one({"_id": ObjectId(_id)})
 
     if exists:
-        Qid = exists["Qid"]
-        st.error(f'Question with the same title already exists with Qid {Qid}. Current Qid is {question_id}', icon="🚫")
+        data["_id"] = ObjectId(_id)
+        collection.update_one({"_id": ObjectId(_id)}, {"$set": data})
+        st.success('Question updated successfully!', icon="✅")
+        # st.error(f'Question with the same title already exists with Qid {Qid}. Current Qid is {question_id}', icon="🚫")
     else:
-        data["Qid"] = question_id
+        data["_id"] = ObjectId(_id)
         collection.insert_one(data)
         st.success('Question uploaded successfully!', icon="✅")
         

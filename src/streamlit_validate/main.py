@@ -1,10 +1,12 @@
+import sys
+sys.path.append('../../src')
 import streamlit as st
 import json
-import utils
+import streamlit_validate.utils as utils
 import display_fun
 
 # define the path of the json file
-file_path=r"C:\SaiVinay\SproutsAI\GitHub_\coding_question_generator\json_files\lightbeam\5_questions_coding_2506.json"
+file_path=r"C:\SaiVinay\SproutsAI\GitHub_\coding_question_generator\json_files\tempCodingQuestionsV3_verified_50.json"
 
 # set the page configuration
 st.set_page_config(
@@ -54,10 +56,14 @@ def main():
     if st.sidebar.button("Refresh"):
         st.experimental_rerun()
     
-    # if st.sidebar.button("Upload"):
-    #     utils.upload_to_tempCodingQuestionsV3(question_id, question_data)
+    if st.sidebar.button("Upload/Update"):
+        _id = question_data["_id"]["$oid"]
+        utils.save_json_file(file_path, data)
+        question_data = data[question_id]
+        utils.upload_coding_question_to_db(_id, question_data)
         
     # if st.sidebar.button("Update"):
+    #     utils.save_json_file(file_path, data)
     #     utils.update_to_tempCodingQuestionsV3(question_id, question_data)
 
     if st.sidebar.button(f" Next Question :fast_forward:"):
