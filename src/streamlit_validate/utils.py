@@ -114,19 +114,27 @@ def run_button_java(code):
             st.code(stderr)
             
 ## upload to db
-def upload_coding_question_to_db(_id, data):
-    collection = db.toyCodingQuestions
-    exists = collection.find_one({"_id": ObjectId(_id)})
-
-    if exists:
-        data["_id"] = ObjectId(_id)
-        collection.update_one({"_id": ObjectId(_id)}, {"$set": data})
-        st.success('Question updated successfully!', icon="✅")
-        # st.error(f'Question with the same title already exists with Qid {Qid}. Current Qid is {question_id}', icon="🚫")
-    else:
-        data["_id"] = ObjectId(_id)
-        collection.insert_one(data)
+def upload_coding_question_to_db(_id, question_id, data, file_path):
+    question_data = data[question_id]
+    if _id is None:
+        collection = db.toyCodingQuestions
+        id = collection.insert_one(question_data)
+        question_data["_id"] = str(id.inserted_id)
+        save_json_file(file_path, data)
         st.success('Question uploaded successfully!', icon="✅")
+    else:
+        collection = db.toyCodingQuestions
+        exists = collection.find_one({"_id": ObjectId(_id)})
+
+        if exists:
+            question_data["_id"] = ObjectId(_id)
+            collection.update_one({"_id": ObjectId(_id)}, {"$set": question_data})
+            st.success('Question updated successfully!', icon="✅")
+            # st.error(f'Question with the same title already exists with Qid {Qid}. Current Qid is {question_id}', icon="🚫")
+        else:
+            question_data["_id"] = ObjectId(_id)
+            collection.insert_one(question_data)
+            st.success('Question uploaded successfully!', icon="✅")
         
 def update_to_tempCodingQuestionsV3(question_id, data):
     collection = db.tempCodingQuestionsV3()

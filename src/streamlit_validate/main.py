@@ -6,7 +6,7 @@ import streamlit_validate.utils as utils
 import display_fun
 
 # define the path of the json file
-file_path=r"C:\SaiVinay\SproutsAI\GitHub_\coding_question_generator\json_files\tempCodingQuestionsV3_verified_50.json"
+file_path=r"C:\SaiVinay\SproutsAI\GitHub_\coding_question_generator\json_files\lightbeam\25_codingQues.json"
 
 # set the page configuration
 st.set_page_config(
@@ -57,10 +57,13 @@ def main():
         st.experimental_rerun()
     
     if st.sidebar.button("Upload/Update"):
-        _id = question_data["_id"]["$oid"]
+        if "_id" in question_data:
+            _id = question_data["_id"]["$oid"] if "$oid" in question_data["_id"] else question_data["_id"]
+            
+        else:
+            _id = None
         utils.save_json_file(file_path, data)
-        question_data = data[question_id]
-        utils.upload_coding_question_to_db(_id, question_data)
+        utils.upload_coding_question_to_db(_id, question_id,data, file_path)
         
     # if st.sidebar.button("Update"):
     #     utils.save_json_file(file_path, data)
